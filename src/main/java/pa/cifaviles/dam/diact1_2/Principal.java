@@ -10,9 +10,10 @@ package pa.cifaviles.dam.diact1_2;
  */
 public class Principal {
     
-    private static Alumno [] alumnos = new Alumno [5];
+    public static Alumno[] alumnos = new Alumno [5];
+    
     
     public static void main(String[] args) {
-        
+        FrmAlumno frame =  new FrmAlumno();
     }
 }

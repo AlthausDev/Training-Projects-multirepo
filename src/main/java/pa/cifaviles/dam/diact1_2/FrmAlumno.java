@@ -15,6 +15,8 @@ public class FrmAlumno extends javax.swing.JFrame {
      */
     public FrmAlumno() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        ErrorMsg.setVisible(false);
     }
 
     /**
@@ -27,100 +29,68 @@ public class FrmAlumno extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        lblNombre = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        lblapellido = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        lblEmail = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblEdad = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        lblTelefono = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        ErrorMsg = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtTitle = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        lblapellido = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblEdad = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro");
         setFont(new java.awt.Font("Calibri", 0, 10)); // NOI18N
+        setIconImages(null);
+        setResizable(false);
+        setSize(new java.awt.Dimension(400, 400));
 
         jPanel4.setLayout(new java.awt.GridLayout());
 
-        jPanel1.setLayout(new java.awt.GridLayout(5, 0, 20, 20));
-
-        lblNombre.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNombre.setText("Nombre");
-        jPanel1.add(lblNombre);
-
-        txtNombre.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombre);
-
-        lblapellido.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lblapellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblapellido.setText("Apellidos");
-        jPanel1.add(lblapellido);
-
-        txtApellido.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtApellido);
-
-        lblEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEmail.setText("Email");
-        jPanel1.add(lblEmail);
-
-        txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtEmail);
-
-        lblEdad.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lblEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEdad.setText("Edad");
-        jPanel1.add(lblEdad);
-
-        txtEdad.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtEdad);
-
-        lblTelefono.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTelefono.setText("Telefono");
-        jPanel1.add(lblTelefono);
-
-        txtTelefono.setColumns(2);
-        txtTelefono.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtTelefono);
-
-        jPanel4.add(jPanel1);
+        ErrorMsg.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        ErrorMsg.setForeground(new java.awt.Color(255, 51, 51));
+        ErrorMsg.setText("Error. No se pueden añadir más de 5 alumnos");
 
         btnAdd.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         btnAdd.setText("Añadir");
         btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(ErrorMsg)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(ErrorMsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         txtTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -131,42 +101,102 @@ public class FrmAlumno extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(110, 110, 110)
                 .addComponent(txtTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(110, 110, 110))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(20, 20, 20))
         );
+
+        jPanel1.setLayout(new java.awt.GridLayout(5, 0, 20, 20));
+
+        lblNombre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombre.setText("Nombre");
+        jPanel1.add(lblNombre);
+
+        lblapellido.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblapellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblapellido.setText("Apellidos");
+        jPanel1.add(lblapellido);
+
+        lblEmail.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmail.setText("Email");
+        jPanel1.add(lblEmail);
+
+        lblEdad.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEdad.setText("Edad");
+        jPanel1.add(lblEdad);
+
+        lblTelefono.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTelefono.setText("Telefono");
+        jPanel1.add(lblTelefono);
+
+        jPanel6.setMinimumSize(new java.awt.Dimension(200, 185));
+        jPanel6.setLayout(new java.awt.GridLayout(5, 0, 0, 20));
+
+        txtNombre.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombre.setAutoscrolls(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtNombre);
+
+        txtApellido.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel6.add(txtApellido);
+
+        txtEmail.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel6.add(txtEmail);
+
+        txtEdad.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel6.add(txtEdad);
+
+        txtTelefono.setColumns(2);
+        txtTelefono.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel6.add(txtTelefono);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -175,6 +205,17 @@ public class FrmAlumno extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if (Principal.alumnos.length <= 5){
+            Alumno nuevoAlumno = new Alumno(txtNombre.getText(), txtApellido.getText(), txtEmail.getText(),  txtTelefono.getText(), Integer.parseInt(txtEdad.getText()));
+            Principal.alumnos[Principal.alumnos.length] = nuevoAlumno;
+        } else {
+            ErrorMsg.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,11 +253,13 @@ public class FrmAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorMsg;
     private javax.swing.JButton btnAdd;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNombre;
