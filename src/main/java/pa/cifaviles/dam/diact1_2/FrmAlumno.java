@@ -55,9 +55,10 @@ public class FrmAlumno extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(400, 400));
 
-        ErrorMsg.setFont(new java.awt.Font("Calibri", 0, 15)); // NOI18N
+        ErrorMsg.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         ErrorMsg.setForeground(new java.awt.Color(255, 51, 51));
-        ErrorMsg.setText("Error. No se pueden añadir más de 5 alumnos");
+        ErrorMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ErrorMsg.setText("hide");
 
         btnAdd.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         btnAdd.setText("Añadir");
@@ -73,14 +74,13 @@ public class FrmAlumno extends javax.swing.JFrame {
         pnlBtnLayout.setHorizontalGroup(
             pnlBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBtnLayout.createSequentialGroup()
-                .addGroup(pnlBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBtnLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBtnLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(ErrorMsg)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 104, Short.MAX_VALUE))
+            .addGroup(pnlBtnLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(ErrorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlBtnLayout.setVerticalGroup(
             pnlBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +92,7 @@ public class FrmAlumno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        txtTitle.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        txtTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         txtTitle.setText("Nuevo Alumno");
 
         javax.swing.GroupLayout pnlTituloLayout = new javax.swing.GroupLayout(pnlTitulo);
@@ -100,16 +100,16 @@ public class FrmAlumno extends javax.swing.JFrame {
         pnlTituloLayout.setHorizontalGroup(
             pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTituloLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(99, 99, 99)
                 .addComponent(txtTitle)
-                .addGap(110, 110, 110))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlTituloLayout.setVerticalGroup(
             pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
+            .addGroup(pnlTituloLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pnlLbl.setLayout(new java.awt.GridLayout(6, 0, 20, 20));
@@ -170,90 +170,108 @@ public class FrmAlumno extends javax.swing.JFrame {
         pnlImputs.add(txtTelefono);
 
         lblJvnName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblJvnName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlImputs.add(lblJvnName);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, Short.MAX_VALUE)
+            .addComponent(pnlTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
                 .addComponent(pnlLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlImputs, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlImputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:       
-        
-         if (Principal.cont < Principal.alumnos.length) {
-        // Obtener los datos de los campos de texto
+
+        if (Principal.cont < Principal.alumnos.length) {
             String nombre = txtNombre.getText();
             String apellidos = txtApellido.getText();
             String email = txtEmail.getText();
             String telefono = txtTelefono.getText();
             int edad;
-            
+
             try {
                 edad = Integer.parseInt(txtEdad.getText());
                 ErrorMsg.setVisible(false);
-            } catch (NumberFormatException e){
-                ErrorMsg.setText("La edad introducidad debe ser un número");                
+            } catch (NumberFormatException e) {
+                ErrorMsg.setText("La edad introducidad debe ser un número");
                 ErrorMsg.setVisible(true);
                 return;
             }
-            
+
             Alumno nuevoAlumno = new Alumno(nombre, apellidos, email, telefono, edad);
-            Principal.alumnos[Principal.cont] = nuevoAlumno;
-            
-            String alumnoJoven = obtenerAlumnoMasJoven();       
+
+            if (alumnoDuplicado(nuevoAlumno)) {
+                ErrorMsg.setText("Error. El alumno ya existe");
+                ErrorMsg.setVisible(true);
+            } else {
+                Principal.alumnos[Principal.cont] = nuevoAlumno;
+                Principal.cont++;
+            }
+
+            String alumnoJoven = obtenerAlumnoMasJoven();
             lblJvnName.setText(alumnoJoven);
-            
-            Principal.cont++;
+
         } else {
             ErrorMsg.setText("Error. No se pueden añadir más de 5 alumnos");
             ErrorMsg.setVisible(true);
         }
-        
     }//GEN-LAST:event_btnAddActionPerformed
-    
+
     private String obtenerAlumnoMasJoven() {
-        
-        int  menorEdad = Integer.MAX_VALUE;
-        String nombreAlumno =  "";
-        
-        if (Principal.cont == 0) {
-            menorEdad = Principal.alumnos[0].getEdad();
-            nombreAlumno = Principal.alumnos[0].getNombre() + " " + Principal.alumnos[0].getApellidos();
-        } else {
-            for (int i = 0; i < Principal.cont; i++) {
-                if (Principal.alumnos[i].getEdad() < menorEdad) {
-                    menorEdad = Principal.alumnos[i].getEdad();
-                    nombreAlumno = Principal.alumnos[i].getNombre() + " " + Principal.alumnos[i].getApellidos(); 
-                }
+
+        int menorEdad = Integer.MAX_VALUE;
+        String nombreAlumno = "";
+
+        for (int i = 0; i < Principal.cont; i++) {
+            if (Principal.alumnos[i].getEdad() < menorEdad) {
+                menorEdad = Principal.alumnos[i].getEdad();
+                nombreAlumno = Principal.alumnos[i].getNombre() + " " + Principal.alumnos[i].getApellidos();
             }
         }
         return nombreAlumno;
     }
-    
+
+    private boolean alumnoDuplicado(Alumno nuevoAlumno) {
+
+        for (int i = 0; i < Principal.cont; i++) {
+            Alumno alumnoExistente = Principal.alumnos[i];
+
+            if (alumnoExistente != null
+                    && alumnoExistente.getNombre().equals(nuevoAlumno.getNombre())
+                    && alumnoExistente.getApellidos().equals(nuevoAlumno.getApellidos())
+                    && alumnoExistente.getEmail().equals(nuevoAlumno.getEmail())
+                    && alumnoExistente.getTelefono().equals(nuevoAlumno.getTelefono())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorMsg;
@@ -277,5 +295,4 @@ public class FrmAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 
- 
 }

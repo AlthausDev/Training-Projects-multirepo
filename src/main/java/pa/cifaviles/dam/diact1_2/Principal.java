@@ -6,7 +6,10 @@ package pa.cifaviles.dam.diact1_2;
 
 /**
  *
- * @author samuelaa
+ * @author samuelaa * 
+ * Repositorio GitHub: https://github.com/AlthausDev/DDI/tree/master
+ * https://github.com/AlthausDev/DDI/tree/master/src/main/java/pa/cifaviles/dam/diact1_2
+ * 
  */
 public class Principal {
     
