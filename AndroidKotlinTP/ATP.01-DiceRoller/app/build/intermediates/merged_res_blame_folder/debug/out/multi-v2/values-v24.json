@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.samuelaa.pmdm.diceroller.app-mergeDebugResources-7:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\samuelaa\\.gradle\\caches\\transforms-3\\bfcf03280b66a4a46366454e1886e52f\\transformed\\appcompat-v7-28.0.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}
