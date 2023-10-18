@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RGBColors</string>
+    <string name="crea_un_color_rgb">Crea un color RGB</string>
+    <string name="indica_dos_caracteres_hexadecimales_entre_0_9_y_a_f_o_a_f_en_cada_campo">Indica dos caracteres hexadecimales entre 0-9 y A-F o a-f en cada campo</string>
+    <string name="rojo">Canal Rojo</string>
+    <string name="verde">Canal Verde</string>
+    <string name="azul">Canal Azul</string>
+    <string name="btnColor">Crear Color</string>
+    <string name="txtColor">Panel del color seleccionado</string>
+</resources>
