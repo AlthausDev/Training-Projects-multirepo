@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author samuelaa
+ * @author S.Althaus
  */
 public class JPanelImagen extends JPanel implements Serializable {
 
