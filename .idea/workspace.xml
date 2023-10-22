@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Initial Commit" />
+    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +37,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.05-TipsCalculator",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -58,7 +63,21 @@
       <option name="project" value="LOCAL" />
       <updated>1697994327155</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Restart">
+      <created>1697997663737</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697997663737</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Initial Commit">
+      <created>1697998162386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697998162386</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,6 +122,7 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Update 0.1" />
+    <MESSAGE value="Restart" />
     <MESSAGE value="Initial Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
   </component>

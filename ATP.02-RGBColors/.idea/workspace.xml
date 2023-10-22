@@ -9,13 +9,27 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d63302-645e-443e-a37e-817e8cbc448f" name="Changes" comment="Refactorización" />
+    <list default="true" id="b6d63302-645e-443e-a37e-817e8cbc448f" name="Changes" comment="Refactorización">
+      <change afterPath="$PROJECT_DIR$/../ATP.05-TipsCalculator/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.05-TipsCalculator/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.05-TipsCalculator/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.05-TipsCalculator/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.05-TipsCalculator/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.05-TipsCalculator/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.05-TipsCalculator/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.01.1-SampleForm/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.01.1-SampleForm/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\samuelaa\.android\avd\Nexus_6_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Imper\.android\avd\Nexus_6_API_29.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -88,6 +102,7 @@
   "keyToString": {
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
+    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.05-TipsCalculator",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.0",
