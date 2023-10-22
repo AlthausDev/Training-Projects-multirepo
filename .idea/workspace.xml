@@ -4,56 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/androidTest/java/com/example/atp05_tipscalculator/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/test/java/com/example/atp05_tipscalculator/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ATP05TipsCalculator/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.03-ComposeArticle/.idea/vcs.xml" afterDir="false" />
-    </list>
+    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Initial Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +31,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP",
+    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.05-TipsCalculator",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
@@ -100,7 +51,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697682650799</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <created>1697994327155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697994327155</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
