@@ -37,7 +37,6 @@ class LetterListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.layout_menu, menu)
-
         val layoutButton = menu.findItem(R.id.action_switch_layout)
         setIcon(layoutButton)
     }
@@ -53,17 +52,14 @@ class LetterListFragment : Fragment() {
     }
 
     private fun chooseLayout() {
-        when (isLinearLayoutManager) {
-            true -> {
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = LetterAdapter()
-            }
-            false -> {
-                recyclerView.layoutManager = GridLayoutManager(context, 4)
-                recyclerView.adapter = LetterAdapter()
-            }
+        if (isLinearLayoutManager) {
+            recyclerView.layoutManager = LinearLayoutManager(context)
+        } else {
+            recyclerView.layoutManager = GridLayoutManager(context, 4)
         }
+        recyclerView.adapter = LetterAdapter()
     }
+
 
     private fun setIcon(menuItem: MenuItem?) {
         if (menuItem == null)
@@ -84,9 +80,7 @@ class LetterListFragment : Fragment() {
 
                 return true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }
