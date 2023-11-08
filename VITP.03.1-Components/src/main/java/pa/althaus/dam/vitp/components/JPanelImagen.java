@@ -13,8 +13,18 @@ import javax.swing.JPanel;
  */
 public class JPanelImagen extends JPanel implements Serializable {
 
-    public JPanelImagen() {
-    }   
+    private String rutaImagen;
     
+    public JPanelImagen() {
+        
+    }   
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }   
     
 }
