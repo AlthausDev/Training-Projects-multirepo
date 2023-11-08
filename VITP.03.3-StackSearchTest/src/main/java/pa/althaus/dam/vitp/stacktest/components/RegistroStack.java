@@ -15,10 +15,9 @@ public class RegistroStack {
     private int id;
     private Date fechaCreacion;
     private String titulo;
-    private String autor;
-    private boolean conRespuestas;
+    private String autor;    
     private String url;
-
+    private boolean conRespuestas;
 
     public RegistroStack(int id, Date fechaCreacion, String titulo, String autor, boolean conRespuestas, String url) {
         this.id = id;

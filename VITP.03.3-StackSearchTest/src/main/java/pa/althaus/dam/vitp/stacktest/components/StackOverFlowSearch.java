@@ -5,19 +5,64 @@
 package pa.althaus.dam.vitp.stacktest.components;
 
 import java.util.ArrayList;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.exceptions.UnirestException;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
  * @author samuelaa
  */
-public class StackOverFlowSearch extends javax.swing.JPanel {
-    
-    ArrayList <RegistroStack> lstRegistros = new ArrayList<>();
+public class StackOverFlowSearch extends javax.swing.JPanel implements Serializable {
+
+    ArrayList<RegistroStack> lstRegistros = new ArrayList<>();
+
     /**
      * Creates new form StackOverflowSearch
      */
     public StackOverFlowSearch() {
         initComponents();
+    }
+
+    private void serviceSearch(String text) throws UnirestException {
+        long toDate = System.currentTimeMillis() / 1000;
+        long diferencia = 31560000L;
+        long fromDate = toDate - diferencia;
+        HttpResponse<JsonNode> jsonResponse
+                = Unirest.get("https://api.stackexchange.com/2.3/search")
+                        .header("accept", "application/json")
+                        .queryString("page", "1")
+                        .queryString("pagesize", "10")
+                        .queryString("fromdate", fromDate)
+                        .queryString("todate", toDate)
+                        .queryString("order", "desc")
+                        .queryString("sort", "creation")
+                        .queryString("tagged", text)
+                        .queryString("site", "stackoverflow")
+                        .asJson();
+
+        JSONObject jn = jsonResponse.getBody().getObject();
+        JSONArray itemsArray = jn.getJSONArray("items");
+        for (int x = 0; x < itemsArray.length(); x++) {
+            JSONObject currentItem = itemsArray.getJSONObject(x);
+            JSONObject owner = currentItem.getJSONObject("owner");
+            RegistroStack currentRegStack = new RegistroStack(currentItem.getInt("question_id"),
+                    new Date(currentItem.getLong("creation_date") * 1000),
+                    currentItem.getString("title"),
+                    owner.getString("display_name"),
+                    currentItem.getBoolean("is_answered"),
+                    currentItem.getString("link"));
+            lstRegistros.add(currentRegStack);
+        }
+        StackTableModel tbModel = new StackTableModel(lstRegistros);
+        this.tblResultados.setModel(tbModel);
     }
 
     /**
@@ -36,6 +81,11 @@ public class StackOverFlowSearch extends javax.swing.JPanel {
         lblError = new javax.swing.JLabel();
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(tblResultados);
 
@@ -72,6 +122,25 @@ public class StackOverFlowSearch extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        if (txtBusqueda.getText().isBlank()) {
+            lblError.setVisible(true);
+            lblError.setText("Por favor, introduzca un patrón de búsqueda");
+        } else if (txtBusqueda.getText().contains(" ")) {
+            lblError.setVisible(true);
+            lblError.setText("Por favor, introduzca únicamente una palabra");
+        } else {
+            try {
+                serviceSearch(txtBusqueda.getText());
+                lblError.setVisible(false);
+            } catch (UnirestException ex) {
+                Logger.getLogger(StackOverFlowSearch.class.getName()).log(Level.SEVERE, null, ex);
+                lblError.setText("Error en petición al servicio: " + ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
