@@ -7,6 +7,9 @@ package pa.althaus.dam.vitp.components;
 import javax.swing.JTextField;
 import java.io.Serializable;
 import javax.accessibility.AccessibleContext;
+import javax.swing.event.DocumentEvent;
+
+import javax.swing.event.DocumentListener;
 import javax.swing.event.EventListenerList;
 import javax.swing.plaf.ComponentUI;
 
@@ -15,12 +18,44 @@ import javax.swing.plaf.ComponentUI;
  * @author samuelaa
  */
 public class ComponenteEjemplo extends JTextField implements Serializable {
-    
-        private DosColores colores;
-        private int numCaracteres;        
 
-        public ComponenteEjemplo() {
-    }   
+    private DosColores colores;
+    private int numCaracteres;
+    private DosColores coloresDefecto;
+
+    public ComponenteEjemplo() {
+        //super();
+        coloresDefecto = new DosColores(getBackground(), getForeground());
+        super.getDocument().addDocumentListener(new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                analizaContenido();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                analizaContenido();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                analizaContenido();
+            }
+
+            private void analizaContenido() {
+                if (getText().length() >= numCaracteres) {
+                    setBackground(colores.getColorFondo());
+                    setForeground(colores.getColorTexto());
+                } else {
+                    setBackground(coloresDefecto.getColorFondo());
+                    setForeground(coloresDefecto.getColorTexto());
+                }
+
+            }
+        });
+
+    }
 
     public DosColores getColores() {
         return colores;
@@ -61,8 +96,4 @@ public class ComponenteEjemplo extends JTextField implements Serializable {
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
     }
-    
-    
-        
-    
 }
