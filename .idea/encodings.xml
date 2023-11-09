@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/VITP.01.1-SampleForm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.01.1-SampleForm/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.01.2-SampleFormTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.01.2-SampleFormTest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.1-Components/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.1-Components/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.1-ComponentsTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.1-ComponentsTest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.2-ReflexionTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.2-ReflexionTest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
