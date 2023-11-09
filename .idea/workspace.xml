@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Initial Commit">
+    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Modificaciones varias">
       <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" afterDir="false" />
@@ -36,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.05-TipsCalculator",
+    "last_opened_file_path": "E:/Projects/training-projects/AndroidKotlinTP",
     "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
@@ -117,6 +117,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
@@ -124,6 +125,9 @@
     <MESSAGE value="Update 0.1" />
     <MESSAGE value="Restart" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Modificaciones varias." />
+    <MESSAGE value="Modificaciones varias" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificaciones varias" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
