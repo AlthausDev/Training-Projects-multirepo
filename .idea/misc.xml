@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="MavenProjectsManager">
-    <option name="originalFiles">
-      <list>
-        <option value="$PROJECT_DIR$/VITP.01.1-SampleForm/pom.xml" />
-        <option value="$PROJECT_DIR$/VITP.03.1-Components/pom.xml" />
-        <option value="$PROJECT_DIR$/VITP.03.2-ReflexionTest/pom.xml" />
-        <option value="$PROJECT_DIR$/VITP.01.2-SampleFormTest/pom.xml" />
-        <option value="$PROJECT_DIR$/VITP.03.1-ComponentsTest/pom.xml" />
-        <option value="$PROJECT_DIR$/VITP.03.3-StackSearchTest/pom.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" default="true">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
