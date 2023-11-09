@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pa.althaus.dam.javaproyect.aeropuerto.entities;
 
 /**
@@ -11,6 +7,42 @@ package pa.althaus.dam.javaproyect.aeropuerto.entities;
 public class Airport {
     private String IATACode;
     private String airportName;
-    private String townshipCode;
+    private String codigoMunicipio;
+
+    public Airport() {
+    }
+
+    public Airport(String IATACode, String airportName, String codigoMunicipio) {
+        this.IATACode = IATACode;
+        this.airportName = airportName;
+        this.codigoMunicipio = codigoMunicipio;
+    }  
+    
+
+    public String getIATACode() {
+        return IATACode;
+    }
+
+    public void setIATACode(String IATACode) {
+        this.IATACode = IATACode;
+    }
+
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
+    }
+
+    public String getCodigoMunicipio() {
+        return codigoMunicipio;
+    }
+
+    public void setCodigoMunicipio(String codigoMunicipio) {
+        this.codigoMunicipio = codigoMunicipio;
+    }
+    
+    
     
 }

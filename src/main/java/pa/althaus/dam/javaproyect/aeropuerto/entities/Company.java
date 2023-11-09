@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pa.althaus.dam.javaproyect.aeropuerto.entities;
 
 /**
@@ -9,33 +5,33 @@ package pa.althaus.dam.javaproyect.aeropuerto.entities;
  * @author samuelaa
  */
 public class Company {
-    private int prefix;
+    private int prefijo;
     private String code;
     private String compName;
-    private String direcction;
-    private String township;
-    private String tlfPassenger;
+    private String direccion;
+    private String municipio;
+    private String tlfPasajero;
     private String tlfAirport;
 
     public Company() {
     }
 
-    public Company(int prefix, String code, String compName, String direcction, String township, String tlfPassenger, String tlfAirport) {
-        this.prefix = prefix;
+    public Company(int prefijo, String code, String compName, String direccion, String municipio, String tlfPasajero, String tlfAirport) {
+        this.prefijo = prefijo;
         this.code = code;
         this.compName = compName;
-        this.direcction = direcction;
-        this.township = township;
-        this.tlfPassenger = tlfPassenger;
+        this.direccion = direccion;
+        this.municipio = municipio;
+        this.tlfPasajero = tlfPasajero;
         this.tlfAirport = tlfAirport;
     }
 
-    public int getPrefix() {
-        return prefix;
+    public int getPrefijo() {
+        return prefijo;
     }
 
-    public void setPrefix(int prefix) {
-        this.prefix = prefix;
+    public void setPrefijo(int prefijo) {
+        this.prefijo = prefijo;
     }
 
     public String getCode() {
@@ -54,28 +50,28 @@ public class Company {
         this.compName = compName;
     }
 
-    public String getDirecction() {
-        return direcction;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirecction(String direcction) {
-        this.direcction = direcction;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getTownship() {
-        return township;
+    public String getMunicipio() {
+        return municipio;
     }
 
-    public void setTownship(String township) {
-        this.township = township;
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
     }
 
-    public String getTlfPassenger() {
-        return tlfPassenger;
+    public String getTlfPasajero() {
+        return tlfPasajero;
     }
 
-    public void setTlfPassenger(String tlfPassenger) {
-        this.tlfPassenger = tlfPassenger;
+    public void setTlfPasajero(String tlfPasajero) {
+        this.tlfPasajero = tlfPasajero;
     }
 
     public String getTlfAirport() {
@@ -86,6 +82,6 @@ public class Company {
         this.tlfAirport = tlfAirport;
     }
     
-      
-   
+    
+
 }
