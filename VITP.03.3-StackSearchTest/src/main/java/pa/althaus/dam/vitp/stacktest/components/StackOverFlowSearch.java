@@ -50,6 +50,7 @@ public class StackOverFlowSearch extends javax.swing.JPanel implements Serializa
 
         JSONObject jn = jsonResponse.getBody().getObject();
         JSONArray itemsArray = jn.getJSONArray("items");
+        lstRegistros.clear();
         for (int x = 0; x < itemsArray.length(); x++) {
             JSONObject currentItem = itemsArray.getJSONObject(x);
             JSONObject owner = currentItem.getJSONObject("owner");
