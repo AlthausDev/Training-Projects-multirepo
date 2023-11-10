@@ -24,7 +24,7 @@ public class DlgRegistroStack extends javax.swing.JDialog {
         this.lblAutorResult.setText(regStack != null ? regStack.getAutor() : "");        
         this.lblFechaResult.setText(regStack != null ? fmt.format(this.regStack.getFechaCreacion()) :  "");
         this.lblTituloResult.setText(regStack != null ? regStack.getTitulo() : "");
-        this.lblURLResult.setText(regStack != null ? regStack.getAutor() : "");
+        this.lblURLResult.setText(regStack != null ? regStack.getUrl(): "");
         this.lblAutor.setText(regStack != null ? regStack.getAutor() : "");
         this.checkResult.setSelected(regStack != null ? this.regStack.isConRespuestas() : false);
     }
@@ -62,6 +62,7 @@ public class DlgRegistroStack extends javax.swing.JDialog {
         checkResult = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -134,16 +135,14 @@ public class DlgRegistroStack extends javax.swing.JDialog {
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
        this.dispose();     
+       System.out.println("La ventana ha sido destruida");
     }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
      */
-   @Override
-   public void dispose(){
-       this.dispose();
-       System.out.println("La ventana ha sido destruida");
-   }
+   
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkResult;

@@ -27,9 +27,10 @@ public class FrameApplication extends javax.swing.JFrame {
     private void initComponents() {
 
         stackOverFlowSearch1 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
-        stackOverFlowSearch3 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
+        stackOverFlowSearch2 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,14 +38,15 @@ public class FrameApplication extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(stackOverFlowSearch3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stackOverFlowSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(stackOverFlowSearch3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stackOverFlowSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -87,6 +89,6 @@ public class FrameApplication extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch1;
-    private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch3;
+    private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch2;
     // End of variables declaration//GEN-END:variables
 }
