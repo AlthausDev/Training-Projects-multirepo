@@ -4,18 +4,39 @@
  */
 package pa.althaus.dam.vitp.stacktest.components;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author samuelaa
  */
 public class DlgRegistroStack extends javax.swing.JDialog {
+  
+
+    private RegistroStack regStack;
+    private SimpleDateFormat fmt = new SimpleDateFormat ("dd-MM-yyyy HH-mm-ss");
+
+    private void setData() {
+        this.lblIdResult.setText(regStack != null ? String.valueOf(regStack.getId()) : " ");
+        this.lblAutorResult.setText(regStack != null ? regStack.getAutor() : "");        
+        this.lblFechaResult.setText(regStack != null ? fmt.format(this.regStack.getFechaCreacion()) :  "");
+        this.lblTituloResult.setText(regStack != null ? regStack.getTitulo() : "");
+        this.lblURLResult.setText(regStack != null ? regStack.getAutor() : "");
+        this.lblAutor.setText(regStack != null ? regStack.getAutor() : "");
+        this.checkResult.setSelected(regStack != null ? this.regStack.isConRespuestas() : false);
+    }
 
     /**
      * Creates new form DlgRegistroStack
      */
-    public DlgRegistroStack(java.awt.Frame parent, boolean modal) {
+    public DlgRegistroStack(java.awt.Frame parent, boolean modal, RegistroStack rs) {
         super(parent, modal);
         initComponents();
+        this.regStack = rs;
+        setData();        
     }
 
     /**
@@ -41,6 +62,11 @@ public class DlgRegistroStack extends javax.swing.JDialog {
         checkResult = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridLayout(6, 3, 20, -20));
 
         lblIdentificador.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -98,50 +124,26 @@ public class DlgRegistroStack extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblURLResultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblURLResultMouseClicked
-        // TODO add your handling code here:
+        try {
+            Desktop.getDesktop().browse(new URI(lblURLResult.getText()));
+        } catch (IOException | java.net.URISyntaxException e) {
+
+        }
     }//GEN-LAST:event_lblURLResultMouseClicked
+
+    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       this.dispose();     
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DlgRegistroStack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DlgRegistroStack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DlgRegistroStack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DlgRegistroStack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DlgRegistroStack dialog = new DlgRegistroStack(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+   @Override
+   public void dispose(){
+       this.dispose();
+       System.out.println("La ventana ha sido destruida");
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkResult;
