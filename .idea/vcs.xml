@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ATP.07-ActivitiesIntents" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ATP.08-KotlinMessenger" vcs="Git" />
   </component>
 </project>

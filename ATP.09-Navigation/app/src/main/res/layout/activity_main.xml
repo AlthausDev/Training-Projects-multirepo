@@ -5,32 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#2B2B2B"
+    android:backgroundTint="#619B91B8"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnSemaforo"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Semaforo"
+        android:text="@string/semaforo"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnBombilla"
-        app:layout_constraintHorizontal_bias="0.649"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/verGuideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/btnBombilla"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginEnd="0dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Bombilla"
+        android:text="@string/bombilla"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="@+id/btnSemaforo"
-        tools:layout_editor_absoluteX="218dp" />
+        app:layout_constraintEnd_toEndOf="@+id/verGuideline"
+        app:layout_constraintTop_toTopOf="@+id/btnSemaforo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

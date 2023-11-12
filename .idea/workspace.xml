@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Modificaciones varias">
-      <change afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.05-TipsCalculator/app/src/main/java/com/example/atp05_tipscalculator/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +35,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "E:/Projects/training-projects/AndroidKotlinTP",
-    "settings.editor.selected.configurable": "preferences.editor"
+    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -121,6 +120,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$/ATP.08-KotlinMessenger" />
     </ignored-roots>
     <MESSAGE value="Update 0.1" />
     <MESSAGE value="Restart" />
