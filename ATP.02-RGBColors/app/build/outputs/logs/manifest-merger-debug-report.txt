@@ -1,0 +1,184 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+MERGED from [com.android.support.constraint:constraint-layout:2.0.4] C:\Users\samuelaa\.gradle\caches\transforms-3\70f92134dd6e6f1e501fd5174d1dd9ba\transformed\constraint-layout-2.0.4\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\235bee257951054dd0c13945750c2a82\transformed\design-28.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d248bb165856abeeb781a015f122eb2e\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\df8436481fb7a66a9f1577ba0458484b\transformed\support-fragment-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e3007cdcc12b731bbe108757c00897ed\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\6b670673a57f9b4e07bc8094ec4f3968\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d82453fcc48c12f78e2b187319cd039d\transformed\support-core-ui-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d263c81b3fa5e250fcf13c3c4686015e\transformed\support-core-utils-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f8043f23d47524fcccf4f4c0e34bc82c\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\2698816388c1e4ec2122c3e3b4ca982b\transformed\transition-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\babb8f74e5e9fbed7539fe5cf0b4e3fc\transformed\loader-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\94e1dd939f26447c5227a4021e0bc104\transformed\viewpager-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17c95f213e02815f1e90990201682c5c\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d04c7da8fd53a7cafc103bcf57b9a8e9\transformed\drawerlayout-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f0a7f0e47dfaa6401aab706e675e594c\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\554f71d8a2da9ee6d04b73e366310e26\transformed\customview-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\1df56636b2847555de26d098b267807b\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\112cdfbe1d36c12f7628aa28d759edad\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\070845c434875a21a15a01572b3ef04f\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\0581373a2218be9a13d90cdd2aa50c33\transformed\cursoradapter-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\ecd1469fb48a0eb48f94a581ade078c9\transformed\cardview-v7-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3f8a521676bf3b661a7b1673ec1896f2\transformed\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\248d6a8309b7c8e12e9a6a8fc0e1cb1c\transformed\documentfile-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\eb4dab68b6daad821053444d6112bf49\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6f6a062d51e3c2a4853c4adc3f0a4da\transformed\print-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3affe89338a36b4655b086a4253e69a7\transformed\viewmodel-1.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6dfc35a40abf41cd7e15e31de30766f\transformed\interpolator-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\1a76d995b35e5897f451b3a1540aae5f\transformed\livedata-1.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\e8b90f863ffb300ad8b687d8ed11a837\transformed\livedata-core-1.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\ee80a47b452d8f0d346e78d155859581\transformed\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+	package
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:1-30:12
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:5:5-28:19
+MERGED from [com.android.support.constraint:constraint-layout:2.0.4] C:\Users\samuelaa\.gradle\caches\transforms-3\70f92134dd6e6f1e501fd5174d1dd9ba\transformed\constraint-layout-2.0.4\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:2.0.4] C:\Users\samuelaa\.gradle\caches\transforms-3\70f92134dd6e6f1e501fd5174d1dd9ba\transformed\constraint-layout-2.0.4\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\235bee257951054dd0c13945750c2a82\transformed\design-28.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\235bee257951054dd0c13945750c2a82\transformed\design-28.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\070845c434875a21a15a01572b3ef04f\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\070845c434875a21a15a01572b3ef04f\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:10:9-41
+	android:fullBackupContent
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:8:9-54
+	android:roundIcon
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:11:9-54
+	tools:targetApi
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:14:9-29
+	android:icon
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:9:9-43
+	android:allowBackup
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:13:9-47
+	android:dataExtractionRules
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:7:9-65
+activity#com.samuelaa.pmdm.rgbcolors.MainActivity
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:15:9-27:20
+	android:exported
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:17:13-36
+	android:name
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:16:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:21:27-74
+meta-data#android.app.lib_name
+ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:24:13-26:36
+	android:value
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:26:17-33
+	android:name
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml:25:17-52
+uses-sdk
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support.constraint:constraint-layout:2.0.4] C:\Users\samuelaa\.gradle\caches\transforms-3\70f92134dd6e6f1e501fd5174d1dd9ba\transformed\constraint-layout-2.0.4\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:2.0.4] C:\Users\samuelaa\.gradle\caches\transforms-3\70f92134dd6e6f1e501fd5174d1dd9ba\transformed\constraint-layout-2.0.4\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\235bee257951054dd0c13945750c2a82\transformed\design-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\235bee257951054dd0c13945750c2a82\transformed\design-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d248bb165856abeeb781a015f122eb2e\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d248bb165856abeeb781a015f122eb2e\transformed\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\df8436481fb7a66a9f1577ba0458484b\transformed\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\df8436481fb7a66a9f1577ba0458484b\transformed\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e3007cdcc12b731bbe108757c00897ed\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e3007cdcc12b731bbe108757c00897ed\transformed\animated-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\6b670673a57f9b4e07bc8094ec4f3968\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\6b670673a57f9b4e07bc8094ec4f3968\transformed\recyclerview-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d82453fcc48c12f78e2b187319cd039d\transformed\support-core-ui-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d82453fcc48c12f78e2b187319cd039d\transformed\support-core-ui-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d263c81b3fa5e250fcf13c3c4686015e\transformed\support-core-utils-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d263c81b3fa5e250fcf13c3c4686015e\transformed\support-core-utils-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f8043f23d47524fcccf4f4c0e34bc82c\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f8043f23d47524fcccf4f4c0e34bc82c\transformed\support-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\2698816388c1e4ec2122c3e3b4ca982b\transformed\transition-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\2698816388c1e4ec2122c3e3b4ca982b\transformed\transition-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\babb8f74e5e9fbed7539fe5cf0b4e3fc\transformed\loader-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\babb8f74e5e9fbed7539fe5cf0b4e3fc\transformed\loader-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\94e1dd939f26447c5227a4021e0bc104\transformed\viewpager-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\94e1dd939f26447c5227a4021e0bc104\transformed\viewpager-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17c95f213e02815f1e90990201682c5c\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17c95f213e02815f1e90990201682c5c\transformed\coordinatorlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d04c7da8fd53a7cafc103bcf57b9a8e9\transformed\drawerlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\d04c7da8fd53a7cafc103bcf57b9a8e9\transformed\drawerlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f0a7f0e47dfaa6401aab706e675e594c\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\f0a7f0e47dfaa6401aab706e675e594c\transformed\slidingpanelayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\554f71d8a2da9ee6d04b73e366310e26\transformed\customview-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\554f71d8a2da9ee6d04b73e366310e26\transformed\customview-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\1df56636b2847555de26d098b267807b\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\1df56636b2847555de26d098b267807b\transformed\swiperefreshlayout-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\112cdfbe1d36c12f7628aa28d759edad\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\112cdfbe1d36c12f7628aa28d759edad\transformed\asynclayoutinflater-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\17ee8213aea4e2bb1f347ffb476aa252\transformed\support-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\070845c434875a21a15a01572b3ef04f\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\070845c434875a21a15a01572b3ef04f\transformed\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\0581373a2218be9a13d90cdd2aa50c33\transformed\cursoradapter-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\0581373a2218be9a13d90cdd2aa50c33\transformed\cursoradapter-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\ecd1469fb48a0eb48f94a581ade078c9\transformed\cardview-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\ecd1469fb48a0eb48f94a581ade078c9\transformed\cardview-v7-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3f8a521676bf3b661a7b1673ec1896f2\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3f8a521676bf3b661a7b1673ec1896f2\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\248d6a8309b7c8e12e9a6a8fc0e1cb1c\transformed\documentfile-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\248d6a8309b7c8e12e9a6a8fc0e1cb1c\transformed\documentfile-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\eb4dab68b6daad821053444d6112bf49\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\eb4dab68b6daad821053444d6112bf49\transformed\localbroadcastmanager-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6f6a062d51e3c2a4853c4adc3f0a4da\transformed\print-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6f6a062d51e3c2a4853c4adc3f0a4da\transformed\print-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3affe89338a36b4655b086a4253e69a7\transformed\viewmodel-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\3affe89338a36b4655b086a4253e69a7\transformed\viewmodel-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6dfc35a40abf41cd7e15e31de30766f\transformed\interpolator-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\samuelaa\.gradle\caches\transforms-3\e6dfc35a40abf41cd7e15e31de30766f\transformed\interpolator-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\1a76d995b35e5897f451b3a1540aae5f\transformed\livedata-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\1a76d995b35e5897f451b3a1540aae5f\transformed\livedata-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\e8b90f863ffb300ad8b687d8ed11a837\transformed\livedata-core-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\e8b90f863ffb300ad8b687d8ed11a837\transformed\livedata-core-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\ee80a47b452d8f0d346e78d155859581\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\samuelaa\.gradle\caches\transforms-3\ee80a47b452d8f0d346e78d155859581\transformed\runtime-1.1.1\AndroidManifest.xml:20:5-44
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		ADDED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Projects\training-projects\PMDM\P2_RGBColors\app\src\main\AndroidManifest.xml
