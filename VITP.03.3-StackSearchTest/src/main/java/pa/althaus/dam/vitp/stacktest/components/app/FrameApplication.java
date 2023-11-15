@@ -4,6 +4,14 @@
  */
 package pa.althaus.dam.vitp.stacktest.components.app;
 
+import java.awt.Dimension;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javax.swing.JFrame;
+
 /**
  *
  * @author samuelaa
@@ -13,8 +21,18 @@ public class FrameApplication extends javax.swing.JFrame {
     /**
      * Creates new form FrameApplication
      */
+    JFXPanel jfxPanel;
+    JFrame frame;
+
     public FrameApplication() {
         initComponents();
+    }
+
+    private void setHelp() {
+        jfxPanel = new JFXPanel();
+        frame = new JFrame();
+        frame.setSize(new Dimension(500, 200));
+
     }
 
     /**
@@ -28,9 +46,21 @@ public class FrameApplication extends javax.swing.JFrame {
 
         stackOverFlowSearch1 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
         stackOverFlowSearch2 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuAyudaOnline = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        menuAyudaOnline.setText("Ayuda Online");
+        menuAyudaOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAyudaOnlineActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menuAyudaOnline);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,6 +81,17 @@ public class FrameApplication extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuAyudaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAyudaOnlineActionPerformed
+        // TODO add your handling code here:
+        Platform.runLater(() -> {
+            WebView webView = new WebView();
+            WebEngine webEngine = webView.getEngine();
+            webEngine.load("url-principal");
+            jfxPanel.setScene(new Scene(webView));
+            frame.setVisible(true);
+        });
+    }//GEN-LAST:event_menuAyudaOnlineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +129,8 @@ public class FrameApplication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuAyudaOnline;
     private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch1;
     private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch2;
     // End of variables declaration//GEN-END:variables
