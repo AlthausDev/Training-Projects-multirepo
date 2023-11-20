@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ATP.10-NavigationJetpackComponent</string>
+    <string name="saludo">Hola, %s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
