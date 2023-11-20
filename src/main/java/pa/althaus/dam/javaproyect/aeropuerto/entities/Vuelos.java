@@ -3,24 +3,23 @@ package pa.althaus.dam.javaproyect.aeropuerto.entities;
 import java.util.Date;
 
 /**
- *
  * @author samuelaa
  */
 public class Vuelos {
     private String codigoVuelo;
-    private Airport aeropuertoOrigen;
-    private Airport aeropuertoDestino;
+    private Aeropuerto aeropuertoOrigen;
+    private Aeropuerto aeropuertoDestino;
     private int asientosTotales;
-    
+
     //Revisar, buscar java time;
-    private Date horaSalida;   
-    private Date horaLlegada;    
+    private Date horaSalida;
+    private Date horaLlegada;
     private String diasSemanaOpera;
 
     public Vuelos() {
     }
 
-    public Vuelos(String codigoVuelo, Airport aeropuertoDestino, int asientosTotales, Date horaSalida, Date horaLlegada, String diasSemanaOpera) {
+    public Vuelos(String codigoVuelo, Aeropuerto aeropuertoDestino, int asientosTotales, Date horaSalida, Date horaLlegada, String diasSemanaOpera) {
         this.codigoVuelo = codigoVuelo;
         this.aeropuertoDestino = aeropuertoDestino;
         this.asientosTotales = asientosTotales;
@@ -37,11 +36,11 @@ public class Vuelos {
         this.codigoVuelo = codigoVuelo;
     }
 
-    public Airport getAeropuertoDestino() {
+    public Aeropuerto getAeropuertoDestino() {
         return aeropuertoDestino;
     }
 
-    public void setAeropuertoDestino(Airport aeropuertoDestino) {
+    public void setAeropuertoDestino(Aeropuerto aeropuertoDestino) {
         this.aeropuertoDestino = aeropuertoDestino;
     }
 

@@ -2,6 +2,7 @@ package pa.althaus.dam.javaproyect.aeropuerto.validator;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -58,5 +59,12 @@ public class Validador {
         } else {
             return false;
         }
+    }
+
+    // REVISAR
+    public static int getDayNumberOld(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_WEEK);
     }
 }

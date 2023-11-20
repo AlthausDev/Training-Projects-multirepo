@@ -1,18 +1,17 @@
 package pa.althaus.dam.javaproyect.aeropuerto.entities;
 
 /**
- *
  * @author S.Althaus
  */
-public class Airport {
+public class Aeropuerto {
     private String IATACode;
     private String airportName;
     private String codigoMunicipio;
 
-    public Airport() {
+    public Aeropuerto() {
     }
 
-    public Airport(String IATACode, String airportName, String codigoMunicipio) {
+    public Aeropuerto(String IATACode, String airportName, String codigoMunicipio) {
         this.IATACode = IATACode;
         this.airportName = airportName;
         this.codigoMunicipio = codigoMunicipio;
