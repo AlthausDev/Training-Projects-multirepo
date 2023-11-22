@@ -1,29 +1,28 @@
 package pa.althaus.dam.javaproyect.aeropuerto.entities;
 
 /**
- *
  * @author samuelaa
  */
-public class Company {
+public class CompaniaAerea {
     private int prefijo;
-    private String code;
-    private String compName;
+    private String codigo;
+    private String nombre;
     private String direccion;
     private String municipio;
     private String tlfPasajero;
-    private String tlfAirport;
+    private String tlfAeropuerto;
 
-    public Company() {
+    public CompaniaAerea() {
     }
 
-    public Company(int prefijo, String code, String compName, String direccion, String municipio, String tlfPasajero, String tlfAirport) {
+    public CompaniaAerea(int prefijo, String codigo, String nombre, String direccion, String municipio, String tlfPasajero, String tlfAeropuerto) {
         this.prefijo = prefijo;
-        this.code = code;
-        this.compName = compName;
+        this.codigo = codigo;
+        this.nombre = nombre;
         this.direccion = direccion;
         this.municipio = municipio;
         this.tlfPasajero = tlfPasajero;
-        this.tlfAirport = tlfAirport;
+        this.tlfAeropuerto = tlfAeropuerto;
     }
 
     public int getPrefijo() {
@@ -34,20 +33,20 @@ public class Company {
         this.prefijo = prefijo;
     }
 
-    public String getCode() {
-        return code;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getCompName() {
-        return compName;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCompName(String compName) {
-        this.compName = compName;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {
@@ -74,14 +73,11 @@ public class Company {
         this.tlfPasajero = tlfPasajero;
     }
 
-    public String getTlfAirport() {
-        return tlfAirport;
+    public String getTlfAeropuerto() {
+        return tlfAeropuerto;
     }
 
-    public void setTlfAirport(String tlfAirport) {
-        this.tlfAirport = tlfAirport;
+    public void setTlfAeropuerto(String tlfAeropuerto) {
+        this.tlfAeropuerto = tlfAeropuerto;
     }
-    
-    
-
 }
