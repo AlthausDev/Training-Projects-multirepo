@@ -6,13 +6,13 @@ import pa.althaus.dam.javaproyect.aeropuerto.entities.Aeropuerto;
 
 public interface AeropuertoDAO {
 
-    void guardarAeropuerto(Aeropuerto aeropuerto);
+    void createAeropuerto(Aeropuerto aeropuerto);
 
-    void actualizarAeropuerto(Aeropuerto aeropuerto);
+    Aeropuerto readAeropuerto(String IATACode);
 
-    void eliminarAeropuerto(String IATACode);
+    void updateAeropuerto(String IATACode, Aeropuerto nuevaInfo);
 
-    Aeropuerto obtenerAeropuertoPorIATACode(String IATACode);
+    void deleteAeropuerto(String IATACode);
 
     List<Aeropuerto> obtenerTodosAeropuertos();
 }

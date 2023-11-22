@@ -2,14 +2,13 @@ package pa.althaus.dam.javaproyect.aeropuerto.entities;
 
 import java.sql.Time;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * @author samuelaa
  */
 public class VueloDiario {
 
-    private int idVuelo;
+    private int codigoVuelo;
     private Date fechaVuelo;
     private Time horaSalidaReal;
     private Time horaLlegadaReal;
@@ -20,8 +19,8 @@ public class VueloDiario {
     public VueloDiario() {
     }
 
-    public VueloDiario(int idVuelo, Date fechaVuelo, Time horaSalidaReal, Time horaLlegadaReal, int plazasOcupadas, float precioVuelo) {
-        this.idVuelo = idVuelo;
+    public VueloDiario(int codigoVuelo, Date fechaVuelo, Time horaSalidaReal, Time horaLlegadaReal, int plazasOcupadas, float precioVuelo) {
+        this.codigoVuelo = codigoVuelo;
         this.fechaVuelo = fechaVuelo;
         this.horaSalidaReal = horaSalidaReal;
         this.horaLlegadaReal = horaLlegadaReal;
@@ -29,12 +28,12 @@ public class VueloDiario {
         this.precioVuelo = precioVuelo;
     }
 
-    public int getIdVuelo() {
-        return idVuelo;
+    public int getCodigoVuelo() {
+        return codigoVuelo;
     }
 
-    public void setIdVuelo(int idVuelo) {
-        this.idVuelo = idVuelo;
+    public void setCodigoVuelo(int codigoVuelo) {
+        this.codigoVuelo = codigoVuelo;
     }
 
     public Date getFechaVuelo() {
