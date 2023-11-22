@@ -4,67 +4,63 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author samuelaa
  */
 public class Validador {
 
-    public boolean isPrefixValid(int prefix) {
-        return prefix <= 999 && prefix >= 0;
+    /**
+     * Clase encargada de realizar validaciones en el contexto del aeropuerto.
+     *
+     * @author samuelaa
+     */
+
+    public boolean esPrefijoValido(int prefijo) {
+        return prefijo <= 999 && prefijo >= 0;
     }
 
-    public boolean isCompanyCodValid(String code) {
-        return code.length() == 2 && code.toUpperCase().matches("[A-Z][A-Z0-9]");
+    public boolean esCodigoCompaniaValido(String codigo) {
+        return codigo.length() == 2 && codigo.toUpperCase().matches("[A-Z][A-Z0-9]");
     }
 
-    public boolean isTlfValid(String tlf) {
-        return tlf.matches("[0-9]{4,15}");
+    public boolean esTelefonoValido(String telefono) {
+        return telefono.matches("[0-9]{4,15}");
     }
 
-    public boolean isFlyCodValid(String code) {
-
-        if (isCompanyCodValid(code.substring(0, 1))) {
-            String codVuelo = code.substring(2, code.length());
-            return codVuelo.matches("[%d]{1,4}");
+    public boolean esCodigoVueloValido(String codigo) {
+        if (esCodigoCompaniaValido(codigo.substring(0, 1))) {
+            String codVuelo = codigo.substring(2);
+            return codVuelo.matches("[0-9]{1,4}");
         } else {
             return false;
         }
     }
 
-    public boolean isSpanish(String codMunicipio) {
-        return codMunicipio.matches("[%d]{5}");
+    public boolean esCodigoMunicipioValido(String codMunicipio) {
+        return codMunicipio.matches("[0-9]{5}");
     }
 
-    public boolean isOperatingDaysValid(String days) {
-        if (days != null && days.length() <= 7) {
-            return days.matches(
-                    "[L]? "
-                    + "[M]? "
-                    + "[X]? "
-                    + "[J]? "
-                    + "[V]? "
-                    + "[S]? "
-                    + "[D]? "
-                    + "{1,7}");
+    public boolean sonDiasOperativosValidos(String dias) {
+        if (dias != null && dias.length() <= 7) {
+            return dias.matches("[L]?"
+                    + "[M]?"
+                    + "[X]?"
+                    + "[J]?"
+                    + "[V]?"
+                    + "[S]?"
+                    + "[D]?");
         } else {
             return false;
         }
     }
 
-    public boolean isFechaOperatingDay(Date fecha, String operatingDays) {
-        Format f = new SimpleDateFormat("E");
-        if (operatingDays.contains(f.format(fecha))) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean esFechaDiaOperativo(Date fecha, String diasOperativos) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("E", new Locale("es", "ES"));
+        String diaSemana = formatoFecha.format(fecha).toUpperCase();
+
+        return diasOperativos.contains(diaSemana);
     }
 
-    // REVISAR
-    public static int getDayNumberOld(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return cal.get(Calendar.DAY_OF_WEEK);
-    }
 }
