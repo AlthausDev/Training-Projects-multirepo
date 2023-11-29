@@ -4,85 +4,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="Modificaciones varias">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="66a5ba26-f4f4-4293-88c5-426a4d72d7a4" name="Changes" comment="refactor">
+      <change afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/drawable/icon_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/drawable/icon_profile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/menu/main_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.11-RepositorioCitas/app/src/main/java/com/example/atp11_repositoriocitas/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.11-RepositorioCitas/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.11-RepositorioCitas/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.11-RepositorioCitas/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ATP.11-RepositorioCitas/app/src/main/res/values/dimens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.01-DiceRoller/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.02-RGBColors/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ATP.09-Navigation/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.09-Navigation/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wordsapp/LetterAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wordsapp/LetterListFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wordsapp/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wordsapp/WordAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wordsapp/WordListFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_grid_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_linear_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_letter_list.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_word_list.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/layout_menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code-of-conduct.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.09-Navigation/app/src/main/java/com/example/atp09_navigation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.09-Navigation/app/src/main/java/com/example/atp09_navigation/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/java/com/example/atp10_navigationjetpackcomponent/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/java/com/example/atp10_navigationjetpackcomponent/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/java/com/example/atp10_navigationjetpackcomponent/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/java/com/example/atp10_navigationjetpackcomponent/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.10-NavigationJetpackComponent/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,10 +90,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "android.gradle.sync.needed": "true",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "last_opened_file_path": "E:/Projects/training-projects/AndroidKotlinTP",
+    "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>
   <component name="RunManager">
@@ -264,7 +202,21 @@
       <option name="project" value="LOCAL" />
       <updated>1697998162386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor">
+      <created>1699886563647</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699886563647</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor">
+      <created>1699886686360</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699886686360</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,7 +267,10 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Modificaciones varias." />
     <MESSAGE value="Modificaciones varias" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificaciones varias" />
+    <MESSAGE value="refactor: se añaden archivos" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>
