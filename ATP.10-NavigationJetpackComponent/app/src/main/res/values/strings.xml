@@ -2,5 +2,9 @@
     <string name="app_name">ATP.10-NavigationJetpackComponent</string>
     <string name="saludo">Hola, %s %s</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="saludoEdad">Eres %d años viejo</string> />
+    <string name="saludoEdad">Eres %d años viejo</string>
+    <string name="settings" />
+    <string name="home_item" />
+    <string name="profile_item">\n</string>
+    />
 </resources>

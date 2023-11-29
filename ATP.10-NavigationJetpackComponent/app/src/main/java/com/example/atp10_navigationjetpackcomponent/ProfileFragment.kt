@@ -35,12 +35,9 @@ class ProfileFragment : Fragment() {
             }
             else {
                 var action = ProfileFragmentDirections
-                                .actionProfileFragmentToSaludoFragment(nameTxt, apellidoTxt)
+                                .actionProfileFragmentToSaludoFragment(nameTxt, apellidoTxt, edadTxt)
                 it.findNavController().navigate(action)
 
-                action = ProfileFragmentDirections
-                    .actionProfileFragmentToSaludoFragment(edadTxt)
-                it.findNavController().navigate(action)
             }
 
         }
