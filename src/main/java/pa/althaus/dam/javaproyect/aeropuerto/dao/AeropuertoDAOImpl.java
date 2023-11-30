@@ -1,44 +1,44 @@
 package pa.althaus.dam.javaproyect.aeropuerto.dao;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pa.althaus.dam.javaproyect.aeropuerto.entities.Aeropuerto;
+import pa.althaus.dam.javaproyect.aeropuerto.model.Aeropuerto;
 
-public class AeropuertoDAOImpl implements AeropuertoDAO {
+public class AeropuertoDAOImpl extends CoreDAO<Aeropuerto> {
 
-    private final Map<String, Aeropuerto> aeropuertos;
-
-    public AeropuertoDAOImpl() {
-        this.aeropuertos = new HashMap<>();
+    @Override
+    public void create(Aeropuerto entidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void createAeropuerto(Aeropuerto aeropuerto) {
-        aeropuertos.put(aeropuerto.getCodigoIATA(), aeropuerto);
+    public Aeropuerto read(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Aeropuerto readAeropuerto(String IATACode) {
-        return aeropuertos.get(IATACode);
+    public HashMap<String, Aeropuerto> readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void updateAeropuerto(String IATACode, Aeropuerto nuevaInfo) {
-        if (aeropuertos.containsKey(IATACode)) {
-            aeropuertos.put(IATACode, nuevaInfo);
-        }
+    public void update(Aeropuerto entidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteAeropuerto(String IATACode) {
-        aeropuertos.remove(IATACode);
+    public void delete(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Aeropuerto> obtenerTodosAeropuertos() {
-        return new ArrayList<>(aeropuertos.values());
+    protected Aeropuerto getResultSet(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
 }

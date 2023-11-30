@@ -1,7 +1,7 @@
 package pa.althaus.dam.javaproyect.aeropuerto.dao;
 
 import pa.althaus.dam.javaproyect.aeropuerto.dao.VueloDiarioDAO;
-import pa.althaus.dam.javaproyect.aeropuerto.entities.VueloDiario;
+import pa.althaus.dam.javaproyect.aeropuerto.model.VueloDiario;
 
 import java.util.List;
 
@@ -16,10 +16,11 @@ public class VueloDiarioDAOImpl implements VueloDiarioDAO {
 
     @Override
     public VueloDiario readVueloDiario(String codigoVuelo) {
-        return vuelosDiarios.stream()
-                .filter(vd -> vd.getCodigoVuelo().equals(codigoVuelo))
-                .findFirst()
-                .orElse(null);
+        //return vuelosDiarios.stream()
+        //      .filter(vd -> vd.getCodigoVuelo().equals(codigoVuelo))
+        //    .findFirst()
+        //    .orElse(null);
+        return new VueloDiario();
     }
 
     @Override
@@ -36,7 +37,7 @@ public class VueloDiarioDAOImpl implements VueloDiarioDAO {
 
     @Override
     public void deleteVueloDiario(String codigoVuelo) {
-        vuelosDiarios.removeIf(vd -> vd.getCodigoVuelo().equals(codigoVuelo));
+        //vuelosDiarios.removeIf(vd -> vd.getCodigoVuelo().equals(codigoVuelo));
     }
 
     @Override

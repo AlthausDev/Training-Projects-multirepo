@@ -1,49 +1,43 @@
 package pa.althaus.dam.javaproyect.aeropuerto.dao;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pa.althaus.dam.javaproyect.aeropuerto.entities.CompaniaAerea;
+import pa.althaus.dam.javaproyect.aeropuerto.model.CompaniaAerea;
 
-public class CompaniaAereaDAOImpl implements CompaniaAereaDAO {
+public class CompaniaAereaDAOImpl extends CoreDAO<CompaniaAerea> {
 
-    private final Map<String, CompaniaAerea> companias;
-
-    public CompaniaAereaDAOImpl() {
-        this.companias = new HashMap<>();
+    @Override
+    public void create(CompaniaAerea entidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void createCompaniaAerea(CompaniaAerea compania) {
-        companias.put(compania.getCodigo(), compania);
+    public CompaniaAerea read(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public CompaniaAerea readCompaniaAerea(String codigo) {
-        return companias.get(codigo);
+    public HashMap<String, CompaniaAerea> readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void updateCompaniaAerea(String codigo, CompaniaAerea nuevaInfo) {
-        if (companias.containsKey(codigo)) {
-            companias.put(codigo, nuevaInfo);
-        }
+    public void update(CompaniaAerea entidad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteCompaniaAerea(String codigo) {
-        companias.remove(codigo);
+    public void delete(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public CompaniaAerea obtenerCompaniaPorCodigo(String codigo) {
-        return readCompaniaAerea(codigo);
+    protected CompaniaAerea getResultSet(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public List<CompaniaAerea> obtenerTodasCompanias() {
-        return new ArrayList<>(companias.values());
-    }
+    
 }

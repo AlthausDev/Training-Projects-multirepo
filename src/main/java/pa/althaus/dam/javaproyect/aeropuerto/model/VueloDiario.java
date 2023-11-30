@@ -1,4 +1,4 @@
-package pa.althaus.dam.javaproyect.aeropuerto.entities;
+package pa.althaus.dam.javaproyect.aeropuerto.model;
 
 import java.sql.Time;
 import java.util.Date;

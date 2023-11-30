@@ -6,16 +6,15 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import pa.althaus.dam.javaproyect.aeropuerto.entities.Aeropuerto;
-import pa.althaus.dam.javaproyect.aeropuerto.entities.Vuelo;
+import pa.althaus.dam.javaproyect.aeropuerto.model.Vuelo;
+
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constantes.PATH_VUELOS;
 
 public class VueloDAOImpl implements VueloDAO {
 
-    private static final String CSV_FILE = "vuelos.csv";
-
     @Override
     public void createVuelo(Vuelo vuelo) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH_VUELOS, true))) {
             String line = vueloToCsvLine(vuelo);
             writer.write(line);
             writer.newLine();
@@ -26,7 +25,7 @@ public class VueloDAOImpl implements VueloDAO {
 
     @Override
     public Vuelo readVuelo(String codigoVuelo) {
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH_VUELOS))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Vuelo vuelo = csvLineToVuelo(line);
@@ -44,7 +43,7 @@ public class VueloDAOImpl implements VueloDAO {
     public void updateVuelo(String codigoVuelo, Vuelo nuevaInfo) {
         List<String> lines = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH_VUELOS))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Vuelo vuelo = csvLineToVuelo(line);
@@ -57,7 +56,7 @@ public class VueloDAOImpl implements VueloDAO {
             e.printStackTrace();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH_VUELOS))) {
             for (String line : lines) {
                 writer.write(line);
                 writer.newLine();
@@ -71,7 +70,7 @@ public class VueloDAOImpl implements VueloDAO {
     public void deleteVuelo(String codigoVuelo) {
         List<String> lines = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH_VUELOS))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Vuelo vuelo = csvLineToVuelo(line);
@@ -83,7 +82,7 @@ public class VueloDAOImpl implements VueloDAO {
             e.printStackTrace();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH_VUELOS))) {
             for (String line : lines) {
                 writer.write(line);
                 writer.newLine();
@@ -97,7 +96,7 @@ public class VueloDAOImpl implements VueloDAO {
     public List<Vuelo> obtenerTodosVuelos() {
         List<Vuelo> vuelos = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH_VUELOS))) {
             String line;
             while ((line = br.readLine()) != null) {
                 Vuelo vuelo = csvLineToVuelo(line);
@@ -132,7 +131,8 @@ public class VueloDAOImpl implements VueloDAO {
         Time horaLlegada = Time.valueOf(LocalTime.parse(parts[5]));
         String diasOpera = parts[6];
 
-        return new Vuelo(codigoVuelo, aeropuertoOrigen, aeropuertoDestino, plazasTotales, horaSalida, horaLlegada, diasOpera);
+        // return new Vuelo(codigoVuelo, aeropuertoOrigen, aeropuertoDestino, plazasTotales, horaSalida, horaLlegada, diasOpera);
+        return new Vuelo();
     }
 
 }

@@ -1,5 +1,6 @@
-package pa.althaus.dam.javaproyect.aeropuerto.validator;
+package pa.althaus.dam.javaproyect.aeropuerto.util.Validator;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,11 +57,12 @@ public class Validador {
         }
     }
 
+    //REVISAR
     public boolean esFechaDiaOperativo(Date fecha, String diasOperativos) {
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("E", new Locale("es", "ES"));
-        String diaSemana = formatoFecha.format(fecha).toUpperCase();
+        DateFormat formatoFecha = new SimpleDateFormat("E", new Locale("es", "ES"));
+        String diasSemana = formatoFecha.format(fecha).toUpperCase();
 
-        return diasOperativos.contains(diaSemana);
+        return diasOperativos.contains(diasSemana);
     }
 
 }

@@ -1,4 +1,4 @@
-package pa.althaus.dam.javaproyect.aeropuerto.entities;
+package pa.althaus.dam.javaproyect.aeropuerto.model;
 
 /**
  * @author S.Althaus
