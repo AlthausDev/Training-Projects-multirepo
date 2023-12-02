@@ -1,6 +1,8 @@
 package pa.althaus.dam.javaproyect.aeropuerto.model;
 
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -13,9 +15,9 @@ public class DailyFlight {
 
     private int codigoVueloDiario;
     private String codigoVuelo;
-    private Date fechaVuelo;
-    private Time horaSalida;
-    private Time horaLlegada;
+    private LocalDate fechaVuelo;
+    private LocalTime horaSalida;
+    private LocalTime horaLlegada;
     private int plazasOcupadas;
     private float precioVuelo;
 
@@ -37,7 +39,7 @@ public class DailyFlight {
      * @param plazasOcupadas    Número de plazas ocupadas en el vuelo diario.
      * @param precioVuelo       Precio medio por asiento en el vuelo diario.
      */
-    public DailyFlight(int codigoVueloDiario, String codigoVuelo, Date fechaVuelo, Time horaSalida, Time horaLlegada, int plazasOcupadas, float precioVuelo) {
+    public DailyFlight(int codigoVueloDiario, String codigoVuelo, LocalDate fechaVuelo, LocalTime horaSalida, LocalTime horaLlegada, int plazasOcupadas, float precioVuelo) {
         this.codigoVueloDiario = codigoVueloDiario;
         this.codigoVuelo = codigoVuelo;
         this.fechaVuelo = fechaVuelo;
