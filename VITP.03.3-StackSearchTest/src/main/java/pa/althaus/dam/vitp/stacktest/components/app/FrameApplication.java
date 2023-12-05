@@ -4,13 +4,18 @@
  */
 package pa.althaus.dam.vitp.stacktest.components.app;
 
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.application.Platform;
+
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *
@@ -18,23 +23,57 @@ import javax.swing.JFrame;
  */
 public class FrameApplication extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrameApplication
-     */
     JFXPanel jfxPanel;
     JFrame frame;
 
     public FrameApplication() {
         initComponents();
+        setHelp();
     }
 
     private void setHelp() {
         jfxPanel = new JFXPanel();
-        frame = new JFrame();
-        frame.setSize(new Dimension(500, 200));
+        frame = new JFrame("Ayuda");
 
+        frame.setSize(new Dimension(500, 500));
+        frame.add(jfxPanel);
+
+        Map<Component, String> contextualHelpMap = new HashMap<>();
+        contextualHelpMap.put(btnAyuda, "url-pagina1");
+
+        KeyStroke f1KeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
+        InputMap inputMap = btnAyuda.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = btnAyuda.getActionMap();
+
+        inputMap.put(f1KeyStroke, "showContextualHelp");
+        actionMap.put("showContextualHelp", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String helpURL = contextualHelpMap.get(btnAyuda);
+                Platform.runLater(() -> {
+                    WebView webView = new WebView();
+                    WebEngine webEngine = webView.getEngine();
+                    webEngine.load(helpURL);
+                    jfxPanel.setScene(new Scene(webView));
+                    frame.setVisible(true);
+                });
+            }
+        });
     }
 
+    private void openWebView(String url) {
+        Platform.runLater(() -> {
+            WebView webView = new WebView();
+            WebEngine webEngine = webView.getEngine();
+
+            webEngine.load(url);
+            jfxPanel.setScene(new Scene(webView));
+            frame.setVisible(true);
+        });
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,21 +83,30 @@ public class FrameApplication extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        stackOverFlowSearch1 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
-        stackOverFlowSearch2 = new pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuAyudaOnline = new javax.swing.JMenu();
+        jMenu = new javax.swing.JMenu();
+        btnAyuda = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        menuAyudaOnline.setText("Ayuda Online");
-        menuAyudaOnline.addActionListener(new java.awt.event.ActionListener() {
+        jMenu.setText("Menu");
+
+        btnAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAyudaOnlineActionPerformed(evt);
+                btnAyudaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menuAyudaOnline);
+        jMenu.add(btnAyuda);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem2.setText("jMenuItem2");
+        jMenu.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -66,32 +114,19 @@ public class FrameApplication extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(stackOverFlowSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 854, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(stackOverFlowSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 615, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuAyudaOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAyudaOnlineActionPerformed
-        // TODO add your handling code here:
-        Platform.runLater(() -> {
-            WebView webView = new WebView();
-            WebEngine webEngine = webView.getEngine();
-            webEngine.load("url-principal");
-            jfxPanel.setScene(new Scene(webView));
-            frame.setVisible(true);
-        });
-    }//GEN-LAST:event_menuAyudaOnlineActionPerformed
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        openWebView("url");
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,9 +164,9 @@ public class FrameApplication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAyuda;
+    private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuAyudaOnline;
-    private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch1;
-    private pa.althaus.dam.vitp.stacktest.components.StackOverFlowSearch stackOverFlowSearch2;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
