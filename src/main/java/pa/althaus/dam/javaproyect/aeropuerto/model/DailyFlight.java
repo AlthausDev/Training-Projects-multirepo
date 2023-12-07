@@ -49,6 +49,46 @@ public class DailyFlight {
         this.precioVuelo = precioVuelo;
     }
 
+    public LocalDate getFechaVuelo() {
+        return fechaVuelo;
+    }
+
+    public void setFechaVuelo(LocalDate fechaVuelo) {
+        this.fechaVuelo = fechaVuelo;
+    }
+
+    public LocalTime getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(LocalTime horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    public LocalTime getHoraLlegada() {
+        return horaLlegada;
+    }
+
+    public void setHoraLlegada(LocalTime horaLlegada) {
+        this.horaLlegada = horaLlegada;
+    }
+
+    public int getPlazasOcupadas() {
+        return plazasOcupadas;
+    }
+
+    public void setPlazasOcupadas(int plazasOcupadas) {
+        this.plazasOcupadas = plazasOcupadas;
+    }
+
+    public float getPrecioVuelo() {
+        return precioVuelo;
+    }
+
+    public void setPrecioVuelo(float precioVuelo) {
+        this.precioVuelo = precioVuelo;
+    }
+
     /**
      * Obtiene el código único del vuelo diario.
      *
@@ -85,7 +125,6 @@ public class DailyFlight {
         this.codigoVuelo = codigoVuelo;
     }
 
-    // ... Métodos get y set para los demás atributos ...
 
     /**
      * Representación en formato de cadena del objeto DailyFlight.
