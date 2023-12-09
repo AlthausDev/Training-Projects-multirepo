@@ -5,7 +5,6 @@
 package pa.althaus.dam.javaproyect.aeropuerto.view;
 
 import pa.althaus.dam.javaproyect.aeropuerto.model.AirlineCompany;
-import pa.althaus.dam.javaproyect.aeropuerto.util.reader.CsvReader;
 
 /**
  * @author samuelaa
@@ -34,10 +33,10 @@ public class DatosAirlinesView extends javax.swing.JPanel {
         }
     }
 
-    private void fillMunicipios() {
+    /*private void fillMunicipios() {
         CsvReader csv = new CsvReader();
         csv.readMunicipiosCSV().forEach(m -> cbMunicipio.addItem(m));
-    }
+    }*/
 
 
     public DatosAirlinesView() {

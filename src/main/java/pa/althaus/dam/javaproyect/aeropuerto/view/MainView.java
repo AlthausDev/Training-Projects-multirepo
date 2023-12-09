@@ -4,16 +4,44 @@
  */
 package pa.althaus.dam.javaproyect.aeropuerto.view;
 
-/**
- * @author samuelaa
- */
-public class FlightView extends javax.swing.JFrame {
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import pa.althaus.dam.javaproyect.aeropuerto.view.panels.*;
 
-    /**
-     * Creates new form FlightView
-     */
-    public FlightView() {
+/**
+ *
+ * @author Imper
+ */
+public class MainView extends javax.swing.JFrame {
+
+    private JPanel mainPanel;
+    private JPanel salidasPanel;
+    private JPanel llegadasPanel;
+    private JPanel vuelosPorCompaniaPanel;
+    private JPanel recaudacionesPanel;
+    private JPanel vuelosPrevistosPanel;
+    
+    
+    public MainView() {
         initComponents();
+        initPanels();
+    }
+    
+    private void initPanels(){
+        mainPanel = new MainPanel();
+        salidasPanel = new SalidasPanel();
+        llegadasPanel = new LlegadasPanel();
+        vuelosPorCompaniaPanel = new VuelosPorCompaniaPanel();
+        recaudacionesPanel = new RecaudacionesPanel();
+        vuelosPrevistosPanel = new VuelosPrevistosPanel();
+
+        mainPanel.add(salidasPanel, "Salidas");
+        mainPanel.add(llegadasPanel, "Llegadas");
+        mainPanel.add(vuelosPorCompaniaPanel, "VuelosPorCompania");
+        mainPanel.add(recaudacionesPanel, "Recaudaciones");
+        mainPanel.add(vuelosPrevistosPanel, "VuelosPrevistos");
+
+        getContentPane().add(mainPanel);
     }
 
     /**
@@ -30,12 +58,12 @@ public class FlightView extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 400, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 300, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -48,7 +76,7 @@ public class FlightView extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -58,20 +86,20 @@ public class FlightView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FlightView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FlightView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FlightView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FlightView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FlightView().setVisible(true);
+                new MainView().setVisible(true);
             }
         });
     }

@@ -26,13 +26,21 @@ public class HomeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(6, 6, 20, 0));
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        getContentPane().setLayout(new java.awt.CardLayout());
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(400, 400));
+        jPanel1.setLayout(new java.awt.GridLayout(4, 0, 0, 5));
+
+        jButton6.setText("Panel de Informacion");
+        jPanel1.add(jButton6);
 
         jButton3.setText("Compañias Aereas");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -40,10 +48,7 @@ public class HomeView extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-
-        jButton4.setText("Registro de Vuelos Diarios");
-        getContentPane().add(jButton4);
+        jPanel1.add(jButton3);
 
         jButton5.setText("Vuelos");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -51,10 +56,12 @@ public class HomeView extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
+        jPanel1.add(jButton5);
 
-        jButton6.setText("Panel de Informacion");
-        getContentPane().add(jButton6);
+        jButton4.setText("Registro de Vuelos Diarios");
+        jPanel1.add(jButton4);
+
+        getContentPane().add(jPanel1, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -64,8 +71,8 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AirlinesView frm = new AirlinesView();
-        frm.setVisible(true);
+        //AirlinesView frm = new AirlinesView();
+        //frm.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -109,5 +116,6 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

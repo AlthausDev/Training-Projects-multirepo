@@ -7,6 +7,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import pa.althaus.dam.javaproyect.aeropuerto.model.TemperatureInfo;
 
 import java.time.LocalDate;
+import org.json.JSONObject;
 
 public class AemetApiService {
 
