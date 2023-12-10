@@ -3,7 +3,6 @@ package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
 import java.sql.Time;
-
 import pa.althaus.dam.javaproyect.aeropuerto.model.AirlineCompany;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Airport;
 
@@ -58,5 +57,6 @@ public class FlightDao extends CoreDao<Flight> {
                 Time.valueOf(campos[16]), // Hora de llegada
                 campos[17] // Días de operación
         );
-    }
+    }   
+   
 }

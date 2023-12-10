@@ -20,6 +20,7 @@ public class DailyFlight {
     private LocalTime horaLlegada;
     private int plazasOcupadas;
     private float precioVuelo;
+    private Flight flight;  
 
     /**
      * Constructor por defecto de la clase DailyFlight.
@@ -123,6 +124,24 @@ public class DailyFlight {
      */
     public void setCodigoVuelo(String codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
+    }
+    
+        /**
+     * Obtiene el vuelo asociado.
+     *
+     * @return Vuelo asociado.
+     */
+    public Flight getFlight() {
+        return flight;
+    }
+
+    /**
+     * Establece el vuelo asociado.
+     *
+     * @param flight Vuelo asociado.
+     */
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 
 

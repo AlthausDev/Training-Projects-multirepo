@@ -2,11 +2,12 @@ package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 
 import pa.althaus.dam.javaproyect.aeropuerto.model.DailyFlight;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.stream.Collectors;
+import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
 import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_DAILYFLIGH;
 
@@ -46,4 +47,11 @@ public class DailyFlightDao extends CoreDao<DailyFlight> {
                 Float.parseFloat(campos[6])  // Precio Vuelo
         );
     }
-}
+    
+   public HashMap<Integer, DailyFlight> obtenerVuelosDiariosPorFecha(LocalDate fecha) {
+        return (HashMap<Integer, DailyFlight>) readAll().values().stream()
+                .filter(vuelo -> vuelo.getFechaVuelo().equals(fecha))
+                .collect(Collectors.toMap(DailyFlight::getCodigoVueloDiario, vuelo -> vuelo));
+    }  
+
+ }
