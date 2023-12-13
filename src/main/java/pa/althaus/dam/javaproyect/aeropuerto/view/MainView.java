@@ -54,6 +54,10 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor Aeropuerto");
+        setBackground(new java.awt.Color(60, 63, 64));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         pack();

@@ -11,6 +11,10 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.dao.DailyFlightDao;
 
 public class LlegadasController {
     private final DailyFlightDao dailyFlightDao;
+    
+    public LlegadasController(){
+        this.dailyFlightDao = null;        
+    }
 
     public LlegadasController(DailyFlightDao dailyFlightDao) {
         this.dailyFlightDao = dailyFlightDao;
@@ -22,7 +26,7 @@ public class LlegadasController {
      * @param fecha Fecha para la cual se desean obtener las llegadas.
      * @return Mapa de llegadas ordenadas por hora de llegada ascendente.
      */
-    public Map<Integer, DailyFlight> obtenerLlegadas(LocalDate fecha) {
+    public HashMap<Integer, DailyFlight> obtenerLlegadas(LocalDate fecha) {
         HashMap<Integer, DailyFlight> vuelosDiarios = dailyFlightDao.obtenerVuelosDiariosPorFecha(fecha);
         vuelosDiarios.entrySet().removeIf(entry -> !entry.getValue().getFechaVuelo().equals(fecha));
         vuelosDiarios.entrySet().removeIf(entry -> entry.getValue().getHoraLlegada().isBefore(LocalTime.now()));
