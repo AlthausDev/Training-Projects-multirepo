@@ -56,6 +56,7 @@ public class MainView extends javax.swing.JFrame {
         pa.althaus.dam.javaproyect.aeropuerto.view.panels.MainPanel mainPanel1 = new pa.althaus.dam.javaproyect.aeropuerto.view.panels.MainPanel();
         pa.althaus.dam.javaproyect.aeropuerto.view.panels.SalidasPanel salidasPanel1 = new pa.althaus.dam.javaproyect.aeropuerto.view.panels.SalidasPanel();
         pa.althaus.dam.javaproyect.aeropuerto.view.panels.LlegadasPanel llegadasPanel1 = new pa.althaus.dam.javaproyect.aeropuerto.view.panels.LlegadasPanel();
+        pa.althaus.dam.javaproyect.aeropuerto.view.panels.VuelosPorCompaniaPanel vuelosPorCompaniaPanel1 = new pa.althaus.dam.javaproyect.aeropuerto.view.panels.VuelosPorCompaniaPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor Aeropuerto");
@@ -66,6 +67,7 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().add(mainPanel1, "card2");
         getContentPane().add(salidasPanel1, "card4");
         getContentPane().add(llegadasPanel1, "card3");
+        getContentPane().add(vuelosPorCompaniaPanel1, "card5");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

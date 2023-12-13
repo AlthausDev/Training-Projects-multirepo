@@ -20,7 +20,10 @@ public class VuelosPorAirlineController {
         this.flightDao = flightDao;
     }
 
-    public LinkedHashMap<String, Flight> obtenerVuelosPorCompaniaEnFecha(String compania, LocalDate fecha) {
+    public HashMap<String, Flight> obtenerVuelosPorCompaniaEnFecha(String compania, LocalDate fecha) {
+        if (fecha == null) {
+        fecha = LocalDate.now();
+        }
         return dailyFlightDao.obtenerVuelosDiariosPorFecha(fecha).values().stream()
                 .filter(dailyFlight -> dailyFlight.getFlight().getAirlineCompany().getNombre().equals(compania))
                 .collect(Collectors.toMap(
@@ -40,7 +43,7 @@ public class VuelosPorAirlineController {
 
         // Obtener vuelos por compañía en la fecha actual
         LocalDate fechaActual = LocalDate.now();
-        LinkedHashMap<String, Flight> vuelosEnFechaActual = controller.obtenerVuelosPorCompaniaEnFecha("NombreCompania", fechaActual);
+        HashMap<String, Flight> vuelosEnFechaActual = controller.obtenerVuelosPorCompaniaEnFecha("NombreCompania", fechaActual);
 
         // Imprimir resultados
         vuelosEnFechaActual.forEach((codigoVuelo, flight) -> {

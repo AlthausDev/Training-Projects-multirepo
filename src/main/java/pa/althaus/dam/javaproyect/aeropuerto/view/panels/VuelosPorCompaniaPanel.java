@@ -4,19 +4,35 @@
  */
 package pa.althaus.dam.javaproyect.aeropuerto.view.panels;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pa.althaus.dam.javaproyect.aeropuerto.controller.VuelosPorAirlineController;
+import pa.althaus.dam.javaproyect.aeropuerto.model.DailyFlight;
+import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
+
 /**
  *
  * @author Imper
  */
 public class VuelosPorCompaniaPanel extends javax.swing.JPanel {
+    
+   private VuelosPorAirlineController controller;
+    private DefaultTableModel tableModel;
 
-    /**
-     * Creates new form vuelosPorCompaniaPanel
-     */
     public VuelosPorCompaniaPanel() {
+        this.controller = controller;
         initComponents();
+        initTable();
     }
 
+    private void initTable() {
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Código de Vuelo");
+        tblVuelosDatos.setModel(tableModel);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +42,92 @@ public class VuelosPorCompaniaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblVuelos = new javax.swing.JLabel();
+        tblVuelos = new javax.swing.JScrollPane();
+        tblVuelosDatos = new javax.swing.JTable();
+        btnEnviar = new javax.swing.JButton();
+        dateChooser = new com.toedter.calendar.JDateChooser();
+        airlineSelector = new javax.swing.JComboBox<>();
+
+        lblVuelos.setText("Vuelos por compañia en un día");
+
+        tblVuelos.setViewportView(tblVuelosDatos);
+
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+
+        airlineSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tblVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(airlineSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnEnviar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(lblVuelos)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblVuelos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tblVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEnviar)
+                        .addComponent(airlineSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+       try {
+            LocalDate selectedDate = dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String selectedAirline = airlineSelector.getSelectedItem().toString();
+
+            // Obtener vuelos para la fecha y la aerolínea seleccionada
+            HashMap<String, Flight> vuelos = controller.obtenerVuelosPorCompaniaEnFecha(selectedAirline, selectedDate);
+
+            // Mostrar vuelos en la tabla
+            actualizarTablaVuelos(vuelos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al procesar la fecha o la aerolínea.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEnviarActionPerformed
+    private void actualizarTablaVuelos(HashMap<String, Flight> vuelos) {
+        tableModel.setRowCount(0);
+
+        for (Flight vuelo : vuelos.values()) {
+            Object[] rowData = {vuelo.getCodigoVuelo()};
+            tableModel.addRow(rowData);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> airlineSelector;
+    private javax.swing.JButton btnEnviar;
+    private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JLabel lblVuelos;
+    private javax.swing.JScrollPane tblVuelos;
+    private javax.swing.JTable tblVuelosDatos;
     // End of variables declaration//GEN-END:variables
 }
