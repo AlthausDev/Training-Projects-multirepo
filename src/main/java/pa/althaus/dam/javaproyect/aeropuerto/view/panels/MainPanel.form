@@ -16,32 +16,40 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
     <Property name="columns" type="int" value="0"/>
-    <Property name="rows" type="int" value="4"/>
+    <Property name="rows" type="int" value="5"/>
     <Property name="verticalGap" type="int" value="5"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnPanel">
+    <Component class="javax.swing.JButton" name="btnSalidas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Panel de Informacion"/>
+        <Property name="text" type="java.lang.String" value="Panel de Salidas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPanelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalidasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLlegadas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Panel de Llegadas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLlegadasActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAirlines">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Compa&#xf1;ias Aereas"/>
+        <Property name="text" type="java.lang.String" value="Vuelos por Compa&#xf1;ias Aereas"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAirlinesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnFlight">
+    <Component class="javax.swing.JButton" name="btnFlightRecaudacion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Vuelos"/>
+        <Property name="text" type="java.lang.String" value="Recaudacion por vuelos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFlightActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFlightRecaudacionActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDiaryFlight">

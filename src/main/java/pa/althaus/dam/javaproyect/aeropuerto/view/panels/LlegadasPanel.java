@@ -23,8 +23,8 @@ public class LlegadasPanel extends javax.swing.JPanel {
     private final LlegadasController llegadasController;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 
-    public LlegadasPanel(LlegadasController llegadasController) {
-        this.llegadasController = llegadasController;
+    public LlegadasPanel() {
+        this.llegadasController = new LlegadasController();
         initComponents();
         inicializarTabla();
     }

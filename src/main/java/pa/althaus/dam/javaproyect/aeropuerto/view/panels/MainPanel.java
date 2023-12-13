@@ -24,27 +24,7 @@ public class MainPanel extends javax.swing.JPanel {
         this.mainPanel = mainPanel;
         this.cardLayout = cardLayout;
     }
-
-    private void btnSalidasActionPerformed(java.awt.event.ActionEvent evt) {
-        cardLayout.show(mainPanel, "Salidas");
-    }
-
-    private void btnLlegadasActionPerformed(java.awt.event.ActionEvent evt) {
-        cardLayout.show(mainPanel, "Llegadas");
-    }
-
-    private void btnVuelosPorCompaniaActionPerformed(java.awt.event.ActionEvent evt) {
-        cardLayout.show(mainPanel, "VuelosPorCompania");
-    }
-
-    private void btnRecaudacionesActionPerformed(java.awt.event.ActionEvent evt) {
-        cardLayout.show(mainPanel, "Recaudaciones");
-    }
-
-    private void btnVuelosPrevistosActionPerformed(java.awt.event.ActionEvent evt) {
-        cardLayout.show(mainPanel, "VuelosPrevistos");
-    }
-    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,22 +34,31 @@ public class MainPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPanel = new javax.swing.JButton();
+        btnSalidas = new javax.swing.JButton();
+        btnLlegadas = new javax.swing.JButton();
         btnAirlines = new javax.swing.JButton();
-        btnFlight = new javax.swing.JButton();
+        btnFlightRecaudacion = new javax.swing.JButton();
         btnDiaryFlight = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridLayout(4, 0, 0, 5));
+        setLayout(new java.awt.GridLayout(5, 0, 0, 5));
 
-        btnPanel.setText("Panel de Informacion");
-        btnPanel.addActionListener(new java.awt.event.ActionListener() {
+        btnSalidas.setText("Panel de Salidas");
+        btnSalidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPanelActionPerformed(evt);
+                btnSalidasActionPerformed(evt);
             }
         });
-        add(btnPanel);
+        add(btnSalidas);
 
-        btnAirlines.setText("Compañias Aereas");
+        btnLlegadas.setText("Panel de Llegadas");
+        btnLlegadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLlegadasActionPerformed(evt);
+            }
+        });
+        add(btnLlegadas);
+
+        btnAirlines.setText("Vuelos por Compañias Aereas");
         btnAirlines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAirlinesActionPerformed(evt);
@@ -77,13 +66,13 @@ public class MainPanel extends javax.swing.JPanel {
         });
         add(btnAirlines);
 
-        btnFlight.setText("Vuelos");
-        btnFlight.addActionListener(new java.awt.event.ActionListener() {
+        btnFlightRecaudacion.setText("Recaudacion por vuelos");
+        btnFlightRecaudacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFlightActionPerformed(evt);
+                btnFlightRecaudacionActionPerformed(evt);
             }
         });
-        add(btnFlight);
+        add(btnFlightRecaudacion);
 
         btnDiaryFlight.setText("Registro de Vuelos Diarios");
         btnDiaryFlight.addActionListener(new java.awt.event.ActionListener() {
@@ -95,27 +84,31 @@ public class MainPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAirlinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAirlinesActionPerformed
-        //AirlinesView frm = new AirlinesView();
-        //frm.setVisible(true);
+        cardLayout.show(mainPanel, "VuelosPorCompania");
     }//GEN-LAST:event_btnAirlinesActionPerformed
 
-    private void btnFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlightActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFlightActionPerformed
+    private void btnFlightRecaudacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlightRecaudacionActionPerformed
+        cardLayout.show(mainPanel, "Recaudaciones");
+    }//GEN-LAST:event_btnFlightRecaudacionActionPerformed
 
-    private void btnPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPanelActionPerformed
+    private void btnSalidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidasActionPerformed
+       cardLayout.show(mainPanel, "Salidas");
+    }//GEN-LAST:event_btnSalidasActionPerformed
 
     private void btnDiaryFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiaryFlightActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(mainPanel, "VuelosPrevistos");
     }//GEN-LAST:event_btnDiaryFlightActionPerformed
+
+    private void btnLlegadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlegadasActionPerformed
+        cardLayout.show(mainPanel, "Llegadas");
+    }//GEN-LAST:event_btnLlegadasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAirlines;
     private javax.swing.JButton btnDiaryFlight;
-    private javax.swing.JButton btnFlight;
-    private javax.swing.JButton btnPanel;
+    private javax.swing.JButton btnFlightRecaudacion;
+    private javax.swing.JButton btnLlegadas;
+    private javax.swing.JButton btnSalidas;
     // End of variables declaration//GEN-END:variables
 }
