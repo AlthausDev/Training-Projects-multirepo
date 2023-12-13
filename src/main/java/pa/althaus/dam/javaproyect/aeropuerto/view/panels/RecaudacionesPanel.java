@@ -4,6 +4,16 @@
  */
 package pa.althaus.dam.javaproyect.aeropuerto.view.panels;
 
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.HashMap;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pa.althaus.dam.javaproyect.aeropuerto.controller.RecaudacionesController;
+import pa.althaus.dam.javaproyect.aeropuerto.model.*;
+import pa.althaus.dam.javaproyect.aeropuerto.model.dao.DailyFlightDao;
 /**
  *
  * @author Imper
@@ -26,19 +36,113 @@ public class RecaudacionesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblRecaudacion = new javax.swing.JLabel();
+        tblRecaudacion = new javax.swing.JScrollPane();
+        tblLlegadasDatos = new javax.swing.JTable();
+        btnEnviar2 = new javax.swing.JButton();
+        dateChooser = new com.toedter.calendar.JDateChooser();
+
+        lblRecaudacion.setText("Recaudaciones por vuelo");
+
+        tblRecaudacion.setViewportView(tblLlegadasDatos);
+
+        btnEnviar2.setText("Enviar");
+        btnEnviar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviar2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tblRecaudacion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(lblRecaudacion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(154, 154, 154)
+                        .addComponent(btnEnviar2)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblRecaudacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tblRecaudacion, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviar2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEnviar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar2ActionPerformed
+     try {
+        // Obtener la fecha seleccionada
+        LocalDate selectedDate = dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Obtener las recaudaciones para la fecha seleccionada
+        float recaudaciones = obtenerRecaudaciones(selectedDate);
+
+        // Mostrar las recaudaciones en la tabla
+        actualizarTablaRecaudaciones(recaudaciones);
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al procesar la fecha.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_btnEnviar2ActionPerformed
+                                             
+
+ private float obtenerRecaudaciones(LocalDate selectedDate) {
+        try {
+            RecaudacionesController recaudacionesController = new RecaudacionesController(new DailyFlightDao());
+            
+            // Obtener recaudaciones para la fecha seleccionada
+            return recaudacionesController.obtenerRecaudacionParaFecha(selectedDate);
+        } catch (Exception e) {
+            // Manejar cualquier excepción que pueda ocurrir durante la obtención de recaudaciones
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+  private void actualizarTablaRecaudaciones(float recaudaciones) {
+    try {
+        RecaudacionesController recaudacionesController = new RecaudacionesController(new DailyFlightDao());
+
+        // Asumiendo que deseas mostrar solo la cantidad total de recaudaciones en la tabla
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("Recaudación Total");
+        Object[] rowData = {recaudaciones};
+        tableModel.addRow(rowData);
+
+        tblLlegadasDatos.setModel(tableModel);
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al actualizar la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnEnviar1;
+    private javax.swing.JButton btnEnviar2;
+    private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JLabel lblRecaudacion;
+    private javax.swing.JTable tblLlegadasDatos;
+    private javax.swing.JScrollPane tblRecaudacion;
     // End of variables declaration//GEN-END:variables
 }

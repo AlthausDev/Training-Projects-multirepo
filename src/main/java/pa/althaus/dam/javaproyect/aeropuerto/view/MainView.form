@@ -59,5 +59,19 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="pa.althaus.dam.javaproyect.aeropuerto.view.panels.VuelosPrevistosPanel" name="vuelosPrevistosPanel1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card6"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="pa.althaus.dam.javaproyect.aeropuerto.view.panels.RecaudacionesPanel" name="recaudacionesPanel1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+          <CardConstraints cardName="card7"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>
