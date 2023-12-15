@@ -1,6 +1,11 @@
 IATA,AirportName,Municipality
-IATA1,Airport1,MUN1
-IATA2,Airport2,MUN2
-IATA3,Airport3,MUN3
-IATA4,Airport4,MUN4
-IATA5,Airport5,MUN5
+MAD,Adolfo Suárez Madrid-Barajas Airport,Madrid
+BCN,Barcelona-El Prat Airport,Barcelona
+AGP,Málaga Airport,Málaga
+VLC,Valencia Airport,Valencia
+PMI,Palma de Mallorca Airport,Palma de Mallorca
+JFK,John F. Kennedy International Airport,New York
+LAX,Los Angeles International Airport,Los Angeles
+ORD,O'Hare International Airport,Chicago
+ATL,Hartsfield-Jackson Atlanta International Airport,Atlanta
+LHR,Heathrow Airport,London

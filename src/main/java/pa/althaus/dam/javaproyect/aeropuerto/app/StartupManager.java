@@ -80,6 +80,26 @@ public class StartupManager {
         municipios.putAll(municipiosCsvReader.readMunicipiosCSV());
     }
 
+    public static HashMap<String, Airport> getAirports() {
+        return airports;
+    }
+
+    public static HashMap<String, AirlineCompany> getAirlineCompanies() {
+        return airlineCompanies;
+    }
+
+    public static HashMap<String, Flight> getFlights() {
+        return flights;
+    }
+
+    public static HashMap<String, DailyFlight> getDailyFlights() {
+        return dailyFlights;
+    }
+
+    public static HashMap<String, String> getMunicipios() {
+        return municipios;
+    }
+
     protected static StartupManager getInstance() {
         return INSTANCE;
     }
