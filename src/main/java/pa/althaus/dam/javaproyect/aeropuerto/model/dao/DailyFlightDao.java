@@ -5,16 +5,14 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.DailyFlight;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
-import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_DAILYFLIGH;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_DAILYFLIGHT;
 
 public class DailyFlightDao extends CoreDao<DailyFlight> {
 
     public DailyFlightDao() {
-        super(PATH_DAILYFLIGH);
+        super(PATH_DAILYFLIGHT);
     }
 
     @Override

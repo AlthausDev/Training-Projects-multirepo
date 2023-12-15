@@ -3,15 +3,16 @@ package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import pa.althaus.dam.javaproyect.aeropuerto.model.AirlineCompany;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Airport;
 
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_FLIGH;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_FLIGHT;
 
 public class FlightDao extends CoreDao<Flight> {
 
     public FlightDao() {
-        super(PATH_FLIGH);
+        super(PATH_FLIGHT);
     }
 
     @Override
@@ -19,22 +20,25 @@ public class FlightDao extends CoreDao<Flight> {
         return csvLine.split(",")[0];
     }
 
-    @Override
-    protected String entidadToCSVString(Flight entidad) {
-        return String.format("%s,%s,%s,%s,%s,%s,%d,%s,%s",
-                entidad.getCodigoVuelo(),
-                entidad.getAirlineCompany().getPrefijo(),
-                entidad.getAirlineCompany().getCodigo(),
-                entidad.getAirlineCompany().getNombre(),
-                entidad.getAirlineCompany().getDireccion(),
-                entidad.getAirlineCompany().getMunicipio(),
-                entidad.getAirlineCompany().getTlfPasajero(),
-                entidad.getAirlineCompany().getTlfAeropuerto(),
-                entidad.getPlazasTotales(),
-                entidad.getHoraSalida().toString(),
-                entidad.getHoraLlegada().toString(),
-                entidad.getDiasOpera());
-    }
+@Override
+protected String entidadToCSVString(Flight entidad) {
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    
+    return String.format("%s,%d,%s,%s,%s,%s,%s,%s,%d,%s,%s,%s",
+            entidad.getCodigoVuelo(),
+            entidad.getAirlineCompany().getPrefijo(),
+            entidad.getAirlineCompany().getCodigo(),
+            entidad.getAirlineCompany().getNombre(),
+            entidad.getAirlineCompany().getDireccion(),
+            entidad.getAirlineCompany().getMunicipio(),
+            entidad.getAirlineCompany().getTlfPasajero(),
+            entidad.getAirlineCompany().getTlfAeropuerto(),
+            entidad.getPlazasTotales(),
+            timeFormat.format(entidad.getHoraSalida()),
+            timeFormat.format(entidad.getHoraLlegada()),
+            entidad.getDiasOpera());
+}
+
 
     @Override
     protected Flight parseCsvLine(String csvLine) {
