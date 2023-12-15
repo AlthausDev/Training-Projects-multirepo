@@ -1,11 +1,11 @@
 package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 
-import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
-
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import pa.althaus.dam.javaproyect.aeropuerto.model.AirlineCompany;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Airport;
+import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
 import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_FLIGHT;
 
@@ -40,27 +40,33 @@ protected String entidadToCSVString(Flight entidad) {
 }
 
 
-    @Override
-    protected Flight parseCsvLine(String csvLine) {
-        String[] campos = csvLine.split(",");
-        return new Flight(
-                campos[0], // Código de vuelo
-                new AirlineCompany(
-                        Integer.parseInt(campos[1]), // Prefijo
-                        campos[2], // Código
-                        campos[3], // Nombre
-                        campos[4], // Dirección
-                        campos[5], // Municipio
-                        campos[6], // TlfPasajero
-                        campos[7] // TlfAeropuerto
-                ),
-                new Airport(campos[8], campos[9], campos[10]), // Ajusta según tu estructura
-                new Airport(campos[11], campos[12], campos[13]), // Ajusta según tu estructura
-                Integer.parseInt(campos[14]), // Número de plazas totales
-                Time.valueOf(campos[15]), // Hora de salida
-                Time.valueOf(campos[16]), // Hora de llegada
-                campos[17] // Días de operación
-        );
-    }   
+
+@Override
+protected Flight parseCsvLine(String csvLine) {
+    String[] campos = csvLine.split(",");
+    System.out.println("Campos length: " + campos.length);
+    System.out.println("Campos: " + Arrays.toString(campos));
+
+    return new Flight(
+            campos[0], // Código de vuelo
+            new AirlineCompany(
+                    Integer.parseInt(campos[1]), // Prefijo
+                    campos[2], // Código
+                    campos[3], // Nombre
+                    campos[4], // Dirección
+                    campos[5], // Municipio
+                    campos[6], // TlfPasajero
+                    campos[7] // TlfAeropuerto
+            ),
+            new Airport(campos[8], campos[9], campos[10]), // Aeropuerto de origen
+            new Airport(campos[11], campos[12], campos[13]), // Aeropuerto de destino
+            Integer.parseInt(campos[14]), // Número de plazas totales
+            Time.valueOf(campos[15]), // Hora de salida
+            Time.valueOf(campos[16]), // Hora de llegada
+            Arrays.asList(Arrays.copyOfRange(campos, 17, campos.length)) // Días de operación
+    );
+}
+
+   
    
 }

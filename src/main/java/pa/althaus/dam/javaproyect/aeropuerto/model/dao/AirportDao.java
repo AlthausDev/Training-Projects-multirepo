@@ -9,11 +9,13 @@ public class AirportDao extends CoreDao<Airport> {
     public AirportDao() {
         super(PATH_AIRPORTS);
     }
-
+    
     @Override
     protected String getCodigoFromCsvLine(String csvLine) {
         return csvLine.split(",")[0];
     }
+    
+    
 
 @Override
 protected String entidadToCSVString(Airport entidad) {
@@ -24,7 +26,7 @@ protected String entidadToCSVString(Airport entidad) {
                 entidad.getCodigoMunicipio());
     } catch (Exception e) {
         e.printStackTrace();
-        return "";  // o maneja el error según sea necesario
+        return ""; 
     }
 }
 
@@ -39,7 +41,7 @@ protected Airport parseCsvLine(String csvLine) {
         );
     } catch (Exception e) {
         e.printStackTrace();
-        return null;  // o maneja el error según sea necesario
+        return null;  
     }
 }
 

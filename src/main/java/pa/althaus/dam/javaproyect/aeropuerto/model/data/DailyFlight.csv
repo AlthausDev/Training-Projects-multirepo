@@ -1,0 +1,4 @@
+Id,FlightCode,Date,DepartureTime,ArrivalTime,AvailableSeats,Price
+1,FL1,2023-01-01,09:00:00,12:00:00,100,200.0
+2,FL2,2023-01-01,14:00:00,17:00:00,80,150.0
+3,FL3,2023-01-01,18:00:00,21:00:00,120,180.0

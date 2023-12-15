@@ -1,6 +1,7 @@
 package pa.althaus.dam.javaproyect.aeropuerto.model;
 
 import java.sql.Time;
+import java.util.List;
 
 /**
  * Representa un vuelo con detalles como el código de vuelo, aeropuertos de origen y destino, plazas totales, horas de salida y llegada, y días de operación.
@@ -16,7 +17,7 @@ public class Flight {
     private int plazasTotales;
     private Time horaSalida;
     private Time horaLlegada;
-    private String diasOpera;
+    private List diasOpera;
 
     /**
      * Constructor por defecto de la clase Flight.
@@ -37,7 +38,7 @@ public class Flight {
      * @param horaLlegada    Hora prevista de llegada del vuelo.
      * @param diasOpera      Días de la semana en los que opera el vuelo.
      */
-    public Flight(String codigoVuelo, AirlineCompany airlineCompany, Airport airportOrigen, Airport airportDestino, int plazasTotales, Time horaSalida, Time horaLlegada, String diasOpera) {
+    public Flight(String codigoVuelo, AirlineCompany airlineCompany, Airport airportOrigen, Airport airportDestino, int plazasTotales, Time horaSalida, Time horaLlegada, List diasOpera) {
         this.codigoVuelo = codigoVuelo;
         this.airlineCompany = airlineCompany;
         this.airportOrigen = airportOrigen;
@@ -47,9 +48,7 @@ public class Flight {
         this.horaLlegada = horaLlegada;
         this.diasOpera = diasOpera;
     }
-
-    // Métodos get y set
-
+ 
     /**
      * Obtiene el código del vuelo.
      *
@@ -181,7 +180,7 @@ public class Flight {
      *
      * @return Cadena que representa los días en los que opera el vuelo.
      */
-    public String getDiasOpera() {
+    public List getDiasOpera() {
         return diasOpera;
     }
 
@@ -190,7 +189,7 @@ public class Flight {
      *
      * @param diasOpera Cadena que representa los días en los que opera el vuelo.
      */
-    public void setDiasOpera(String diasOpera) {
+    public void setDiasOpera(List diasOpera) {
         this.diasOpera = diasOpera;
     }
 
