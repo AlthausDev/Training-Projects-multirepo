@@ -38,6 +38,7 @@ public class AppFrame extends javax.swing.JFrame {
 
         card.show(container, "Home");
         helpService = new HelpService();
+        helpService.setHelp(this, "https://s-althauss-organization.gitbook.io/aeropuerto/");
     }
 
     /**
@@ -63,8 +64,12 @@ public class AppFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
+        menu.setBackground(new java.awt.Color(60, 62, 65));
         menu.setMinimumSize(new java.awt.Dimension(0, 0));
-        menu.setPreferredSize(new java.awt.Dimension(116, 80));
+        menu.setPreferredSize(new java.awt.Dimension(130, 80));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20);
+        flowLayout1.setAlignOnBaseline(true);
+        menu.setLayout(flowLayout1);
 
         btnSalidas.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         btnSalidas.setText("Salidas");
@@ -132,7 +137,7 @@ public class AppFrame extends javax.swing.JFrame {
         });
         menu.add(btnAyuda);
 
-        getContentPane().add(menu, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(menu, java.awt.BorderLayout.WEST);
 
         container.setLayout(new java.awt.CardLayout());
         getContentPane().add(container, java.awt.BorderLayout.CENTER);
