@@ -3,13 +3,14 @@ package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.List;
 
 import pa.althaus.dam.javaproyect.aeropuerto.app.StartupManager;
 import pa.althaus.dam.javaproyect.aeropuerto.model.AirlineCompany;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Airport;
 import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
 
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_FLIGHT;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.PATH_FLIGHT;
 
 public class FlightDao extends CoreDao<Flight> {
 
@@ -45,28 +46,51 @@ public class FlightDao extends CoreDao<Flight> {
         System.out.println("Campos length: " + campos.length);
         System.out.println("Campos: " + Arrays.toString(campos));
 
-        return new Flight(
-                campos[0], // Código de vuelo
-                findAirlineByCode(Integer.parseInt(campos[1])), // Compañía aérea
-                findAirportByCode(campos[2]), // Aeropuerto de origen
-                findAirportByCode(campos[3]), // Aeropuerto de destino
-                Integer.parseInt(campos[4]), // Número de plazas totales
-                Time.valueOf(campos[5]), // Hora de salida
-                Time.valueOf(campos[6]), // Hora de llegada
-                Arrays.asList(Arrays.copyOfRange(campos, 7, campos.length)) // Días de operación
-        );
+        try {
+
+            AirlineCompany airline = findAirlineByCode(campos[1]);
+            ;
+            System.out.println("Airline: " + airline);
+
+            Airport originAirport = findAirportByCode(campos[2]);
+            Airport destinationAirport = findAirportByCode(campos[3]);
+
+            int seats = Integer.parseInt(campos[4]);
+            System.out.println("Seats: " + seats);
+
+            Time departureTime = Time.valueOf(campos[5]);
+            System.out.println("Departure Time: " + departureTime);
+
+            Time arrivalTime = Time.valueOf(campos[6]);
+            System.out.println("Arrival Time: " + arrivalTime);
+
+            List<String> days = Arrays.asList(Arrays.copyOfRange(campos, 7, campos.length));
+            System.out.println("Days: " + days);
+
+            return new Flight(
+                    campos[0], // Código de vuelo
+                    airline, // Compañía aérea
+                    originAirport, // Aeropuerto de origen
+                    destinationAirport, // Aeropuerto de destino
+                    seats, // Número de plazas totales
+                    departureTime, // Hora de salida
+                    arrivalTime, // Hora de llegada
+                    days // Días de operación
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public AirlineCompany findAirlineByCode(int code) {
-        for (AirlineCompany airline : startupManager.getAirlineCompanies().values()) {
-            if (airline.getPrefijo() == code) {
-                return airline;
-            }
-        }
-        return null;
+
+    public AirlineCompany findAirlineByCode(String code) {
+        return startupManager.getAirlineCompanies().get(code);
     }
 
     public Airport findAirportByCode(String code) {
         return startupManager.getAirports().get(code);
     }
+
+
 }

@@ -5,8 +5,7 @@ import java.io.EOFException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.*;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.PATH_MUNICIPIOS;
 
 public class MunicipiosCsvReader<T> {
 

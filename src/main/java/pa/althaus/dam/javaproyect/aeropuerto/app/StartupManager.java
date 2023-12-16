@@ -8,7 +8,7 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.dao.AirportDao;
 import pa.althaus.dam.javaproyect.aeropuerto.model.dao.DailyFlightDao;
 import pa.althaus.dam.javaproyect.aeropuerto.model.dao.FlightDao;
 import pa.althaus.dam.javaproyect.aeropuerto.util.reader.MunicipiosCsvReader;
-import pa.althaus.dam.javaproyect.aeropuerto.view.MainView;
+import pa.althaus.dam.javaproyect.aeropuerto.view.AppFrame;
 
 import java.util.HashMap;
 import pa.althaus.dam.javaproyect.aeropuerto.model.DailyFlight;
@@ -41,18 +41,18 @@ public class StartupManager {
         
         loadFlights();
         System.out.println("Flights loaded successfully");
-        
-        loadDailyFlights();
-        System.out.println("Daily Flights loaded successfully");
-        
-        loadMunicipios();
-        System.out.println("Municipios loaded successfully");
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
 
-        MainView mainView = new MainView();
-        mainView.setVisible(true);
+            loadDailyFlights();
+            System.out.println("Daily Flights loaded successfully");
+
+            loadMunicipios();
+            System.out.println("Municipios loaded successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        AppFrame appFrame = new AppFrame();
+        appFrame.setVisible(true);
     }
 
     private void loadAirports() {

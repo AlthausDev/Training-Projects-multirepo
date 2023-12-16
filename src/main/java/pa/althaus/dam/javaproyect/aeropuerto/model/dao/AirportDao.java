@@ -1,8 +1,7 @@
 package pa.althaus.dam.javaproyect.aeropuerto.model.dao;
 
 import pa.althaus.dam.javaproyect.aeropuerto.model.Airport;
-
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_AIRPORTS;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.PATH_AIRPORTS;
 
 public class AirportDao extends CoreDao<Airport> {
 

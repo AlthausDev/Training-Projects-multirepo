@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.stream.Collectors;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.PATH_DAILYFLIGHT;
 
-import static pa.althaus.dam.javaproyect.aeropuerto.util.config.Paths.PATH_DAILYFLIGHT;
 
 public class DailyFlightDao extends CoreDao<DailyFlight> {
 
