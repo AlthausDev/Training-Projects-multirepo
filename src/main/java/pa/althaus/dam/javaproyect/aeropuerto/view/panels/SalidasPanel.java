@@ -15,6 +15,9 @@ import pa.althaus.dam.javaproyect.aeropuerto.controller.SalidasController;
  * @author Imper
  */
 public class SalidasPanel extends javax.swing.JPanel {
+    
+    private static int index = 1;
+
 
     private final SalidasController salidasController;
     private final DefaultTableModel tableModel = new DefaultTableModel();

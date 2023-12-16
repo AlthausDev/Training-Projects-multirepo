@@ -19,6 +19,7 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.Flight;
  */
 public class VuelosPorCompaniaPanel extends javax.swing.JPanel {
     
+    private static int index = 3;
    private VuelosPorAirlineController controller;
     private DefaultTableModel tableModel;
 

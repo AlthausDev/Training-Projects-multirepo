@@ -103,7 +103,13 @@ public class MainPanel extends javax.swing.JPanel {
         cardLayout.show(mainPanel, "Llegadas");
     }//GEN-LAST:event_btnLlegadasActionPerformed
 
-
+ public void initialize(CardLayout cardLayout, JPanel mainPanel) {
+        btnSalidas.addActionListener(evt -> cardLayout.show(mainPanel, "Salidas"));
+        btnLlegadas.addActionListener(evt -> cardLayout.show(mainPanel, "Llegadas"));
+        btnAirlines.addActionListener(evt -> cardLayout.show(mainPanel, "VuelosPorCompania"));
+        btnFlightRecaudacion.addActionListener(evt -> cardLayout.show(mainPanel, "Recaudaciones"));
+        btnDiaryFlight.addActionListener(evt -> cardLayout.show(mainPanel, "VuelosPrevistos"));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAirlines;
     private javax.swing.JButton btnDiaryFlight;

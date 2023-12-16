@@ -20,6 +20,8 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.dao.DailyFlightDao;
  */
 public class RecaudacionesPanel extends javax.swing.JPanel {
 
+    private static int index = 4;
+
     /**
      * Creates new form recaudacionesPanel
      */

@@ -19,7 +19,8 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.DailyFlight;
  * @author Imper
  */
 public class LlegadasPanel extends javax.swing.JPanel {
-
+    
+    private static int index = 2;
     private final LlegadasController llegadasController;
     private final DefaultTableModel tableModel = new DefaultTableModel();
 

@@ -14,6 +14,8 @@ import pa.althaus.dam.javaproyect.aeropuerto.model.dao.DailyFlightDao;
 
 public class VuelosPrevistosPanel extends javax.swing.JPanel {
     private final ProximosVuelosController vuelosController;
+    
+    private static int index = 5;
 
     public VuelosPrevistosPanel() {
         initComponents();
