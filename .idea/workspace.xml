@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="refactor">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="build: añade archivos .class al proyecto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.1-ComponentsTest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.1-ComponentsTest/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/java/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.form" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/java/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/java/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/src/main/java/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/VITP.03.3-StackSearchTest-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/VITP.03.3-StackSearchTest-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/classes/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/classes/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/classes/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/classes/pa/althaus/dam/vitp/stacktest/components/app/FrameApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/VITP.03.3-StackSearchTest/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +38,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/training-projects/VisualInterfaceTP",
+    "last_opened_file_path": "D:/Projects/main-projects/JavaProyect.02-Aeropuerto",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -78,7 +68,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699666182005</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="build: añade archivos .class al proyecto">
+      <created>1701810644973</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701810644973</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +122,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="build: añade archivos .class al proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="build: añade archivos .class al proyecto" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
