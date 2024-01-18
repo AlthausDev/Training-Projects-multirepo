@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\App.xaml
-11407045341
+31312475211
 
-7-766461653
+9-230781045
 198-294894759
-MainWindow.xaml;
+DataGridView.xaml;DialogoPersona.xaml;MainWindow.xaml;
 
 False
 

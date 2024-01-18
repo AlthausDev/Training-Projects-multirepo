@@ -19,3 +19,7 @@ E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\ob
 E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\TesWPFtApp.pdb
 E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\TesWPFtApp.genruntimeconfig.cache
 E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\ref\TesWPFtApp.dll
+E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\DataGridView.g.cs
+E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\DataGridView.baml
+E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\DialogoPersona.g.cs
+E:\Projects\training-projects\VisualInterfaceTP\VITP.07-TesWPFtApp\TesWPFtApp\obj\Debug\net8.0-windows\DialogoPersona.baml

@@ -1,33 +1,24 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TesWPFtApp
-{ 
+{
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {    
-    
+    public partial class MainWindow : Window {        
+       
         public ObservableCollection<Persona> LstPersonas { get; set; }
 
         public MainWindow()
         {      
             InitializeComponent();
-            fillList();
+            FillList();
             this.DataContext = this;
         }
 
-        private void fillList() { 
+        private void FillList() { 
             LstPersonas =
             [
                 new Persona(1, "Hans Landa"),
@@ -43,7 +34,7 @@ namespace TesWPFtApp
      
         }
 
-        private void btnNombre_Click(object sender, RoutedEventArgs e)
+        private void BtnNombre_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNombre.Text))
             {
@@ -51,11 +42,11 @@ namespace TesWPFtApp
 
                 Persona persona = new Persona(newId, txtNombre.Text);
                 LstPersonas.Add(persona);
-                btnClear_Click(sender, e);
+                BtnClear_Click(sender, e);
             }
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void BtnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNombre.Text))
             {
@@ -69,12 +60,12 @@ namespace TesWPFtApp
         }
 
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
             LstPersonas.Remove(cbNombre.SelectedItem as Persona);
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             txtNombre.Clear();
         }
