@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.samuelaa.pmdm.diceroller.app-mergeDebugResources-7:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.samuelaa.pmdm.diceroller.app-mergeDebugResources-20:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\samuelaa\\.gradle\\caches\\transforms-3\\bfcf03280b66a4a46366454e1886e52f\\transformed\\appcompat-v7-28.0.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\samuelaa\\.gradle\\caches\\transforms-3\\04572fe80328706cea89229d61e83872\\transformed\\appcompat-1.6.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
