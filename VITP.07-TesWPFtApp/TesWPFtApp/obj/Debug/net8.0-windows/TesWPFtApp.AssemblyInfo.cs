@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TesWPFtApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d3464b47d9d6f3d69fd232c75df8009029e5a92")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80bd8009d2b8bb6d8612c78eb5348d9fca9c10be")]
 [assembly: System.Reflection.AssemblyProductAttribute("TesWPFtApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TesWPFtApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

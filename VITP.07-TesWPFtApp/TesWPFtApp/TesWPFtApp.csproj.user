@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Contenedores.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DataGridView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Contenedores.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DialogoPersona.xaml">
       <SubType>Designer</SubType>
     </Page>
