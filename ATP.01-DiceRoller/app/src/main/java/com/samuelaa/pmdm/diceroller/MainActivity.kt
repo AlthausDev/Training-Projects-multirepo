@@ -9,15 +9,12 @@ import com.samuelaa.pmdm.diceroller.databinding.ActivityMainBinding
 class MainActivity(private val ViewModelFactory: ViewModelFactory) : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var cara1: Int = 0
-    private var cara2: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        //setContentView(binding.root)
+        setContentView(binding.root)
 
         binding.btnRoll.setOnClickListener {
             val toast = Toast.makeText(this, "Dado lanzado", Toast.LENGTH_SHORT).show()

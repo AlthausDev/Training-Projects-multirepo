@@ -1,7 +1,8 @@
-package com.althaus.dev.atp12_diceroller
+package com.althaus.dev.atp12_diceroller.usecase.onboarding.diceRoll
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.althaus.dev.atp12_diceroller.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
