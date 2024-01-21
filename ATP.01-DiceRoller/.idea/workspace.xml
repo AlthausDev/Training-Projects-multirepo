@@ -17,22 +17,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ad5160-3a45-48b0-a573-e779c5b23950" name="Changes" comment="refactor: Modificado para usar ViewModel y bindings">
-      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/DiceViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/view/DiceFragment.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/.idea/VisualInterfaceTP.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.01.1-SampleForm/VITP.01.1-SampleForm.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.1-Components/VITP.03.1-Components.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.1-ComponentsTest/VITP.03.1-ComponentsTest.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.2-ReflexionTest/VITP.03.2-ReflexionTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/view/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/model/Dice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/model/Dice.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/DiceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/features/diceRoll/DiceFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/DiceViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/fragment_dice.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/fragment_dice.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

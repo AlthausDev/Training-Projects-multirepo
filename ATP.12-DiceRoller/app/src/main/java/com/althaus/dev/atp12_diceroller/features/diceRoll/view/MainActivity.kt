@@ -1,6 +1,7 @@
 package com.althaus.dev.atp12_diceroller.features.diceRoll.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.althaus.dev.atp12_diceroller.databinding.ActivityMainBinding
@@ -15,7 +16,8 @@ class MainActivity : AppCompatActivity() {
      *
      * this --> ViewModelProvider --> DiceViewModel
      */
-    private val viewModel = ViewModelProvider(this).get(DiceViewModel::class.java)
+    private lateinit var viewModel: DiceViewModel
+
 
     /* Esto se resume en:
      * Voy a usar Data Binding y necesito una instancia de ActivityMainBinding para acceder a
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(DiceViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         // La vista principal de la actividad es el contenedor raíz del diseño XML inflado, y
@@ -33,12 +36,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnRollDice.setOnClickListener{
+            val toast = Toast.makeText(this, "Dado lanzado", Toast.LENGTH_SHORT).show()
             viewModel.rollDice()
         }
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }
