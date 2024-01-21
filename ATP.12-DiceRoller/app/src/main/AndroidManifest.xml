@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ATP12DiceRoller"
         tools:targetApi="31">
         <activity
-            android:name=".usecase.diceRoll.MainActivity"
+            android:name=".features.diceRoll.view.MainActivity"
             android:exported="true">
 
             <intent-filter>
