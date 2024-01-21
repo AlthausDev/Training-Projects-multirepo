@@ -14,26 +14,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/btnRollDice"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_container_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         tools:layout="@layout/fragment_dice" />
 
-    <Button
-        android:id="@+id/btnRollDice"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_button"
+        android:name="com.althaus.dev.atp12_diceroller.features.diceRoll.common.controls.ButtonFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-
-        android:text="@string/lanzar_dado"
-        android:textSize="16sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_container"
-        app:layout_constraintWidth_percent="0.5"/>
+        app:layout_constraintWidth_percent="0.5"
+
+        tools:layout="@layout/fragment_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
