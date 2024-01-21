@@ -1,4 +1,4 @@
-package com.althaus.dev.atp12_diceroller.usecase.onboarding.diceRoll
+package com.althaus.dev.atp12_diceroller.usecase.diceRoll
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.althaus.dev.atp12_diceroller.usecase.onboarding.diceRoll
+package com.althaus.dev.atp12_diceroller.usecase.diceRoll
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.althaus.dev.atp12_diceroller.R
+import com.althaus.dev.atp12_diceroller.usecase.onboarding.diceRoll.DiceViewModel
 
 class DiceFragment : Fragment() {
 

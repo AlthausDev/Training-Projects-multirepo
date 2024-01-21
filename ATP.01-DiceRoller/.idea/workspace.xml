@@ -4,25 +4,96 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.DiceRoller</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ad5160-3a45-48b0-a573-e779c5b23950" name="Changes" comment="refactor: Modificado para usar ViewModel y bindings">
+      <change afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/migrations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/dice_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/.idea/VisualInterfaceTP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.01.1-SampleForm/VITP.01.1-SampleForm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.1-Components/VITP.03.1-Components.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.1-ComponentsTest/VITP.03.1-ComponentsTest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../VisualInterfaceTP/VITP.03.2-ReflexionTest/VITP.03.2-ReflexionTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/samuelaa/pmdm/diceroller/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/samuelaa/pmdm/diceroller/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/DiceFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/DiceFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/java/com/althaus/dev/atp12_diceroller/usecase/diceRoll/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/fragment_dice.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/layout/fragment_dice.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ATP.12-DiceRoller/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Imper\.android\avd\Nexus_6_API_29.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DiceRoller" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DiceRoller" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DiceRoller" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DiceRoller" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,7 +103,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,8 +122,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.12-DiceRoller",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP/ATP.01-DiceRoller",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
@@ -67,6 +142,7 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />

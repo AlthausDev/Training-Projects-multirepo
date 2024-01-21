@@ -4,15 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".usecase.onboarding.diceRoll.MainActivity">
+    tools:context=".usecase.diceRoll.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|fill_horizontal"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container"
+                android:name="com.althaus.dev.atp12_diceroller.usecase.diceRoll.DiceFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:layout="@layout/fragment_dice"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnRollDice"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lanzar_dado" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
