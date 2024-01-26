@@ -631,23 +631,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\samuelaa\\.nuget\\packages\\": {},
+    "C:\\Users\\Imper\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\VITP.10-VacasWPF.csproj",
-      "projectName": "VITP.10-VacasWPF",
-      "projectPath": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\VITP.10-VacasWPF.csproj",
-      "packagesPath": "C:\\Users\\samuelaa\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\obj\\",
+      "projectUniqueName": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\VacasWPF.csproj",
+      "projectName": "VacasWPF",
+      "projectPath": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\VacasWPF.csproj",
+      "packagesPath": "C:\\Users\\Imper\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.10-VacasWPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\samuelaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Imper\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -669,6 +669,9 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "default"
       }
     },
     "frameworks": {

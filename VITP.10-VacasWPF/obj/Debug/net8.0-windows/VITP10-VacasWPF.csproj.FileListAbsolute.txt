@@ -1,10 +1,1 @@
-E:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF.csproj.AssemblyReference.cache
-E:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\App\App.g.cs
-E:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\Ui\MainWindow\MainWindow.g.cs
-E:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF_MarkupCompile.cache
-E:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF_MarkupCompile.lref
-E:\Projects\training-projects\VisualInterfaceTP\VITP10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF.csproj.AssemblyReference.cache
-E:\Projects\training-projects\VisualInterfaceTP\VITP10-VacasWPF\obj\Debug\net8.0-windows\App\App.g.cs
-E:\Projects\training-projects\VisualInterfaceTP\VITP10-VacasWPF\obj\Debug\net8.0-windows\Ui\MainWindow\MainWindow.g.cs
-E:\Projects\training-projects\VisualInterfaceTP\VITP10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF_MarkupCompile.cache
-E:\Projects\training-projects\VisualInterfaceTP\VITP10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF_MarkupCompile.lref
+D:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Debug\net8.0-windows\VITP10-VacasWPF.csproj.AssemblyReference.cache

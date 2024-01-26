@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 
-2600314533
+2-1229904646
 
-71934970039
-198-294894759
-Application\App.xaml;Ui\MainWindow\MainWindow.xaml;
+7-565583002
+210-156657939
+App\App.xaml;App\MainWindow.xaml;
 
-False
+True
 

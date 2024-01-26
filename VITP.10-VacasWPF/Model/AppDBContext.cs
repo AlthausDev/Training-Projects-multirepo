@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 
 namespace VITP._10_VacasWPF.Model
 {
-    internal class AppDBContext: DbContext
+    public class AppDBContext: DbContext
     {
-
-        public ObservableCollection<Vaca> Vacas { get; set; }
+        public ObservableCollection<Vaca> ListVacas { get; set; }
 
         public AppDBContext()
         {
-            Vacas = [];
+            ListVacas = new ObservableCollection<Vaca>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,7 +36,7 @@ namespace VITP._10_VacasWPF.Model
             using (var writer = new StreamWriter(Utils.CsvConfig.PathFile))
             using (var csvWriter = new CsvWriter(writer, Utils.CsvConfig.Config))
             {
-                csvWriter.WriteRecords(this.Vacas.ToList());
+                csvWriter.WriteRecords(this.ListVacas.ToList());
             }
         }
     }

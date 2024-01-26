@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\App",
-    "\\Model"
+    "\\Commands"
   ],
-  "SelectedNode": "\\Model\\Vaca.cs",
   "PreviewInSolutionExplorer": false
 }
