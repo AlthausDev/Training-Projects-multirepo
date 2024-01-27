@@ -1,0 +1,4 @@
+D:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Release\net8.0-windows\VacasWPF.csproj.AssemblyReference.cache
+D:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Release\net8.0-windows\App\App.g.cs
+D:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Release\net8.0-windows\VacasWPF_MarkupCompile.cache
+D:\Projects\training-projects\VisualInterfaceTP\VITP.10-VacasWPF\obj\Release\net8.0-windows\VacasWPF_MarkupCompile.lref

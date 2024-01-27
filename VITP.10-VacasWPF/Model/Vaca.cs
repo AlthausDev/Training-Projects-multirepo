@@ -7,29 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VITP._10_VacasWPF.Model
+namespace VacasWPF.Model
 {
     public class Vaca : IEditableObject, INotifyPropertyChanged
     {
-
-        #region Constructores
-
-        public Vaca() { }
-
-        public Vaca(int id, string nomMunicipio, DateOnly f_nacim, DateOnly f_destete, int alzada, int peso, string sexo, string tipo)
-        {
-            this.id = id;
-            _nomMunicipio = nomMunicipio;
-            _f_nacim = f_nacim.ToString("dd/MM/yyyy");
-            _f_destete = f_destete.ToString("dd/MM/yyyy");
-            _alzada = alzada;
-            _peso = peso;
-            _sexo = sexo;
-            _tipo = tipo;
-        }
-
-
-        #endregion
 
         #region Propiedades
         [Key]
@@ -51,14 +32,12 @@ namespace VITP._10_VacasWPF.Model
             }
         }
 
-        [Format("dd/MM/yyyy")]
         public String f_nacim
         {
             get => _f_nacim;
             set => _f_nacim = value;
         }
 
-        [Format("dd/MM/yyyy")]
         public String f_destete
         {
             get => _f_destete;
@@ -75,6 +54,24 @@ namespace VITP._10_VacasWPF.Model
         public string sexo { get => _sexo; set => _sexo = value; }
         public string tipo { get => _tipo; set => _tipo = value; }
         #endregion
+
+        #region Constructores
+
+        public Vaca() { }
+
+        public Vaca(int id, string nomMunicipio, DateOnly f_nacim, DateOnly f_destete, int alzada, int peso, string sexo, string tipo)
+        {
+            this.id = id;
+            _nomMunicipio = nomMunicipio;
+            _f_nacim = f_nacim.ToString("dd/MM/yyyy");
+            _f_destete = f_destete.ToString("dd/MM/yyyy");
+            _alzada = alzada;
+            _peso = peso;
+            _sexo = sexo;
+            _tipo = tipo;
+        }
+        #endregion
+
 
         #region Variables miembro privadas
         private string _nomMunicipio;

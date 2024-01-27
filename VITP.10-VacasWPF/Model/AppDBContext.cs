@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VITP._10_VacasWPF.Model
+namespace VacasWPF.Model
 {
-    public class AppDBContext: DbContext
-    {
+    public class AppDBContext: DbContext  {
+
         public ObservableCollection<Vaca> ListVacas { get; set; }
 
         public AppDBContext()
@@ -27,6 +27,13 @@ namespace VITP._10_VacasWPF.Model
         public override int SaveChanges()
         {
             int retValue = base.SaveChanges();
+            SaveToCsv();
+            return retValue;
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            int retValue = base.SaveChanges(acceptAllChangesOnSuccess);
             SaveToCsv();
             return retValue;
         }

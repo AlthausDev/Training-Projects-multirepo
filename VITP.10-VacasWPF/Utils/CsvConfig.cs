@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VITP._10_VacasWPF.Utils
+namespace VacasWPF.Utils
 {
     public static class CsvConfig
     {
