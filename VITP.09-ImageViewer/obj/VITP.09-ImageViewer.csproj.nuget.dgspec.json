@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj": {}
+    "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj": {}
   },
   "projects": {
-    "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj": {
+    "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj",
+        "projectUniqueName": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj",
         "projectName": "VITP.09-ImageViewer",
-        "projectPath": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj",
-        "packagesPath": "C:\\Users\\samuelaa\\.nuget\\packages\\",
-        "outputPath": "E:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\obj\\",
+        "projectPath": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\VITP.09-ImageViewer.csproj",
+        "packagesPath": "C:\\Users\\Imper\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.09-ImageViewer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\samuelaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Imper\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {

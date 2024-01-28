@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = VITP._09_ImageViewer
-build_property.ProjectDir = E:\Projects\training-projects\VisualInterfaceTP\VITP.09-ImageViewer\
+build_property.ProjectDir = D:\Projects\training-projects\VisualInterfaceTP\VITP.09-ImageViewer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

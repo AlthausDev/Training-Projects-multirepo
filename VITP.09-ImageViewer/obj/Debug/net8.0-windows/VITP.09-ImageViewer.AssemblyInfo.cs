@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VITP.09-ImageViewer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80bd8009d2b8bb6d8612c78eb5348d9fca9c10be")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41fb12b343543df23da4a944b01a55af981f706c")]
 [assembly: System.Reflection.AssemblyProductAttribute("VITP.09-ImageViewer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VITP.09-ImageViewer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
