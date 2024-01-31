@@ -32,10 +32,11 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" Language="es-es">
-            </RowDefinition>
+            <RowDefinition Height="100" Language="es-es"/>
+            <RowDefinition Height="*"/>
+
         </Grid.RowDefinitions>
-        <Grid Background="WhiteSmoke">
+        <Grid Grid.Row="0" Background="WhiteSmoke">
             <StackPanel Background="WhiteSmoke" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="A" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.A}"/>
                 <Button Content="B" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.B}"/>

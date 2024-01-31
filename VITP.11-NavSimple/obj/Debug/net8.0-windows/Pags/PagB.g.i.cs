@@ -53,7 +53,7 @@ namespace VITP._11_NavSimple.Pags {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/VITP.11-NavSimple;V1.0.0.0;component/pags/pagb.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/VITP.11-NavSimple;component/pags/pagb.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pags\PagB.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
