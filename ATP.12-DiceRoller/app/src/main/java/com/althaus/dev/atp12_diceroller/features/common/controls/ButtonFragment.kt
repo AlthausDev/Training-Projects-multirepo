@@ -1,4 +1,4 @@
-package com.althaus.dev.atp12_diceroller.features.diceRoll.common.controls
+package com.althaus.dev.atp12_diceroller.features.common.controls
 
 import android.os.Bundle
 import android.view.LayoutInflater

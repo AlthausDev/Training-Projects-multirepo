@@ -23,7 +23,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_button"
-        android:name="com.althaus.dev.atp12_diceroller.features.diceRoll.common.controls.ButtonFragment"
+        android:name="com.althaus.dev.atp12_diceroller.features.common.controls.ButtonFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"

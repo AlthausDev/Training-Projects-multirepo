@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         sharedViewModel = ViewModelProvider(this).get(DiceViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
 

@@ -1,9 +1,8 @@
 package com.althaus.dev.atp12_diceroller.model
 
-import java.lang.IllegalArgumentException
 import kotlin.random.Random
 
-class Dice(private var numSides: Int) {
+data class Dice(var numSides: Int) {
 
     init {
         if (numSides <= 1) {
