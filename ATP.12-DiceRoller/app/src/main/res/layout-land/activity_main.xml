@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.diceRoll.view.MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_left"
+        android:name="com.althaus.dev.atp12_diceroller.features.diceRoll.view.DiceFragment"
+        android:layout_width="326dp"
+        android:layout_height="270dp"
+
+        app:layout_constraintBottom_toTopOf="@id/fragment_container_middle"
+        app:layout_constraintEnd_toStartOf="@id/fragment_container_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:layout="@layout/fragment_dice" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_middle"
+        android:name="com.althaus.dev.atp12_diceroller.features.common.controls.ButtonFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_container_right"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        tools:layout="@layout/fragment_button" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_right"
+        android:name="com.althaus.dev.atp12_diceroller.features.diceRoll.view.DiceRollListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@id/fragment_container_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout="@layout/fragment_dice_roll_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

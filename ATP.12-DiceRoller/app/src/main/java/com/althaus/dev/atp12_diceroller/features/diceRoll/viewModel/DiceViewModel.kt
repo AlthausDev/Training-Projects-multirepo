@@ -22,12 +22,17 @@ class DiceViewModel(private val repository: DiceRollRepository) : ViewModel() {
     val resultadoDado2: LiveData<Int> = _resultadoDado2
 
     fun rollDice() {
-        val result1 = dado.rollDice()
-        val result2 = dado.rollDice()
-        val diceRoll = DiceRoll(dado1 = result1, dado2 = result2)
+        val resultadoDado1 = dado.rollDice()
+        val resultadoDado2 = dado.rollDice()
+
+        _resultadoDado1.value = resultadoDado1
+        _resultadoDado2.value = resultadoDado2
+
+        val diceRoll = DiceRoll(dado1 = resultadoDado1, dado2 = resultadoDado2)
 
         viewModelScope.launch {
             repository.insertDiceRoll(diceRoll)
+
         }
     }
 }

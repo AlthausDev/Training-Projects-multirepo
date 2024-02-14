@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.althaus.dev.atp12_diceroller.databinding.FragmentDiceRollListBinding
 import com.althaus.dev.atp12_diceroller.features.diceRoll.viewModel.DiceViewModel
 
@@ -19,6 +20,8 @@ class DiceRollListFragment : Fragment() {
     private lateinit var binding: FragmentDiceRollListBinding
     private lateinit var viewModel: DiceViewModel
     private lateinit var adapter: DiceRollListAdapter
+    private lateinit var recyclerView: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +47,16 @@ class DiceRollListFragment : Fragment() {
         binding.rollList.layoutManager = gridLayoutManager
         binding.rollList.adapter = adapter
 
+        // Inicializar recyclerView
+        recyclerView = binding.rollList
 
         viewModel.allDiceRolls.observe(viewLifecycleOwner) { diceRolls ->
-            adapter.submitList(diceRolls)
+            adapter.submitList(diceRolls) {
+                recyclerView.scrollToPosition(0)
+            }
         }
     }
+
     companion object {
         private const val ARG_COLUMN_COUNT = "column-count"
 
