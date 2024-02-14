@@ -27,7 +27,7 @@ class DiceRollListAdapter : ListAdapter<DiceRoll, DiceRollListAdapter.DiceRollVi
         holder.bind(diceRoll)
     }
 
-    class DiceRollViewHolder private constructor(private val binding: ItemDiceRollBinding) : RecyclerView.ViewHolder(binding.root) {
+    class DiceRollViewHolder public constructor(private val binding: ItemDiceRollBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(diceRoll: DiceRoll) {
             binding.diceRoll = diceRoll
             binding.executePendingBindings()

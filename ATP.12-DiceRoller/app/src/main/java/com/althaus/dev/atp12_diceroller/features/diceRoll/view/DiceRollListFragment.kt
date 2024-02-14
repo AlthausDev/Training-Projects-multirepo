@@ -2,17 +2,13 @@ package com.althaus.dev.atp12_diceroller.features.diceRoll.view
 
 import DiceRollListAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.althaus.dev.atp12_diceroller.R
+import androidx.recyclerview.widget.GridLayoutManager
 import com.althaus.dev.atp12_diceroller.databinding.FragmentDiceRollListBinding
-import com.althaus.dev.atp12_diceroller.features.diceRoll.view.placeholder.PlaceholderContent
 import com.althaus.dev.atp12_diceroller.features.diceRoll.viewModel.DiceViewModel
 
 /**
@@ -29,7 +25,7 @@ class DiceRollListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+            //columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
     override fun onCreateView(
