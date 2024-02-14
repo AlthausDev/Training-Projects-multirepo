@@ -15,7 +15,7 @@ import com.althaus.dev.atp12_diceroller.features.diceRoll.viewModel.DiceViewMode
  */
 class DiceRollListFragment : Fragment() {
 
-    private var columnCount = 4
+    private var columnCount = 1
     private lateinit var binding: FragmentDiceRollListBinding
     private lateinit var viewModel: DiceViewModel
     private lateinit var adapter: DiceRollListAdapter

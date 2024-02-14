@@ -13,6 +13,6 @@ interface DiceRollDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(diceRoll: DiceRoll)
 
-    @Query("SELECT * FROM dice_roll_table")
+    @Query("SELECT * FROM dice_roll_table ORDER BY id DESC")
     fun getAllDiceRolls(): LiveData<List<DiceRoll>>
 }
