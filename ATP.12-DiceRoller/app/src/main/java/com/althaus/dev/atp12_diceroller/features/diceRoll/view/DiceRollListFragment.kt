@@ -1,6 +1,5 @@
 package com.althaus.dev.atp12_diceroller.features.diceRoll.view
 
-import DiceRollListAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +24,7 @@ class DiceRollListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            //columnCount = it.getInt(ARG_COLUMN_COUNT)
+            columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
     override fun onCreateView(
@@ -50,4 +49,16 @@ class DiceRollListFragment : Fragment() {
             adapter.submitList(diceRolls)
         }
     }
+    companion object {
+        private const val ARG_COLUMN_COUNT = "column-count"
+
+        @JvmStatic
+        fun newInstance(columnCount: Int) =
+            DiceRollListFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_COLUMN_COUNT, columnCount)
+                }
+            }
+    }
+
 }

@@ -23,7 +23,7 @@ class DiceViewModel(private val repository: DiceRollRepository) : ViewModel() {
     fun rollDice() {
         val result1 = (1..6).random()
         val result2 = (1..6).random()
-        val diceRoll = DiceRoll(dice1Result = result1, dice2Result = result2)
+        val diceRoll = DiceRoll(dado1 = result1, dado2 = result2)
 
         viewModelScope.launch {
             repository.insertDiceRoll(diceRoll)

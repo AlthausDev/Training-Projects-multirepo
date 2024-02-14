@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:text="@{String.valueOf(diceRoll.dice1Result)}" />
+            android:text="@{String.valueOf(diceRoll.dado1)}" />
 
         <TextView
             android:id="@+id/dice2_result"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:text="@{String.valueOf(diceRoll.dice2Result)}" />
+            android:text="@{String.valueOf(diceRoll.dado2)}" />
 
     </LinearLayout>
 
