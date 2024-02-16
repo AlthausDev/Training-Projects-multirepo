@@ -14,6 +14,19 @@ namespace VITP._12_Ommnisiah.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        private string _brewerFilterText;
+        public string BrewerFilterText
+        {
+            get { return _brewerFilterText; }
+            set
+            {
+                _brewerFilterText = value;
+                OnPropertyChanged(nameof(BrewerFilterText));
+                FilterByBrewer();
+            }
+        }
+
         private ObservableCollection<Beer> _beers;
         public ObservableCollection<Beer> Beers
         {
@@ -38,6 +51,21 @@ namespace VITP._12_Ommnisiah.ViewModel
         private void LoadBeers()
         {
             Beers = new ObservableCollection<Beer>(CsvConfig.ReadBeersFromCsv());
+        }
+
+        private void FilterByBrewer()
+        {
+            if (string.IsNullOrWhiteSpace(BrewerFilterText))
+            {
+                Beers = new ObservableCollection<Beer>(CsvConfig.ReadBeersFromCsv());
+            }
+            else
+            {
+                var filteredList = new ObservableCollection<Beer>(
+                    CsvConfig.ReadBeersFromCsv().FindAll(b => b.Brewer.Contains(BrewerFilterText))
+                );
+                Beers = filteredList;
+            }
         }
 
         // Método para notificar cambios en las propiedades

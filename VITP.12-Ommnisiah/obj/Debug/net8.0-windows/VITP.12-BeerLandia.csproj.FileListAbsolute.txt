@@ -1,3 +1,4 @@
+D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\Data\beers.csv
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\VITP.12-BeerLandia.exe
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\VITP.12-BeerLandia.deps.json
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\VITP.12-BeerLandia.runtimeconfig.json
@@ -10,6 +11,7 @@ D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\Pages\Page1.g.cs
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\Pages\Page2.g.cs
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\App.g.cs
+D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia_MarkupCompile.cache
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia_MarkupCompile.lref
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\MainWindow.baml
@@ -27,5 +29,3 @@ D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia.pdb
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia.genruntimeconfig.cache
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\ref\VITP.12-BeerLandia.dll
-D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\Data\beers.csv

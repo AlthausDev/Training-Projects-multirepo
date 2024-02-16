@@ -37,22 +37,19 @@
             <Setter Property="FontSize" Value="12"/>
         </Style>
     </Page.Resources>
-
-
     
     <Grid>
-        <DataGrid ItemsSource="{Binding Beers}" AutoGenerateColumns="True">
+        <DataGrid ItemsSource="{Binding Beers}" AutoGenerateColumns="False" Width="Auto" Height="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
-                <DataGridTextColumn Header="ABV" Binding="{Binding Abv}" Width="*" />
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
-                <DataGridTextColumn Header="Estilo" Binding="{Binding Style}" Width="*" />
-                <DataGridTextColumn Header="Cervecera" Binding="{Binding Brewer}" Width="*" />
-                <DataGridTextColumn Header="Ciudad" Binding="{Binding City}" Width="*" />
-                <DataGridTextColumn Header="Estado" Binding="{Binding State}" Width="*" />
-                <DataGridTextColumn Header="Etiqueta" Binding="{Binding Label}" Width="*" />
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto" />
+                <DataGridTextColumn Header="ABV" Binding="{Binding Abv}" Width="Auto" />
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="Auto" />
+                <DataGridTextColumn Header="Estilo" Binding="{Binding Style}" Width="Auto" />
+                <DataGridTextColumn Header="Cervecera" Binding="{Binding Brewer}" Width="Auto" />
+                <DataGridTextColumn Header="Ciudad" Binding="{Binding City}" Width="Auto" />
+                <DataGridTextColumn Header="Estado" Binding="{Binding State}" Width="Auto" />
+                <DataGridTextColumn Header="Etiqueta" Binding="{Binding Label}" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Page>
