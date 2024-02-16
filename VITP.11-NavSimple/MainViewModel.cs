@@ -20,7 +20,7 @@ namespace VITP._11_NavSimple
 
         public MainViewModel()
         {
-            PageID = PageId.A;
+            PageID = PageId.B;
         }
 
         private void ChangePage(PageId pageId)

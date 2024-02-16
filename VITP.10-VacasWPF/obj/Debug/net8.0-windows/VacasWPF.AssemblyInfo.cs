@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VacasWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e7b7d02387f7d9e27985f30bf25d74b509129d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77ef7857f6d1a1f7dc88dad145f698329297a1b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("VacasWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VacasWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
