@@ -1,11 +1,15 @@
-﻿using CsvHelper.Configuration;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using VITP._12_Ommnisiah.Model;
 
 namespace VITP._12_Ommnisiah.Utils
 {
-    internal class CsvConfig
+    public class CsvConfig
     {
         private static readonly string File = "beers.csv";
         private static readonly string Path = AppDomain.CurrentDomain.BaseDirectory;
@@ -13,15 +17,23 @@ namespace VITP._12_Ommnisiah.Utils
 
         public static CsvConfiguration Configuration { get; }
 
-        private static CsvConfiguration CreateCsvConfiguration()
+        static CsvConfig()
         {
-            var configuration = new CsvConfiguration(CultureInfo.CurrentCulture)
+            Configuration = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
                 Delimiter = ",",
-                Encoding = Encoding.UTF8
+                Encoding = Encoding.UTF8,
+                HasHeaderRecord = true // Indica si el archivo CSV tiene un encabezado
             };
+        }
 
-            return configuration;
+        public static List<Beer> ReadBeersFromCsv()
+        {
+            using (var reader = new StreamReader(PathFile, Encoding.UTF8))
+            using (var csv = new CsvReader(reader, Configuration))
+            {
+                return csv.GetRecords<Beer>().ToList();
+            }
         }
     }
 }

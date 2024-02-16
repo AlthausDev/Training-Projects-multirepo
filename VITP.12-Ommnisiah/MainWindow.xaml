@@ -7,12 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <!-- Definición de las columnas -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <!-- Columna izquierda (autoajustable) -->
             <ColumnDefinition Width="*"/>
             <!-- Columna derecha (se expande) -->
         </Grid.ColumnDefinitions>
-        <Frame Grid.Column="1" Name="mainFrame"/>
+
+        <!-- Contenido en la columna izquierda -->
+        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+            <Button Content="Página 1" Command="{Binding NavigateToPage1Command}" />
+            <Button Content="Página 2" Command="{Binding NavigateToPage2Command}" />
+        </StackPanel>
+
+        <!-- Frame para contener la página -->
+        <Frame Grid.Column="1" Name="MainFrame"/>
     </Grid>
 </Window>

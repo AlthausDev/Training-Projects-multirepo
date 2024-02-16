@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -8,15 +9,31 @@ using System.Threading.Tasks;
 
 namespace VITP._12_Ommnisiah.Model
 {
-    internal class Beer : IEditableObject, INotifyPropertyChanged
+    public class Beer : IEditableObject, INotifyPropertyChanged
     {
-        [Key] public long Id { get; set; }
-        public float Abv { get; set; }
+        [Key]
+        [Index(4)] // Id
+        public long Id { get; set; }
+
+        [Index(2)] // Abv
+        public string Abv { get; set; }
+
+        [Index(5)] // Name
         public string Name { get; set; }
+
+        [Index(6)] // Style
         public string Style { get; set; }
+
+        [Index(11)] // Brewer
         public string Brewer { get; set; }
+
+        [Index(12)] // City
         public string City { get; set; }
+
+        [Index(13)] // State
         public string State { get; set; }
+
+        [Index(14)] // Label
         public string Label { get; set; }
 
 
@@ -27,7 +44,7 @@ namespace VITP._12_Ommnisiah.Model
         {
         }
 
-        public Beer(int id, float abv, string name, string style, string brewer, string city, string state, string label)
+        public Beer(int id, string abv, string name, string style, string brewer, string city, string state, string label)
         {
             Id = id;
             Abv = abv;

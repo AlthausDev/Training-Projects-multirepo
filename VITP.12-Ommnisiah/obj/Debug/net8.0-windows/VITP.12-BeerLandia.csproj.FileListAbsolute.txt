@@ -27,3 +27,5 @@ D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia.pdb
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\VITP.12-BeerLandia.genruntimeconfig.cache
 D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\ref\VITP.12-BeerLandia.dll
+D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Projects\training-projects\VisualInterfaceTP\VITP.12-Ommnisiah\bin\Debug\net8.0-windows\Data\beers.csv
