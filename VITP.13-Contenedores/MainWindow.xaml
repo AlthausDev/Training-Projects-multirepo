@@ -1,0 +1,37 @@
+﻿<Window x:Class="Examen5AAS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Examen5AAS"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+
+
+    <Grid>
+        <!-- Campo de texto para ingresar el Contenido -->
+        <TextBox Text="{Binding ContenidoFilterText}" 
+              HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" 
+              Width="200" Height="30" TextChanged="TextBox_TextChanged"/>
+
+        <!-- Botón para aplicar el filtro -->
+        <Button x:Name="FiltrarBtn" Content="Filtrar por Contenido" 
+             Command="{Binding FilterByContenidoCommand}" 
+             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,10,0,0" 
+             Width="150" Height="30" IsEnabled="False"/>
+
+        <!-- DataGrid para mostrar los datos filtrados -->
+        <DataGrid ItemsSource="{Binding Contenedores}" AutoGenerateColumns="False" 
+               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,50,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Referencia" Binding="{Binding Referencia}" Width="Auto" />
+                <DataGridTextColumn Header="Peso" Binding="{Binding Peso}" Width="Auto" />
+                <DataGridTextColumn Header="Volumen" Binding="{Binding Volumen}" Width="Auto" />
+                <DataGridTextColumn Header="Tipo de Contenido" Binding="{Binding TipoContenido}" Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Peso medio: " HorizontalAlignment="Left" Margin="488,12,0,0" VerticalAlignment="Top" Width="166"/>
+        <Label Content="{Binding Path=ContenedoresPesoMedio}" HorizontalAlignment="Left" Margin="571,11,0,0" VerticalAlignment="Top" Width="35" Height="28"/>
+    </Grid>
+</Window>
