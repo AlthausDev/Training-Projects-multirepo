@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VITP._12_Ommnisiah.Model;
+using VITP._12_Ommnisiah.ViewModel;
 
 namespace VITP._12_Ommnisiah.Pages
 {
@@ -23,6 +25,17 @@ namespace VITP._12_Ommnisiah.Pages
         public Page2()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (DataContext is BeerListViewModel viewModel)
+                {
+                    viewModel.FilterByBrewerCommand .Execute(null);
+                }
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using VITP._12_Ommnisiah.Model;
 using VITP._12_Ommnisiah.Utils;
 
@@ -14,6 +15,7 @@ namespace VITP._12_Ommnisiah.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ICommand FilterByBrewerCommand { get; private set; }
 
         private string _brewerFilterText;
         public string BrewerFilterText
@@ -42,6 +44,8 @@ namespace VITP._12_Ommnisiah.ViewModel
         // Constructor
         public BeerListViewModel()
         {
+            FilterByBrewerCommand = new RelayCommand(FilterByBrewer);
+
             // Inicializar la lista de cervezas
             Beers = new ObservableCollection<Beer>();
             LoadBeers();
@@ -53,7 +57,7 @@ namespace VITP._12_Ommnisiah.ViewModel
             Beers = new ObservableCollection<Beer>(CsvConfig.ReadBeersFromCsv());
         }
 
-        private void FilterByBrewer()
+        public void FilterByBrewer()
         {
             if (string.IsNullOrWhiteSpace(BrewerFilterText))
             {

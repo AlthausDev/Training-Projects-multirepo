@@ -16,13 +16,13 @@
         <!-- Campo de texto para ingresar el brewer -->
         <TextBox Text="{Binding BrewerFilterText, Mode=TwoWay}" 
                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" 
-                 Width="200" Height="30" />
+                 Width="200" Height="30" KeyDown="TextBox_KeyDown" />
 
         <!-- Botón para aplicar el filtro -->
         <Button Content="Filtrar por Brewer" 
                 Command="{Binding FilterByBrewerCommand}" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,10,0,0" 
-                Width="150" Height="30" />
+                Width="150" Height="30" KeyDown="TextBox_KeyDown" />
 
         <!-- DataGrid para mostrar los datos filtrados -->
         <DataGrid ItemsSource="{Binding Beers}" AutoGenerateColumns="False" 
