@@ -3,8 +3,12 @@ package com.althaus.dev.project04_cartelera.data.network
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface MovieApiService {
-    @GET("movies")
-    suspend fun getMovies(): Response<List<Movie>>
+    @GET("movie/now_playing")
+    suspend fun getNowPlayingMovies(
+        @Query("api_key") apiKey: String
+    ): Response<MovieResponse>
+
 }
