@@ -1,7 +1,7 @@
 package com.althaus.dev.project04_cartelera.data.model
 
 data class Movie(
-    val id: Int,
+    val id: Long,
     val title: String,
     val synopsis: String,
     val duration: Int,
