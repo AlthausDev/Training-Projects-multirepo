@@ -50,6 +50,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("com.google.android.gms:play-services-basement:18.3.0")
     val room_version = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -95,6 +96,11 @@ dependencies {
 
     //ReclyclerVierw
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
