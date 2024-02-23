@@ -69,8 +69,7 @@ namespace Examen5AAS
             Contenedores = GetAllContenedores();
 
             tipoContenidos = (from c in Contenedores
-                              where !tipoContenidos.Contains(c.TipoContenido)
-                              select c.TipoContenido.ToLower()).ToList();           
+                              select c.TipoContenido).Distinct().ToList();
         }      
 
         public void FilterByContenido()

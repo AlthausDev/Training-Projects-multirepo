@@ -32,15 +32,7 @@ namespace Examen5AAS
             TextBox tb = sender as TextBox;           
             List<string> listaDeStrings = LogicaNegocio.tipoContenidos;
 
-
-            if (listaDeStrings.Contains(tb.Text.ToLower()))
-            {
-                FiltrarBtn.IsEnabled = true;
-            }
-            else
-            {
-                FiltrarBtn.IsEnabled = false;
-            }
+            FiltrarBtn.IsEnabled = listaDeStrings.Contains(tb.Text.ToUpper());
 
         }
 
