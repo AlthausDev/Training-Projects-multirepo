@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<csvDataAdapter class="net.sf.jasperreports.data.csv.CsvDataAdapterImpl">
+  <name>VacasDA</name>
+  <dataFile type="repositoryDataLocation">
+    <location>C:\Users\juandbp\Downloads\vacas.csv</location>
+  </dataFile>
+  <recordDelimiter>
+</recordDelimiter>
+  <fieldDelimiter>;</fieldDelimiter>
+  <useFirstRowAsHeader>true</useFirstRowAsHeader>
+  <locale>es_ES</locale>
+  <timeZone>Europe/Madrid</timeZone>
+  <datePattern>dd/MM/yyyy</datePattern>
+  <queryExecuterMode>false</queryExecuterMode>
+  <columnNames>id</columnNames>
+  <columnNames>nomMunicipio</columnNames>
+  <columnNames>f_nacim</columnNames>
+  <columnNames>f_destete</columnNames>
+  <columnNames>alzada</columnNames>
+  <columnNames>peso</columnNames>
+  <columnNames>sexo</columnNames>
+  <columnNames>tipo</columnNames>
+</csvDataAdapter>
