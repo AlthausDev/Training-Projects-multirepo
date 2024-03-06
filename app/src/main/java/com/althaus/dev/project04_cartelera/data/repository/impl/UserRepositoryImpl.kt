@@ -1,6 +1,6 @@
 package com.althaus.dev.project04_cartelera.data.repository.impl
 
-import com.althaus.dev.project04_cartelera.data.local.dao.UserDao
+import com.althaus.dev.project04_cartelera.data.dao.UserDao
 import com.althaus.dev.project04_cartelera.data.model.User
 import com.althaus.dev.project04_cartelera.data.repository.UserRepository
 

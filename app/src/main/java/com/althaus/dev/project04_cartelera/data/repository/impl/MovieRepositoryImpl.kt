@@ -1,6 +1,6 @@
 package com.althaus.dev.project04_cartelera.data.repository.impl
 
-import com.althaus.dev.project04_cartelera.data.local.dao.MovieDao
+import com.althaus.dev.project04_cartelera.data.dao.MovieDao
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.data.repository.MovieRepository
 

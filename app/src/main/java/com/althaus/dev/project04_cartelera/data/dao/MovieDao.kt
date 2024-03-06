@@ -1,4 +1,4 @@
-package com.althaus.dev.project04_cartelera.data.local.dao
+package com.althaus.dev.project04_cartelera.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

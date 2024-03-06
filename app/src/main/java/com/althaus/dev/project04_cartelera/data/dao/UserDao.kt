@@ -1,4 +1,4 @@
-package com.althaus.dev.project04_cartelera.data.local.dao
+package com.althaus.dev.project04_cartelera.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,7 +8,7 @@ import com.althaus.dev.project04_cartelera.data.model.User
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM user WHERE username = :username AND password = :password")
+    @Query("SELECT * FROM User WHERE username = :username AND password = :password")
     suspend fun authenticate(username: String, password: String): User?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
