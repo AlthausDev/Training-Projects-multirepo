@@ -14,7 +14,9 @@ class App : Application() {
         super.onCreate()
         database = Room.databaseBuilder(
             applicationContext,
-            AppDatabase::class.java, "my-database"
-        ).build()
+            AppDatabase::class.java, "cartelera_database"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }

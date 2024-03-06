@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.althaus.dev.project04_cartelera.data.dao.MovieDao
 import com.althaus.dev.project04_cartelera.data.dao.ReservationDao
 import com.althaus.dev.project04_cartelera.data.dao.UserDao
@@ -12,6 +13,7 @@ import com.althaus.dev.project04_cartelera.data.model.Reservation
 import com.althaus.dev.project04_cartelera.data.model.User
 
 @Database(entities = [User::class, Movie::class, Reservation::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -19,7 +21,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun reservationDao(): ReservationDao
 
     companion object {
-        // Define la instancia de la base de datos como un Singleton
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
@@ -32,7 +33,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "cartelera"
+                    "cartelera_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

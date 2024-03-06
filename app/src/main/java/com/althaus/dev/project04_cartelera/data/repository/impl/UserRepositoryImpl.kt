@@ -10,7 +10,10 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
     }
 
     override suspend fun register(user: User): Boolean {
-        // TODO Implementar lógica de registro
+        val existingUser = userDao.getUserByUsername(user.username)
+        if (existingUser != null) {
+            return false
+        }
         userDao.insertUser(user)
         return true
     }
