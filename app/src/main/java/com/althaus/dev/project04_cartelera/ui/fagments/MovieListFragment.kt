@@ -56,10 +56,15 @@ class MovieListFragment : Fragment() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Error al cargar las películas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Error al cargar las películas: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 Log.e("MovieListFragment", "Error al cargar las películas", e)
             }
+
         }
     }
 }
