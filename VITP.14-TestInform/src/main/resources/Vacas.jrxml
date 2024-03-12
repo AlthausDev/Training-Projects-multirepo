@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.1.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vacas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a258eb34-1b09-406b-a4fb-00ff647cffdb">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="VacasDA.jrdax"/>
+	<parameter name="IDVACA" class="java.lang.Integer"/>
+	<queryString language="csv">
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nomMunicipio" class="java.lang.String"/>
+	<field name="f_nacim" class="java.sql.Date"/>
+	<field name="f_destete" class="java.sql.Date"/>
+	<field name="alzada" class="java.lang.Integer"/>
+	<field name="peso" class="java.lang.Integer"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{id}.equals($P{IDVACA})]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="1ebdc73a-6390-4e29-a26d-6d851da728cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45ad782e-16d9-4542-988d-6dc06b35d0b3"/>
+				</reportElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="100" height="30" uuid="47954f0b-ef49-435d-937b-becdd5d99e5c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c30602b-7cf5-4eff-ba2c-709bded906a0"/>
+				</reportElement>
+				<text><![CDATA[nomMunicipio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="100" height="30" uuid="971dd9ff-b570-438e-8b5f-e46c70c80670">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="685f1f03-18cd-4468-8632-387e241c8dec"/>
+				</reportElement>
+				<text><![CDATA[f_nacim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="0" width="100" height="30" uuid="b184abd7-e8f8-4d82-a135-a3d3a18d401d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8b66398c-b655-4ed1-9dc3-396d58c9bdec"/>
+				</reportElement>
+				<text><![CDATA[f_destete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="90" height="30" uuid="aa365e36-8ceb-463b-a308-4b65622eb12f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4847cd6-95d5-4756-bbb4-286491756e83"/>
+				</reportElement>
+				<text><![CDATA[peso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="92f9e0d3-c135-4a6c-9b26-9c2933915e68">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45ad782e-16d9-4542-988d-6dc06b35d0b3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="30" uuid="7aa8a2ef-0dad-42c6-888a-1059fed8dd2d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c30602b-7cf5-4eff-ba2c-709bded906a0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nomMunicipio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="227" y="0" width="100" height="30" uuid="59eb400d-707c-4d9f-851f-d5032266a415">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="685f1f03-18cd-4468-8632-387e241c8dec"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{f_nacim}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd//MM/yyyy">
+				<reportElement x="330" y="0" width="100" height="30" uuid="c8218d65-4014-482f-99d1-53fd33c128f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8b66398c-b655-4ed1-9dc3-396d58c9bdec"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{f_destete}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="80" height="30" uuid="e421e484-16d3-48df-a734-3c2470a2688f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4847cd6-95d5-4756-bbb4-286491756e83"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

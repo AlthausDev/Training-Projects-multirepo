@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.1.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Facturas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57863dc9-92b2-4c32-b70e-5b94a0708ce8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IDFACTURA" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT D.ID AS DOCID, A.FIRSTNAME, A.LASTNAME, A.STREET, A.CITY
+FROM DOCUMENT D
+INNER JOIN ADDRESS A ON D.ADDRESSID = A.ID
+WHERE D.ID=$P{IDFACTURA}]]>
+	</queryString>
+	<field name="DOCID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOCID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="DOCUMENT"/>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FIRSTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="FIRSTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ADDRESS"/>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LASTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="LASTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ADDRESS"/>
+	</field>
+	<field name="STREET" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="STREET"/>
+		<property name="com.jaspersoft.studio.field.label" value="STREET"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ADDRESS"/>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ADDRESS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="130" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="10" width="186" height="107" uuid="71cec4ba-8a3e-453e-a777-8581f373af6c"/>
+				<imageExpression><![CDATA["C:\\Users\\juandbp\\Pictures\\Logo.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="74" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="560" height="20" uuid="ecf6f325-60b6-47e6-b1cd-8e4875c3e41f"/>
+				<textFieldExpression><![CDATA["Número de factura: " + $F{DOCID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="560" height="20" uuid="e91b730a-9ab3-4830-9cc3-44196be655dc"/>
+				<textFieldExpression><![CDATA["Nombre de cliente: " + $F{FIRSTNAME} + " " + $F{LASTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="44" width="482" height="16" uuid="b2700785-87a9-4887-a8ed-b3fad70b1856"/>
+				<textFieldExpression><![CDATA["Dirección: " + $F{STREET} + " ("+$F{CITY}+")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="116" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="550" height="100" uuid="d4c93158-728b-4e48-b93c-39a8ddb7d871"/>
+				<subreportParameter name="IDFACTURA">
+					<subreportParameterExpression><![CDATA[$F{DOCID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Detalle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
