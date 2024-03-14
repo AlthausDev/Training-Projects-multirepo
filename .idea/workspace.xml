@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="build: añade archivos .class al proyecto">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="chore: Limpieza">
+      <change beforePath="$PROJECT_DIR$/ProcessMaster" beforeDir="false" afterPath="$PROJECT_DIR$/ProcessMaster" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +38,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/main-projects/JavaProyect.02-Aeropuerto",
+    "last_opened_file_path": "D:/Projects/training-projects/TrainingProjects.01-VisualInterface",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -75,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701810644973</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="chore: Limpieza">
+      <created>1710221972385</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710221972385</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,7 +130,8 @@
     <MESSAGE value="Fix" />
     <MESSAGE value="Update" />
     <MESSAGE value="build: añade archivos .class al proyecto" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: añade archivos .class al proyecto" />
+    <MESSAGE value="chore: Limpieza" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Limpieza" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
