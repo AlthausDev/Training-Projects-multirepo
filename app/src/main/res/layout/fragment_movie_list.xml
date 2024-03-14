@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.fagments.MovieListFragment"
+    tools:context=".ui.fragments.MovieListFragment"
     tools:listitem="@layout/fragment_movie_item" />

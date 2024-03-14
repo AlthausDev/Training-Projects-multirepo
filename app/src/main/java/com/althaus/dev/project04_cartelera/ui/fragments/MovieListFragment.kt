@@ -1,4 +1,4 @@
-package com.althaus.dev.project04_cartelera.ui.fagments
+package com.althaus.dev.project04_cartelera.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.althaus.dev.project04_cartelera.R
 import com.althaus.dev.project04_cartelera.data.network.RetrofitClient
 import com.althaus.dev.project04_cartelera.databinding.FragmentMovieListBinding
 import com.althaus.dev.project04_cartelera.ui.adapters.MovieAdapter
@@ -67,4 +65,5 @@ class MovieListFragment : Fragment() {
 
         }
     }
+
 }

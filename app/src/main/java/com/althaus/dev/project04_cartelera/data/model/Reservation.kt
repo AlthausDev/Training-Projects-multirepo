@@ -9,22 +9,15 @@ import androidx.room.PrimaryKey
     tableName = "reservations",
     foreignKeys = [
         ForeignKey(
-            entity = User::class,
-            parentColumns = ["id"],
-            childColumns = ["userId"],
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
             entity = Movie::class,
             parentColumns = ["id"],
-            childColumns = ["movieId"],
+            childColumns = ["movieTitle"],
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
 data class Reservation(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
-    @ColumnInfo(name = "userId") val userId: Int,
-    @ColumnInfo(name = "movieId") val movieId: Int,
-    @ColumnInfo(name = "dateTime") val dateTime: String
+    @ColumnInfo(name = "movieTitle") val movieTitle: String,
+    @ColumnInfo(name = "numberOfTickets") val numberOfTickets: Int
 )

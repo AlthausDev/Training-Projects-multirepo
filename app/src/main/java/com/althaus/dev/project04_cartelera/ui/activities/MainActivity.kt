@@ -3,10 +3,9 @@ package com.althaus.dev.project04_cartelera.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
-import com.althaus.dev.project04_cartelera.base.App
 import com.althaus.dev.project04_cartelera.R
 import com.althaus.dev.project04_cartelera.data.database.AppDatabase
-import com.althaus.dev.project04_cartelera.ui.fagments.MovieListFragment
+import com.althaus.dev.project04_cartelera.ui.fragments.MovieListFragment
 
 class MainActivity : AppCompatActivity() {
 

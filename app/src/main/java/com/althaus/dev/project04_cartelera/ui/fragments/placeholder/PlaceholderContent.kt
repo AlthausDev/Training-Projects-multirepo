@@ -1,4 +1,4 @@
-package com.althaus.dev.project04_cartelera.ui.fagments.placeholder
+package com.althaus.dev.project04_cartelera.ui.fragments.placeholder
 
 import java.util.ArrayList
 import java.util.HashMap

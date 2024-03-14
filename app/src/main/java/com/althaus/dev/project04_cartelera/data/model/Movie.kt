@@ -20,4 +20,8 @@ data class Movie(
     @ColumnInfo(name = "video") val video: Boolean,
     @ColumnInfo(name = "vote_average") val voteAverage: Double,
     @ColumnInfo(name = "vote_count") val voteCount: Int
-)
+) {
+    companion object {
+        const val UNIQUE_TITLE_INDEX = "index_unique_title"
+    }
+}
