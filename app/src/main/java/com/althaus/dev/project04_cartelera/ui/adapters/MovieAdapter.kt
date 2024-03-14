@@ -1,5 +1,6 @@
 package com.althaus.dev.project04_cartelera.ui.adapters
 
+import MovieListViewModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.R
 
-class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
+class MovieAdapter(private val viewModel: MovieListViewModel) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+
+        init {
+            // Configurar el clic en el elemento
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val movie = getItem(position)
+                    viewModel.onMovieClicked(movie)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

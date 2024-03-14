@@ -8,12 +8,13 @@
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.althaus.dev.project04_cartelera.ui.fragments.MovieListFragment"
-        android:label="Lista de Películas"
+        android:label="fragment_movie_list"
         tools:layout="@layout/fragment_movie_list">
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
     </fragment>
+
 
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -21,16 +22,17 @@
         android:label="Detalles de la Película"
         tools:layout="@layout/fragment_movie_detail">
 
-        <!-- Definir el argumento -->
+        <!-- Define el argumento -->
         <argument
-            android:name="movieTitle"
-            app:argType="string" />
+            android:name="movie"
+            app:argType="com.althaus.dev.project04_cartelera.data.model.Movie" />
 
         <!-- Configurar la acción -->
         <action
             android:id="@+id/action_movieDetailFragment_to_movieReservationFragment"
             app:destination="@id/movieReservationFragment" />
     </fragment>
+
 
     <fragment
         android:id="@+id/movieReservationFragment"
@@ -42,9 +44,6 @@
         <argument
             android:name="movieTitle"
             app:argType="string" />
-        <argument
-            android:name="numberOfTickets"
-            app:argType="integer" />
 
         <!-- Configurar la acción -->
         <action

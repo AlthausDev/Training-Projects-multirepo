@@ -14,7 +14,6 @@ class ReservationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var movieTitle: String
-    private var numberOfTickets: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,14 +37,13 @@ class ReservationFragment : Fragment() {
             val ticketPrice = calculateTicketPrice(numberOfTickets)
             val totalPrice = numberOfTickets * ticketPrice
             // Mostrar el precio total en algún lugar de la interfaz de usuario
-            binding.totalPriceTextView.text = getString(R.string.total_price_format, totalPrice)
+            //binding.totalPriceTextView.text = getString(R.string.total_price_format, totalPrice)
         }
     }
 
     private fun retrieveArguments() {
         val args = ReservationFragmentArgs.fromBundle(requireArguments())
         movieTitle = args.movieTitle
-        numberOfTickets = args.numberOfTickets
     }
 
     private fun calculateTicketPrice(numberOfTickets: Int): Double {
@@ -53,7 +51,6 @@ class ReservationFragment : Fragment() {
         val totalPrice = basePrice * numberOfTickets
         return totalPrice
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,8 +1,7 @@
-package com.althaus.dev.project04_cartelera.ui.viewModel
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavDirections
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.data.network.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
@@ -21,6 +20,9 @@ class MovieListViewModel : ViewModel() {
 
     private val _error: MutableLiveData<String> = MutableLiveData()
     val error: LiveData<String> get() = _error
+
+    private val _navigateToMovieDetail: MutableLiveData<Movie?> = MutableLiveData()
+    val navigateToMovieDetail: MutableLiveData<Movie?> get() = _navigateToMovieDetail
 
     private var fetchMoviesJob: Job? = null
 
@@ -47,6 +49,14 @@ class MovieListViewModel : ViewModel() {
                 _loading.postValue(false)
             }
         }
+    }
+
+    fun onMovieClicked(movie: Movie) {
+        _navigateToMovieDetail.postValue(movie)
+    }
+
+    fun onMovieNavigated() {
+        _navigateToMovieDetail.value = null
     }
 
     override fun onCleared() {
