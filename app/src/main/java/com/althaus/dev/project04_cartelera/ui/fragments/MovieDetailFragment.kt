@@ -1,19 +1,15 @@
 package com.althaus.dev.project04_cartelera.ui.fragments
 
-import MovieDetailViewModel
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.NavDirections
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.databinding.FragmentMovieDetailBinding
-import com.althaus.dev.project04_cartelera.ui.fragments.MovieDetailFragmentArgs
-import com.squareup.picasso.Picasso
-import com.althaus.dev.project04_cartelera.ui.fragments.MovieDetailFragmentDirections
+import com.althaus.dev.project04_cartelera.ui.viewModel.MovieDetailViewModel
 
 class MovieDetailFragment : Fragment() {
 
@@ -37,24 +33,14 @@ class MovieDetailFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
         // Recuperar la película de los argumentos seguros
-        arguments?.let {
-            val args = MovieDetailFragmentArgs.fromBundle(it)
-            movie = args.movie
+        arguments?.let { args ->
+            val movieDetailArgs = MovieDetailFragmentArgs.fromBundle(args)
+            movie = movieDetailArgs.movie
+            viewModel.setMovie(movie)
         }
 
-        viewModel.setMovie(movie)
-
-        // Mostrar los detalles de la película en el layout
-        binding.apply {
-            Picasso.get().load(movie.posterPath).into(posterImageView)
-            titleTextView.text = movie.title
-            releaseDateTextView.text = "Release Date: ${movie.releaseDate}"
-            genreTextView.text = "Genres: ${movie.genreIds.joinToString(", ")}"
-            overviewTextView.text = movie.overview
-            popularityTextView.text = "Popularity: ${movie.popularity}"
-            voteAverageTextView.text = "Vote Average: ${movie.voteAverage}"
-            voteCountTextView.text = "Vote Count: ${movie.voteCount}"
-        }
+        // Observar la navegación
+        observeNavigation()
 
         // Configurar clics en los botones
         binding.continueButton.setOnClickListener {
@@ -64,10 +50,6 @@ class MovieDetailFragment : Fragment() {
         binding.cancelButton.setOnClickListener {
             viewModel.onCancelClicked()
         }
-
-        // Observar la navegación
-        observeNavigation()
-
     }
 
     private fun observeNavigation() {
@@ -102,5 +84,3 @@ class MovieDetailFragment : Fragment() {
         _binding = null
     }
 }
-
-

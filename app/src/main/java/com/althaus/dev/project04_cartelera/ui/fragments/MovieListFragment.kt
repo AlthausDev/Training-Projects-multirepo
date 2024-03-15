@@ -1,6 +1,6 @@
 package com.althaus.dev.project04_cartelera.ui.fragments
 
-import MovieListViewModel
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +17,7 @@ import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.data.network.RetrofitClient
 import com.althaus.dev.project04_cartelera.databinding.FragmentMovieListBinding
 import com.althaus.dev.project04_cartelera.ui.adapters.MovieAdapter
+import com.althaus.dev.project04_cartelera.ui.viewModel.MovieListViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

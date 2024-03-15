@@ -1,3 +1,5 @@
+package com.althaus.dev.project04_cartelera.ui.viewModel
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

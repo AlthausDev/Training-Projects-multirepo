@@ -1,6 +1,5 @@
 package com.althaus.dev.project04_cartelera.ui.adapters
 
-import MovieListViewModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,21 +9,26 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.R
+import com.althaus.dev.project04_cartelera.ui.viewModel.MovieListViewModel
 
 class MovieAdapter(private val viewModel: MovieListViewModel) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 
+    private var currentMovie: Movie? = null
+
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+        private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
 
         init {
-            // Configurar el clic en el elemento
             itemView.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    val movie = getItem(position)
+                currentMovie?.let { movie ->
                     viewModel.onMovieClicked(movie)
                 }
             }
+        }
+
+        fun bind(movie: Movie) {
+            currentMovie = movie
+            titleTextView.text = movie.title
         }
     }
 
@@ -36,7 +40,7 @@ class MovieAdapter(private val viewModel: MovieListViewModel) : ListAdapter<Movi
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val currentMovie = getItem(position)
-        holder.titleTextView.text = currentMovie.title
+        holder.bind(currentMovie)
     }
 
     private class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {

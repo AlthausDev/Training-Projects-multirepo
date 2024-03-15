@@ -59,7 +59,7 @@ class ReservationConfirmationFragment : Fragment() {
     }
 
     private fun calculateTicketPrice(): Double {
-        return 7.0 // Precio fijo del boleto por ahora
+        return 7.0
     }
 
     override fun onDestroyView() {

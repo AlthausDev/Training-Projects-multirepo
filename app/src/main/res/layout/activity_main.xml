@@ -15,19 +15,4 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-    <!-- Tu RecyclerView existente para mostrar películas -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movieRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:background="@android:color/white"
-        android:scrollbars="vertical" />
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </RelativeLayout>
