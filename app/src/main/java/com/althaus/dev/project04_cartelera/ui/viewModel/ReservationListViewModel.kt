@@ -8,21 +8,21 @@ import com.althaus.dev.project04_cartelera.data.model.Reservation
 import com.althaus.dev.project04_cartelera.data.repository.ReservationRepository
 import kotlinx.coroutines.launch
 
-class ReservationConfirmationViewModel(private val reservationRepository: ReservationRepository) : ViewModel() {
+class ReservationListViewModel(private val reservationRepository: ReservationRepository) : ViewModel() {
 
-    private val _reservationConfirmed = MutableLiveData<Boolean>()
-    val reservationConfirmed: LiveData<Boolean> get() = _reservationConfirmed
+    private val _reservations = MutableLiveData<List<Reservation>>()
+    val reservations: LiveData<List<Reservation>> get() = _reservations
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    fun confirmReservation(reservation: Reservation) {
+    fun loadReservations(userId: Int) {
         viewModelScope.launch {
             try {
-                reservationRepository.makeReservation(reservation)
-                _reservationConfirmed.value = true
+                val userReservations = reservationRepository.getUserReservations(userId)
+                _reservations.value = userReservations
             } catch (e: Exception) {
-                _errorMessage.value = "Error al confirmar la reserva: ${e.message}"
+                _errorMessage.value = "Error al cargar las reservas: ${e.message}"
             }
         }
     }

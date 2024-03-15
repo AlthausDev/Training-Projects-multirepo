@@ -1,11 +1,11 @@
 package com.althaus.dev.project04_cartelera.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.althaus.dev.project04_cartelera.R
@@ -19,9 +19,6 @@ class ReservationConfirmationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ReservationConfirmationViewModel by viewModels()
-
-    private lateinit var movieTitle: String
-    private var numberOfTickets: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +40,8 @@ class ReservationConfirmationFragment : Fragment() {
 
         val ticketPrice = calculateTicketPrice()
         val totalPrice = numberOfTickets * ticketPrice
-        binding.totalPriceTextView.text = getString(R.string.total_price_format, totalPrice)
+        val totalPriceText = getString(R.string.total_price_format, totalPrice)
+        binding.totalPriceTextView.text = totalPriceText
 
         binding.confirmButton.setOnClickListener {
             viewModel.confirmReservation(Reservation(0, movieTitle, numberOfTickets))
@@ -51,19 +49,17 @@ class ReservationConfirmationFragment : Fragment() {
 
         viewModel.reservationConfirmed.observe(viewLifecycleOwner) { confirmed ->
             if (confirmed) {
-                // Handle reservation confirmation
-                findNavController().navigate(R.id.action_reservationConfirmationFragment_to_movieListFragment)
+                findNavController().navigate(R.id.action_reservationConfirmationFragment_to_reservationListFragment)
             }
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
-            // Handle error message
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun calculateTicketPrice(): Double {
-        return 7.0 // Fixed ticket price for now
+        return 7.0 // Precio fijo del boleto por ahora
     }
 
     override fun onDestroyView() {

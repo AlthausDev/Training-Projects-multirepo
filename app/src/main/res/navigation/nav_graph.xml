@@ -15,36 +15,29 @@
             app:destination="@id/movieDetailFragment" />
     </fragment>
 
-
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.althaus.dev.project04_cartelera.ui.fragments.MovieDetailFragment"
         android:label="Detalles de la Película"
         tools:layout="@layout/fragment_movie_detail">
-
         <!-- Define el argumento -->
         <argument
             android:name="movie"
             app:argType="com.althaus.dev.project04_cartelera.data.model.Movie" />
-
-        <!-- Configurar la acción -->
         <action
             android:id="@+id/action_movieDetailFragment_to_movieReservationFragment"
             app:destination="@id/movieReservationFragment" />
     </fragment>
-
 
     <fragment
         android:id="@+id/movieReservationFragment"
         android:name="com.althaus.dev.project04_cartelera.ui.fragments.ReservationFragment"
         android:label="Reservar Película"
         tools:layout="@layout/fragment_reservation">
-
         <!-- Definir los argumentos -->
         <argument
-            android:name="movieTitle"
-            app:argType="string" />
-
+            android:name="movie"
+            app:argType="com.althaus.dev.project04_cartelera.data.model.Movie" />
         <!-- Configurar la acción -->
         <action
             android:id="@+id/action_movieReservationFragment_to_reservationConfirmationFragment"
@@ -56,7 +49,6 @@
         android:name="com.althaus.dev.project04_cartelera.ui.fragments.ReservationConfirmationFragment"
         android:label="Confirmación de Reserva"
         tools:layout="@layout/fragment_reservation_confirmation">
-
         <!-- Definir los argumentos -->
         <argument
             android:name="movieTitle"
@@ -64,12 +56,19 @@
         <argument
             android:name="numberOfTickets"
             app:argType="integer" />
-
         <action
-            android:id="@+id/action_reservationConfirmationFragment_to_movieListFragment"
-            app:destination="@id/movieListFragment"
-            app:popUpTo="@id/movieListFragment"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_reservationConfirmationFragment_to_reservationListFragment"
+            app:destination="@id/reservationListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reservationListFragment"
+        android:name="com.althaus.dev.project04_cartelera.ui.fragments.ReservationListFragment"
+        android:label="Lista de Reservas"
+        tools:layout="@layout/fragment_reservation_list">
+        <action
+            android:id="@+id/action_reservationListFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
     </fragment>
 
 </navigation>

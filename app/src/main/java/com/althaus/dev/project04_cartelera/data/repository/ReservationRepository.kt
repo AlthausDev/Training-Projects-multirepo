@@ -1,5 +1,6 @@
 package com.althaus.dev.project04_cartelera.data.repository
 
+import com.althaus.dev.project04_cartelera.data.dao.ReservationDao
 import com.althaus.dev.project04_cartelera.data.model.Reservation
 
 interface ReservationRepository {

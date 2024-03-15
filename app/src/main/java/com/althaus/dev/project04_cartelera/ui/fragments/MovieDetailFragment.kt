@@ -1,3 +1,6 @@
+package com.althaus.dev.project04_cartelera.ui.fragments
+
+import MovieDetailViewModel
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -86,7 +89,7 @@ class MovieDetailFragment : Fragment() {
     }
 
     private fun navigateToReservation() {
-        val action = MovieDetailFragmentDirections.actionMovieDetailFragmentToMovieReservationFragment(movie.title)
+        val action = MovieDetailFragmentDirections.actionMovieDetailFragmentToMovieReservationFragment(movie)
         findNavController().navigate(action)
     }
 
@@ -99,3 +102,5 @@ class MovieDetailFragment : Fragment() {
         _binding = null
     }
 }
+
+

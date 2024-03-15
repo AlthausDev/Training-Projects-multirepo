@@ -1,3 +1,4 @@
+
 package com.althaus.dev.project04_cartelera.ui.fragments
 
 import android.os.Bundle
@@ -6,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.althaus.dev.project04_cartelera.R
+import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.databinding.FragmentReservationBinding
 
 class ReservationFragment : Fragment() {
@@ -13,7 +15,7 @@ class ReservationFragment : Fragment() {
     private var _binding: FragmentReservationBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var movieTitle: String
+    private lateinit var movie: Movie
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +31,20 @@ class ReservationFragment : Fragment() {
         retrieveArguments()
 
         // Mostrar el título de la película en algún TextView en el formulario de reserva
-        binding.movieTitleTextView.text = movieTitle
+        binding.movieTitleTextView.text = movie.title
 
         // Manejar la lógica para calcular el precio de la reserva
         binding.confirmReservationButton.setOnClickListener {
             val numberOfTickets = binding.numberOfTicketsEditText.text.toString().toIntOrNull() ?: 0
             val ticketPrice = calculateTicketPrice(numberOfTickets)
             val totalPrice = numberOfTickets * ticketPrice
-            // Mostrar el precio total en algún lugar de la interfaz de usuario
             //binding.totalPriceTextView.text = getString(R.string.total_price_format, totalPrice)
         }
     }
 
     private fun retrieveArguments() {
         val args = ReservationFragmentArgs.fromBundle(requireArguments())
-        movieTitle = args.movieTitle
+        movie = args.movie
     }
 
     private fun calculateTicketPrice(numberOfTickets: Int): Double {
