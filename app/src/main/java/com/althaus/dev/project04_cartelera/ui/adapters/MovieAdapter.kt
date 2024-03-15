@@ -13,28 +13,27 @@ import com.althaus.dev.project04_cartelera.ui.viewModel.MovieListViewModel
 
 class MovieAdapter(private val viewModel: MovieListViewModel) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 
-    private var currentMovie: Movie? = null
-
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
 
         init {
             itemView.setOnClickListener {
-                currentMovie?.let { movie ->
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val movie = getItem(position)
                     viewModel.onMovieClicked(movie)
                 }
             }
         }
 
         fun bind(movie: Movie) {
-            currentMovie = movie
             titleTextView.text = movie.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_movie, parent, false)
+            .inflate(R.layout.fragment_movie_item, parent, false)
         return MovieViewHolder(itemView)
     }
 
@@ -53,3 +52,4 @@ class MovieAdapter(private val viewModel: MovieListViewModel) : ListAdapter<Movi
         }
     }
 }
+

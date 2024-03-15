@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.althaus.dev.project04_cartelera.R
+import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.data.model.Reservation
 import com.althaus.dev.project04_cartelera.databinding.FragmentReservationConfirmationBinding
 import com.althaus.dev.project04_cartelera.ui.viewModel.ReservationConfirmationViewModel
@@ -19,6 +20,8 @@ class ReservationConfirmationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: ReservationConfirmationViewModel by viewModels()
+    private lateinit var movie: Movie
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,21 +34,22 @@ class ReservationConfirmationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        retrieveArguments()
+
         val args = ReservationConfirmationFragmentArgs.fromBundle(requireArguments())
-        val movieTitle = args.movieTitle
         val numberOfTickets = args.numberOfTickets
 
-        binding.movieTitleTextView.text = movieTitle
+        binding.movieTitleTextView.text = movie.title
         binding.numberOfTicketsTextView.text = numberOfTickets.toString()
 
-        val ticketPrice = calculateTicketPrice()
-        val totalPrice = numberOfTickets * ticketPrice
-        val totalPriceText = getString(R.string.total_price_format, totalPrice)
-        binding.totalPriceTextView.text = totalPriceText
+        //val ticketPrice = calculateTicketPrice()
+       // val totalPrice = numberOfTickets * ticketPrice
+        //val totalPriceText = getString(R.string.total_price_format, totalPrice)
+        //binding.totalPriceTextView.text = totalPriceText
 
-        binding.confirmButton.setOnClickListener {
-            viewModel.confirmReservation(Reservation(0, movieTitle, numberOfTickets))
-        }
+//        binding.confirmButton.setOnClickListener {
+//            viewModel.confirmReservation(Reservation(0, movieTitle, numberOfTickets))
+//        }
 
         viewModel.reservationConfirmed.observe(viewLifecycleOwner) { confirmed ->
             if (confirmed) {
@@ -58,8 +62,9 @@ class ReservationConfirmationFragment : Fragment() {
         }
     }
 
-    private fun calculateTicketPrice(): Double {
-        return 7.0
+    private fun retrieveArguments() {
+        val args = ReservationFragmentArgs.fromBundle(requireArguments())
+        movie = args.movie
     }
 
     override fun onDestroyView() {

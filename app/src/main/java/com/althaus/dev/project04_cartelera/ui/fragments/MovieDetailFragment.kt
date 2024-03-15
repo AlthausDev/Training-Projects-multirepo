@@ -34,10 +34,11 @@ class MovieDetailFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
+
         // Recuperar la película de los argumentos seguros
-        val movie = arguments?.let {
+        arguments?.let {
             val args = MovieDetailFragmentArgs.fromBundle(it)
-            args.movie
+            movie = args.movie
         }
 
         // Verificar que la película no sea nula y que la URL de la imagen sea válida antes de cargarla
@@ -46,6 +47,12 @@ class MovieDetailFragment : Fragment() {
                 val imageUrl = "https://image.tmdb.org/t/p/w500${it.posterPath}"
                 Picasso.get().load(imageUrl).into(binding.posterImageView)
             }
+            binding.titleTextView.text = it.title
+            binding.releaseDateTextView.text = "Fecha de Estreno: ${it.releaseDate}"
+            binding.overviewTextView.text = it.overview
+            binding.popularityTextView.text = "Popularidad: ${it.popularity}"
+            binding.voteAverageTextView.text = "Promedio de Votos: ${it.voteAverage}"
+            binding.voteCountTextView.text = "Número de Votos: ${it.voteCount}"
         }
 
         // Observar la navegación

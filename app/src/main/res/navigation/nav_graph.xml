@@ -51,8 +51,8 @@
         tools:layout="@layout/fragment_reservation_confirmation">
         <!-- Definir los argumentos -->
         <argument
-            android:name="movieTitle"
-            app:argType="string" />
+            android:name="movie"
+            app:argType="com.althaus.dev.project04_cartelera.data.model.Movie" />
         <argument
             android:name="numberOfTickets"
             app:argType="integer" />
@@ -66,6 +66,9 @@
         android:name="com.althaus.dev.project04_cartelera.ui.fragments.ReservationListFragment"
         android:label="Lista de Reservas"
         tools:layout="@layout/fragment_reservation_list">
+        <argument
+            android:name="movie"
+            app:argType="com.althaus.dev.project04_cartelera.data.model.Movie" />
         <action
             android:id="@+id/action_reservationListFragment_to_movieListFragment"
             app:destination="@id/movieListFragment" />

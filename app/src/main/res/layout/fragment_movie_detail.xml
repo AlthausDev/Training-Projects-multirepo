@@ -44,22 +44,11 @@
             tools:text="Fecha de Estreno: 1 de Enero de 2023" />
 
         <TextView
-            android:id="@+id/genreTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/overviewTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             app:layout_constraintTop_toBottomOf="@id/releaseDateTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
-            tools:text="Géneros: Acción, Aventura" />
-
-        <TextView
-            android:id="@+id/overviewTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            app:layout_constraintTop_toBottomOf="@id/genreTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
