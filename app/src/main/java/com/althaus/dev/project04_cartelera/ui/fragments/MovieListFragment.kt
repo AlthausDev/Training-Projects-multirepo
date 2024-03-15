@@ -1,6 +1,7 @@
 package com.althaus.dev.project04_cartelera.ui.fragments
 
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class MovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding
@@ -40,6 +42,8 @@ class MovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: called")
+
 
         viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
 
@@ -63,7 +67,7 @@ class MovieListFragment : Fragment() {
             try {
                 val response = movieApiService.getNowPlayingMovies()
                 if (response.isSuccessful) {
-                    val movies = response.body()?.results ?: emptyList()
+                    val movies = response.body()?.movies ?: emptyList()
                     withContext(Dispatchers.Main) {
                         if (isAdded) {
                             movieAdapter.submitList(movies)
@@ -85,9 +89,12 @@ class MovieListFragment : Fragment() {
         }
     }
 
-    // Navegar al detalle de la película
-    private fun navigateToMovieDetail(movie: Movie) {
+    // Navegar a los detalles de la película
+    private fun navigateToMovieDetail(movie: Movie?) {
+        movie ?: return
         val action = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie)
-        navController.navigate(action)
+        findNavController().navigate(action)
     }
+
+
 }

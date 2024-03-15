@@ -28,8 +28,8 @@ class LoginActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            Snackbar.make(view, "Pendiente", Snackbar.LENGTH_LONG)
+                .setAction("Accion", null).show()
         }
     }
 

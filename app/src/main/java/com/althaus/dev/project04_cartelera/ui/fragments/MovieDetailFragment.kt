@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.althaus.dev.project04_cartelera.R
 import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.databinding.FragmentMovieDetailBinding
 import com.althaus.dev.project04_cartelera.ui.viewModel.MovieDetailViewModel
+import com.squareup.picasso.Picasso
 
 class MovieDetailFragment : Fragment() {
 
@@ -33,10 +35,17 @@ class MovieDetailFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
         // Recuperar la película de los argumentos seguros
-        arguments?.let { args ->
-            val movieDetailArgs = MovieDetailFragmentArgs.fromBundle(args)
-            movie = movieDetailArgs.movie
-            viewModel.setMovie(movie)
+        val movie = arguments?.let {
+            val args = MovieDetailFragmentArgs.fromBundle(it)
+            args.movie
+        }
+
+        // Verificar que la película no sea nula y que la URL de la imagen sea válida antes de cargarla
+        movie?.let {
+            if (!it.posterPath.isNullOrEmpty()) {
+                val imageUrl = "https://image.tmdb.org/t/p/w500${it.posterPath}"
+                Picasso.get().load(imageUrl).into(binding.posterImageView)
+            }
         }
 
         // Observar la navegación

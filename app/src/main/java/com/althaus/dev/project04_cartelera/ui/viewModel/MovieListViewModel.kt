@@ -1,5 +1,6 @@
 package com.althaus.dev.project04_cartelera.ui.viewModel
 
+import android.content.ContentValues.TAG
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
+import android.util.Log
+
 
 class MovieListViewModel : ViewModel() {
 
@@ -34,11 +37,13 @@ class MovieListViewModel : ViewModel() {
 
     private fun loadMovies() {
         _loading.value = true
+        Log.d(TAG, "loadMovies: loading movies")
+
         fetchMoviesJob = CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitClient.movieApiService.getNowPlayingMovies()
                 if (response.isSuccessful) {
-                    val movies = response.body()?.results ?: emptyList()
+                    val movies = response.body()?.movies ?: emptyList()
                     _movies.postValue(movies)
                 } else {
                     _error.postValue("Error: ${response.code()} ${response.message()}")
@@ -55,6 +60,8 @@ class MovieListViewModel : ViewModel() {
 
     fun onMovieClicked(movie: Movie) {
         _navigateToMovieDetail.postValue(movie)
+        Log.d(TAG, "onMovieClicked: clicked on movie: $movie")
+
     }
 
     fun onMovieNavigated() {

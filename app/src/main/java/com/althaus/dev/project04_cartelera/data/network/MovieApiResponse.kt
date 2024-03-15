@@ -11,8 +11,9 @@ class MovieApiResponse(private val movieApiService: MovieApiService) {
         try {
             val response = movieApiService.getNowPlayingMovies()
             if (response.isSuccessful) {
-                return response.body()?.results ?: emptyList()
+                return response.body()?.movies ?: emptyList()
             } else {
+                val errorMessage = "Error al obtener la lista de películas: ${response.code()} ${response.message()}"
                 throw HttpException(response)
             }
         } catch (e: IOException) {
@@ -20,3 +21,5 @@ class MovieApiResponse(private val movieApiService: MovieApiService) {
         }
     }
 }
+
+

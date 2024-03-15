@@ -1,107 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/posterImageView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:scaleType="centerCrop"
-            tools:src="@drawable/placeholder_image" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="16:9" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/posterImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            tools:text="Título de la Película" />
 
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textStyle="bold"
-                tools:text="Movie Title" />
+        <TextView
+            android:id="@+id/releaseDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Fecha de Estreno: 1 de Enero de 2023" />
 
-            <TextView
-                android:id="@+id/releaseDateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Release Date: January 1, 2023" />
+        <TextView
+            android:id="@+id/genreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/releaseDateTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Géneros: Acción, Aventura" />
 
-            <TextView
-                android:id="@+id/genreTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Genres: Action, Adventure" />
-
-            <TextView
-                android:id="@+id/overviewTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Movie overview goes here." />
-
-            <TextView
-                android:id="@+id/popularityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Popularity: 8.5" />
-
-            <TextView
-                android:id="@+id/voteAverageTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Vote Average: 7.9" />
-
-            <TextView
-                android:id="@+id/voteCountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Vote Count: 1234" />
-
-            <!-- Agrega más campos relevantes aquí según sea necesario -->
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/overviewTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/genreTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Resumen de la Película aquí." />
 
-            <Button
-                android:id="@+id/continueButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Continue" />
+        <TextView
+            android:id="@+id/popularityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/overviewTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Popularidad: 8.5" />
 
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/voteAverageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/popularityTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Promedio de Votos: 7.9" />
 
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancel" />
+        <TextView
+            android:id="@+id/voteCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintTop_toBottomOf="@id/voteAverageTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            tools:text="Número de Votos: 1234" />
 
-        </LinearLayout>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Continuar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+            app:layout_constraintTop_toBottomOf="@id/voteCountTextView"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            app:layout_constraintStart_toEndOf="@+id/continueButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/voteCountTextView"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
