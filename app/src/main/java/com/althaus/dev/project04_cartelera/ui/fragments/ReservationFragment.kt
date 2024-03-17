@@ -34,6 +34,8 @@ class ReservationFragment : Fragment() {
         // Mostrar el título de la película en algún TextView en el formulario de reserva
         binding.movieTitleTextView.text = movie.title
         binding.numberOfTicketsEditText.setText("1")
+        binding.totalPriceTextView.text = getString(R.string.total_price_format, 7.0f)
+
 
         // Manejar la lógica para calcular el precio de la reserva
         binding.confirmReservationButton.setOnClickListener {

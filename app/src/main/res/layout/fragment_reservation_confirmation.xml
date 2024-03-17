@@ -16,8 +16,8 @@
             android:id="@+id/movieTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Movie Title"
-            android:textSize="18sp"
+            android:text="@string/movie_title"
+            android:textSize="28sp"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp" />
@@ -36,7 +36,8 @@
             android:id="@+id/numberOfTicketsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Número de Tickets:"
+            android:textSize="20sp"
+            android:text="@string/total_tickets_format"
             android:layout_marginTop="8dp" />
 
         <!-- Precio Total -->
@@ -44,8 +45,8 @@
             android:id="@+id/totalPriceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Price: $0.00"
-            android:textSize="18sp"
+            android:text="@string/total_price_format"
+            android:textSize="20sp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp" />

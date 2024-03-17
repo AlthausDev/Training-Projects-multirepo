@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class Reservation(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "movie_title") val movieTitle: String,
-    @ColumnInfo(name = "number_of_tickets") val numberOfTickets: Int
+    @ColumnInfo(name = "number_of_tickets") val numberOfTickets: Int,
+    @ColumnInfo(name = "total_price") val totalPrice: Double
 )

@@ -7,19 +7,14 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.althaus.dev.project04_cartelera.data.dao.MovieDao
 import com.althaus.dev.project04_cartelera.data.dao.ReservationDao
-import com.althaus.dev.project04_cartelera.data.dao.UserDao
-import com.althaus.dev.project04_cartelera.data.model.Movie
 import com.althaus.dev.project04_cartelera.data.model.Reservation
-import com.althaus.dev.project04_cartelera.data.model.User
 
-@Database(entities = [User::class, Movie::class, Reservation::class], version = 1, exportSchema = false)
+@Database(entities = [Reservation::class], version = 2, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun userDao(): UserDao
-    abstract fun movieDao(): MovieDao
+
     abstract fun reservationDao(): ReservationDao
 
     companion object {
@@ -46,7 +41,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
-            }
+                database.execSQL("CREATE TABLE IF NOT EXISTS reservations (id INTEGER PRIMARY KEY)")            }
         }
     }
 }
