@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ATP.12-DiceRoller</string>
+    <string name="dado">dado</string>
+    <string name="dado1" />
+    <string name="dado2" />
+    <string name="lanzar_dado">Lanzar Dado</string>
+</resources>
