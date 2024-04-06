@@ -1,0 +1,69 @@
+﻿<Window x:Class="VITP._11_NavSimple.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VITP._11_NavSimple"
+        xmlns:pags="clr-namespace:VITP._11_NavSimple.Pags"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnStyle" TargetType="{x:Type Button}">
+                <Setter Property="Height" Value="60"/>
+                <Setter Property="Width" Value="60"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="Margin" Value="5.0"/>
+            </Style>
+            <DataTemplate x:Key="pA">
+                <pags:PagA />
+            </DataTemplate>
+            <DataTemplate x:Key="pB">
+                <pags:PagB />
+            </DataTemplate>
+            <DataTemplate x:Key="pC">
+                <pags:PagC />
+            </DataTemplate>
+            <DataTemplate x:Key="pD">
+                <pags:PagD />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" Language="es-es"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="WhiteSmoke">
+            <StackPanel Background="WhiteSmoke" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="A" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.A}"/>
+                <Button Content="B" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.B}"/>
+                <Button Content="C" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.C}"/>
+                <Button Content="D" Style="{StaticResource btnStyle}" Command="{Binding CMDChangePage}" CommandParameter="{x:Static local:PageId.D}"/>
+            </StackPanel>
+        </Grid>
+        
+        <ContentControl Grid.Row="1" Content="{Binding}">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding PageID,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" Value="{x:Static local:PageId.A}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource pA}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding PageID,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" Value="{x:Static local:PageId.B}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource pB}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding PageID,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" Value="{x:Static local:PageId.C}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource pC}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding PageID,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" Value="{x:Static local:PageId.D}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource pD}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uQ0JO826EeT8+VGm9ckxB8KU4r4hqG3v1+HVHPlFeuRbfT3WX/TxJGm0aYcsJj7G0QwLG1UAM5QTVidIjsZXaQ==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\training-projects\\VisualInterfaceTP\\VITP.11-NavSimple\\VITP.11-NavSimple.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Imper\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}
