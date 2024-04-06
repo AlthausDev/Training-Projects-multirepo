@@ -1,4 +1,4 @@
-﻿namespace BlancAvilesLogic
+namespace BlancAvilesLogic
 {
     public class Cliente
     {

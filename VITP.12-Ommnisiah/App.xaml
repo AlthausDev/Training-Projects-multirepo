@@ -1,4 +1,4 @@
-﻿<Application x:Class="VITP._12_Ommnisiah.App"
+<Application x:Class="VITP._12_Ommnisiah.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:VITP._12_Ommnisiah"

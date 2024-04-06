@@ -1,160 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="NONE" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="6673d526-2ac2-4787-8b03-71f2d6a83b8d" name="Changes" comment="feat: Initial Commit de la versión mejorada de Dice Roller">
-      <change afterPath="$PROJECT_DIR$/ATP.11-DiceRoller/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.11-DiceRoller/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.11-DiceRoller/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP.11-DiceRoller/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP.11-DiceRoller/.idea/misc.xml" afterDir="false" />
-=======
-    <list default="true" id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="chore: Limpieza">
-      <change beforePath="$PROJECT_DIR$/ProcessMaster" beforeDir="false" afterPath="$PROJECT_DIR$/ProcessMaster" afterDir="false" />
->>>>>>> visual_interface/master
-    </list>
+    <list default="true" id="55117799-cb16-446e-80d0-e819a16f7ec3" name="Changes" comment="&quot;Nuevo commit combinando los últimos 7 commits&quot;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< HEAD
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="cd0cb944" />
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Z5Qs1MfJdLByXQ86EvOydYFDWV" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectId" id="2ejK6QgDOBWL9XbkX8hChYkiNpS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-=======
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2XvQtTj7vAeJWuRUWLBpITmlwMh" />
->>>>>>> visual_interface/master
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-<<<<<<< HEAD
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/Projects/training-projects/AndroidKotlinTP",
-    "settings.editor.selected.configurable": "preferences.general"
-=======
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/training-projects/TrainingProjects.01-VisualInterface",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
->>>>>>> visual_interface/master
+    "last_opened_file_path": "D:/Projects/training-projects"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="6673d526-2ac2-4787-8b03-71f2d6a83b8d" name="Changes" comment="" />
-      <created>1701709664820</created>
+      <changelist id="55117799-cb16-446e-80d0-e819a16f7ec3" name="Changes" comment="" />
+      <created>1712412374162</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1701709664820</updated>
+      <updated>1712412374162</updated>
     </task>
-    <task id="LOCAL-00001" summary="feat: example modules">
-      <created>1701709699102</created>
+    <task id="LOCAL-00001" summary="&quot;Nuevo commit combinando los últimos 7 commits&quot;">
+      <created>1712416323758</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1701709699102</updated>
+      <updated>1712416323758</updated>
     </task>
-    <task id="LOCAL-00002" summary="feat: example modules">
-      <created>1701709717689</created>
+    <task id="LOCAL-00002" summary="&quot;Nuevo commit combinando los últimos 7 commits&quot;">
+      <created>1712417536290</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1701709717689</updated>
+      <updated>1712417536290</updated>
     </task>
-    <task id="LOCAL-00003" summary="feat: Initial Commit de la versión mejorada de Dice Roller">
-      <created>1705431820269</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1705431820269</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
-    <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="feat: example modules" />
-    <MESSAGE value="feat: Initial Commit de la versión mejorada de Dice Roller" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Initial Commit de la versión mejorada de Dice Roller" />
-=======
-      <changelist id="5fbd3115-8ff5-4dac-bbf4-f24bb2bfe034" name="Changes" comment="" />
-      <created>1699507289632</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1699507289632</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Fix">
-      <created>1699508409042</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1699508409042</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Update">
-      <created>1699666182005</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1699666182005</updated>
-    </task>
-    <task id="LOCAL-00003" summary="build: añade archivos .class al proyecto">
-      <created>1701810644973</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701810644973</updated>
-    </task>
-    <task id="LOCAL-00004" summary="chore: Limpieza">
-      <created>1710221972385</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1710221972385</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="d113ad1e-198b-4a4d-9ab0-dd341f42dc6d" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -162,44 +84,12 @@
             <State />
           </value>
         </entry>
-        <entry key="d113ad1e-198b-4a4d-9ab0-dd341f42dc6d">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="structure">
-                    <value>
-                      <list>
-                        <option value="dir:D:/Projects/training-projects/VisualInterfaceTP/VITP.03.3-StackSearchTest" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-            </State>
-          </value>
-        </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix" />
-    <MESSAGE value="Update" />
-    <MESSAGE value="build: añade archivos .class al proyecto" />
-    <MESSAGE value="chore: Limpieza" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Limpieza" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
->>>>>>> visual_interface/master
+    <MESSAGE value="&quot;Nuevo commit combinando los últimos 7 commits&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Nuevo commit combinando los últimos 7 commits&quot;" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-﻿using CsvHelper;
+using CsvHelper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
