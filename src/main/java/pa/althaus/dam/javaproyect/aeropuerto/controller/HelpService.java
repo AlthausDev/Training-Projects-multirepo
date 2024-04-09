@@ -15,8 +15,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.FRAME_HEIGHT;
-import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.FRAME_WIDTH;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.FRAME_HEIGHT_HELP;
+import static pa.althaus.dam.javaproyect.aeropuerto.util.Constants.FRAME_WIDTH_HELP;
 
 public class HelpService {
 
@@ -27,7 +27,8 @@ public class HelpService {
     public HelpService() {
         jfxPanel = new JFXPanel();
         frame = new JFrame("Ayuda");
-        frame.setSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+        frame.setSize(new Dimension(FRAME_WIDTH_HELP, FRAME_HEIGHT_HELP));
+        frame.setLocationRelativeTo(null);
         frame.add(jfxPanel);
     }
 

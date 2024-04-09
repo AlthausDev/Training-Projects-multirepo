@@ -35,7 +35,6 @@ public class VuelosPorAirlineController {
     }
 
     public static void main(String[] args) {
-        // Suponiendo que ya tienes instancias de DailyFlightDao y FlightDao
         DailyFlightDao dailyFlightDao = new DailyFlightDao();
         FlightDao flightDao = new FlightDao();
 
