@@ -30,12 +30,10 @@ public class RecaudacionesController {
     }
 
     public static void main(String[] args) {
-        // Suponiendo que ya tienes una instancia de DailyFlightDao
         DailyFlightDao dailyFlightDao = new DailyFlightDao();
 
         RecaudacionesController controller = new RecaudacionesController(dailyFlightDao);
 
-        // Obtener recaudación para la fecha actual
         LocalDate fechaActual = LocalDate.now();
         float recaudacion = controller.obtenerRecaudacionParaFecha(fechaActual);
 
