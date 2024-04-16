@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="7.3.1" />
+    <PackageReference Include="Fare" Version="2.2.1" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="25.1.39" />
+    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="25.1.39" />
+    <PackageReference Include="Syncfusion.Blazor.Popups" Version="25.1.39" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="25.1.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+</Project>
