@@ -1,0 +1,210 @@
+﻿@page "/Todo"
+<PageTitle>ToDo List!</PageTitle>
+
+@inject HttpClient Http
+@using BlazorWebPage.Shared
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Popups
+@using System.Diagnostics
+
+<section id="top"></section>
+<div id="formulario">
+    <SfDialog Target="#formulario" Width="75%" Height="90%" ShowCloseIcon="true" @bind-Visible="@isVisible" AllowPrerender="true" IsModal="true">
+        <DialogTemplates>
+            <Header>Nuevo Formulario</Header>
+            <Content>
+                <div id="formDiv">
+                    <label id="formLabel">Nombre</label>
+                    <SfTextBox ID="formTextBox" Placeholder='Nombre' FloatLabelType='FloatLabelType.Auto'
+                               @bind-Value="@nuevaTarea.Nombre" ValueChange="@ValueChangeHandler" ShowClearButton=true>
+                    </SfTextBox>
+                </div>
+
+                <div id="formDiv">
+                    <label id="formLabel">Descripción</label>
+                    <SfTextBox ID="formTextBox" class="multiline" Placeholder='Descripcion' FloatLabelType='FloatLabelType.Auto'
+                               @bind-Value="@nuevaTarea.Descripcion" ValueChange="@ValueChangeHandler" Multiline=true>
+                    </SfTextBox>
+                </div>
+
+                <div id="formDiv">
+                    <SfCheckBox @bind-Checked="@nuevaTarea.Finalizado" Label="Finalizado"></SfCheckBox>
+                </div>
+
+                <div id="buttons">
+                    @* <button class="btn btn-success" @onclick="addTarea" disabled="@IsDisabled">Aceptar</button>*@                   
+                    <button class="btn btn-success" @onclick="ProcesarBtn" disabled="@IsDisabled">Aceptar</button>                   
+                    <button class="btn btn-danger" @onclick="closePopup">Cancelar</button>
+                </div>
+            </Content>
+        </DialogTemplates>
+    </SfDialog>
+</div>
+
+
+<div id="formularioEdit">
+    <SfDialog Target="#formulario" Width="75%" Height="90%" ShowCloseIcon="true" @bind-Visible="@isVisibleEdit" AllowPrerender="true" IsModal="true">
+        <DialogTemplates>
+            <Header>Nuevo Formulario</Header>
+            <Content>
+                <div id="formDiv">
+                    <label id="formLabel">Nombre</label>
+                    <SfTextBox ID="formTextBox" Placeholder='Nombre' FloatLabelType='FloatLabelType.Auto'
+                               @bind-Value="@nuevaTarea.Nombre" ValueChange="@ValueChangeHandler" ShowClearButton=true>
+                    </SfTextBox>
+                </div>
+
+                <div id="formDiv">
+                    <label id="formLabel">Descripción</label>
+                    <SfTextBox ID="formTextBox" class="multiline" Placeholder='Descripcion' FloatLabelType='FloatLabelType.Auto'
+                               @bind-Value="@nuevaTarea.Descripcion" ValueChange="@ValueChangeHandler" Multiline=true>
+                    </SfTextBox>
+                </div>
+
+                <div id="formDiv">
+                    <SfCheckBox @bind-Checked="@nuevaTarea.Finalizado" Label="Finalizado"></SfCheckBox>
+                </div>
+
+                <div id="buttons">
+                    <button class="btn btn-success" @onclick="editTarea" disabled="@IsDisabled">Aceptar</button>                   
+                    <button class="btn btn-danger" @onclick="closePopup">Cancelar</button>
+                </div>
+            </Content>
+        </DialogTemplates>
+    </SfDialog>
+</div>
+
+<div id="topButtons">
+    <div>
+        @*<button class="btn btn-warning" @onclick="@mostrarPopup">Nueva Tarea</button>*@
+       <button class="btn btn-warning" @onclick="(() => mostrarPopup(Accion.Crear))">Nueva Tarea</button> 
+    </div>
+    <div>
+        <button class="btn btn-danger" @onclick="@Delete" disabled="@IsDisabledEdit">Borrar</button>
+    </div>
+    <div>
+        @*<button class="btn btn-success" @onclick="@mostrarPopupEdit" disabled="@IsDisabledEdit">Editar</button>*@
+        <button class="btn btn-success" @onclick="(() => mostrarPopup(Accion.Editar))" disabled="@IsDisabledEdit">Editar</button>
+    </div>
+</div>
+
+<div id="scrollBtnContainer">
+    <button class="btn" id="scrollBtn" onclick="document.getElementById('bottom').scrollIntoView({behavior:'smooth'})">
+        <i class="oi oi-chevron-bottom"></i>
+    </button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Finalizado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarea in tareas)
+        {
+            <tr @onclick="(() => selectTarea(tarea))">
+                <td>@tarea.Nombre</td>
+                <td>@tarea.Descripcion</td>
+                <td>@(tarea.Finalizado ? Finalizado.Si: Finalizado.No)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<section id="bottom"></section>
+<div id="scrollBtnContainer">
+    <button class="btn" id="scrollBtn" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">
+        <i class="oi oi-chevron-top"></i>
+    </button>
+</div>
+
+<style>
+    #formDiv {
+        display: flex;
+        flex-direction: row;
+        margin: 2% 5% 5%;
+    }
+
+        #formDiv label {
+            display: inline-block;
+            flex: 1;
+            flex-basis: 15%;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+    #formLabel {
+        margin-top: 28px;
+    }
+
+    #buttons {
+        margin: 5%;
+        text-align: right;
+    }
+
+    #topButtons{
+        display:inline-flex;
+        text-align: center;
+        width:100%;
+    }
+    #topButtons div{
+        display:inline-flex;
+        text-align: center;
+        margin: 0 10% 0;
+        width:33%;
+    }
+ 
+    #topButons button{
+        margin: 5%;
+    }
+
+    .btn {
+        width: 135px;
+    }
+
+    .btn-success {
+        margin-right: 2%;
+    }
+
+    .btn-warning {
+        margin-bottom: 4%
+    }
+
+    #scrollBtnContainer {
+        text-align: right;
+    }
+
+    #scrollBtn {
+        width: 40px;
+    }
+
+    .e-float-input.e-control-wrapper textarea:not(:valid), .e-float-input.e-control-wrapper textarea:valid,
+    .e-input-group textarea:not(:valid), .e-input-group textarea:valid {
+        min-height: 250px;
+    }
+
+    #finalizadoCheckBox {
+        margin-right: 15px;
+    }
+
+    .table, th, td {
+        border: 1px solid black;
+    }
+
+        .table th {
+            background-color: #E0E0E0;
+        }
+
+        .table tr {
+            cursor: pointer;
+        }
+
+            .table tr.clicked {
+                background-color: rgba(185,155,155,0.25);
+            }
+
+</style>
+
