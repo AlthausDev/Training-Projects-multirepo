@@ -29,5 +29,17 @@ namespace BlazorWebPage.Server.Controllers
         {
             TareaService.Post(tarea);
         }
+
+        [HttpPut]
+        public void Put(Tarea[] tarea)
+        {
+            TareaService.Put(tarea);
+        }
+
+        [HttpDelete]
+        public void Delete(Tarea[] tarea)
+        {
+            TareaService.Delete(tarea);
+        }
     }
 }

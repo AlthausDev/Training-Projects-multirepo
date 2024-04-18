@@ -6,5 +6,7 @@ namespace BlazorWebPage.Server.Interfaces
     {
         Tarea[] getAll();
         void Post(Tarea[] tareas);
+        void Delete(Tarea[] tareas);
+        void Put(Tarea[] tareas);
     }
 }

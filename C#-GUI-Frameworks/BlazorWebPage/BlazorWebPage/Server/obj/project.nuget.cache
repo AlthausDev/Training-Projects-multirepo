@@ -1,35 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "m1tRDWS2rxUJm4ED7CvNdFjtCIs1POfeo7Vw4NxKsRju6aDU9hSyQHdNGwAyRR1V+jHLsj4Bkub4/XLfOK3bVg==",
-  "success": true,
+  "dgSpecHash": "Hp36UK9riep1zI1jAAROgGMUczGl6PzVThFrToK1ELAm+lMpfmi/QWL4AmBjiLgKltP7tLT0GiaVZLrVRNd+PQ==",
+  "success": false,
   "projectFilePath": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Server\\BlazorWebPage.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Imper\\.nuget\\packages\\blazored.modal\\7.3.1\\blazored.modal.7.3.1.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\fare\\2.2.1\\fare.2.2.1.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.5\\microsoft.aspnetcore.authorization.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.5\\microsoft.aspnetcore.components.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.5\\microsoft.aspnetcore.components.analyzers.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.5\\microsoft.aspnetcore.components.forms.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.5\\microsoft.aspnetcore.components.web.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.0\\microsoft.aspnetcore.components.webassembly.6.0.0.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.6\\microsoft.aspnetcore.authorization.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.6\\microsoft.aspnetcore.components.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.6\\microsoft.aspnetcore.components.analyzers.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.6\\microsoft.aspnetcore.components.forms.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.6\\microsoft.aspnetcore.components.web.6.0.6.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\6.0.0\\microsoft.aspnetcore.components.webassembly.server.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.5\\microsoft.aspnetcore.metadata.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\6.0.0\\microsoft.extensions.configuration.fileextensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.configuration.json\\6.0.0\\microsoft.extensions.configuration.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.6\\microsoft.aspnetcore.metadata.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\6.0.0\\microsoft.extensions.fileproviders.physical.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\6.0.0\\microsoft.extensions.filesystemglobbing.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.jsinterop\\6.0.5\\microsoft.jsinterop.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.0\\microsoft.jsinterop.webassembly.6.0.0.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.jsinterop\\6.0.6\\microsoft.jsinterop.6.0.6.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Imper\\.nuget\\packages\\smart.blazor\\18.0.6\\smart.blazor.18.0.6.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.blazor.buttons\\25.1.39\\syncfusion.blazor.buttons.25.1.39.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.blazor.calendars\\25.1.39\\syncfusion.blazor.calendars.25.1.39.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.blazor.core\\25.1.39\\syncfusion.blazor.core.25.1.39.nupkg.sha512",
@@ -47,15 +39,20 @@
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.excelexport.net.core\\25.1.39\\syncfusion.excelexport.net.core.25.1.39.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.licensing\\25.1.39\\syncfusion.licensing.25.1.39.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\syncfusion.pdfexport.net.core\\25.1.39\\syncfusion.pdfexport.net.core.25.1.39.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Imper\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.29\\microsoft.windowsdesktop.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.29\\microsoft.netcore.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.29\\microsoft.aspnetcore.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\Imper\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.29\\microsoft.netcore.app.host.win-x64.6.0.29.nupkg.sha512"
+    "C:\\Users\\Imper\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "El proyecto BlazorWebPage.Client no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto BlazorWebPage.Client admite: net8.0 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "BlazorWebPage.Client",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

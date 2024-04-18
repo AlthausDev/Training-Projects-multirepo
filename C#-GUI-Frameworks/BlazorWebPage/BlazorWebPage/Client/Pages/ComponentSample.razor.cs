@@ -58,7 +58,7 @@ namespace BlazorWebPage.Client.Pages
 
                 ListaEjemplo.Add(sampleModel);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 GenerarRegistroAleatorio();
             }

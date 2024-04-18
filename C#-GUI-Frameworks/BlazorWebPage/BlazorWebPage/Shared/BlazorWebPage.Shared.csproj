@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Blazored.Modal" Version="7.3.1" />
     <PackageReference Include="Fare" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
+    <PackageReference Include="Smart.Blazor" Version="18.0.6" />
     <PackageReference Include="Syncfusion.Blazor.Grid" Version="25.1.39" />
     <PackageReference Include="Syncfusion.Blazor.Inputs" Version="25.1.39" />
     <PackageReference Include="Syncfusion.Blazor.Popups" Version="25.1.39" />
