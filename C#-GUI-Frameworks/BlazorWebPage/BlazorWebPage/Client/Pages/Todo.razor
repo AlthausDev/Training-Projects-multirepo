@@ -2,91 +2,106 @@
 <PageTitle>ToDo List!</PageTitle>
 
 @inject HttpClient Http
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 @using BlazorWebPage.Shared
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Popups
 @using System.Diagnostics
 
-<div id="formulario">
-    <SfDialog Target="#formulario" Width="75%" Height="90%" ShowCloseIcon="true" @bind-Visible="@isVisible" AllowPrerender="true" IsModal="true">
-        <DialogTemplates>
-            <Header>Nuevo Formulario</Header>
-            <Content>
-                <div id="formDiv">
-                    <label id="formLabel">Nombre</label>
-                    <SfTextBox ID="formTextBox" Placeholder='Nombre' FloatLabelType='FloatLabelType.Auto'
-                               @bind-Value="@nuevaTarea.Nombre" ValueChange="@ValueChangeHandler" ShowClearButton=true>
-                    </SfTextBox>
-                </div>
 
-                <div id="formDiv">
-                    <label id="formLabel">Descripción</label>
-                    <SfTextBox ID="formTextBox" class="multiline" Placeholder='Descripcion' FloatLabelType='FloatLabelType.Auto'
-                               @bind-Value="@nuevaTarea.Descripcion" ValueChange="@ValueChangeHandler" Multiline=true>
-                    </SfTextBox>
-                </div>
+<Modal @ref="modal" Title="Modal title" Size="ModalSize.ExtraLarge">
+    <BodyTemplate>
+        <div id="formDiv">
+            <label id="formLabel">
+                Nombre
+                <input type="text" id="formTextBox" size="100%" Placeholder='Campo de texto de prueba'
+                       @bind="@nuevaTarea.Nombre" />
+            </label>
+        </div>
 
-                <div id="formDiv">
-                    <SfCheckBox @bind-Checked="@nuevaTarea.Finalizado" Label="Finalizado"></SfCheckBox>
-                </div>
+        <div id="formDiv">
+            <label id="formLabel">
+                Descripción
+                <input type="text" id="formTextBox" size="100%" Placeholder='Campo de texto de prueba'
+                       @bind="@nuevaTarea.Descripcion" />
+            </label>
+        </div>
 
-                <div id="FormButtons">
-                    <button class="btn btn-success" @onclick="addTarea" disabled="@IsDisabled">Aceptar</button>
-                    @*<button class="btn btn-success" @onclick="ProcesarBtn" disabled="@IsDisabled">Aceptar</button>*@
-                    <button class="btn btn-danger" @onclick="closePopup">Cancelar</button>
-                </div>
-            </Content>
-        </DialogTemplates>
-    </SfDialog>
-</div>
+        <div id="formDiv">
+            <input type="checkbox" id="finalizadoCheckBox" name="Finalizado" value="@nuevaTarea.Finalizado" />
+            <label for="finalizadoCheckBox">Finalizado</label>
+        </div>
+    </BodyTemplate>
+    <FooterTemplate>
+        <div id="FormButtons">
+            <button class="btn btn-success" @onclick="execTarea" disabled="@IsDisabled">Aceptar</button>
+            <button class="btn btn-danger" @onclick="HideModal">Cancelar</button>
+        </div>
+    </FooterTemplate>
+</Modal>
 
+@* <nav id="menu">
+    <div id="topButtons">
+        <div>
+            <button class="btn btn-success" @onclick="(() => OnClickShowModal(Accion.Crear))">Nueva Tarea</button>
+        </div>
+        <div>
+            <button class="btn btn-danger" @onclick="@Delete" disabled="@IsDisabledEdit">Borrar</button>
+        </div>
+        <div>
+            <button class="btn btn-warning" @onclick="(() => OnClickShowModal(Accion.Editar))" disabled="@IsDisabledEdit">Editar</button>
+        </div>
 
-<div id="formularioEdit">
-    <SfDialog Target="#formulario" Width="75%" Height="90%" ShowCloseIcon="true" @bind-Visible="@isVisibleEdit" AllowPrerender="true" IsModal="true">
-        <DialogTemplates>
-            <Header>Nuevo Formulario</Header>
-            <Content>
-                <div id="formDiv">
-                    <label id="formLabel">Nombre</label>
-                    <SfTextBox ID="formTextBox" Placeholder='Nombre' FloatLabelType='FloatLabelType.Auto'
-                               @bind-Value="@nuevaTarea.Nombre" ValueChange="@ValueChangeHandler" ShowClearButton=true>
-                    </SfTextBox>
-                </div>
-
-                <div id="formDiv">
-                    <label id="formLabel">Descripción</label>
-                    <SfTextBox ID="formTextBox" class="multiline" Placeholder='Descripcion' FloatLabelType='FloatLabelType.Auto'
-                               @bind-Value="@nuevaTarea.Descripcion" ValueChange="@ValueChangeHandler" Multiline=true>
-                    </SfTextBox>
-                </div>
-
-                <div id="formDiv">
-                    <SfCheckBox @bind-Checked="@nuevaTarea.Finalizado" Label="Finalizado"></SfCheckBox>
-                </div>
-
-                <div id="FormButtons">
-                    <button class="btn btn-success" @onclick="editTarea" disabled="@IsDisabled">Aceptar</button>
-                    <button class="btn btn-danger" @onclick="closePopup">Cancelar</button>
-                </div>
-            </Content>
-        </DialogTemplates>
-    </SfDialog>
-</div>
-
-<div id="topButtons">
-    <div>
-        <button class="btn btn-warning" @onclick="@mostrarPopup">Nueva Tarea</button>
-        @*<button class="btn btn-warning" @onclick="(() => mostrarPopup(Accion.Crear))">Nueva Tarea</button>*@
     </div>
-    <div>
-        <button class="btn btn-danger" @onclick="@Delete" disabled="@IsDisabledEdit">Borrar</button>
+    https://demos.blazorbootstrap.com/autocomplete
+     <div id="SearchTextBox">
+        <AutoComplete @bind-Value="@nuevaTarea.Nombre"
+                      TItem="Tarea"
+                      DataProvider="TareasDataProvider"
+                      PropertyName="Nombre"
+                      Placeholder="Buscar tarea"
+                      OnChanged="(Tarea tarea) => OnAutoCompleteChanged(tarea)"
+                      Size="AutoCompleteSize.Default" />
     </div>
-    <div>
-        <button class="btn btn-success" @onclick="@mostrarPopupEdit" disabled="@IsDisabledEdit">Editar</button>
-        @*<button class="btn btn-success" @onclick="(() => mostrarPopup(Accion.Editar))" disabled="@IsDisabledEdit">Editar</button>*@
+</nav> *@
+
+<nav id="menu">
+    <div id="topButtons">
+       
+            
+       
+
     </div>
-</div>
+    @*https://demos.blazorbootstrap.com/autocomplete*@
+    
+</nav>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">        
+        <ul class="nav navbar-nav">           
+            <li><button class="btn btn-success" @onclick="(() => OnClickShowModal(Accion.Crear))">Nueva Tarea</button></li>
+            <li><button class="btn btn-danger" @onclick="@Delete" disabled="@IsDisabledEdit">Borrar</button></li>
+            <li><button class="btn btn-warning" @onclick="(() => OnClickShowModal(Accion.Editar))" disabled="@IsDisabledEdit">Editar</button></li>  
+        </ul>
+            <div id="SearchTextBox">
+                <AutoComplete @bind-Value="@nuevaTarea.Nombre"
+                              TItem="Tarea"
+                              DataProvider="TareasDataProvider"
+                              PropertyName="Nombre"
+                              Placeholder="Buscar tarea"
+                              OnChanged="(Tarea tarea) => OnAutoCompleteChanged(tarea)"
+                              Size="AutoCompleteSize.Default" />
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <div id="scrollBtnContainer">
+                <button id="scrollBtnDown" onclick="bottomFuction()" title="Scroll to Bottom">
+                    <i class="oi oi-chevron-bottom"></i>
+                </button>
+            </div>
+        </ul>
+    </div>
+</nav>
 
 <table class="table">
     <thead>
@@ -108,8 +123,6 @@
     </tbody>
 </table>
 
-<section id="bottom"></section>
-
 <div id="scrollBtnContainer">
     <button id="scrollBtnDown" onclick="bottomFuction()" title="Scroll to Bottom">
         <i class="oi oi-chevron-bottom"></i>
@@ -121,6 +134,7 @@
     </button>
 </div>
 
+<section id="bottom" />
 <script>
     let mybutton = document.getElementById("scrollBtn");
     let mybuttonTop = document.getElementById("scrollBtnDown");
@@ -155,9 +169,120 @@
     function bottomFuction() {
         document.getElementById('bottom').scrollIntoView({ behavior: 'smooth' });
     }
+
+    // function searchFuction() {
+
+    //     var w = $(window);
+    //     var row = $('#tableid').find('tr').eq(fila);
+
+    //     // var row = table.find('tr')
+    //     //     .removeClass('active')
+    //     //     .eq(+$('#fila').val())
+    //     //     .addClass('active');
+
+    //     if (row.length) {
+    //         $('html,body').animate({ scrollTop: row.offset().top - (w.height() / 2) }, 1000);
+    //     }
+    // }
+
+    // function CalculatePositionOfTR() {
+    //     return $('tr:eq(' + i + ')').offset().top;
+    // }
+
+    // function searchFuction(i) {
+    //     var position = CalculatePositionOfTD(i);
+    //     var timer = setTimeout(function () {
+    //         ScrollDownALittle(position);
+    //         if (CenterOfVerticalWindowPosition > position)
+    //             clearInterval(timer);
+    //     }, 100);
+    // }
 </script>
 
+
 <style>
+
+  /*   #SearchTextBox {
+        width: 100%;
+        
+    }
+
+        #SearchTextBox AutoComplete {
+            width: 100%;
+        } */
+
+    #menu{
+        display: inline-flex;
+        position: fixed;     
+        z-index: 99;      
+        text-align: center;
+    }
+
+    #menu div{
+    }
+
+    #topButtons {
+         display: flex;
+       
+    }
+
+        #topButtons div {
+            display: block;
+            text-align: center;
+            margin: 5%;
+            box-shadow: 1px 1px 22px 4px rgba(66,52,66,0.69);
+            border-radius: 8px;
+        }
+
+        #topButtons button {
+            border-radius: 8px;
+            border: 1px solid white;
+        }
+
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        background-color: #fff;
+        margin: 0;
+        font: inherit;
+        width: 1.15em;
+        height: 1.15em;
+        border: 0.15em solid rebeccapurple;
+        border-radius: 0.18em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+    }
+
+        input[type="checkbox"]::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em rebeccapurple;
+            transform-origin: bottom left;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+
+        input[type="checkbox"]:hover {
+            border: 0.18em solid rebeccapurple;
+            border-radius: 0.20em;
+            box-shadow: 0px 0px 12px 4px rgba(153,102,204,1);
+        }
+
+    input[type="text"] {
+    }
 
     #scrollBtn, #scrollBtnDown {
         position: fixed;
@@ -192,35 +317,14 @@
         background: linear-gradient(160deg, rgba(27,58,117,0.7624299719887955) 0%, rgba(80,21,94,0.7344187675070029) 47%, rgba(239,222,246,1) 100%);
     }
 
-  /*   #topButtons {       
-        display: inline-flex;
-        position: fixed;
-        text-align: center;
-        width: 100%;
-    } */
+    /*   #topButtons {
+                    display: inline-flex;
+                    position: fixed;
+                    text-align: center;
+                    width: 100%;
+                } */
 
-    #topButtons {
-        background: #fff;                           
-        z-index: 99;
-        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
-        position: fixed;        
-        text-align: center;
-        width: 90%;
-  }
-
-        #topButtons div {
-            display: inline-flex;
-            text-align: center;
-            margin: 2%;
-            box-shadow: 1px 1px 22px 4px rgba(66,52,66,0.69);
-            border-radius: 8px;
-        }
-
-        #topButtons button {
-            border-radius: 8px;
-            border: 1px solid white;
-        }
-
+    
     #formDiv {
         display: flex;
         flex-direction: row;
@@ -230,8 +334,7 @@
         #formDiv label {
             display: inline-block;
             flex: 1;
-            flex-basis: 15%;
-            align-items: flex-start;
+            flex-basis: 200px;
             font-size: 14px;
         }
 
@@ -240,6 +343,7 @@
     }
 
     #FormButtons {
+        display: flex;
         margin: 5%;
         text-align: right;
     }
@@ -262,6 +366,10 @@
 
     #finalizadoCheckBox {
         margin-right: 15px;
+    }
+
+    .table {
+        margin-top: 80px;
     }
 
     .table, th, td {

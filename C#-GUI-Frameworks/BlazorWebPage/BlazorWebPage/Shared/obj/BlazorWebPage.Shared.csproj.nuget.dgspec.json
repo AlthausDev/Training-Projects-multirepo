@@ -50,6 +50,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Blazor.Bootstrap": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Blazored.Modal": {
               "target": "Package",
               "version": "[7.3.1, )"
@@ -57,10 +61,6 @@
             "Fare": {
               "target": "Package",
               "version": "[2.2.1, )"
-            },
-            "Microsoft.AspNetCore.Components.WebAssembly.Server": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             },
             "Smart.Blazor": {
               "target": "Package",

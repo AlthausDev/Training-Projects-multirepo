@@ -1,4 +1,5 @@
-﻿using BlazorWebPage.Shared;
+﻿using BlazorBootstrap;
+using BlazorWebPage.Shared;
 using Microsoft.JSInterop;
 using Syncfusion.Blazor.Buttons;
 using Syncfusion.Blazor.Inputs;
@@ -33,17 +34,29 @@ namespace BlazorWebPage.Client.Pages
             }
         }
 
-        private bool isVisible { get; set; } = false;
-        private bool isVisibleEdit { get; set; } = false;
-
-        protected bool IsDisabled { get; set; } = true;
+        protected bool IsDisabled { get; set; } = false;
         protected bool IsDisabledEdit { get; set; } = true;
 
         private Enum? accion;
 
+        private Modal modal = default!;
+               
         protected override async Task OnInitializedAsync()
         {          
             await getData();
+        }
+
+        private async Task<AutoCompleteDataProviderResult<Tarea>> TareasDataProvider(AutoCompleteDataProviderRequest<Tarea> request)
+        {           
+
+            return await Task.FromResult(request.ApplyTo(tareas.OrderBy(tarea => tarea.Nombre)));
+        }
+
+        private async Task OnAutoCompleteChanged(Tarea tarea)
+        {
+            SelectedTarea = tarea;            
+            //await JS.InvokeVoidAsync($"searchFuction('{SelectedTarea.Nombre}')");
+            Console.WriteLine($"'{tarea?.Nombre}' selected.");
         }
 
         private async Task getData()
@@ -80,73 +93,42 @@ namespace BlazorWebPage.Client.Pages
             }
         }
 
-        private async Task addTarea()
-        {
-            await Post();
-            closePopup();
-        }
-
-        private async Task editTarea()
-        {
-            await Put();
-            closePopup();
-        }
-
         private void selectTarea(Tarea tarea)
         {
             SelectedTarea = tarea;
             Console.WriteLine(tarea.Nombre);
         }
 
-        private void mostrarPopup()
+        private async Task execTarea()
         {
-            isVisible = true;
+            if (accion.Equals(Accion.Crear))
+            {
+                await Post();
+            }
+            else
+            {
+                await Put();
+            }
+            await HideModal();
+        }      
+
+
+        private async Task OnClickShowModal(Enum accion)
+        {
+            this.accion = accion;
+
+            if (accion.Equals(Accion.Editar)) { 
+                nuevaTarea = selectedTarea;
+            }
+            await modal.ShowAsync();
         }
 
-        //private async Task mostrarPopup(Enum accion)
-        //{
-        //    this.accion = accion;
-        //    isVisible = true;
-        //    await ProcesarBtn();
-        //    closePopup();
-        //}
-
-        //private async Task ProcesarBtn()
-        //{
-        //    if (accion.Equals(Accion.Crear))
-        //    {
-        //        await addTarea();
-        //    }
-        //    else
-        //    {
-        //        nuevaTarea = selectedTarea;
-        //        await editTarea();
-        //    }
-
-        //    await closePopup();
-        //}
-
-        private void mostrarPopupEdit()
+        private async Task HideModal()
         {
-            nuevaTarea = selectedTarea;
-            isVisibleEdit = true;
-        }
-
-        private void closePopup()
-        {
-            isVisible = false;
-            isVisibleEdit = false;
             SelectedTarea = null;
             nuevaTarea = new Tarea();
+            await modal.HideAsync();            
         }
-
-        //private void closePopup()
-        //{
-        //    isVisible = false;
-        //    isVisibleEdit = false;
-        //    SelectedTarea = null;
-        //    nuevaTarea = new Tarea();
-        //}
 
         private string GetRowClass(Tarea tarea)
         {
