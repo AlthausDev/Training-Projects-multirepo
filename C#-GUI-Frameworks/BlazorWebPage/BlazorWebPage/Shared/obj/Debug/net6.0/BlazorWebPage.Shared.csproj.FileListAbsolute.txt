@@ -22,3 +22,16 @@ C:\Althaus\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Sha
 C:\Althaus\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\refint\BlazorWebPage.Shared.dll
 C:\Althaus\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.pdb
 C:\Althaus\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\ref\BlazorWebPage.Shared.dll
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\bin\Debug\net6.0\BlazorWebPage.Shared.deps.json
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\bin\Debug\net6.0\BlazorWebPage.Shared.dll
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\bin\Debug\net6.0\BlazorWebPage.Shared.pdb
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.csproj.AssemblyReference.cache
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.AssemblyInfoInputs.cache
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.AssemblyInfo.cs
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.csproj.CoreCompileInputs.cache
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.sourcelink.json
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.dll
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\refint\BlazorWebPage.Shared.dll
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\BlazorWebPage.Shared.pdb
+D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Shared\obj\Debug\net6.0\ref\BlazorWebPage.Shared.dll

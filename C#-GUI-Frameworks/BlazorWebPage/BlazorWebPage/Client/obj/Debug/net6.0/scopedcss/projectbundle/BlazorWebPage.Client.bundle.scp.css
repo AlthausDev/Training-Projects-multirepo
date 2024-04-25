@@ -9,6 +9,7 @@ main[b-1pdgtpb1wh] {
     flex: 1;
 }
 
+
 .sidebar[b-1pdgtpb1wh] {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
@@ -139,7 +140,7 @@ main[b-1pdgtpb1wh] {
     }
 
     .collapse[b-kfzzfsjsck] {
-        /* Never collapse the sidebar for wide screens */
+        
         display: block;
     }
 }

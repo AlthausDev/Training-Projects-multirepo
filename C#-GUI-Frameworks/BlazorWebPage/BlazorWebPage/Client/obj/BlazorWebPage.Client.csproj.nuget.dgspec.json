@@ -93,25 +93,13 @@
               "version": "[8.0.4, )",
               "autoReferenced": true
             },
+            "NUnit": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Smart.Blazor": {
               "target": "Package",
               "version": "[18.0.6, )"
-            },
-            "Syncfusion.Blazor.Grid": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Inputs": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Popups": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Themes": {
-              "target": "Package",
-              "version": "[25.1.39, )"
             }
           },
           "imports": [
@@ -206,22 +194,6 @@
             "Smart.Blazor": {
               "target": "Package",
               "version": "[18.0.6, )"
-            },
-            "Syncfusion.Blazor.Grid": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Inputs": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Popups": {
-              "target": "Package",
-              "version": "[25.1.39, )"
-            },
-            "Syncfusion.Blazor.Themes": {
-              "target": "Package",
-              "version": "[25.1.39, )"
             }
           },
           "imports": [

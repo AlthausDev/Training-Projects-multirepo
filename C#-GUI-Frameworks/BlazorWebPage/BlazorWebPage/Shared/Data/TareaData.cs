@@ -10,10 +10,7 @@ namespace BlazorWebPage.Shared.Data
     {
         public static Tarea[] tareas { get; set; }
 
-        static TareaData()
-        {
-            cargarDatos();
-        }
+        static TareaData() => cargarDatos();
 
         private static void cargarDatos()
         {

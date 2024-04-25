@@ -11,6 +11,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddTransient<ITareaService, TareaService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 

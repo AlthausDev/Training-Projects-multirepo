@@ -1,5 +1,4 @@
 ﻿using BlazorWebPage.Shared;
-using Syncfusion.Blazor.Inputs;
 using Fare;
 
 
@@ -89,11 +88,6 @@ namespace BlazorWebPage.Client.Pages
         private void ValueChangeHandler()
         {
             IsDisabled = (string.IsNullOrWhiteSpace(cadena) || string.IsNullOrWhiteSpace(numero));
-        }
-
-        private void ValueChangedHandler(ChangedEventArgs args)
-        {
-            IsDisabled = (string.IsNullOrWhiteSpace(cadena) || string.IsNullOrWhiteSpace(numero));
-        }
+        }     
     }
 }

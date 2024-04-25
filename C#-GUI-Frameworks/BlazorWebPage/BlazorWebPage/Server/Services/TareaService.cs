@@ -8,7 +8,6 @@ namespace BlazorWebPage.Server.Services
     public class TareaService : ITareaService
     {
 
-
         public Tarea[] getAll()
         {
             return TareaData.tareas;

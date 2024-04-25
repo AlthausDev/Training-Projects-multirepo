@@ -1,9 +1,9 @@
 {
   "entryAssembly": "BlazorWebPage.Client",
   "resources": {
-    "hash": "sha256-9X0eKVislnjF0/QrRGqTM2XfYG4enAs6hybeECW6A40=",
+    "hash": "sha256-QveWuror8SKUB10h1w2ysIS6F0Bri9CEcgnLtGixONM=",
     "runtime": {
-      "dotnet.6.0.29.r6mi9jo6xg.js": "sha256-BV1wi9qAMCmpfZ+aXPplngN3cFgig0bFqWhNad3R5Lo=",
+      "dotnet.6.0.29.6v2q8u0qir.js": "sha256-BV1wi9qAMCmpfZ+aXPplngN3cFgig0bFqWhNad3R5Lo=",
       "dotnet.timezones.blat": "sha256-csJ9EjcYXaAQrYK1S5WLY51YBLmp7zcST7wH0IDbvgg=",
       "dotnet.wasm": "sha256-Ee/IPPRgVuwVa7z4alaeg8qFE3PK0Hx19y/4CrYOKX8=",
       "icudt_CJK.dat": "sha256-WPyI4hWDPnOw62Nr27FkzGjdbucZnQD+Ph+GOPhAedw=",
@@ -36,24 +36,9 @@
       "Microsoft.JSInterop.dll": "sha256-pJXrnzHqeLyYiY8lIt3MBO1vsogjiHrFv4rGOc3nA/U=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-Eh7KdjwbmVGTRNSYsrftwhWuXuPvYdIGlsDUtyEZRNg=",
       "Newtonsoft.Json.dll": "sha256-mRd6TL4DYldo1ko9czkjEDcoiPdMPrJxz3dekwV6OOY=",
+      "nunit.framework.dll": "sha256-Y1DvH1hR8mTmsjlpT/Oydls1Z9PSVBVYE9/G9iftJss=",
+      "nunit.framework.legacy.dll": "sha256-Q2EsATQWFkS09tDIYFhDgG90labaiKMLUm373DkWIqg=",
       "Smart.Blazor.dll": "sha256-xuhZt1v29HKk+59U3uunOlgSaEFaEadNfA23VPXP3KA=",
-      "Syncfusion.Blazor.Buttons.dll": "sha256-h37crhErn6l+ouZLs6NodCGYR+NvXm2ToLqRTsz3IFw=",
-      "Syncfusion.Blazor.Calendars.dll": "sha256-nq/1JO7a4GlexcaMFH/erxagIs9uQguvr4L+n81Tmh4=",
-      "Syncfusion.Blazor.Core.dll": "sha256-N2VlTB8SRmPixzCWEgr9xOOMp9AFX2EHgGls24pI8Ec=",
-      "Syncfusion.Blazor.Data.dll": "sha256-UpKr1xDvrW2tF7j+EAfVOi7lpcs5zpviQgEXuasH7UU=",
-      "Syncfusion.Blazor.DropDowns.dll": "sha256-ow+b3nUGb88pmJFxJRFeo3daOVbDHOEJW6km1kIODWg=",
-      "Syncfusion.Blazor.Grids.dll": "sha256-GHbFqMb1D3YYGntyaf45a+7kv6g03rYDqs4vHiUHD0k=",
-      "Syncfusion.Blazor.Inputs.dll": "sha256-iUrg3/H59Imn5fK9lV8B4aWAyUL86KmQCGD64cRuejw=",
-      "Syncfusion.Blazor.Lists.dll": "sha256-D4iYeG23lsdWRHiOZJLgCAiIgXYz1S3olXY2fPQk8GI=",
-      "Syncfusion.Blazor.Navigations.dll": "sha256-p6RnmMR/8f+C9uuiD3t89xd72W14tP4i6mjmqm7PoIk=",
-      "Syncfusion.Blazor.Notifications.dll": "sha256-ARnGGf2N5nhCr+F97yQKLH1wXQOpduLkK45RUEmp14w=",
-      "Syncfusion.Blazor.Popups.dll": "sha256-prJqamkwG7n9Q+oVUD+ADhz/iC/xrG0j0dMPmqyfgyE=",
-      "Syncfusion.Blazor.Spinner.dll": "sha256-baZdyyT9PvuVZClI1xU/T4rlZ7bN1IoaOSpfANLuqdM=",
-      "Syncfusion.Blazor.SplitButtons.dll": "sha256-3bAoPJtj5g0m0OdMm9RJzuB9mlGoXHf2MIPpRiHz8Xs=",
-      "Syncfusion.Blazor.Themes.dll": "sha256-OowiglUAyYPyHYlg0PeVdt8L4zi19WpnYwh9cotUDA0=",
-      "Syncfusion.ExcelExport.Net.dll": "sha256-YyDZiYjTo7KvKrbZ7zDJn4s7QXsEFqn0ie9U+PuJVCQ=",
-      "Syncfusion.Licensing.dll": "sha256-mdHFFKn3tHLweXN0c/wJSjZcOBUkGX1lV00WcCUw/Ws=",
-      "Syncfusion.PdfExport.Net.dll": "sha256-6K73ZMhsLM3PA/+k4ElDkxinerf9j3li9XyzZRcUFQ4=",
       "System.IO.Pipelines.dll": "sha256-6+E55JXedimdw1c1bDtVg4K7XuWjVWVTifH8QpfzXSY=",
       "Microsoft.CSharp.dll": "sha256-LDKIyOqPdZX1xSQaMgaCYAeVLG+RTM+fTXxppyTk/Qs=",
       "Microsoft.VisualBasic.Core.dll": "sha256-wZQDFrjYGRzEifLr5fDGv+bIzZT9i/Qh7tGw90bc/nE=",
@@ -221,12 +206,12 @@
       "mscorlib.dll": "sha256-Dq0ZWn1Dzc/UAPz/NgCNG1XJX8rhBI5c5/jpgKXDF6U=",
       "netstandard.dll": "sha256-7BfApPnkIIxITLLgPNqPbmPRBWu7G/WB0oxp+DOlY0w=",
       "System.Private.CoreLib.dll": "sha256-/IakvE+iRudxlHbw47DUw2QUemsywWIigQHWe/Pxv7U=",
-      "BlazorWebPage.Shared.dll": "sha256-ClmMgP/UJzMQcTKTB+BQAZu2iBxKvmAmFbnsJILpd8A=",
-      "BlazorWebPage.Client.dll": "sha256-n4tvaLlvRDSYCN16NdIKBPHSaawJBEIkwmfAOcTlL4g="
+      "BlazorWebPage.Shared.dll": "sha256-EhNd3kiUaSNDKxUGOH6gk+UW1ATc3RaojGd2+HaGQk0=",
+      "BlazorWebPage.Client.dll": "sha256-c6KYIWfdHK3baZqc/eTgyV551BTEo4zsO/Grhfzfzig="
     },
     "pdb": {
-      "BlazorWebPage.Shared.pdb": "sha256-+0cONWrdFScJZ5ov7tLfGt70kudZWEzx+4+ClTy2TL8=",
-      "BlazorWebPage.Client.pdb": "sha256-7Djl4QfIlbRrhduLOkBpMwiyXVRHU1K1aSjeJNZiFtM="
+      "BlazorWebPage.Shared.pdb": "sha256-2xpeU4NICEVOPzkaqWM/BL0DCpikZFa3KhYx2m/zUMI=",
+      "BlazorWebPage.Client.pdb": "sha256-PQsgiionq21/UuwbMphXDC3XUHnUSjj/Q6ypT3sKR/8="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
