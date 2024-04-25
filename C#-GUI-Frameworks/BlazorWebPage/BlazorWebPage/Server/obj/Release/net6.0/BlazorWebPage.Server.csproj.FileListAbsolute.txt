@@ -1,9 +1,0 @@
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.csproj.AssemblyReference.cache
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.GeneratedMSBuildEditorConfig.editorconfig
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.AssemblyInfoInputs.cache
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.AssemblyInfo.cs
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.csproj.CoreCompileInputs.cache
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.MvcApplicationPartsAssemblyInfo.cache
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.RazorAssemblyInfo.cache
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.RazorAssemblyInfo.cs
-D:\Projects\training-projects\C#-GUI-Frameworks\BlazorWebPage\BlazorWebPage\Server\obj\Release\net6.0\BlazorWebPage.Server.sourcelink.json
