@@ -1,0 +1,133 @@
+﻿@using BlazorWebPage.Client.Pages
+@using BlazorWebPage.Shared
+
+<div id="formDiv">
+    <label for="formTextBox">Username: </label>
+    <input autofocus type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+           @bind="UserName" @bind:event="oninput" @onkeyup="ValueChangeHandler" />
+</div>
+
+<div id="formDiv">
+    <label for="formTextBox">Contraseña: </label>
+    <input type="text" id="checkPassword" Placeholder='Campo de texto de prueba'
+           @bind="Password" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
+</div>
+
+<div id="formDiv">
+    <label for="formTextBox">Repetir Contraseña: </label>
+    <input type="text" id="checkPassword" Placeholder='Campo de texto de prueba'
+           @bind="checkPassword" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
+</div>
+
+<div id="formDiv">
+    <label for="formTextBox">Nombre: </label>
+    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+           @bind="Nombre" @bind:event="oninput" />
+</div>
+
+<div id="formDiv">
+    <label for="formTextBox">Email: </label>
+    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+           @bind="Email" @bind:event="oninput" />
+</div>
+
+<div id="FormButtons">
+    <button class="btn btn-success" @onclick="OnClickRegistro" disabled="@IsDisabled">Registrarse</button>
+    <button class="btn btn-danger" @onclick="Cerrar">Cancelar</button>
+</div>
+
+<style>
+    div {
+        display: block;
+    }
+
+    label {
+        text-align: right;
+        width: 40%;
+        margin: 5%;
+    }
+
+    input {
+        width: 45%;
+        border-radius: 5px;
+    }
+
+    #FormButtons {
+        display: block;
+        text-align: center;
+        margin: 10%;
+    }
+
+        #FormButtons button {
+            box-shadow: 1px 1px 18px 4px rgba(66,52,66,0.69);
+            margin-right: 5%;
+            margin-left: 5%;
+            width: 135px;
+            border-radius: 8px;
+            border: 1px solid white;
+        }
+
+    #checkPassword {
+        border-color: var(--my-color);
+    }
+
+    :root {
+        --my-color: black;
+    }
+</style>
+
+
+@code {
+
+    [Parameter]
+    public long Id { get; set; }
+    private string checkPassword { get; set; }
+
+    private string UserName { get; set; } = string.Empty;
+    private string Password { get; set; } = string.Empty;
+    private string? Nombre { get; set; } = string.Empty;
+    private string? Email { get; set; } = string.Empty;
+
+    private bool IsDisabled = true;
+    private string color = "black";
+
+    [Parameter] public EventCallback<MouseEventArgs> Registrar { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> Cerrar { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+
+    #region Handlers
+    protected void OnClickRegistro()
+    {
+        User user = new(Id, UserName, Password, Nombre, Email);
+        Home.NewUser = user;
+        Registrar.InvokeAsync();
+    }
+
+    private void ValueChangeHandler()
+    {
+        IsDisabled = (String.IsNullOrWhiteSpace(UserName) || String.IsNullOrWhiteSpace(Password) || CheckPasswordHandler());
+    }
+
+    private bool CheckPasswordHandler()
+    {
+
+        if (!Password.Equals(checkPassword))
+        {
+            color = "red";
+            return true;
+        }
+        else
+        {
+            color = "black";
+            return false;
+        }
+
+    }
+    #endregion Handlers
+}

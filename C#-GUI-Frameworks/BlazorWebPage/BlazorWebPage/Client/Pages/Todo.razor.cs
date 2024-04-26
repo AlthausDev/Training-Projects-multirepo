@@ -73,7 +73,7 @@ namespace BlazorWebPage.Client.Pages
             {
                 Tareas = tareasArray.ToList();
             }
-        }
+        }     
 
         private async Task Post()
         {

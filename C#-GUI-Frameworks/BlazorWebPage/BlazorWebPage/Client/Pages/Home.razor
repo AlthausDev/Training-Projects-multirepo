@@ -1,0 +1,54 @@
+﻿@page "/"
+<PageTitle>Home</PageTitle>
+
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using BlazorWebPage.Shared
+
+<Modal @ref="modal" Size="ModalSize.Regular" />
+
+<article class="content">
+
+    <h1>Hello, wor... Blazor!</h1>
+
+    Esta es una página de prueba
+
+    <SurveyPrompt Title="Separador" />
+</article>
+
+<div>
+<Button Color="ButtonColor.Primary" @onclick="Registro">Registrarse</Button>
+<Button Color="ButtonColor.Primary" @onclick="Registro">Iniciar Sesion</Button>
+</div>
+<div >
+    <Button id="btnImprimir"  Color="ButtonColor.Primary" @onclick="ImprimirUsuarios">Imprimir por consola</Button>
+</div>
+
+<div class="grafica">
+    <div id="chart">
+        <LineChart @ref="lineChart" Width="800" Class="mb-4" />
+    </div>
+</div>
+
+<style>
+    .grafica {
+        display: flex;
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #chart {
+        display: flex;
+        position: relative;
+        margin: auto;
+    }
+
+    button{
+       margin: 1%;
+       width: 150px;
+    }
+
+    #btnImprimir{
+        width:300px;        
+    }
+</style>
