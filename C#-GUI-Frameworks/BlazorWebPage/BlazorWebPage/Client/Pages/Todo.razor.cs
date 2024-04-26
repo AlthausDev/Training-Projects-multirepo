@@ -64,7 +64,7 @@ namespace BlazorWebPage.Client.Pages
             await InitializeGraph();
         }
 
-        #region ApiOperations
+        #region ApiOperations    
         private async Task getData()
         {
             Tarea[]? tareasArray = await Http.GetFromJsonAsync<Tarea[]>("tarea");
@@ -73,7 +73,8 @@ namespace BlazorWebPage.Client.Pages
             {
                 Tareas = tareasArray.ToList();
             }
-        }     
+        }
+
 
         private async Task Post()
         {

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebPage.Client", "Bla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebPage.Shared", "BlazorWebPage\Shared\BlazorWebPage.Shared.csproj", "{65DB7553-828B-4DA7-824C-765BBD32C971}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BlazorWebPageTest", "BlazorWebPageTest\BlazorWebPageTest.sqlproj", "{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{65DB7553-828B-4DA7-824C-765BBD32C971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65DB7553-828B-4DA7-824C-765BBD32C971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65DB7553-828B-4DA7-824C-765BBD32C971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

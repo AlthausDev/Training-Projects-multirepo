@@ -1,4 +1,5 @@
-﻿using BlazorWebPage.Server.Interfaces;
+﻿using BlazorWebPage.Server.Services.Impl;
+using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,30 +16,30 @@ namespace BlazorWebPage.Server.Controllers
         {
             _logger = logger;
             TareaService = tareaService;
-        }
+        }       
 
         [HttpGet]
         public Tarea[] Get()
-        {     
-            return TareaService.getAll();
+        {
+            return (Tarea[]) TareaService.GetAll();
         }
 
         [HttpPost]
-        public void Post(Tarea[] tarea)
+        public void Post(Tarea tarea)
         {
-            TareaService.Post(tarea);
+            TareaService.Add(tarea);
         }
 
         [HttpPut]
-        public void Put(Tarea[] tarea)
+        public void Put(Tarea tarea)
         {
-            TareaService.Put(tarea);
+            TareaService.Update(tarea);
         }
 
         [HttpDelete]
-        public void Delete(Tarea[] tarea)
+        public void Delete(Tarea tarea)
         {
-            TareaService.Delete(tarea);
+            TareaService.Remove(tarea);
         }
     }
 }

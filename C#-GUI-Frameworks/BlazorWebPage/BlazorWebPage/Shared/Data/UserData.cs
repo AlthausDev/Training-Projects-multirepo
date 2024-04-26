@@ -18,8 +18,8 @@ namespace BlazorWebPage.Shared.Data
         private static void cargarDatos()
         {
             users = new User[] {
-                new User(1,"john_doe", "password123"),
-                new User(2,"jane_smith", "abc123", "Jane Smith", "jane@example.com", "01-01-2024"),
+                new(1,"john_doe", "password123"),
+                new(2,"jane_smith", "abc123", "Jane Smith", "jane@example.com", "01-01-2024"),
                 new User(3,"admin", "adminpass","Admin User","admin@example.com", "01-10-2024"),
                 new User(4,"testuser", "test123","Test User","test@example.com", "01-02-2024"),
                 new User(5,"newuser", "newpass"),

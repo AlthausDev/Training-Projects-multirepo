@@ -9,8 +9,17 @@
   <ItemGroup>
     <PackageReference Include="Blazor.Bootstrap" Version="2.2.0" />
     <PackageReference Include="Blazored.Modal" Version="7.3.1" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Fare" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.29" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.29">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Smart.Blazor" Version="18.0.6" />
   </ItemGroup>
 

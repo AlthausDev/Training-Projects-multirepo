@@ -13,24 +13,6 @@
            @bind="Password" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
 </div>
 
-<div id="formDiv">
-    <label for="formTextBox">Repetir Contraseña: </label>
-    <input type="text" id="checkPassword" Placeholder='Campo de texto de prueba'
-           @bind="checkPassword" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
-</div>
-
-<div id="formDiv">
-    <label for="formTextBox">Nombre: </label>
-    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
-           @bind="Nombre" @bind:event="oninput" />
-</div>
-
-<div id="formDiv">
-    <label for="formTextBox">Email: </label>
-    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
-           @bind="Email" @bind:event="oninput" />
-</div>
-
 <div id="FormButtons">
     <button class="btn btn-success" @onclick="OnClickRegistro" disabled="@IsDisabled">Registrarse</button>
     <button class="btn btn-danger" @onclick="Cerrar">Cancelar</button>

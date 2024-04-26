@@ -1,4 +1,4 @@
-﻿using BlazorWebPage.Server.Interfaces;
+﻿using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,34 +17,54 @@ namespace BlazorWebPage.Server.Controllers
             UserService = userService;
         }
 
+        //[HttpGet]
+        //public User[] GetAll()
+        //{           
+        //    return (User[]) UserService.GetAll();
+        //}
+
+        //[HttpPost]
+        //public void Post(User user)
+        //{           
+        //    UserService.Add(user);
+        //}
+
+        //[HttpPut]
+        //public void Put(User user)
+        //{
+        //    UserService.Update(user);
+        //}
+
+        //[HttpDelete]
+        //public void Delete(User user)
+        //{
+        //    UserService.Remove(user);
+        //}
+
         [HttpGet]
         public User[] GetAll()
         {
-            return UserService.getAll();
-        }
+            return UserService.getAll();          
 
-        //[HttpGet]
-        //public User Get(string username)
-        //{
-        //    return UserService.GetUser(username);
-        //}
+        }
 
         [HttpPost]
         public void Post(User[] user)
         {
             UserService.Post(user);
-        }
 
-        [HttpPut]
-        public void Put(User[] user)
-        {
-            UserService.Put(user);
         }
 
         [HttpDelete]
         public void Delete(User[] user)
         {
             UserService.Delete(user);
+        }
+
+        [HttpPut]
+        public void Put(User[] user)
+        {
+            UserService.Put(user);
         }
     }
 }

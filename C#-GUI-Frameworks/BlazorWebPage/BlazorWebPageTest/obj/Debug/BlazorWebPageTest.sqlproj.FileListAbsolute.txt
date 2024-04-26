@@ -1,0 +1,6 @@
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\bin\Debug\BlazorWebPageTest.dacpac
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\bin\Debug\BlazorWebPageTest.dll
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\bin\Debug\BlazorWebPageTest.pdb
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\obj\Debug\BlazorWebPageTest.sqlproj.AssemblyReference.cache
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\obj\Debug\BlazorWebPageTest.dll
+C:\Althaus\BlazorWebPage\BlazorWebPageTest\obj\Debug\BlazorWebPageTest.pdb
