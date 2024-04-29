@@ -1,8 +1,6 @@
 ﻿using BlazorWebPage.Server.Repository.Interfaces;
 using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
-using BlazorWebPage.Shared.Data;
-using System.Diagnostics;
 
 namespace BlazorWebPage.Server.Services.Impl
 {
@@ -18,11 +16,11 @@ namespace BlazorWebPage.Server.Services.Impl
         public IEnumerable<Tarea> GetAll()
         {
             return tareaRepository.GetAll();
-        }    
+        }
 
         public Tarea GetById(int id)
         {
-           return tareaRepository.GetById(id);
+            return tareaRepository.GetById(id);
         }
 
         public void Add(Tarea tarea)
@@ -35,9 +33,9 @@ namespace BlazorWebPage.Server.Services.Impl
             tareaRepository.Update(tarea);
         }
 
-        public void Remove(Tarea tarea)
+        public void Remove(int id)
         {
-            tareaRepository.Remove(tarea);
+            tareaRepository.Remove(id);
         }
 
     }

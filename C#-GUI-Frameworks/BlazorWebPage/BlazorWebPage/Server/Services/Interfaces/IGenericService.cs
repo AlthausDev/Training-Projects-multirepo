@@ -1,6 +1,8 @@
-﻿namespace BlazorWebPage.Server.Repository.Interfaces
+﻿using BlazorWebPage.Shared;
+
+namespace BlazorWebPage.Server.Services.Interfaces
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericService<T> where T : class
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
@@ -8,5 +10,6 @@
         void Update(T entity);
         //void Remove(T entity);
         void Remove(int id);
+
     }
 }

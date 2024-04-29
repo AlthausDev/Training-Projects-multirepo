@@ -2,5 +2,7 @@
 
 namespace BlazorWebPage.Server.Repository.Interfaces
 {
-    public interface ITareaRepository : IGenericRepository<Tarea> { }
+    public interface ITareaRepository : IGenericRepository<Tarea>
+    {
+    }
 }

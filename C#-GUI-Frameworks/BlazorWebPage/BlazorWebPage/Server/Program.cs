@@ -1,21 +1,18 @@
-using BlazorWebPage.Server;
 using BlazorWebPage.Server.Repository.Impl;
 using BlazorWebPage.Server.Repository.Interfaces;
 using BlazorWebPage.Server.Services.Impl;
 using BlazorWebPage.Server.Services.Interfaces;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+// Añadir servicios.
+builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton();
 
 builder.Services.AddTransient<ITareaRepository, TareaRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
@@ -41,6 +38,9 @@ else
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();

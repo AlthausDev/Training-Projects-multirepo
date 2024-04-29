@@ -2,7 +2,6 @@
 using BlazorWebPage.Shared;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
 using System.Data;
 
 namespace BlazorWebPage.Server.Repository.Impl
@@ -17,12 +16,12 @@ namespace BlazorWebPage.Server.Repository.Impl
             _configuration = configuration;
         }
 
-        public void Add(Tarea entity)
-        {
+        public void Add(Tarea tarea)
+        {        
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"INSERT INTO Tarea (Nombre, Descripcion, Finalizado) VALUES (@Nombre, @Descripcion, @Finalizado);";
-                dbConnection.Execute(query, entity);
+                string query = @$"INSERT INTO Tarea (Nombre, Descripcion, Finalizado) VALUES ('{tarea.Nombre}', '{tarea.Descripcion}', {(tarea.Finalizado ? 1 : 0)});";
+                dbConnection.Query(query);
             }
         }
 
@@ -39,26 +38,27 @@ namespace BlazorWebPage.Server.Repository.Impl
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"SELECT * FROM Tarea WHERE Id = @id;";
-                return dbConnection.QueryFirstOrDefault<Tarea>(query, new { id });
+                string query = $"SELECT * FROM Tarea WHERE Id = {id};";
+                return dbConnection.QueryFirstOrDefault<Tarea>(query);
             }
         }
-
-        public void Remove(Tarea entity)
+      
+        public void Remove(int id)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"DELETE FROM Tarea WHERE Id = @Id;";
-                dbConnection.Execute(query, new { entity.Id });
+                string query = $"DELETE FROM Tarea WHERE Id = {id};";
+                dbConnection.Execute(query);
             }
         }
 
-        public void Update(Tarea entity)
+
+        public void Update(Tarea tarea)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"UPDATE Tarea SET Nombre = @Nombre, Descripcion = @Descripcion, Finalizado = @Finalizado WHERE Id = @Id;";
-                dbConnection.Execute(query, entity);
+                string query = @$"UPDATE Tarea SET Nombre = '{tarea.Nombre}', Descripcion = '{tarea.Descripcion}', Finalizado = '{(tarea.Finalizado ? 1 : 0)}' WHERE Id = '{tarea.Id}';";
+                dbConnection.Execute(query);
             }
         }
     }

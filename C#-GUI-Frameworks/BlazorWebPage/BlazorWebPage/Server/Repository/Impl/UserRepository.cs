@@ -8,14 +8,22 @@ namespace BlazorWebPage.Server.Repository.Impl
 {
     public class UserRepository : IUserRepository
     {
+        private readonly IConfiguration _configuration;
+        private string ConnectionString => _configuration.GetConnectionString("BlazorWebPageDB");
 
-
-
-        public void Add(User entity)
+        public UserRepository(IConfiguration configuration)
         {
-            using (IDbConnection dbConnection = new SqlConnection(conexion))
+            _configuration = configuration;
+        }
+
+
+        public void Add(User user)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"INSERT INTO User VALUES @User;";
+                //string query = @$"INSERT INTO Tarea (Nombre, Descripcion, Finalizado) VALUES ('{tarea.Nombre}', '{tarea.Descripcion}', {(tarea.Finalizado ? 1 : 0)});";
+                string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email, FechaRegistro) 
+                                VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}', '{user.FechaRegistro}');";
 
                 dbConnection.Execute(query);
             }
@@ -24,9 +32,9 @@ namespace BlazorWebPage.Server.Repository.Impl
 
         public IEnumerable<User> GetAll()
         {
-            using (IDbConnection dbConnection = new SqlConnection(conexion))
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"SELECT * FROM User;";
+                string query = @"SELECT * FROM Usuarios;";
 
                 return dbConnection.Query<User>(query);
             }
@@ -34,33 +42,30 @@ namespace BlazorWebPage.Server.Repository.Impl
 
         public User GetById(int id)
         {
-            using (IDbConnection dbConnection = new SqlConnection(conexion))
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"SELECT t
-                                 FROM User t
-                                 WHERE t.Id == @id;";
+                string query = $"SELECT * FROM Usuarios WHERE Id = {id};";
 
                 return (User)dbConnection.Query<User>(query);
             }
         }
 
-        public void Remove(User entity)
+        public void Remove(int id)
         {
-            using (IDbConnection dbConnection = new SqlConnection(conexion))
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"DELETE FROM User t
-                                 WHERE t.Id = @entity.Id;";
+                string query = $"DELETE FROM Usuarios WHERE Id = {id};";
+
 
                 dbConnection.Execute(query);
             }
         }
 
-        public void Update(User entity)
+        public void Update(User user)
         {
-            using (IDbConnection dbConnection = new SqlConnection(conexion))
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = @"UPDATE t FROM user t
-                               WHERE t.Id == @entity.Id;";
+                string query = @$"UPDATE Usuarios SET Username = '{user.UserName}', Password ='{user.Password}', Nombre = '{user.Nombre}', Email = '{user.Email}', FechaRegistro = '{user.FechaRegistro}' WHERE Id = '{user.Id}';";
 
                 dbConnection.Execute(query);
             }

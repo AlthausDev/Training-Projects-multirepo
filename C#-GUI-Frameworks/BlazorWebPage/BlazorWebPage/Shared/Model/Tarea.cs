@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BlazorWebPage.Shared
+﻿namespace BlazorWebPage.Shared
 {
     /// <summary>
     /// Representa una tarea individual en el sistema.

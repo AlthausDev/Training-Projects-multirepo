@@ -1,14 +1,13 @@
 using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace BlazorWebPage.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
-    {      
+    {
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IWeatherForecastService weatherForecastService;
 
@@ -22,7 +21,7 @@ namespace BlazorWebPage.Server.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             return weatherForecastService.getAll();
-            
+
         }
     }
 }

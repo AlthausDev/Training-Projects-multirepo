@@ -5,66 +5,42 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlazorWebPage.Server.Controllers
 {
     [ApiController]
-    [Route("[Controller]")]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<UserController> Logger;
+        private readonly ILogger<UserController> _logger;
         private readonly IUserService UserService;
 
         public UserController(ILogger<UserController> logger, IUserService userService)
         {
-            Logger = logger;
+            _logger = logger;
             UserService = userService;
         }
 
-        //[HttpGet]
-        //public User[] GetAll()
-        //{           
-        //    return (User[]) UserService.GetAll();
-        //}
-
-        //[HttpPost]
-        //public void Post(User user)
-        //{           
-        //    UserService.Add(user);
-        //}
-
-        //[HttpPut]
-        //public void Put(User user)
-        //{
-        //    UserService.Update(user);
-        //}
-
-        //[HttpDelete]
-        //public void Delete(User user)
-        //{
-        //    UserService.Remove(user);
-        //}
-
         [HttpGet]
-        public User[] GetAll()
+        public List<User> Get()
         {
-            return UserService.getAll();          
-
+            return (List<User>)UserService.GetAll();
         }
 
         [HttpPost]
-        public void Post(User[] user)
+        public void Post(User user)
         {
-            UserService.Post(user);
+            Console.WriteLine(user.ToString());
 
-        }
-
-        [HttpDelete]
-        public void Delete(User[] user)
-        {
-            UserService.Delete(user);
+            UserService.Add(user);
         }
 
         [HttpPut]
-        public void Put(User[] user)
+        public void Put(User user)
         {
-            UserService.Put(user);
+            UserService.Update(user);
+        }
+
+        [HttpDelete("/delete/{id}")]
+        public void Delete(int id)
+        {
+            UserService.Remove(id);
         }
     }
 }

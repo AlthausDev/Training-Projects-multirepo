@@ -49,7 +49,7 @@ namespace BlazorWebPage.Client.Pages
         private Enum? accion = Accion.Espera;
         private Modal modal = default!;
 
-        List<ToastMessage> messages = new List<ToastMessage>();
+        List<ToastMessage> messages = new();
         private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
 
         private PieChart pieChart = default!;
@@ -79,14 +79,16 @@ namespace BlazorWebPage.Client.Pages
         private async Task Post()
         {
             Tareas.Add(nuevaTarea);
-            await Http.PostAsJsonAsync("Tarea", Tareas.ToArray());
+            await Http.PostAsJsonAsync("Tarea", NuevaTarea);
             await getData();
         }
-
+      
         private async Task Put()
         {
+            await Http.PutAsJsonAsync("Tarea", NuevaTarea);
+
             Tareas.Insert(Tareas.IndexOf(selectedTarea), nuevaTarea);
-            await Delete();
+            Tareas.Remove(selectedTarea);
         }
 
         private async Task Delete()
@@ -94,7 +96,8 @@ namespace BlazorWebPage.Client.Pages
             if (selectedTarea != null)
             {
                 Tareas.Remove(selectedTarea);
-                await Http.PostAsJsonAsync<Tarea[]>("Tarea", Tareas.ToArray());
+                HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/Delete/{selectedTarea.Id}");            
+                
                 await getData();
                 SelectedTarea = null;
 
@@ -182,7 +185,7 @@ namespace BlazorWebPage.Client.Pages
         #endregion Toast
 
         #region Graph     
-
+        //TODO no se cuentan correctamente el numero de lineas
         protected async Task InitializeGraph()
         {
             chartData = new ChartData { Labels = GetDataLabels(), Datasets = GetDataSet() };

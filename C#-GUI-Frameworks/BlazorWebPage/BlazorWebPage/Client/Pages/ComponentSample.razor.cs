@@ -40,16 +40,16 @@ namespace BlazorWebPage.Client.Pages
             }
         }
 
-        private long cifra { get; set; }
+        private int cifra { get; set; }
         protected bool IsDisabled { get; set; } = true;
-        private List<SampleModel> ListaEjemplo = new List<SampleModel>();
-        private Random random = new Random();
+        private List<SampleModel> ListaEjemplo = new();
+        private Random random = new();
 
         private void Aceptar()
         {
             try
             {
-                cifra = long.Parse(numero);
+                cifra = int.Parse(numero);
 
                 SampleModel sampleModel = new();
                 sampleModel.Cadena = cadena;
@@ -76,7 +76,7 @@ namespace BlazorWebPage.Client.Pages
         private void GenerarRegistroAleatorio()
         {
             String regex = @"^[a-zA-Z]{4}[a-zA-Z]+$";
-            Xeger xeger = new Xeger(regex, new Random());
+            Xeger xeger = new(regex, new Random());
 
             SampleModel sampleModel = new();
             sampleModel.Numero = random.Next();
@@ -88,6 +88,6 @@ namespace BlazorWebPage.Client.Pages
         private void ValueChangeHandler()
         {
             IsDisabled = (string.IsNullOrWhiteSpace(cadena) || string.IsNullOrWhiteSpace(numero));
-        }     
+        }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using BlazorWebPage.Client.Pages;
 using BlazorWebPage.Shared;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorWebPage.Client.Shared
 {
     partial class ModalRegistro
-    {       
-      
+    {
+
         [Parameter]
-        public long Id { get; set; }
+        public int Id { get; set; }
         private string checkPassword { get; set; } = string.Empty;
 
         private string UserName { get; set; } = string.Empty;

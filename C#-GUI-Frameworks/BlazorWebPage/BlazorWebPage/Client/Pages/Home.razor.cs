@@ -1,11 +1,12 @@
 ﻿using BlazorBootstrap;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components;
-using Smart.Blazor;
-using System.Net.Http.Json;
-using ToastType = BlazorBootstrap.ToastType;
 using BlazorWebPage.Client.Shared;
 using BlazorWebPage.Shared;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Net.Http.Json;
+using static BlazorWebPage.Client.Pages.Todo;
+using System.Threading;
+using ToastType = BlazorBootstrap.ToastType;
 
 namespace BlazorWebPage.Client.Pages
 {
@@ -66,9 +67,9 @@ namespace BlazorWebPage.Client.Pages
             ShowMessage(ToastType.Success, "Registro agregado con éxito");
             await HideModal();
         }
-        private long getNewId()
+        private int getNewId()
         {
-            long newId = 0;
+            int newId = 0;
 
             foreach (User user in Usuarios)
             {
@@ -115,46 +116,44 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task getSingleUserData()
         {
-            foreach(User user in Usuarios)
-            {
-                if(user.UserName == NewUser.UserName && user.Password == NewUser.Password)
-                {
-                    NewUser = user;
-                    break;
-                }
-            }
+            //    foreach (User user in Usuarios)
+            //    {
+            //        if (user.UserName == NewUser.UserName && user.Password == NewUser.Password)
+            //        {
+            //            NewUser = user;
+            //            break;
+            //        }
+            //    }
 
-            if(NewUser.Id == 0)
-            {
-                NewUser = null;
-            }
+            //    if (NewUser.Id == 0)
+            //    {
+            //        NewUser = null;
+            //    }
         }
 
 
         private async Task Post()
         {
             Usuarios.Add(NewUser);
-            await Http.PostAsJsonAsync("User", Usuarios.ToArray());
+            await Http.PostAsJsonAsync("User", NewUser);
             await getData();
-        }
-
-        public async Task registroAsync(User user)
-        {
-            NewUser = user;
-            await Post();
         }
 
         private async Task Put()
         {
-            //Usuarios.Insert(Usuarios.IndexOf(selectedUser), newUser);
-            await Delete();
+            await Http.PutAsJsonAsync("user", NewUser);
+
+            //Usuarios.Insert(Usuarios.IndexOf(selectedUser), NewUser);
+            Usuarios.Remove(NewUser);
         }
 
         private async Task Delete()
-        {            //if (selectedUser != null)
+        {
+            //if (selectedUser != null)
             //{
             //    Usuarios.Remove(selectedUser);
-            //    await Http.PostAsJsonAsync<User[]>("User", Usuarios.ToArray());
+            //    HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/Delete/{selectedUser.Id}");
+
             //    await getData();
             //    SelectedUser = null;
 
@@ -170,13 +169,12 @@ namespace BlazorWebPage.Client.Pages
         #region AuxMetods
         private double getUsersMoth(User user)
         {
-            int index = user.FechaRegistro.IndexOf("-");
+            int index = user.FechaRegistro.IndexOf("/");
 
-            string mes = user.FechaRegistro.Substring(index + 1, index);
+            string mes = user.FechaRegistro[..index];
             double mesDouble = Double.Parse(mes);
 
             FillDataArray(mesDouble);
-
             return mesDouble;
         }
 

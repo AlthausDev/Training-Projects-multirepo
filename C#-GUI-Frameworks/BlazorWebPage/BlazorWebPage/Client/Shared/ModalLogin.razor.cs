@@ -1,7 +1,5 @@
-﻿using BlazorWebPage.Client.Pages;
-using BlazorWebPage.Shared;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components;
 
 namespace BlazorWebPage.Client.Shared
 {
@@ -9,7 +7,7 @@ namespace BlazorWebPage.Client.Shared
     {
         //private string checkPassword { get; set; } = string.Empty;
         private string UserName { get; set; } = string.Empty;
-        private string Password { get; set; } = string.Empty;       
+        private string Password { get; set; } = string.Empty;
 
         private bool IsDisabled = true;
         private string color = "black";
@@ -17,7 +15,7 @@ namespace BlazorWebPage.Client.Shared
         [Parameter] public EventCallback<MouseEventArgs> Login { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> Cerrar { get; set; }
 
-       
+
         #region Handlers
         protected void OnClickRegistro()
         {

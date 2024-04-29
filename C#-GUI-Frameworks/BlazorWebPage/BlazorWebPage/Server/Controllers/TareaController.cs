@@ -1,5 +1,4 @@
-﻿using BlazorWebPage.Server.Services.Impl;
-using BlazorWebPage.Server.Services.Interfaces;
+﻿using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +15,12 @@ namespace BlazorWebPage.Server.Controllers
         {
             _logger = logger;
             TareaService = tareaService;
-        }       
+        }
 
         [HttpGet]
-        public Tarea[] Get()
+        public List<Tarea> Get()
         {
-            return (Tarea[]) TareaService.GetAll();
+            return (List<Tarea>)TareaService.GetAll();
         }
 
         [HttpPost]
@@ -34,12 +33,12 @@ namespace BlazorWebPage.Server.Controllers
         public void Put(Tarea tarea)
         {
             TareaService.Update(tarea);
-        }
+        }     
 
-        [HttpDelete]
-        public void Delete(Tarea tarea)
+        [HttpDelete("/delete/{id}")]
+        public void Delete(int id)
         {
-            TareaService.Remove(tarea);
+            TareaService.Remove(id);
         }
     }
 }
