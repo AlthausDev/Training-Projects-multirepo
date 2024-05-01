@@ -1,8 +1,8 @@
-﻿using BlazorWebPage.Server.Repository.Impl;
-using BlazorWebPage.Server.Repository.Interfaces;
+﻿using BlazorWebPage.Server.Repository.Interfaces;
 using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
-using BlazorWebPage.Shared.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Data.Common;
 
 namespace BlazorWebPage.Server.Services.Impl
 {

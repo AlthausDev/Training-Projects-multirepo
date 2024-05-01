@@ -1,0 +1,62 @@
+﻿@page "/Sesion/{Id}"
+<PageTitle>@Id</PageTitle>
+
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager NavManager
+@using BlazorWebPage.Shared
+
+
+<h1>Bienvenido @user.Nombre</h1>
+
+<ul>
+    <li>@user.UserName</li>
+    <li>@user.Password</li>
+    <li>@user.Nombre</li>
+    <li>@user.Email</li>
+    <li>@fecha</li>
+</ul>
+
+<div id="FormButtons">
+    <button class="btn btn-success" @onclick="EditModal">Editar</button>
+    <button class="btn btn-danger" @onclick="Delete">Borrar</button>
+</div>
+
+@* <Grid TItem="Employee1"
+      AllowFiltering="true"
+      AllowSorting="true"
+      Class="table table-hover"
+      DataProvider="EmployeesDataProvider"
+      HeaderRowCssClass="bg-dark text-white border-bottom-0"
+      FiltersRowCssClass="bg-dark text-white bg-opacity-25 border-bottom-0"
+      Responsive="true">
+
+    <GridColumn TItem="Employee1" HeaderText="Id" PropertyName="Id" SortKeySelector="item => item.Id">
+        @context.Id
+    </GridColumn>
+
+    <GridColumn TItem="Employee1" HeaderText="Employee Name" PropertyName="Name" SortKeySelector="item => item.Name">
+        @context.Name
+    </GridColumn>
+
+    <GridColumn TItem="Employee1" HeaderText="Designation" PropertyName="Designation" SortKeySelector="item => item.Designation">
+        @context.Designation
+    </GridColumn>
+
+    <GridColumn TItem="Employee1" HeaderText="DOJ" PropertyName="DOJ" SortKeySelector="item => item.DOJ">
+        @context.DOJ
+    </GridColumn>
+
+    <GridColumn TItem="Employee1" HeaderText="Active" PropertyName="IsActive" SortKeySelector="item => item.IsActive">
+        @context.IsActive
+    </GridColumn>
+
+</Grid> *@
+
+
+<style>
+    ul{
+       list-style-type: none;
+       margin: 2%;
+    }
+</style>

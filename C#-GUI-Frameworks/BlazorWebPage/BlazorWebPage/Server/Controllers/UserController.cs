@@ -1,6 +1,7 @@
 ﻿using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BlazorWebPage.Server.Controllers
 {
@@ -20,14 +21,20 @@ namespace BlazorWebPage.Server.Controllers
         [HttpGet]
         public List<User> Get()
         {
+            Debug.WriteLine("Se ejecuta el primero");
             return (List<User>)UserService.GetAll();
+        }
+
+        [HttpGet ("{id}")]       
+        public User GetUser(int Id)
+        {
+            Debug.WriteLine("Se ejecuta el Segundo");
+            return UserService.GetById(Id);
         }
 
         [HttpPost]
         public void Post(User user)
         {
-            Console.WriteLine(user.ToString());
-
             UserService.Add(user);
         }
 

@@ -1,11 +1,9 @@
 ﻿using BlazorBootstrap;
-using BlazorWebPage.Client.Shared;
+using BlazorWebPage.Client.Shared.Modals;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System.Net.Http.Json;
-using static BlazorWebPage.Client.Pages.Todo;
-using System.Threading;
 using ToastType = BlazorBootstrap.ToastType;
 
 namespace BlazorWebPage.Client.Pages
@@ -13,17 +11,14 @@ namespace BlazorWebPage.Client.Pages
     public partial class Home
     {
         private Modal modal = default!;
-        private string? message;
+        private string? message = string.Empty;
 
         public List<User> Usuarios { get; set; } = new List<User>();
         public static User NewUser { get; set; } = new();
 
-
         private double[] DataArray = new double[12];
+
         List<ToastMessage> messages = new();
-        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
-
-
         private LineChart lineChart = default!;
         private LineChartOptions lineChartOptions = default!;
         private ChartData chartData = default!;
@@ -41,12 +36,26 @@ namespace BlazorWebPage.Client.Pages
         private async Task Login()
         {
             var parameters = new Dictionary<string, object>();
-            parameters.Add("Login", EventCallback.Factory.Create<MouseEventArgs>(this, getSingleUserData));
+            parameters.Add("Login", EventCallback.Factory.Create<MouseEventArgs>(this, IniciarSesion));
             parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal));
             await modal.ShowAsync<ModalLogin>(title: "Logearse", parameters: parameters);
         }
 
+        private async Task IniciarSesion()
+        {
+            foreach (User user in Usuarios)
+            {
+                if (user.UserName == NewUser.UserName && user.Password == NewUser.Password)
+                {                  
+                    //Console.WriteLine($"Logueado como: {user}");
+                    NavManager.NavigateTo($"/Sesion/{user.Id}", true);
+                    break;
+                }
+            }
 
+            await HideModal();
+            ShowMessage(ToastType.Danger, "Inicio de sesión fallido");
+        }
 
         #endregion Login
 
@@ -55,33 +64,18 @@ namespace BlazorWebPage.Client.Pages
         private async Task Registro()
         {
             var parameters = new Dictionary<string, object>();
-            parameters.Add("Id", getNewId());
+            //parameters.Add("Id", getNewId());
             parameters.Add("Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, NuevoUsuario));
             parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal));
             await modal.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
         }
 
-        private async Task NuevoUsuario(MouseEventArgs e)
+        private async Task NuevoUsuario()
         {
             await Post();
-            ShowMessage(ToastType.Success, "Registro agregado con éxito");
             await HideModal();
+            ShowMessage(ToastType.Success, "Registro agregado con éxito");
         }
-        private int getNewId()
-        {
-            int newId = 0;
-
-            foreach (User user in Usuarios)
-            {
-                if (user.Id >= newId)
-                {
-                    newId = user.Id + 1;
-                }
-            }
-            return newId;
-        }
-
-
         #endregion Registro
 
         private void ImprimirUsuarios()
@@ -94,6 +88,7 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task HideModal()
         {
+            NewUser = new User();
             await modal.HideAsync();
         }
 
@@ -114,56 +109,14 @@ namespace BlazorWebPage.Client.Pages
             }
         }
 
-        private async Task getSingleUserData()
-        {
-            //    foreach (User user in Usuarios)
-            //    {
-            //        if (user.UserName == NewUser.UserName && user.Password == NewUser.Password)
-            //        {
-            //            NewUser = user;
-            //            break;
-            //        }
-            //    }
-
-            //    if (NewUser.Id == 0)
-            //    {
-            //        NewUser = null;
-            //    }
-        }
-
-
         private async Task Post()
-        {
-            Usuarios.Add(NewUser);
-            await Http.PostAsJsonAsync("User", NewUser);
+        {     
+            Usuarios.Add(NewUser);         
+            HttpResponseMessage httpResponseMessage = await Http.PostAsJsonAsync("user", NewUser);
+            Console.WriteLine(httpResponseMessage);
             await getData();
         }
-
-        private async Task Put()
-        {
-            await Http.PutAsJsonAsync("user", NewUser);
-
-            //Usuarios.Insert(Usuarios.IndexOf(selectedUser), NewUser);
-            Usuarios.Remove(NewUser);
-        }
-
-        private async Task Delete()
-        {
-            //if (selectedUser != null)
-            //{
-            //    Usuarios.Remove(selectedUser);
-            //    HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/Delete/{selectedUser.Id}");
-
-            //    await getData();
-            //    SelectedUser = null;
-
-            //    if (accion.Equals(Accion.Espera))
-            //    {
-            //        ShowMessage(ToastType.Danger, "Registro eliminado con éxito");
-            //    }
-            //}
-
-        }
+       
         #endregion ApiOperations
 
         #region AuxMetods
@@ -187,6 +140,8 @@ namespace BlazorWebPage.Client.Pages
         #endregion AuxMetods
 
         #region Toast
+        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+
         private ToastMessage CreateToastMessage(ToastType toastType, string message)
         {
             var toastMessage = new ToastMessage();

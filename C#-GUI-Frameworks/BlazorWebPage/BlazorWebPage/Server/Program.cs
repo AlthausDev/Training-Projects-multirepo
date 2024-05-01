@@ -22,8 +22,6 @@ builder.Services.AddTransient<ITareaService, TareaService>();
 builder.Services.AddTransient<IUserService, UserService>();
 
 
-builder.Services.AddRazorPages();
-
 // Configurar la aplicación
 var app = builder.Build();
 

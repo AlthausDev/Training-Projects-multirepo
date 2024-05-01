@@ -50,7 +50,6 @@ namespace BlazorWebPage.Client.Pages
         private Modal modal = default!;
 
         List<ToastMessage> messages = new();
-        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
 
         private PieChart pieChart = default!;
         private PieChartOptions pieChartOptions = default!;
@@ -96,7 +95,7 @@ namespace BlazorWebPage.Client.Pages
             if (selectedTarea != null)
             {
                 Tareas.Remove(selectedTarea);
-                HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/Delete/{selectedTarea.Id}");            
+                HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/DelTask/{selectedTarea.Id}");            
                 
                 await getData();
                 SelectedTarea = null;
@@ -174,6 +173,8 @@ namespace BlazorWebPage.Client.Pages
         #endregion AutoComplete
 
         #region Toast
+        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+
         private ToastMessage CreateToastMessage(ToastType toastType, string message)
         {
             var toastMessage = new ToastMessage();

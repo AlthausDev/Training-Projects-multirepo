@@ -7,16 +7,15 @@ namespace BlazorWebPage.Shared
     {
         public int Id { get; set; }
 
-        [Required]
         public string UserName { get; set; } = string.Empty;
 
-        [Required]
         public string Password { get; set; } = string.Empty;
         public string? Nombre { get; set; } = string.Empty;
         public string? Email { get; set; } = string.Empty;
 
         private const string DateTimeFormatString = "dd-MM-yyyy";
         private DateTimeOffset eventTimeField = DateTimeOffset.Now;
+
 
         //public string FechaRegistro
         //{
@@ -31,6 +30,22 @@ namespace BlazorWebPage.Shared
         {
         }
 
+        public User(string userName, string password)
+        {
+            UserName = userName;
+            Password = password;
+        }
+
+        public User(string userName, string password, string? nombre) : this(userName, password)
+        {
+            Nombre = nombre;
+        }
+
+        public User(string userName, string password, string? nombre, string? email) : this(userName, password, nombre)
+        {
+            Email = email;
+        }
+
         public User(int id, string userName, string password)
         {
             Id = id;
@@ -38,18 +53,24 @@ namespace BlazorWebPage.Shared
             Password = password;
         }
 
-        public User(int id, string userName, string password, string? nombre, string? email) : this(id, userName, password)
+        public User(int id, string userName, string password, string? nombre, string? email)
         {
+            Id = id;
+            UserName = userName;
+            Password = password;
             Nombre = nombre;
             Email = email;
         }
+  
 
-
-        public User(int id, string userName, string password, string? nombre, string? email, string fechaRegistro) : this(id, userName, password)
+        public User(int id, string userName, string password, string? nombre, string? email, string FechaRegistro) : this(id, userName, password, nombre, email)
         {
-            Nombre = nombre;
-            Email = email;
-            FechaRegistro = fechaRegistro;
+            this.FechaRegistro = FechaRegistro;
+        }
+
+        public User(string userName, string password, string? nombre, string? email, string FechaRegistro) : this(userName, password, nombre, email)
+        {
+            this.FechaRegistro = FechaRegistro;
         }
 
         public override string ToString()

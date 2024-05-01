@@ -35,7 +35,7 @@ namespace BlazorWebPage.Server.Controllers
             TareaService.Update(tarea);
         }     
 
-        [HttpDelete("/delete/{id}")]
+        [HttpDelete("/DelTask/{id}")]
         public void Delete(int id)
         {
             TareaService.Remove(id);

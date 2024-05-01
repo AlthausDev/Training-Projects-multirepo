@@ -21,10 +21,8 @@ namespace BlazorWebPage.Server.Repository.Impl
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                //string query = @$"INSERT INTO Tarea (Nombre, Descripcion, Finalizado) VALUES ('{tarea.Nombre}', '{tarea.Descripcion}', {(tarea.Finalizado ? 1 : 0)});";
-                string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email, FechaRegistro) 
-                                VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}', '{user.FechaRegistro}');";
-
+                string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email) 
+                                VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}');";                
                 dbConnection.Execute(query);
             }
         }
@@ -46,16 +44,24 @@ namespace BlazorWebPage.Server.Repository.Impl
             {
                 string query = $"SELECT * FROM Usuarios WHERE Id = {id};";
 
-                return (User)dbConnection.Query<User>(query);
-            }
-        }
+                //return (User)dbConnection.Query<User>(query);
 
-        public void Remove(int id)
+                var aux = dbConnection.Query<User>(query);
+                Console.WriteLine(aux);
+
+                User user = aux.FirstOrDefault();
+
+                return user;
+            }
+        
+        }
+     
+
+    public void Remove(int id)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
                 string query = $"DELETE FROM Usuarios WHERE Id = {id};";
-
 
                 dbConnection.Execute(query);
             }
@@ -70,5 +76,10 @@ namespace BlazorWebPage.Server.Repository.Impl
                 dbConnection.Execute(query);
             }
         }
+
+        //User IGenericRepository<User>.GetById(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
