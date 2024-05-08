@@ -57,3 +57,4 @@
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/obj/staticwebassets.pack.sentinel
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/appsettings.json
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/.vs
+/C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Shared/obj/BlazorWebPage.Shared.csproj.nuget.g.targets
