@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tarea.sql" />
+    <Build Include="Usuarios.sql" />
   </ItemGroup>
 </Project>

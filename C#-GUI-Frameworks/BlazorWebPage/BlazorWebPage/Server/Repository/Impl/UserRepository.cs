@@ -3,6 +3,7 @@ using BlazorWebPage.Shared;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace BlazorWebPage.Server.Repository.Impl
 {
@@ -20,10 +21,10 @@ namespace BlazorWebPage.Server.Repository.Impl
         public void Add(User user)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-            {
+            {               
                 string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email) 
-                                VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}');";                
-                dbConnection.Execute(query);
+                                VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}');";
+                dbConnection.Execute(query);          
             }
         }
 

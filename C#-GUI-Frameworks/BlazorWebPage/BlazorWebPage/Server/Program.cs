@@ -3,6 +3,7 @@ using BlazorWebPage.Server.Repository.Interfaces;
 using BlazorWebPage.Server.Services.Impl;
 using BlazorWebPage.Server.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
+builder.Services.AddHotKeys2();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddTransient<ITareaRepository, TareaRepository>();
@@ -20,6 +21,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddTransient<ITareaService, TareaService>();
 builder.Services.AddTransient<IUserService, UserService>();
+
 
 
 // Configurar la aplicación
