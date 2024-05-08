@@ -2,10 +2,11 @@
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using System.Reflection.Metadata;
 
 namespace BlazorWebPage.Client.Shared.Modals
 {
-    partial class ModalLogin
+    partial class ModalLogin 
     {
         private string UserName { get; set; } = string.Empty;
         private string Password { get; set; } = string.Empty;
@@ -13,8 +14,10 @@ namespace BlazorWebPage.Client.Shared.Modals
         private bool IsDisabled = true;
         private string color = "black";
 
+
         [Parameter] public EventCallback<MouseEventArgs> Login { get; set; }
-        [Parameter] public EventCallback<MouseEventArgs> Cerrar { get; set; }
+        [Parameter] public EventCallback<MouseEventArgs> Cerrar { get; set; }   
+      
 
 
         #region Handlers
@@ -27,8 +30,8 @@ namespace BlazorWebPage.Client.Shared.Modals
 
         protected void OnClickClose()
         {
-            UserName = string.Empty ;
-            Password = string.Empty ;  
+            UserName = string.Empty;
+            Password = string.Empty;
             Cerrar.InvokeAsync();
         }
 

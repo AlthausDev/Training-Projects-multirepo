@@ -3,6 +3,8 @@ using BlazorWebPage.Client.Shared.Modals;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics;
 using System.Net.Http.Json;
 using ToastType = BlazorBootstrap.ToastType;
 
@@ -42,12 +44,11 @@ namespace BlazorWebPage.Client.Pages
         }
 
         private async Task IniciarSesion()
-        {
+        {           
             foreach (User user in Usuarios)
             {
                 if (user.UserName == NewUser.UserName && user.Password == NewUser.Password)
-                {                  
-                    //Console.WriteLine($"Logueado como: {user}");
+                {                   
                     NavManager.NavigateTo($"/Sesion/{user.Id}", true);
                     break;
                 }
@@ -64,7 +65,6 @@ namespace BlazorWebPage.Client.Pages
         private async Task Registro()
         {
             var parameters = new Dictionary<string, object>();
-            //parameters.Add("Id", getNewId());
             parameters.Add("Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, NuevoUsuario));
             parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal));
             await modal.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
@@ -72,19 +72,28 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task NuevoUsuario()
         {
-            await Post();
-            await HideModal();
-            ShowMessage(ToastType.Success, "Registro agregado con éxito");
-        }
-        #endregion Registro
+            bool existe = false;
 
-        private void ImprimirUsuarios()
-        {
-            foreach (var usuario in Usuarios)
+            foreach(User user in Usuarios)
             {
-                Console.WriteLine(usuario.ToString());
+                if (user.UserName == NewUser.UserName || (user.Email == NewUser.Email && !NewUser.Email.IsNullOrEmpty()))
+                { 
+                    existe = true;
+                    ShowMessage(ToastType.Danger, "El nombre de usuario o email ya está registrado");
+                    await HideModal();
+                    break;
+                }
+            }
+
+            if(!existe)
+            {
+                await Post();               
+                ShowMessage(ToastType.Success, "Registro realizado con éxito");        
+                await IniciarSesion();                
+           
             }
         }
+        #endregion Registro              
 
         private async Task HideModal()
         {
@@ -110,13 +119,13 @@ namespace BlazorWebPage.Client.Pages
         }
 
         private async Task Post()
-        {     
-            Usuarios.Add(NewUser);         
-            HttpResponseMessage httpResponseMessage = await Http.PostAsJsonAsync("user", NewUser);
-            Console.WriteLine(httpResponseMessage);
-            await getData();
+        {            
+                Usuarios.Add(NewUser);
+                HttpResponseMessage httpResponseMessage = await Http.PostAsJsonAsync("user", NewUser);
+                Console.WriteLine(httpResponseMessage);
+                await getData();           
         }
-       
+
         #endregion ApiOperations
 
         #region AuxMetods
@@ -136,6 +145,25 @@ namespace BlazorWebPage.Client.Pages
             int position = (int)(mes - 1);
             DataArray[position]++;
 
+        }
+
+        private void ImprimirUsuarios()
+        {
+            foreach (var usuario in Usuarios)
+            {
+                Console.WriteLine(usuario.ToString());
+            }
+        }
+
+        private bool CheckFormat(string word)
+        {
+            if (string.IsNullOrWhiteSpace(word) || word.Length < 3)
+            {                
+                ShowMessage(ToastType.Warning, "El Nombre de usuario y la contraseña deben tener al menos 3 carácteres");
+                return false;
+            }
+
+            return true;
         }
         #endregion AuxMetods
 

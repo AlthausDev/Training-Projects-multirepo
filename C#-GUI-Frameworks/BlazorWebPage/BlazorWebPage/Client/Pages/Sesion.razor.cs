@@ -4,6 +4,9 @@ using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System.Net.Http.Json;
+using System.Threading.Channels;
+using ToastType = BlazorBootstrap.ToastType;
+
 
 namespace BlazorWebPage.Client.Pages
 {
@@ -18,13 +21,20 @@ namespace BlazorWebPage.Client.Pages
         private IEnumerable<User> Usuarios = default!;
         private Modal modal = default!;
 
+        private string ShowTable = "none";
+
         protected override async Task OnInitializedAsync()
         {
             await getData();
             fecha = DateFormat();
-            if (user.UserName.Equals("Admin"))
+            if (user.UserName.Equals("admin"))
             {
-                ShowTable();
+                ShowTable = "block";
+            }
+
+            if (user.UserName.Equals("3"))
+            {
+                ShowTable = "block";
             }
         }
 
@@ -37,7 +47,7 @@ namespace BlazorWebPage.Client.Pages
 
             if (usuariosArray is not null)
             {
-                Usuarios = usuariosArray.ToList();              
+                Usuarios = usuariosArray.ToList();
             }
         }
 
@@ -63,6 +73,7 @@ namespace BlazorWebPage.Client.Pages
         private async Task Put(User user)
         {
             await Http.PutAsJsonAsync("User", user);
+
         }
 
 
@@ -80,41 +91,62 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task EditModal()
         {
-            var parameters = new Dictionary<string, object>();
-            parameters.Add("Id", user.Id);
-            parameters.Add("UserName", user.UserName);
-            parameters.Add("Password", user.Password);
-            parameters.Add("Nombre", user.Nombre);
-            parameters.Add("Email", user.Email);
-            parameters.Add("Login", EventCallback.Factory.Create<MouseEventArgs>(this, EditarDatosAsync));
-            parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, Cancel));
-            await modal.ShowAsync<ModalEditUser>(title: "Editar", parameters: parameters);
+            try
+            {
+                Console.WriteLine(user.ToString());
+                var parameters = new Dictionary<string, object>
+            {
+                { "Id", user.Id },
+                { "UserName", user.UserName },
+                { "Password", user.Password },
+                { "Nombre", user.Nombre },
+                { "Email", user.Email },
+                { "Editar", EventCallback.Factory.Create<MouseEventArgs>(this, EditarDatos) },
+                { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) },
+                {"Volver", EventCallback.Factory.Create<MouseEventArgs>(this, ReturnHome) }
+            };
+                await modal.ShowAsync<ModalEditUser>(title: "Editar", parameters: parameters);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("\nMessage ---\n{0}", ex.Message);
+                Console.WriteLine(
+                    "\nHelpLink ---\n{0}", ex.HelpLink);
+                Console.WriteLine("\nSource ---\n{0}", ex.Source);
+                Console.WriteLine(
+                    "\nStackTrace ---\n{0}", ex.StackTrace);
+                Console.WriteLine(
+                    "\nTargetSite ---\n{0}", ex.TargetSite);
+                await modal.ShowAsync<ModalEditUser>(title: "Editar");
+            }
         }
 
 
-        private async Task EditarDatosAsync()
+        private async Task EditarDatos()
         {
             await Put(user);
+            await HideModal();
         }
 
-        private async Task Cancel()
+        private async Task HideModal()
         {
             await modal.HideAsync();
         }
 
+        private async Task ReturnHome()
+        {
+            NavManager.NavigateTo("/", true);
+        }
 
         #endregion
 
         #region Grid
-        //private async Task<GridDataProviderResult<User>> UsersDataProvider(GridDataProviderResult<User> request)
-        //{
-        //    return await Task.FromResult(request.ApplyTo(Usuarios.OrderBy(user => user.Id)));
-        //}
-
-        private void ShowTable()
+        private async Task<GridDataProviderResult<User>> UsersDataProvider(GridDataProviderRequest<User> request)
         {
-            getAllData();
+            await getAllData();
+            return await Task.FromResult(request.ApplyTo(Usuarios.OrderBy(user => user.Id)));
         }
+
         #endregion
 
         #region Aux

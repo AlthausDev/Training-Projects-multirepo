@@ -1,4 +1,5 @@
-﻿using BlazorWebPage.Client.Pages;
+﻿using BlazorBootstrap;
+using BlazorWebPage.Client.Pages;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -19,6 +20,9 @@ namespace BlazorWebPage.Client.Shared.Modals
         private bool IsDisabled = true;
         private string color = "black";
 
+        List<ToastMessage> messages = new();
+
+
         [Parameter] public EventCallback<MouseEventArgs> Registrar { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> Cerrar { get; set; }
 
@@ -26,9 +30,12 @@ namespace BlazorWebPage.Client.Shared.Modals
         #region Handlers
         protected void OnClickRegistro()
         {
-            User user = new(UserName, Password, Nombre, Email, DateTimeOffset.Now.ToString("dd-MM-yyyy"));
-            Home.NewUser = user;
-            Registrar.InvokeAsync();
+            if (CheckFormat(UserName) && CheckFormat(Password))
+            {
+                User user = new(UserName, Password, Nombre, Email, DateTimeOffset.Now.ToString("dd-MM-yyyy"));
+                Home.NewUser = user;
+                Registrar.InvokeAsync();
+            }
         }
 
         protected void OnClickClose()
@@ -63,6 +70,28 @@ namespace BlazorWebPage.Client.Shared.Modals
 
         }
         #endregion Handlers
+
+        private bool CheckFormat(string word)
+        {
+            if (string.IsNullOrWhiteSpace(word) || word.Length < 3)
+            {
+                ShowMessage(ToastType.Warning, "El Nombre de usuario y la contraseña deben tener al menos 3 carácteres");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+
+        private ToastMessage CreateToastMessage(ToastType toastType, string message)
+        {
+            var toastMessage = new ToastMessage();
+            toastMessage.Type = toastType;
+            toastMessage.Message = message;
+
+            return toastMessage;
+        }
     }
 }
 

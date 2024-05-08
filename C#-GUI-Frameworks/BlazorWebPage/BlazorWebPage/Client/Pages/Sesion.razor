@@ -7,56 +7,130 @@
 @using BlazorWebPage.Shared
 
 
+<Modal @ref="modal" Size="ModalSize.Regular" />
 <h1>Bienvenido @user.Nombre</h1>
 
 <ul>
-    <li>@user.UserName</li>
-    <li>@user.Password</li>
-    <li>@user.Nombre</li>
-    <li>@user.Email</li>
-    <li>@fecha</li>
+    <li>UserName: @user.UserName</li>
+    <li>Contraseña: @user.Password</li>
+    <li>Nombre: @user.Nombre</li>
+    <li>Email: @user.Email</li>
+    <li>Fecha de registro: @fecha</li>
 </ul>
+
+@* <table>
+    <td>
+        <tr>UserName:</tr>
+        <tr>Contraseña:</tr>
+        <tr>Nombre:</tr>
+        <tr>Email:</tr>
+        <tr>Fecha de registro:</tr>
+    </td>
+    <td>
+        <tr>@user.UserName</tr>
+        <tr>@user.Password</tr>
+        <tr>@user.Nombre</tr>
+        <tr>@user.Email</tr>
+        <tr>@fecha</tr>
+    </td>
+</table> *@
+
+
+
+<table class="tg">
+    <tr>
+        <td>UserName</td>
+        <td>@user.UserName</td>      
+    </tr>
+
+    <tr>
+        <td>Password</td>
+        <td>@user.Password</td>       
+    </tr>
+
+    <tr>
+        <td>Nombre</td>
+        <td>@user.Nombre</td>
+    </tr>
+
+    <tr>
+        <td>Email</td>
+        <td>@user.Email</td>
+    </tr>
+    <tr>
+        <td>Fecha de registro:</td>
+        <td>@fecha</td>
+    </tr>
+</table>
+
 
 <div id="FormButtons">
     <button class="btn btn-success" @onclick="EditModal">Editar</button>
     <button class="btn btn-danger" @onclick="Delete">Borrar</button>
+    <button class="btn btn-warning" @onclick="ReturnHome">Volver</button>
 </div>
 
-@* <Grid TItem="Employee1"
-      AllowFiltering="true"
+<div id="GridUsers">
+<Grid TItem="User"
+      AllowFiltering="false"
+      AllowPaging="true"
+      PageSize="15"
       AllowSorting="true"
-      Class="table table-hover"
-      DataProvider="EmployeesDataProvider"
-      HeaderRowCssClass="bg-dark text-white border-bottom-0"
-      FiltersRowCssClass="bg-dark text-white bg-opacity-25 border-bottom-0"
-      Responsive="true">
+      HeaderRowCssClass="bg-black text-white"
+      Class="table table-hover table-bordered table-striped"
+      DataProvider="UsersDataProvider"    
+      Responsive="true"
+>
 
-    <GridColumn TItem="Employee1" HeaderText="Id" PropertyName="Id" SortKeySelector="item => item.Id">
+    <GridColumn TItem="User" HeaderText="Id" PropertyName="Id" SortKeySelector="item => item.Id" IsDefaultSortColumn="true">
         @context.Id
     </GridColumn>
 
-    <GridColumn TItem="Employee1" HeaderText="Employee Name" PropertyName="Name" SortKeySelector="item => item.Name">
-        @context.Name
+      <GridColumn TItem="User" HeaderText="UserName" PropertyName="UserName" SortKeySelector="item => item.UserName">
+    @context.UserName
     </GridColumn>
 
-    <GridColumn TItem="Employee1" HeaderText="Designation" PropertyName="Designation" SortKeySelector="item => item.Designation">
-        @context.Designation
+    <GridColumn TItem="User" HeaderText="Nombre" PropertyName="Nombre" SortKeySelector="item => item.Nombre">
+    @context.Nombre
     </GridColumn>
 
-    <GridColumn TItem="Employee1" HeaderText="DOJ" PropertyName="DOJ" SortKeySelector="item => item.DOJ">
-        @context.DOJ
+    <GridColumn TItem="User" HeaderText="Email" PropertyName="Email" SortKeySelector="item => item.Email">
+    @context.Email
     </GridColumn>
 
-    <GridColumn TItem="Employee1" HeaderText="Active" PropertyName="IsActive" SortKeySelector="item => item.IsActive">
-        @context.IsActive
+    <GridColumn TItem="User" HeaderText="Fecha de Registro" PropertyName="FechaRegistro" SortKeySelector="item => item.FechaRegistro">
+        @context.FechaRegistro
     </GridColumn>
 
-</Grid> *@
+</Grid>
+
+</div>
 
 
-<style>
+<style> 
+ 
+ /*    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        text-align: center;
+    } */
+
+          td, th {
+           /*  border-color: black; */
+            border-style: groove; 
+             border-width: 1px;           
+            font-size: 14px;
+            /* overflow: hidden; */
+            padding: 10px 5px;           
+        }       
+
+
     ul{
        list-style-type: none;
-       margin: 2%;
+       margin: 2%;       
+    }
+
+    #GridUsers{      
+        display: @ShowTable;
     }
 </style>

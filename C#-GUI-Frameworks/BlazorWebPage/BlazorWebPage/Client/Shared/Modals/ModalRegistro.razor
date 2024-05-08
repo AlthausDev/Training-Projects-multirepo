@@ -1,15 +1,17 @@
 ﻿@using BlazorWebPage.Client.Pages
 @using BlazorWebPage.Shared
 
+<Toasts class="p-3" Messages="messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" />
+
 <div id="formDiv">
     <label for="formTextBox">Username: </label>
-    <input autofocus type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+    <input autofocus type="text" id="formTextBox" Placeholder='Introduzca al menos 3 caracteres'
            @bind="UserName" @bind:event="oninput" @onkeyup="ValueChangeHandler" />
 </div>
 
 <div id="formDiv">
     <label for="formTextBox">Contraseña: </label>
-    <input type="text" id="checkPassword" Placeholder='Campo de texto de prueba'
+    <input type="text" id="checkPassword" Placeholder='Introduzca al menos 3 caracteres'
            @bind="Password" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
 </div>
 
@@ -21,13 +23,13 @@
 
 <div id="formDiv">
     <label for="formTextBox">Nombre: </label>
-    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+    <input type="text" id="formTextBox" Placeholder='Opcional'
            @bind="Nombre" @bind:event="oninput" />
 </div>
 
 <div id="formDiv">
     <label for="formTextBox">Email: </label>
-    <input type="text" id="formTextBox" Placeholder='Campo de texto de prueba'
+    <input type="text" id="formTextBox" Placeholder='Opcional'
            @bind="Email" @bind:event="oninput" />
 </div>
 
