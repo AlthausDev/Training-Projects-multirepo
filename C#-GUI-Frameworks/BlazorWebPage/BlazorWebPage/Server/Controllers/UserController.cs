@@ -14,107 +14,123 @@ namespace BlazorWebPage.Server.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<UserController> _logger;
+        private readonly ILogger<UserController> Logger;
         private readonly IUserService UserService;
-
-        private readonly IConfiguration configuration;
+        private readonly IConfiguration Configuration;
 
         public UserController(ILogger<UserController> logger, IUserService userService, IConfiguration configuration)
         {
-            _logger = logger;
+            Logger = logger;
             UserService = userService;
-
-            this.configuration = configuration;
-
-        }              
-
-        [HttpGet]
-        public List<User> Get()
-        {
-            return (List<User>)UserService.GetAll();
+            Configuration = configuration;
         }
 
+        [HttpGet]
+        public ActionResult<List<User>> Get()
+        {
+            List<User> users = UserService.GetAll().ToList();
+            if (users == null || !users.Any())
+            {
+                return NoContent();
+            }
+            return Ok(users);
+        }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]        
-        public User GetUser(int Id)
+        [AllowAnonymous]
+        public ActionResult<User> GetUser(int id)
         {
-            User user = UserService.GetById(Id);
-            Console.WriteLine(Login(user));
+            User user = UserService.GetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
-            return user;
+            return Ok(user);
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("login")]
         public IActionResult Login([FromBody] User user)
         {
-            IActionResult response = Unauthorized();
+            if (user == null || string.IsNullOrWhiteSpace(user.UserName) || string.IsNullOrWhiteSpace(user.Password))
+            {
+                return BadRequest("Invalid user data.");
+            }
 
-            var tokenString = BuildToken(user);
-            response = Ok(new { token = tokenString });
+            User validUser = UserService.GetAll().FirstOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+            if (validUser == null)
+            {
+                return Unauthorized("Invalid username or password.");
+            }
 
-            Debug.WriteLine(response.ToString());
-            return response;
+            string tokenString = BuildToken(validUser);
+            return Ok(new { token = tokenString });
         }
 
-        public string BuildToken(User user)
+        private string BuildToken(User user)
         {
-            //byte[] TokenKey = Encoding.UTF8.GetBytes(configuration["Key"]);
+            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]));
+            SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var principal = new ClaimsPrincipal(new ClaimsIdentity(null, "Basic"));
-            var isAuthenticated = principal.Identity.IsAuthenticated;
-
-            Claim[] Claims =
-            [
-                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new(ClaimTypes.Name, user.UserName),
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Role, "user")
-            ];
+            };
 
-            var token = new JwtSecurityToken(configuration["JWT:Issuer"],
-                configuration["JWT:Issuer"],
-                Claims,
+            JwtSecurityToken token = new JwtSecurityToken(
+                issuer: Configuration["JWT:Issuer"],
+                audience: Configuration["JWT:Issuer"],
+                claims: claims,
                 expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials);
 
-
-
             return new JwtSecurityTokenHandler().WriteToken(token);
-
-            //SecurityTokenDescriptor TokenDescriptor = new()
-            //{
-            //    Expires = DateTime.UtcNow.AddHours(configuration.GetValue<int>("ExpirationHours")),
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(TokenKey),
-            //                                            SecurityAlgorithms.HmacSha256Signature),
-            //    Subject = new ClaimsIdentity(Claims),
-            //};
-
-            //JwtSecurityTokenHandler tokenHandler = new();
-            //SecurityToken Token = tokenHandler.CreateToken(TokenDescriptor);
-
-            //return tokenHandler.WriteToken(Token);
         }
 
         [HttpPost]
-        public void Post(User user)
+        public IActionResult Post([FromBody] User user)
         {
+            if (user == null || string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Password))
+            {
+                return BadRequest("User data is null or invalid.");
+            }
+
             UserService.Add(user);
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
         [HttpPut]
-        public void Put(User user)
+        public IActionResult Put([FromBody] User user)
         {
+            if (user == null || user.Id <= 0)
+            {
+                return BadRequest("User data is invalid.");
+            }
+
+            User existingUser = UserService.GetById(user.Id);
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
             UserService.Update(user);
+            return NoContent();
         }
 
-        [HttpDelete("/delete/{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
+            User user = UserService.GetById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             UserService.Remove(id);
+            return NoContent();
         }
     }
 }

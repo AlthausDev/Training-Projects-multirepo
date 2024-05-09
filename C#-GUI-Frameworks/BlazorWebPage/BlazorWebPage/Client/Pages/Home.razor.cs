@@ -3,8 +3,8 @@ using BlazorWebPage.Client.Shared.Modals;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using ToastType = BlazorBootstrap.ToastType;
 
@@ -12,23 +12,23 @@ namespace BlazorWebPage.Client.Pages
 {
     public partial class Home
     {
-        private Modal modal = default!;
-        private string? message = string.Empty;
+        private Modal ModalInstance = default!;
+        private string? Message = string.Empty;
+        private string? Token = string.Empty;
 
         public List<User> Usuarios { get; set; } = new List<User>();
         public static User NewUser { get; set; } = new();
 
         private double[] DataArray = new double[12];
 
-        List<ToastMessage> messages = new();
-        private LineChart lineChart = default!;
-        private LineChartOptions lineChartOptions = default!;
-        private ChartData chartData = default!;
-
+        private List<ToastMessage> Messages = new();
+        private LineChart LineChartInstance = default!;
+        private LineChartOptions LineChartOptions = default!;
+        private ChartData ChartDataInstance = default!;
 
         protected override async Task OnInitializedAsync()
         {
-            await getData();
+            await GetData();
             await InitializeGraph();
         }
 
@@ -37,29 +37,29 @@ namespace BlazorWebPage.Client.Pages
         #region Login
         private async Task Login()
         {
-            var parameters = new Dictionary<string, object>();
-            parameters.Add("Login", EventCallback.Factory.Create<MouseEventArgs>(this, IniciarSesion));
-            parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal));
-            await modal.ShowAsync<ModalLogin>(title: "Logearse", parameters: parameters);
+            var parameters = new Dictionary<string, object>
+            {
+                { "Login", EventCallback.Factory.Create<MouseEventArgs>(this, IniciarSesion) },
+                { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
+            };
+            await ModalInstance.ShowAsync<ModalLogin>(title: "Logearse", parameters: parameters);
         }
 
         private async Task IniciarSesion()
         {
-            foreach (User user in Usuarios)
-            {  
-                if (user.UserName == NewUser.UserName)
+            HttpResponseMessage response = await Http.PostAsJsonAsync("user/login", NewUser);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<dynamic>();
+                Token = result?.token;
+                if (!string.IsNullOrEmpty(Token))
                 {
-                    User? usuario = await getUserById(user.Id);
-
-                    if (NewUser.Password.Equals(usuario.Password)) {      
-                        
-                        NavManager.NavigateTo($"/Sesion/{user.Id}", true);
-                        break;
-                    }
+                    NavManager.NavigateTo($"/Sesion/{NewUser.Id}", true);
+                    await HideModal();
+                    return;
                 }
             }
 
-            await HideModal();
             ShowMessage(ToastType.Danger, "Inicio de sesión fallido");
         }
 
@@ -69,33 +69,28 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task Registro()
         {
-            var parameters = new Dictionary<string, object>();
-            parameters.Add("Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, NuevoUsuario));
-            parameters.Add("Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal));
-            await modal.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
+            var parameters = new Dictionary<string, object>
+            {
+                { "Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, NuevoUsuario) },
+                { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
+            };
+            await ModalInstance.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
         }
 
         private async Task NuevoUsuario()
         {
-            bool existe = false;
+            bool existe = Usuarios.Any(user => user.UserName == NewUser.UserName || (user.Email == NewUser.Email && !string.IsNullOrEmpty(NewUser.Email)));
 
-            foreach(User user in Usuarios)
+            if (existe)
             {
-                if (user.UserName == NewUser.UserName || (user.Email == NewUser.Email && !NewUser.Email.IsNullOrEmpty()))
-                { 
-                    existe = true;
-                    ShowMessage(ToastType.Danger, "El nombre de usuario o email ya está registrado");
-                    await HideModal();
-                    break;
-                }
+                ShowMessage(ToastType.Danger, "El nombre de usuario o email ya está registrado");
+                await HideModal();
             }
-
-            if(!existe)
+            else
             {
-                await Post();               
-                ShowMessage(ToastType.Success, "Registro realizado con éxito");        
-                await IniciarSesion();                
-           
+                await PostNewUser();
+                ShowMessage(ToastType.Success, "Registro realizado con éxito");
+                await IniciarSesion();
             }
         }
         #endregion Registro              
@@ -103,48 +98,51 @@ namespace BlazorWebPage.Client.Pages
         private async Task HideModal()
         {
             NewUser = new User();
-            await modal.HideAsync();
+            await ModalInstance.HideAsync();
         }
 
         #endregion Modal
 
         #region ApiOperations
-        private async Task getData()
+        private async Task GetData()
         {
             User[]? usuariosArray = await Http.GetFromJsonAsync<User[]>("user");
-
-            if (usuariosArray is not null)
+            if (usuariosArray != null)
             {
                 Usuarios = usuariosArray.ToList();
                 foreach (User user in Usuarios)
                 {
-                    getUsersMoth(user);
+                    GetUsersMonth(user);
                 }
             }
         }
 
-        private async Task<User?> getUserById(int Id)
+        private async Task<User?> GetUserById(int id)
         {
-            return await Http.GetFromJsonAsync<User>($"user/{Id}");           
+            return await Http.GetFromJsonAsync<User>($"user/{id}");
         }
 
-        private async Task Post()
-        {            
-                Usuarios.Add(NewUser);
-                HttpResponseMessage httpResponseMessage = await Http.PostAsJsonAsync("user", NewUser);
-                Console.WriteLine(httpResponseMessage);
-                await getData();           
+        private async Task PostNewUser()
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync("user", NewUser);
+            if (response.IsSuccessStatusCode)
+            {
+                await GetData();
+            }
+            else
+            {
+                ShowMessage(ToastType.Danger, "Error al registrar el usuario");
+            }
         }
 
         #endregion ApiOperations
 
-        #region AuxMetods
-        private double getUsersMoth(User user)
+        #region AuxMethods
+        private double GetUsersMonth(User user)
         {
             int index = user.FechaRegistro.IndexOf("/");
-
             string mes = user.FechaRegistro[..index];
-            double mesDouble = Double.Parse(mes);
+            double mesDouble = double.Parse(mes);
 
             FillDataArray(mesDouble);
             return mesDouble;
@@ -154,7 +152,6 @@ namespace BlazorWebPage.Client.Pages
         {
             int position = (int)(mes - 1);
             DataArray[position]++;
-
         }
 
         private void ImprimirUsuarios()
@@ -168,25 +165,24 @@ namespace BlazorWebPage.Client.Pages
         private bool CheckFormat(string word)
         {
             if (string.IsNullOrWhiteSpace(word) || word.Length < 3)
-            {                
-                ShowMessage(ToastType.Warning, "El Nombre de usuario y la contraseña deben tener al menos 3 carácteres");
+            {
+                ShowMessage(ToastType.Warning, "El Nombre de usuario y la contraseña deben tener al menos 3 caracteres");
                 return false;
             }
-
             return true;
         }
-        #endregion AuxMetods
+        #endregion AuxMethods
 
         #region Toast
-        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+        private void ShowMessage(ToastType toastType, string message) => Messages.Add(CreateToastMessage(toastType, message));
 
         private ToastMessage CreateToastMessage(ToastType toastType, string message)
         {
-            var toastMessage = new ToastMessage();
-            toastMessage.Type = toastType;
-            toastMessage.Message = message;
-
-            return toastMessage;
+            return new ToastMessage
+            {
+                Type = toastType,
+                Message = message
+            };
         }
         #endregion Toast
 
@@ -196,52 +192,45 @@ namespace BlazorWebPage.Client.Pages
         {
             var colors = ColorBuilder.CategoricalTwelveColors;
 
-            var labels = new List<string> { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre" };
-            var datasets = new List<IChartDataset>();
-
-            var dataset = new LineChartDataset
+            var labels = new List<string> { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+            var datasets = new List<IChartDataset>
             {
-                Label = "Registros",
-                Data = DataArray.ToList(),
-
-                BackgroundColor = new List<string> { colors[7] },
-                BorderColor = new List<string> { colors[7] },
-                BorderWidth = new List<double> { 2 },
-                HoverBorderWidth = new List<double> { 4 },
-                PointBackgroundColor = new List<string> { colors[7] },
-                PointRadius = new List<int> { 3 },
-                PointHoverRadius = new List<int> { 4 },
-
-                Datalabels = new() { Align = "end", Anchor = "end" }
+                new LineChartDataset
+                {
+                    Label = "Registros",
+                    Data = DataArray.ToList(),
+                    BackgroundColor = new List<string> { colors[7] },
+                    BorderColor = new List<string> { colors[7] },
+                    BorderWidth = new List<double> { 2 },
+                    HoverBorderWidth = new List<double> { 4 },
+                    PointBackgroundColor = new List<string> { colors[7] },
+                    PointRadius = new List<int> { 3 },
+                    PointHoverRadius = new List<int> { 4 },
+                    Datalabels = new() { Align = "end", Anchor = "end" }
+                }
             };
-            datasets.Add(dataset);
 
-
-            chartData = new ChartData
+            ChartDataInstance = new ChartData
             {
                 Labels = labels,
                 Datasets = datasets
             };
 
-            lineChartOptions = new()
+            LineChartOptions = new LineChartOptions
             {
                 Responsive = true,
                 Interaction = new Interaction { Mode = InteractionMode.Index }
             };
 
-            lineChartOptions.Scales.X!.Title!.Text = "Meses";
-            lineChartOptions.Scales.X.Title.Display = true;
+            LineChartOptions.Scales.X!.Title!.Text = "Meses";
+            LineChartOptions.Scales.X.Title.Display = true;
 
-            lineChartOptions.Scales.Y!.Title!.Text = "Usuarios Registrados";
-            lineChartOptions.Scales.Y.Title.Display = true;
+            LineChartOptions.Scales.Y!.Title!.Text = "Usuarios Registrados";
+            LineChartOptions.Scales.Y.Title.Display = true;
 
-            // datalabels
-            lineChartOptions.Plugins.Datalabels.Color = "white";
+            LineChartOptions.Plugins.Datalabels.Color = "white";
 
-            if (true)
-            {
-                await lineChart.InitializeAsync(chartData: chartData, chartOptions: lineChartOptions, plugins: new string[] { "ChartDataLabels" });
-            }
+            await LineChartInstance.InitializeAsync(chartData: ChartDataInstance, chartOptions: LineChartOptions, plugins: new string[] { "ChartDataLabels" });
             await base.OnAfterRenderAsync(true);
         }
         #endregion LineChart

@@ -11,6 +11,11 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuración de JWT desde appsettings.json
+var jwtKey = builder.Configuration["JWT:Key"];
+var jwtIssuer = builder.Configuration["JWT:Issuer"];
+var jwtAudience = builder.Configuration["JWT:Audience"];
+var jwtExpirationHours = int.Parse(builder.Configuration["JWT:ExpirationHours"]);
 
 // Añadir servicios.
 builder.Services.AddScoped<AuthenticationService>();
@@ -19,32 +24,39 @@ builder.Services.AddRazorPages();
 builder.Services.AddHotKeys2();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-        ClockSkew = TimeSpan.Zero
-    }
-);
-
 builder.Services.AddMvc();
 
+// Configuración de autenticación JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+// Configuración de dependencias
 builder.Services.AddTransient<ITareaRepository, TareaRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
-
 builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddTransient<ITareaService, TareaService>();
 builder.Services.AddTransient<IUserService, UserService>();
-
 builder.Services.AddTransient<EncryptionUtil>();
 
-builder.Services.AddCors(p => p.AddPolicy("corsapp", builder => {
-    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowedToAllowWildcardSubdomains();
+// Configuración de CORS para admitir cualquier origen
+builder.Services.AddCors(options => options.AddPolicy("corsPolicy", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
 }));
 
 // Configurar la aplicación
@@ -61,7 +73,7 @@ else
     app.UseHsts();
 }
 
-app.UseCors("corsapp");
+app.UseCors("corsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
