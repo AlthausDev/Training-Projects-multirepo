@@ -44,12 +44,12 @@
     <!-- DONUT CHART BLOCK (LEFT-CONTAINER) -->
     <h2 class="titular">OS AUDIENCE STATS</h2>
     <div class="donut-chart">
-    <!-- DONUT-CHART-->
+    <!-- DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
     <div id="porcion1" class="recorte"><div class="quesito ios" data-rel="21"></div></div>
     <div id="porcion2" class="recorte"><div class="quesito mac" data-rel="39"></div></div>
     <div id="porcion3" class="recorte"><div class="quesito win" data-rel="31"></div></div>
     <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="9"></div></div>
-    <!-- END DONUT-CHART-->
+    <!-- END DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
     <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>
     </div>
     <ul class="os-percentages horizontal-list">
@@ -74,7 +74,7 @@
     <div class="line-chart-block block clear">
     <!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
     <div class="line-chart">
-    <!-- LINE-CHART-->
+    <!-- LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
     <div class='grafico'>
     <ul class='eje-y'>
     <li data-ejeY='30'></li>
@@ -102,7 +102,7 @@
     </span>
     </span>
     </div>
-    <!-- END LINE-CHART-->
+    <!-- END LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL -->
     </div>
     <ul class="time-lenght horizontal-list">
     <li><a class="time-lenght-btn" href="#14">Week</a></li>
@@ -238,13 +238,7 @@
 
 <div class="main-container">
 
-    <div class="middle-container">
-    <div id="FormButtons">
-        <button class="btn btn-success" @onclick="EditModal">Editar</button>
-        <button class="btn btn-danger" @onclick="Delete">Borrar</button>
-        <button class="btn btn-warning" @onclick="ReturnHome">Volver</button>
-    </div>
-
+    <div class="middle-container">    
     <div id="GridUsers">
     <Grid TItem="User"
     AllowFiltering="false"
@@ -343,7 +337,12 @@
                                     <div class="progress mb-3" style="height: 5px">
                                         <div class="progress-bar bg-primary" role="progressbar" style="width: 26%" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </div>                      
+                                </div>
+                            <div class="FormButtons">
+                                <button class="btn" @onclick="EditModal">Editar</button>
+                                <button class="btn" @onclick="Delete">Borrar</button>
+                                <button class="btn" @onclick="ReturnHome">Volver</button>
+                            </div>
                       </div>
                 </div>
             </div>
@@ -621,6 +620,11 @@
         color: var(--main-text-color);
     }
 
+    /*********************************************** BUTTONS ***********************************************/
+    
+
+
+
     /*********************************************** HEADER ***********************************************/
     .topImage {              
         width: -webkit-fill-available;
@@ -638,7 +642,7 @@
     /******************************************** MAIN CONTAINER *****************************************/
 
     .main-container {
-        width: -webkit-fit-available;
+        width: max-content;
         height: 100vh;
         display: ruby-text;
     }
@@ -648,6 +652,7 @@
     .middle-container {
         width: 60vw;     
         margin-top:3%;
+        padding: 3%;
 
         td, th {       
             padding: 10px 5px;
@@ -683,7 +688,8 @@
 		position: relative;
 		box-shadow: 2px 0px 5px #03050a;     
         min-width: 300px;
-        margin-right: 10%;      
+        margin-right: 10%;   
+        
 
 		//background: #0e121f;
 		.inner {
@@ -699,6 +705,15 @@
 				border: var(--border-color);
 				position: relative;
 				overflow: hidden;
+        
+                .btn
+                {
+                    color: white;
+                    display: flex;
+                    text-transform: uppercase;
+                    text-align: center;
+                    border: 1px solid white;
+                }
 
 				.user-background {
 					position: absolute;

@@ -3,16 +3,19 @@ using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Data.Common;
+using BlazorWebPage.Server.Utils;
 
 namespace BlazorWebPage.Server.Services.Impl
 {
     public class UserService : IUserService
     {
         private IUserRepository userRepository;
+        private readonly EncryptionUtil encryptionUtil;
    
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, EncryptionUtil encryptionUtil)
         {
             this.userRepository = userRepository;
+            this.encryptionUtil = encryptionUtil;
         }
 
         public IEnumerable<User> GetAll()
@@ -22,16 +25,21 @@ namespace BlazorWebPage.Server.Services.Impl
 
         public User GetById(int id)
         {
-            return userRepository.GetById(id);
+            User user = userRepository.GetById(id);           
+            user.Password = encryptionUtil.Decrypt(user.Password);         
+
+            return user;
         }
 
         public void Add(User user)
         {
+            user.Password = encryptionUtil.Encrypt(user.Password);
             userRepository.Add(user);
         }
 
         public void Update(User user)
         {
+            user.Password = encryptionUtil.Encrypt(user.Password);
             userRepository.Update(user);
         }
 

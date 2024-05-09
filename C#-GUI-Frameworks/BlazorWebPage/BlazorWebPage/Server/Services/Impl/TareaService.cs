@@ -38,5 +38,9 @@ namespace BlazorWebPage.Server.Services.Impl
             tareaRepository.Remove(id);
         }
 
+        public Tarea GetById(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -28,14 +28,15 @@ namespace BlazorWebPage.Client.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            await getData();
+            await getData();         
+
             fecha = DateFormat();
             if (user.UserName.Equals("admin"))
             {
                 ShowTable = "block";
             }
 
-            if (user.UserName.Equals("3"))
+            if (user.UserName.Equals("111"))
             {
                 ShowTable = "block";
             }
@@ -58,7 +59,7 @@ namespace BlazorWebPage.Client.Pages
         {
             try {
                 user = await Http.GetFromJsonAsync<User>($"user/{Id}");
-                Console.WriteLine(user);                
+                //Console.WriteLine(user);                
             }
             catch (Exception ex)
             {

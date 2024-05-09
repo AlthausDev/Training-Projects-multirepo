@@ -44,13 +44,18 @@ namespace BlazorWebPage.Client.Pages
         }
 
         private async Task IniciarSesion()
-        {           
+        {
             foreach (User user in Usuarios)
-            {
-                if (user.UserName == NewUser.UserName && user.Password == NewUser.Password)
-                {                   
-                    NavManager.NavigateTo($"/Sesion/{user.Id}", true);
-                    break;
+            {  
+                if (user.UserName == NewUser.UserName)
+                {
+                    User? usuario = await getUserById(user.Id);
+
+                    if (NewUser.Password.Equals(usuario.Password)) {      
+                        
+                        NavManager.NavigateTo($"/Sesion/{user.Id}", true);
+                        break;
+                    }
                 }
             }
 
@@ -116,6 +121,11 @@ namespace BlazorWebPage.Client.Pages
                     getUsersMoth(user);
                 }
             }
+        }
+
+        private async Task<User?> getUserById(int Id)
+        {
+            return await Http.GetFromJsonAsync<User>($"user/{Id}");           
         }
 
         private async Task Post()

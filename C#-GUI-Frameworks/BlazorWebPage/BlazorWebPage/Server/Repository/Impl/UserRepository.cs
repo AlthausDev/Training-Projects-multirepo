@@ -21,10 +21,10 @@ namespace BlazorWebPage.Server.Repository.Impl
         public void Add(User user)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-            {               
+            {
                 string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email) 
                                 VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}');";
-                dbConnection.Execute(query);          
+                dbConnection.Execute(query);
             }
         }
 
@@ -45,20 +45,15 @@ namespace BlazorWebPage.Server.Repository.Impl
             {
                 string query = $"SELECT * FROM Usuarios WHERE Id = {id};";
 
-                //return (User)dbConnection.Query<User>(query);
-
-                var aux = dbConnection.Query<User>(query);
-                Console.WriteLine(aux);
-
-                User user = aux.FirstOrDefault();
+                User aux = dbConnection.QuerySingle<User>(query); 
+                User user = aux;
 
                 return user;
             }
-        
         }
-     
 
-    public void Remove(int id)
+
+        public void Remove(int id)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
@@ -77,10 +72,5 @@ namespace BlazorWebPage.Server.Repository.Impl
                 dbConnection.Execute(query);
             }
         }
-
-        //User IGenericRepository<User>.GetById(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
