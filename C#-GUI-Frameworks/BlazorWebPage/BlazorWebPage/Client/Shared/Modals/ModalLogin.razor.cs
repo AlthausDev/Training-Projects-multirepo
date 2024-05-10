@@ -40,21 +40,6 @@ namespace BlazorWebPage.Client.Shared.Modals
             IsDisabled = string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(Password);
         }
 
-        private bool CheckPasswordHandler()
-        {
-
-            if (string.IsNullOrWhiteSpace(Password))
-            {
-                color = "red";
-                return true;
-            }
-            else
-            {
-                color = "black";
-                return false;
-            }
-
-        }
         #endregion Handlers
     }
 }

@@ -1,11 +1,14 @@
 ﻿using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorWebPage.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class TareaController : ControllerBase
     {
         private readonly ILogger<TareaController> _logger;

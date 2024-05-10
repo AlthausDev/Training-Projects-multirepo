@@ -58,3 +58,6 @@
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/appsettings.json
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/.vs
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Shared/obj/BlazorWebPage.Shared.csproj.nuget.g.targets
+/C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Client/bin/Debug/net8.0
+/C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Client/obj/Debug/net8.0
+/C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/bin/Debug/net8.0

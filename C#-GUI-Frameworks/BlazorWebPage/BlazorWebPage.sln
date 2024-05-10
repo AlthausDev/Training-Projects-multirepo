@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebPage.Client", "Bla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebPage.Shared", "BlazorWebPage\Shared\BlazorWebPage.Shared.csproj", "{65DB7553-828B-4DA7-824C-765BBD32C971}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BlazorWebPageTest", "BlazorWebPageTest\BlazorWebPageTest.sqlproj", "{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "BlazorWebPageTest\Database.sqlproj", "{2BAE21A5-C9BF-4122-B885-69DE49EEAF55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

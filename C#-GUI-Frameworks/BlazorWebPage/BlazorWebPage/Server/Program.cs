@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using BlazorWebPage.Server.Repository.Impl;
 using BlazorWebPage.Server.Repository.Interfaces;
 using BlazorWebPage.Server.Services.Impl;
@@ -25,6 +26,9 @@ builder.Services.AddHotKeys2();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMvc();
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddAuthorizationCore();
+
 
 // Configuración de autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -32,12 +36,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtIssuer,
-            ValidAudience = jwtAudience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
             ClockSkew = TimeSpan.Zero
         };
@@ -74,14 +76,15 @@ else
 }
 
 app.UseCors("corsPolicy");
-app.UseAuthentication();
-app.UseAuthorization();
+
 
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");

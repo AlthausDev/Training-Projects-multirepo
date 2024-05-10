@@ -1,5 +1,7 @@
 ﻿using BlazorWebPage.Server.Services.Interfaces;
 using BlazorWebPage.Shared;
+using BlazorWebPage.Shared.Model;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +14,7 @@ namespace BlazorWebPage.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> Logger;
@@ -26,6 +29,7 @@ namespace BlazorWebPage.Server.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<List<User>> Get()
         {
             List<User> users = UserService.GetAll().ToList();
@@ -40,11 +44,7 @@ namespace BlazorWebPage.Server.Controllers
         [AllowAnonymous]
         public ActionResult<User> GetUser(int id)
         {
-            User user = UserService.GetById(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            User user = UserService.GetById(id);           
 
             return Ok(user);
         }
@@ -52,35 +52,29 @@ namespace BlazorWebPage.Server.Controllers
         [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody] User user)
-        {
-            if (user == null || string.IsNullOrWhiteSpace(user.UserName) || string.IsNullOrWhiteSpace(user.Password))
-            {
-                return BadRequest("Invalid user data.");
-            }
-
-            User validUser = UserService.GetAll().FirstOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
-            if (validUser == null)
-            {
-                return Unauthorized("Invalid username or password.");
-            }
-
-            string tokenString = BuildToken(validUser);
-            return Ok(new { token = tokenString });
+        {          
+            string tokenString = BuildToken(user);
+            return Ok(new TokenResponse{ Token = tokenString });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
         private string BuildToken(User user)
         {
-            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]));
-            SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]));
+            SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, "user")
-            };
+            var principal = new ClaimsPrincipal(new ClaimsIdentity(null, "Basic"));
+            var isAuthenticated = principal.Identity.IsAuthenticated;
 
-            JwtSecurityToken token = new JwtSecurityToken(
+            Claim[] claims =
+            [
+                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new(ClaimTypes.Name, user.UserName),
+                new(ClaimTypes.Role, "user")
+            ];
+
+            JwtSecurityToken token = new(
                 issuer: Configuration["JWT:Issuer"],
                 audience: Configuration["JWT:Issuer"],
                 claims: claims,
@@ -90,7 +84,9 @@ namespace BlazorWebPage.Server.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Post([FromBody] User user)
         {
             if (user == null || string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Password))

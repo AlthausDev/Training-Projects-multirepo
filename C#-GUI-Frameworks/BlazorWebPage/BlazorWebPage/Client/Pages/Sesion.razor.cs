@@ -1,9 +1,16 @@
 ﻿using BlazorBootstrap;
+using Blazored.LocalStorage.StorageOptions;
+using BlazorWebPage.Client.Shared;
 using BlazorWebPage.Client.Shared.Modals;
 using BlazorWebPage.Shared;
+using BlazorWebPage.Shared.Model;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
+using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Threading.Channels;
 using static System.Net.WebRequestMethods;
 using ToastType = BlazorBootstrap.ToastType;
@@ -19,6 +26,8 @@ namespace BlazorWebPage.Client.Pages
         public string Id { get; set; }
         private string fecha;
 
+        public string Token { get; set; }
+
         public static User user = new();
 
         private IEnumerable<User> Usuarios = default!;
@@ -28,7 +37,10 @@ namespace BlazorWebPage.Client.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            await getData();         
+            NavMenu.IsHidden = false;
+            NavMenu.Id = Id;
+            await getData();
+            await GenerateTokenAsync();
 
             fecha = DateFormat();
             if (user.UserName.Equals("admin"))
@@ -57,9 +69,10 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task getData()
         {
-            try {
+            try
+            {
                 user = await Http.GetFromJsonAsync<User>($"user/{Id}");
-                //Console.WriteLine(user);                
+                Console.WriteLine(user);
             }
             catch (Exception ex)
             {
@@ -107,7 +120,7 @@ namespace BlazorWebPage.Client.Pages
                 { "Email", user.Email },
                 { "Editar", EventCallback.Factory.Create<MouseEventArgs>(this, EditarDatos) },
                 { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) },
-                {"Volver", EventCallback.Factory.Create<MouseEventArgs>(this, ReturnHome) }
+                { "Volver", EventCallback.Factory.Create<MouseEventArgs>(this, ReturnHome) }
             };
                 await modal.ShowAsync<ModalEditUser>(title: "Editar", parameters: parameters);
             }
@@ -154,12 +167,26 @@ namespace BlazorWebPage.Client.Pages
         #endregion
 
         #region Aux
+        private async Task GenerateTokenAsync()
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync("user/login", user);
+            TokenResponse tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+
+            string getToken = await storageService.GetItemAsStringAsync("token");
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(getToken);
+
+            //await JS.InvokeVoidAsync("localStorage.setItem", new object[] { "token", tokenResponse.Token });
+            //Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenResponse.Token}");
+
+        }
+
         private string DateFormat()
         {
-           int index = user.FechaRegistro.IndexOf(" ");
-           return user.FechaRegistro[..index];
+            int index = user.FechaRegistro.IndexOf(" ");
+            return user.FechaRegistro[..index];
         }
         #endregion
-       
+
     }
 }

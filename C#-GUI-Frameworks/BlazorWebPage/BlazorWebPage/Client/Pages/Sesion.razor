@@ -5,7 +5,10 @@
 @inject HttpClient Http
 @inject IJSRuntime JS
 @inject NavigationManager NavManager
+@inject ILocalStorageService storageService
+
 @using BlazorWebPage.Shared
+@using Blazored.LocalStorage
 
 
 <Modal @ref="modal" Size="ModalSize.Regular" />

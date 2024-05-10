@@ -70,7 +70,7 @@ namespace BlazorWebPage.Client.Pages
 
             if (tareasArray is not null)
             {
-                Tareas = tareasArray.ToList();
+                Tareas = [.. tareasArray];
             }
         }
 

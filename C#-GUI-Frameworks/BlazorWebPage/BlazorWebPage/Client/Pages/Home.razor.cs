@@ -3,10 +3,14 @@ using BlazorWebPage.Client.Shared.Modals;
 using BlazorWebPage.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using System.Diagnostics;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using ToastType = BlazorBootstrap.ToastType;
+using Blazored.LocalStorage;
+using Microsoft.JSInterop;
+using BlazorWebPage.Shared.Model;
+using BlazorWebPage.Client.Shared;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace BlazorWebPage.Client.Pages
 {
@@ -14,7 +18,7 @@ namespace BlazorWebPage.Client.Pages
     {
         private Modal ModalInstance = default!;
         private string? Message = string.Empty;
-        private string? Token = string.Empty;
+        private dynamic Token = string.Empty;
 
         public List<User> Usuarios { get; set; } = new List<User>();
         public static User NewUser { get; set; } = new();
@@ -27,7 +31,8 @@ namespace BlazorWebPage.Client.Pages
         private ChartData ChartDataInstance = default!;
 
         protected override async Task OnInitializedAsync()
-        {
+        {           
+            await GetToken();
             await GetData();
             await InitializeGraph();
         }
@@ -47,19 +52,21 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task IniciarSesion()
         {
-            HttpResponseMessage response = await Http.PostAsJsonAsync("user/login", NewUser);
-            if (response.IsSuccessStatusCode)
+            foreach (User user in Usuarios)
             {
-                var result = await response.Content.ReadFromJsonAsync<dynamic>();
-                Token = result?.token;
-                if (!string.IsNullOrEmpty(Token))
+                if (user.UserName == NewUser.UserName)
                 {
-                    NavManager.NavigateTo($"/Sesion/{NewUser.Id}", true);
-                    await HideModal();
-                    return;
+                    User? usuario = await GetUserById(user.Id);
+
+                    if (NewUser.Password.Equals(usuario.Password))
+                    {
+                        NavManager.NavigateTo($"/Sesion/{usuario.Id}", true);
+                        break;
+
+                    }
                 }
             }
-
+            await HideModal();
             ShowMessage(ToastType.Danger, "Inicio de sesión fallido");
         }
 
@@ -109,7 +116,7 @@ namespace BlazorWebPage.Client.Pages
             User[]? usuariosArray = await Http.GetFromJsonAsync<User[]>("user");
             if (usuariosArray != null)
             {
-                Usuarios = usuariosArray.ToList();
+                Usuarios = [.. usuariosArray];
                 foreach (User user in Usuarios)
                 {
                     GetUsersMonth(user);
@@ -170,6 +177,23 @@ namespace BlazorWebPage.Client.Pages
                 return false;
             }
             return true;
+        }
+
+        private async Task GetToken()
+        {
+            string getToken = await storageService.GetItemAsStringAsync("token");
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(getToken);
+            List<Claim> claims = jwtSecurityToken.Claims.ToList();
+
+            Console.WriteLine(claims);
+            int Id = Int32.Parse(claims.ElementAt(0).Value);
+
+            if(Id != null) { 
+                User? usuario = await GetUserById(Id);
+                NavManager.NavigateTo($"/Sesion/{usuario.Id}", true);               
+            }
         }
         #endregion AuxMethods
 

@@ -4,9 +4,13 @@
 @inject HttpClient Http
 @inject IJSRuntime JS
 @inject NavigationManager NavManager
-@using BlazorWebPage.Shared
+@inject ILocalStorageService storageService
 
-<Modal @ref="modal" Size="ModalSize.Regular" />
+
+@using BlazorWebPage.Shared
+@using Blazored.LocalStorage
+
+<Modal @ref="ModalInstance" Size="ModalSize.Regular" />
 
 <article class="content">
 
@@ -17,7 +21,7 @@
     <SurveyPrompt Title="Separador" />
 </article>
 
-<Toasts class="p-3" Messages="messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" />
+<Toasts class="p-3" Messages="Messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" />
 
 
 <div>
@@ -30,7 +34,7 @@
 
 <div class="grafica">
     <div id="chart">
-        <LineChart @ref="lineChart" Width="800" Class="mb-4" />
+        <LineChart @ref="LineChartInstance" Width="800" Class="mb-4" />
     </div>
 </div>
 
