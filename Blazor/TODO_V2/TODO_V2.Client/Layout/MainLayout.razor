@@ -1,0 +1,56 @@
+﻿@inherits LayoutComponentBase
+@using BlazorBootstrap
+
+<div class="page">
+    <main>     
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+<Preload LoadingText="Loading..." />
+
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+    }
+</style>
+
+
+@code {
+
+    [Inject] protected PreloadService PreloadService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ShowLoadingDataAsync();
+    }
+
+    private async Task ShowLoadingDataAsync()
+    {
+        PreloadService.Show(SpinnerColor.Light, "Loading data...");
+        await Task.Delay(3000); // call the service/api
+        PreloadService.Hide();
+    }
+
+    private async Task ShowSavingDataAsync()
+    {
+        PreloadService.Show(SpinnerColor.Light, "Saving data...");
+        await Task.Delay(3000); // call the service/api
+        PreloadService.Hide();
+    }
+}
