@@ -28,6 +28,18 @@ namespace BlazorWebPage.Server.Controllers
             Configuration = configuration;
         }
 
+        [HttpGet("admin")]
+        [AllowAnonymous]
+        public ActionResult<List<User>> GetAdmin()
+        {
+            List<User> users = UserService.GetAllAdmin().ToList();
+            if (users == null || !users.Any())
+            {
+                return NoContent();
+            }
+            return Ok(users);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult<List<User>> Get()
@@ -57,8 +69,7 @@ namespace BlazorWebPage.Server.Controllers
             return Ok(new TokenResponse{ Token = tokenString });
         }
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost]      
         private string BuildToken(User user)
         {
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]));
@@ -116,8 +127,21 @@ namespace BlazorWebPage.Server.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        //[HttpDelete("{Id}")]
+        //public IActionResult Delete(int id)
+        //{
+        //    User user = UserService.GetById(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    UserService.Remove(id);
+        //    return NoContent();
+        //}
+
+        [HttpDelete("/Delete/{Id}")]
+        public IActionResult LogicDelete(int id)
         {
             User user = UserService.GetById(id);
             if (user == null)
@@ -125,7 +149,7 @@ namespace BlazorWebPage.Server.Controllers
                 return NotFound();
             }
 
-            UserService.Remove(id);
+            UserService.LogicRemove(id);
             return NoContent();
         }
     }

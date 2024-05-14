@@ -3,6 +3,7 @@ using BlazorWebPage.Shared;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Data.Common;
 using System.Diagnostics;
 
 namespace BlazorWebPage.Server.Repository.Impl
@@ -22,14 +23,19 @@ namespace BlazorWebPage.Server.Repository.Impl
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
+                try { 
                 string query = @$"INSERT INTO Usuarios (UserName, Password, Nombre, Email) 
                                 VALUES ('{user.UserName}', '{user.Password}', '{user.Nombre}', '{user.Email}');";
                 dbConnection.Execute(query);
+                }
+                catch
+                {
+
+                }
             }
         }
 
-
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAllAdmin()
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
@@ -39,15 +45,25 @@ namespace BlazorWebPage.Server.Repository.Impl
             }
         }
 
+
+        public IEnumerable<User> GetAll()
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+            {
+                string query = @"SELECT * FROM Usuarios WHERE Deleted = 0;";
+
+                return dbConnection.Query<User>(query);
+            }
+        }
+
         public User GetById(int id)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
             {
-                string query = $"SELECT * FROM Usuarios WHERE Id = {id};";
+                string query = $"SELECT * FROM Usuarios WHERE Id = {id} AND Deleted = 0;";
 
-                User aux = dbConnection.QuerySingle<User>(query); 
+                User aux = dbConnection.QuerySingle<User>(query);
                 User user = aux;
-
                 return user;
             }
         }
@@ -63,6 +79,16 @@ namespace BlazorWebPage.Server.Repository.Impl
             }
         }
 
+        public void LogicRemove(int id)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+            {
+                string query = $"UPDATE Usuarios SET Deleted = 1 WHERE Id = {id};";
+
+                dbConnection.Execute(query);
+            }
+        }
+
         public void Update(User user)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
@@ -71,6 +97,6 @@ namespace BlazorWebPage.Server.Repository.Impl
 
                 dbConnection.Execute(query);
             }
-        }
+        }        
     }
 }

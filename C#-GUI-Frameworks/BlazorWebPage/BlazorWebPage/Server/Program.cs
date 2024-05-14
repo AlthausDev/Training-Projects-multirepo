@@ -29,21 +29,24 @@ builder.Services.AddMvc();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore();
 
-
-// Configuración de autenticación JWT
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
+builder.Services.AddAuthentication()
+        .AddCookie(options =>
         {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-            ClockSkew = TimeSpan.Zero
-        };
-    });
+            options.LoginPath = "/Account/Unauthorized/";
+            options.AccessDeniedPath = "/Account/Forbidden/";
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+                ClockSkew = TimeSpan.Zero
+            };
+        });
 
 // Configuración de dependencias
 builder.Services.AddTransient<ITareaRepository, TareaRepository>();

@@ -1,4 +1,5 @@
-﻿using BlazorBootstrap;
+﻿using Azure;
+using BlazorBootstrap;
 using Blazored.LocalStorage.StorageOptions;
 using BlazorWebPage.Client.Shared;
 using BlazorWebPage.Client.Shared.Modals;
@@ -8,15 +9,13 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Threading.Channels;
 using static System.Net.WebRequestMethods;
 using ToastType = BlazorBootstrap.ToastType;
-
-
-
 
 namespace BlazorWebPage.Client.Pages
 {
@@ -40,15 +39,12 @@ namespace BlazorWebPage.Client.Pages
             NavMenu.IsHidden = false;
             NavMenu.Id = Id;
             await getData();
-            await GenerateTokenAsync();
-
-            fecha = DateFormat();
-            if (user.UserName.Equals("admin"))
-            {
-                ShowTable = "block";
-            }
-
-            if (user.UserName.Equals("111"))
+                    
+            Http.DefaultRequestHeaders.Remove("Authorization");
+            Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {await storageService.GetItemAsStringAsync("token")}");
+            
+            fecha = DateFormat(user.FechaRegistro);
+            if (user.UserName.Equals("admin") || user.UserName.Equals("111"))
             {
                 ShowTable = "block";
             }
@@ -56,14 +52,18 @@ namespace BlazorWebPage.Client.Pages
 
 
         #region ApiOperations
-
         private async Task getAllData()
         {
-            User[]? usuariosArray = await Http.GetFromJsonAsync<User[]>("user");
+            User[]? usuariosArray = await Http.GetFromJsonAsync<User[]>("user/admin");
+
+            foreach (User user in usuariosArray)
+            {
+                user.FechaRegistro = DateFormat(user.FechaRegistro);
+            }
 
             if (usuariosArray is not null)
             {
-                Usuarios = usuariosArray.ToList();
+                Usuarios = [.. usuariosArray];
             }
         }
 
@@ -77,20 +77,16 @@ namespace BlazorWebPage.Client.Pages
             catch (Exception ex)
             {
                 Console.WriteLine("\nMessage ---\n{0}", ex.Message);
-                Console.WriteLine(
-                    "\nHelpLink ---\n{0}", ex.HelpLink);
+                Console.WriteLine("\nHelpLink ---\n{0}", ex.HelpLink);
                 Console.WriteLine("\nSource ---\n{0}", ex.Source);
-                Console.WriteLine(
-                    "\nStackTrace ---\n{0}", ex.StackTrace);
-                Console.WriteLine(
-                    "\nTargetSite ---\n{0}", ex.TargetSite);
+                Console.WriteLine("\nStackTrace ---\n{0}", ex.StackTrace);
+                Console.WriteLine("\nTargetSite ---\n{0}", ex.TargetSite);
             }
         }
 
         private async Task Put(User user)
         {
             await Http.PutAsJsonAsync("User", user);
-
         }
 
 
@@ -99,10 +95,9 @@ namespace BlazorWebPage.Client.Pages
             HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/Delete/{user.Id}");
             Console.WriteLine(httpResponseMessage);
 
-            NavManager.NavigateTo("/", true);
+            await ReturnHome();
         }
         #endregion
-
 
         #region EditModal
 
@@ -127,13 +122,10 @@ namespace BlazorWebPage.Client.Pages
             catch (Exception ex)
             {
                 Console.WriteLine("\nMessage ---\n{0}", ex.Message);
-                Console.WriteLine(
-                    "\nHelpLink ---\n{0}", ex.HelpLink);
+                Console.WriteLine("\nHelpLink ---\n{0}", ex.HelpLink);
                 Console.WriteLine("\nSource ---\n{0}", ex.Source);
-                Console.WriteLine(
-                    "\nStackTrace ---\n{0}", ex.StackTrace);
-                Console.WriteLine(
-                    "\nTargetSite ---\n{0}", ex.TargetSite);
+                Console.WriteLine("\nStackTrace ---\n{0}", ex.StackTrace);
+                Console.WriteLine("\nTargetSite ---\n{0}", ex.TargetSite);
                 await modal.ShowAsync<ModalEditUser>(title: "Editar");
             }
         }
@@ -152,6 +144,8 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task ReturnHome()
         {
+            await storageService.RemoveItemAsync("token");
+
             NavManager.NavigateTo("/", true);
         }
 
@@ -166,25 +160,13 @@ namespace BlazorWebPage.Client.Pages
 
         #endregion
 
-        #region Aux
-        private async Task GenerateTokenAsync()
-        {
-            HttpResponseMessage response = await Http.PostAsJsonAsync("user/login", user);
-            TokenResponse tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+        #region Aux     
+        private string DateFormat(string fecha)
+        { 
+            DateTime enteredDate = DateTime.Parse(fecha);
+            string date = enteredDate.ToString("MM/dd/yyyy");
 
-            string getToken = await storageService.GetItemAsStringAsync("token");
-            var handler = new JwtSecurityTokenHandler();
-            var jwtSecurityToken = handler.ReadJwtToken(getToken);
-
-            //await JS.InvokeVoidAsync("localStorage.setItem", new object[] { "token", tokenResponse.Token });
-            //Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenResponse.Token}");
-
-        }
-
-        private string DateFormat()
-        {
-            int index = user.FechaRegistro.IndexOf(" ");
-            return user.FechaRegistro[..index];
+            return date;
         }
         #endregion
 

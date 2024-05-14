@@ -61,5 +61,10 @@ namespace BlazorWebPage.Server.Repository.Impl
                 dbConnection.Execute(query);
             }
         }
+
+        public void LogicRemove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,18 +11,7 @@ namespace BlazorWebPage.Shared
 
         public string Password { get; set; } = string.Empty;
         public string? Nombre { get; set; } = string.Empty;
-        public string? Email { get; set; } = string.Empty;
-
-        private const string DateTimeFormatString = "dd-MM-yyyy";
-        private DateTimeOffset eventTimeField = DateTimeOffset.Now;
-
-
-        //public string FechaRegistro
-        //{
-        //    get { return eventTimeField.ToString(DateTimeFormatString); }
-        //    set { eventTimeField = DateTimeOffset.Parse(value); }
-        //} 
-
+        public string? Email { get; set; } = string.Empty;               
         public string FechaRegistro { get; set; }
 
 

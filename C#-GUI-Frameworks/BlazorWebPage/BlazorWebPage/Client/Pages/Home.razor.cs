@@ -31,10 +31,14 @@ namespace BlazorWebPage.Client.Pages
         private ChartData ChartDataInstance = default!;
 
         protected override async Task OnInitializedAsync()
-        {           
-            await GetToken();
-            await GetData();
-            await InitializeGraph();
+        {
+            try
+            {
+                await GetToken();
+                await GetData();
+                await InitializeGraph();
+            }
+            catch { }
         }
 
         #region Modal
@@ -60,9 +64,10 @@ namespace BlazorWebPage.Client.Pages
 
                     if (NewUser.Password.Equals(usuario.Password))
                     {
+                        await GenerateTokenAsync(usuario);
+
                         NavManager.NavigateTo($"/Sesion/{usuario.Id}", true);
                         break;
-
                     }
                 }
             }
@@ -145,6 +150,22 @@ namespace BlazorWebPage.Client.Pages
         #endregion ApiOperations
 
         #region AuxMethods
+        private async Task GenerateTokenAsync(User usuario)
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync("user/login", usuario);
+            if (response.IsSuccessStatusCode)
+            {
+                TokenResponse tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+
+                await JS.InvokeVoidAsync("localStorage.setItem", new object[] { "token", tokenResponse.Token });
+                Http.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenResponse.Token}");
+            }
+            else
+            {
+                Console.WriteLine("Error al generar el token");
+            }
+        }
+
         private double GetUsersMonth(User user)
         {
             int index = user.FechaRegistro.IndexOf("/");
@@ -181,18 +202,24 @@ namespace BlazorWebPage.Client.Pages
 
         private async Task GetToken()
         {
-            string getToken = await storageService.GetItemAsStringAsync("token");
+            try
+            {
+                string getToken = await storageService.GetItemAsStringAsync("token");
 
-            var handler = new JwtSecurityTokenHandler();
-            var jwtSecurityToken = handler.ReadJwtToken(getToken);
-            List<Claim> claims = jwtSecurityToken.Claims.ToList();
+                var handler = new JwtSecurityTokenHandler();
+                var jwtSecurityToken = handler.ReadJwtToken(getToken);
+                List<Claim> claims = jwtSecurityToken.Claims.ToList();
 
-            Console.WriteLine(claims);
-            int Id = Int32.Parse(claims.ElementAt(0).Value);
+                Console.WriteLine(claims);
+                int Id = int.Parse(claims.ElementAt(0).Value);
 
-            if(Id != null) { 
                 User? usuario = await GetUserById(Id);
-                NavManager.NavigateTo($"/Sesion/{usuario.Id}", true);               
+                NavManager.NavigateTo($"/Sesion/{usuario.Id}", true);
+
+            }
+            catch (Exception ex)
+            {
+                Http.DefaultRequestHeaders.Remove("Authorization");
             }
         }
         #endregion AuxMethods

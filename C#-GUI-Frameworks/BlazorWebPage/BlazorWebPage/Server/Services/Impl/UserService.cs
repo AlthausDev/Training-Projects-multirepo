@@ -18,6 +18,11 @@ namespace BlazorWebPage.Server.Services.Impl
             this.encryptionUtil = encryptionUtil;
         }
 
+        public IEnumerable<User> GetAllAdmin()
+        {
+            return userRepository.GetAllAdmin();
+        }
+
         public IEnumerable<User> GetAll()
         {
             return userRepository.GetAll();
@@ -46,6 +51,11 @@ namespace BlazorWebPage.Server.Services.Impl
         public void Remove(int id)
         {
             userRepository.Remove(id);
+        }
+
+        public void LogicRemove(int id)
+        {
+            userRepository.LogicRemove(id);
         }
     }
 }

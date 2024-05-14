@@ -42,5 +42,10 @@ namespace BlazorWebPage.Server.Services.Impl
         {
             throw new NotImplementedException();
         }
+
+        public void LogicRemove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

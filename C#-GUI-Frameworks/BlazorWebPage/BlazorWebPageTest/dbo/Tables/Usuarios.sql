@@ -5,5 +5,7 @@
 	[Password] VARCHAR(50) NOT NULL,
 	[Nombre] VARCHAR(50) NULL,
 	[Email] VARCHAR(50) NULL,
-	[FechaRegistro] DATE NOT NULL DEFAULT GETDATE()
+	[FechaRegistro] DATE NOT NULL DEFAULT GETDATE(),
+	DeletedBy INT,
+	Deleted BIT NOT NULL DEFAULT(0)
 )
