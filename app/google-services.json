@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "222868526230",
+    "project_id": "cinemanexus-9d4a3",
+    "storage_bucket": "cinemanexus-9d4a3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222868526230:android:81c720135f2d9ac0b49eb7",
+        "android_client_info": {
+          "package_name": "com.althaus.dev.cinemaNexus.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9mEeYVYoZkSd1nd7HwN2d61zoZKL4BW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
