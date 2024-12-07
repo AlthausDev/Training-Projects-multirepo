@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace = "com.althaus.dev.project04_cartelera"
+    namespace = "com.althaus.dev.cinemaNexus"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.althaus.dev.project04_cartelera"
+        applicationId = "com.althaus.dev.cinemaNexus"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
