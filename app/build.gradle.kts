@@ -2,10 +2,10 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
-    id("androidx.navigation.safeargs.kotlin")
     id ("kotlin-kapt")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 
 }
 
@@ -59,64 +59,74 @@ kapt {
 }
 
 dependencies {
-    val roomVersion = "2.6.1"
-    val lifecycleVersion = "2.7.0"
-    val fragmentVersion = "1.6.2"
 
-    // Core dependencies
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    // --- Librerías Core de Android ---
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore.preferences)
 
-    // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.4")
+    // --- Ciclo de Vida ---
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    // --- Compose y UI ---
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity.compose)
 
-    // Fragment and Activity
-    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
-    implementation("androidx.activity:activity-ktx:1.9.3")
+    // --- Navegación ---
+    implementation(libs.androidx.navigation.compose)
 
-    // Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("androidx.room:room-paging:$roomVersion")
-    testImplementation("androidx.room:room-testing:$roomVersion")
+    // --- Firebase ---
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.realtime)
+    implementation(libs.firebase.config)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.storage.ktx)
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // --- Firebase App Check ---
+    implementation(libs.firebase.appcheck.playintegrity)
+    implementation(libs.firebase.appcheck.safetynet)
 
-    // Picasso
-    implementation("com.squareup.picasso:picasso:2.8")
+    // --- Inyección de Dependencias con Hilt ---
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    // Hilt for dependency injection
-    implementation("com.google.dagger:hilt-android:2.51")
-    kapt("com.google.dagger:hilt-compiler:2.51")
+    // --- Servicios de Google ---
+    implementation(libs.googlePlayServicesAuth)
+    implementation(libs.play.services.location)
+    implementation(libs.googleid)
 
-    // Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
-    implementation(composeBom)
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.runtime:runtime-livedata")
+    // --- Utilidades para Compose ---
+    implementation(libs.accompanist.flowlayout)
 
-    // Testing
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    // --- Manejo de Imágenes ---
+    implementation(libs.coil)
+    implementation(libs.picasso)
 
-    // Firebase dependencies
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.firebase:firebase-database-ktx")
-    implementation("com.google.firebase:firebase-storage-ktx")
+    // --- Diseño Material ---
+    implementation(libs.material)
 
-    // Google Sign-In
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    // --- Persistencia con Room ---
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+
+    // --- API REST con Retrofit ---
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // --- Testing ---
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.mockk)
 }

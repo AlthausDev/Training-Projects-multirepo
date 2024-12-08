@@ -1,17 +1,9 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+/// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version "8.6.1" apply false
-    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
-    id("com.google.devtools.ksp") version "2.1.0-1.0.29" apply false
-    id("com.google.dagger.hilt.android") version "2.51" apply false
-
-}
-
-buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:2.8.4")
-    }
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.daggerHiltAndroid) apply false
+    alias(libs.plugins.googleServices) apply false
+    alias(libs.plugins.crashlytics) apply false
 }
