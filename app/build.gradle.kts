@@ -1,12 +1,12 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id ("kotlin-kapt")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
-    id("com.google.gms.google-services")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.daggerHiltAndroid)
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.crashlytics)
 }
 
 android {
@@ -31,31 +31,17 @@ android {
                 "proguard-rules.pro"
             )
         }
-        debug{
-            applicationIdSuffix = ".debug"
-        }
     }
-
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "21"
     }
-
-    viewBinding  {
-        enable = true
-    }
-
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
+        compose = true
     }
-}
-
-kapt {
-    correctErrorTypes = true
 }
 
 dependencies {
@@ -63,6 +49,8 @@ dependencies {
     // --- Librerías Core de Android ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.kotlinx.metadata.jvm)
 
     // --- Ciclo de Vida ---
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -78,6 +66,8 @@ dependencies {
 
     // --- Navegación ---
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
+
 
     // --- Firebase ---
     implementation(platform(libs.firebase.bom))
@@ -93,8 +83,10 @@ dependencies {
     implementation(libs.firebase.appcheck.safetynet)
 
     // --- Inyección de Dependencias con Hilt ---
+    implementation(libs.google.firebase.auth)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+
 
     // --- Servicios de Google ---
     implementation(libs.googlePlayServicesAuth)

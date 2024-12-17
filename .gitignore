@@ -1,4 +1,4 @@
-13:52 22/02/2024*.iml
+*.iml
 .gradle
 /local.properties
 /.idea/caches
@@ -13,4 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-.idea
