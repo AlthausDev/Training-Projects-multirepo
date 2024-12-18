@@ -12,36 +12,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-
 
 @Composable
 fun SharedTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    fielWidth: Float = 0.8f,
-    textColor: Color = Black,
-    backgroundColor: Color = White,
-    placeholderColor: Color = Black,
-    borderColor: Color = Black,
-    label: String? = null,
+    fieldWidth: Float = 0.8f,
+    textColor: Color = Color.Black,
+    backgroundColor: Color = Color.White,
+    placeholderColor: Color = Color.Gray,
+    borderColor: Color = Color.Black,
     placeholder: String = ""
 ) {
-
-
     BasicTextField(
         value = value,
         onValueChange = onValueChange,
         modifier = Modifier
-            .fillMaxWidth(fielWidth)
-            .padding(vertical = 8.dp)
-            .background(backgroundColor)
-            .border(2.dp, borderColor, CircleShape),
+            .fillMaxWidth(fieldWidth)
+            .background(backgroundColor, CircleShape)
+            .border(2.dp, borderColor, CircleShape)
+            .padding(horizontal = 16.dp, vertical = 16.dp),
         singleLine = true,
-        textStyle = TextStyle(textColor),
+        textStyle = TextStyle(color = textColor),
 
         decorationBox = { innerTextField ->
             Box(
