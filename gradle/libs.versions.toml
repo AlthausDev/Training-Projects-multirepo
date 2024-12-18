@@ -53,12 +53,14 @@ retrofit = "2.11.0"
 picasso = "2.71828"
 
 # Testing de UI en Compose
+runtime = "1.7.6"
 uiTestAndroid = "1.7.6"
 firebaseAuth = "23.1.0"
 
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

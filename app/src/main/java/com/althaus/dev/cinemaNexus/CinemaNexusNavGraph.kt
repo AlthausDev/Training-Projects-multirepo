@@ -21,7 +21,10 @@ sealed class Routes(val route: String) {
     data object SplashView : Routes("splash")
     data object LoginView : Routes("login")
     data object HomeView : Routes("home")
-    data object DetailView : Routes("detail")
+    data object DetailView : Routes("detail/{movieId}") {
+        fun createRoute(movieId: Int) = "detail/$movieId"
+    }
+
     data object SignUpView : Routes("signup")
 }
 
