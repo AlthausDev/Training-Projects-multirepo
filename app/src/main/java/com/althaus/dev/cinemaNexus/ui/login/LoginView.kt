@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.althaus.dev.cinemaNexus.ui.theme.components.BaseLayout
 import com.althaus.dev.cinemaNexus.ui.theme.components.SharedTextField
@@ -23,11 +24,17 @@ fun LoginView(
             onValueChange = { viewModel.email = it },
             placeholder = "Email"
         )
-        Spacer(modifier = Modifier.height(16.dp)) // Espaciado entre campos
+        Spacer(modifier = Modifier.height(16.dp))
         SharedTextField(
             value = viewModel.password,
             onValueChange = { viewModel.password = it },
             placeholder = "Password"
         )
     }
+}
+
+@Preview
+@Composable
+fun LoginViewPreview() {
+    LoginView(LoginViewModel())
 }
