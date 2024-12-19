@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
@@ -32,6 +33,7 @@ fun SharedTextField(
     Box(
         modifier = modifier
             .fillMaxWidth(fieldWidth)
+            .height(48.dp)
             .background(color = colors.backgroundColor, shape = CircleShape)
             .border(width = 2.dp, color = colors.borderColor, shape = CircleShape)
             .padding(horizontal = 16.dp, vertical = 12.dp),
@@ -73,8 +75,12 @@ data class TextFieldColors(
 @Composable
 private fun getTextFieldColors(enabled: Boolean): TextFieldColors {
     return TextFieldColors(
-        backgroundColor = if (enabled) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
-        borderColor = if (enabled) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+        backgroundColor = if (enabled) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.onSurface.copy(
+            alpha = 0.12f
+        ),
+        borderColor = if (enabled) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f) else MaterialTheme.colorScheme.onSurface.copy(
+            alpha = 0.3f
+        ),
         textColor = MaterialTheme.colorScheme.onSurface,
         placeholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     )

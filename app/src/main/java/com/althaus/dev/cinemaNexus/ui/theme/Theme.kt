@@ -59,7 +59,8 @@ fun CinemaNexusTheme(
         }
 
         darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> DarkColorScheme
+        // else -> LightColorScheme
     }
 
     MaterialTheme(

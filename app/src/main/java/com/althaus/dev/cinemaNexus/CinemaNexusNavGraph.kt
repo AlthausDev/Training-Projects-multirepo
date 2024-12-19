@@ -38,14 +38,19 @@ fun CinemaNexusNavGraph() {
             SplashView(viewModel = splashViewModel,
                 navigateToLogin = {
                     navController.navigate(Routes.LoginView.route)
+                }, navigateToGoogleLogin = {
+                    navController.navigate(Routes.HomeView.route)
                 }
             )
         }
 
-
         composable(Routes.LoginView.route) {
             val loginViewModel: LoginViewModel = hiltViewModel()
-            LoginView(viewModel = loginViewModel)
+            LoginView(viewModel = loginViewModel,
+                navigateToHome = {
+                    navController.navigate(Routes.HomeView.route)
+                }
+            )
         }
 
         composable(Routes.HomeView.route) {
