@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,53 +16,108 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.althaus.dev.cinemaNexus.ui.theme.CinemaNexusTheme
 
 @Composable
 fun SharedTextField(
     value: String,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
     fieldWidth: Float = 0.9f,
-    backgroundColor: Color = Color.LightGray,
-    placeholderColor: Color = Color.DarkGray,
-    borderColor: Color = Color.Black,
     placeholder: String = "",
-    textStyle: TextStyle = TextStyle.Default
+    enabled: Boolean = true,
+    colors: TextFieldColors = getTextFieldColors(enabled),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
-    BasicTextField(
-        value = value,
-        onValueChange = onValueChange,
-        modifier = Modifier
+    Box(
+        modifier = modifier
             .fillMaxWidth(fieldWidth)
-            .background(backgroundColor, CircleShape)
-            .border(2.dp, borderColor, CircleShape)
-            .padding(horizontal = 16.dp, vertical = 16.dp),
-        singleLine = true,
-        textStyle = textStyle,
-
-        decorationBox = { innerTextField ->
-            Box(
-                contentAlignment = Alignment.CenterStart,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                if (value.isEmpty()) {
-                    Text(
-                        text = placeholder,
-                        color = placeholderColor,
-                        style = textStyle
-                    )
-                }
-                innerTextField()
-            }
+            .background(color = colors.backgroundColor, shape = CircleShape)
+            .border(width = 2.dp, color = colors.borderColor, shape = CircleShape)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        contentAlignment = Alignment.CenterStart
+    ) {
+        // Placeholder
+        if (value.isEmpty()) {
+            Text(
+                text = placeholder,
+                color = colors.placeholderColor,
+                style = textStyle
+            )
         }
+        // Input Field
+        BasicTextField(
+            value = value,
+            onValueChange = onValueChange,
+            singleLine = true,
+            enabled = enabled,
+            textStyle = textStyle.copy(color = colors.textColor),
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+// ----------------------------
+// Data Class for Colors
+// ----------------------------
+data class TextFieldColors(
+    val backgroundColor: Color,
+    val borderColor: Color,
+    val textColor: Color,
+    val placeholderColor: Color
+)
+
+// ----------------------------
+// Helper Function for Colors
+// ----------------------------
+@Composable
+private fun getTextFieldColors(enabled: Boolean): TextFieldColors {
+    return TextFieldColors(
+        backgroundColor = if (enabled) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
+        borderColor = if (enabled) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+        textColor = MaterialTheme.colorScheme.onSurface,
+        placeholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     )
+}
+
+// ----------------------------
+// Previews
+// ----------------------------
+@Preview
+@Composable
+fun SharedTextFieldPreviewEnabled() {
+    CinemaNexusTheme(darkTheme = true) {
+        SharedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = "Email",
+            enabled = true
+        )
+    }
 }
 
 @Preview
 @Composable
-fun SharedTextFieldPreview() {
-    SharedTextField(
-        value = "",
-        onValueChange = {},
-        placeholder = "Email"
-    )
+fun SharedTextFieldPreviewDisabled() {
+    CinemaNexusTheme(darkTheme = true) {
+        SharedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = "Email",
+            enabled = false
+        )
+    }
+}
+
+@Preview
+@Composable
+fun SharedTextFieldPreviewLightEnabled() {
+    CinemaNexusTheme(darkTheme = false) {
+        SharedTextField(
+            value = "",
+            onValueChange = {},
+            placeholder = "Email",
+            enabled = true
+        )
+    }
 }
