@@ -10,19 +10,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.althaus.dev.cinemaNexus.R
 import com.althaus.dev.cinemaNexus.ui.theme.components.AppImage
 import com.althaus.dev.cinemaNexus.ui.theme.components.BaseLayout
 import com.althaus.dev.cinemaNexus.ui.theme.components.PrimaryButton
 import com.althaus.dev.cinemaNexus.ui.theme.components.SharedTextField
-import com.althaus.dev.cinemaNexus.ui.theme.components.SpacerForLogo
 
 @Composable
 fun LoginView(
     viewModel: LoginViewModel,
-    navigateToHome: () -> Unit
+    navigateToHome: () -> Unit,
+    navigateToSingUp: () -> Unit,
+    navigateToError: () -> Unit
 ) {
     BaseLayout(
         verticalArragement = Arrangement.SpaceBetween,
@@ -71,13 +71,4 @@ fun LoginView(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginViewPreview() {
-    LoginView(
-        LoginViewModel(),
-        navigateToHome = {}
-    )
 }

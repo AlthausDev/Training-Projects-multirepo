@@ -86,7 +86,7 @@ private fun getButtonColors(enabled: Boolean): ButtonColors {
         MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
     }
     val contentColor = if (enabled) {
-        MaterialTheme.colorScheme.surface
+        MaterialTheme.colorScheme.onSurface
     } else {
         MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     }

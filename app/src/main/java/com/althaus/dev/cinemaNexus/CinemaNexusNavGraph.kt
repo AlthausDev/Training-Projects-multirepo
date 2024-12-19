@@ -49,7 +49,9 @@ fun CinemaNexusNavGraph() {
             LoginView(viewModel = loginViewModel,
                 navigateToHome = {
                     navController.navigate(Routes.HomeView.route)
-                }
+                }, navigateToSingUp = {
+                    navController.navigate(Routes.SignUpView.route)
+                }, navigateToError = {}
             )
         }
 
