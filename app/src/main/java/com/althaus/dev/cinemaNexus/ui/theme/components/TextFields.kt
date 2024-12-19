@@ -15,6 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.althaus.dev.cinemaNexus.ui.theme.CinemaNexusTheme
@@ -28,7 +30,8 @@ fun SharedTextField(
     placeholder: String = "",
     enabled: Boolean = true,
     colors: TextFieldColors = getTextFieldColors(enabled),
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    isPassword: Boolean = false
 ) {
     Box(
         modifier = modifier
@@ -51,6 +54,7 @@ fun SharedTextField(
         BasicTextField(
             value = value,
             onValueChange = onValueChange,
+            visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
             singleLine = true,
             enabled = enabled,
             textStyle = textStyle.copy(color = colors.textColor),

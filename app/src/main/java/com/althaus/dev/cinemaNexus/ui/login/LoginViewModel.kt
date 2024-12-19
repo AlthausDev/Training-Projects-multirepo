@@ -50,8 +50,12 @@ class LoginViewModel @Inject constructor(
                 } else {
                     _loginState.value = LoginState.Error("Credenciales inválidas")
                 }
+            } catch (e: IllegalArgumentException) {
+                _loginState.value = LoginState.Error(e.message ?: "Error desconocido")
+            } catch (e: IllegalStateException) {
+                _loginState.value = LoginState.Error(e.message ?: "Error desconocido")
             } catch (e: Exception) {
-                _loginState.value = handleError(e)
+                _loginState.value = LoginState.Error("Error inesperado: ${e.message}")
             }
         }
     }
