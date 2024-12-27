@@ -40,6 +40,8 @@ fun CinemaNexusNavGraph() {
                     navController.navigate(Routes.LoginView.route)
                 }, navigateToGoogleLogin = {
                     navController.navigate(Routes.HomeView.route)
+                }, navigateToSignUp = {
+                    navController.navigate(Routes.SignUpView.route)
                 }
             )
         }

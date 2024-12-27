@@ -20,7 +20,8 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.PrimaryButton
 fun SplashView(
     viewModel: SplashViewModel,
     navigateToLogin: () -> Unit,
-    navigateToGoogleLogin: () -> Unit
+    navigateToGoogleLogin: () -> Unit,
+    navigateToSignUp: () -> Unit
 ) {
     BaseLayout(
         verticalArragement = Arrangement.SpaceBetween,
@@ -66,6 +67,13 @@ fun SplashView(
                     onClick = navigateToGoogleLogin,
                     icon = painterResource(id = R.drawable.google)
                 )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                PrimaryButton(
+                    text = "Crear Cuenta",
+                    onClick = navigateToSignUp
+                )
             }
         }
     }
@@ -77,6 +85,7 @@ fun SplashViewPreview() {
     SplashView(
         viewModel = SplashViewModel(),
         navigateToLogin = {},
-        navigateToGoogleLogin = {}
+        navigateToGoogleLogin = {},
+        navigateToSignUp = {}
     )
 }
