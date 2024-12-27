@@ -1,11 +1,12 @@
 package com.althaus.dev.cinemaNexus.ui.login
 
-import android.accounts.NetworkErrorException
 import androidx.compose.runtime.*
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.althaus.dev.cinemaNexus.data.AuthService
+import com.althaus.dev.cinemaNexus.utils.ValidatorUtil.isEmailValid
+import com.althaus.dev.cinemaNexus.utils.ValidatorUtil.isPasswordValid
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -57,21 +58,6 @@ class LoginViewModel @Inject constructor(
             } catch (e: Exception) {
                 _loginState.value = LoginState.Error("Error inesperado: ${e.message}")
             }
-        }
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private fun isPasswordValid(password: String): Boolean {
-        return password.length >= 6
-    }
-
-    private fun handleError(e: Exception): LoginState.Error {
-        return when (e) {
-            is NetworkErrorException -> LoginState.Error("Error de red. Por favor, revisa tu conexión.")
-            else -> LoginState.Error("Error inesperado: ${e.message}")
         }
     }
 }

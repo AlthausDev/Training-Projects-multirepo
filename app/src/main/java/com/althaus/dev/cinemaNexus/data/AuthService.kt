@@ -15,6 +15,14 @@ class AuthService @Inject constructor(private val firebaseAuth: FirebaseAuth) {
         }
     }
 
+    suspend fun signUp(email: String, password: String): FirebaseUser? {
+        try {
+            return firebaseAuth.createUserWithEmailAndPassword(email, password).await().user
+        } catch (e: Exception) {
+            throw mapFirebaseException(e)
+        }
+    }
+
     private fun mapFirebaseException(e: Exception): Exception {
         return when {
             e.message?.contains("The email address is badly formatted") == true ->

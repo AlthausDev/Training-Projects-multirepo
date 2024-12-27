@@ -55,6 +55,17 @@ fun CinemaNexusNavGraph() {
             )
         }
 
+        composable(Routes.SignUpView.route) {
+            val signUpViewModel: SignUpViewModel = hiltViewModel()
+            SignUpView(viewModel = signUpViewModel,
+                navigateToHome = {
+                    navController.navigate(Routes.HomeView.route)
+                }, navtigateToLogin = {
+                    navController.navigate(Routes.LoginView.route)
+                }, navigateToError = {}
+            )
+        }
+
         composable(Routes.HomeView.route) {
             val homeViewModel: HomeViewModel = hiltViewModel()
             HomeView(viewModel = homeViewModel)
@@ -63,10 +74,6 @@ fun CinemaNexusNavGraph() {
         composable(Routes.DetailView.route) {
             val detailViewModel: DetailViewModel = hiltViewModel()
             DetailView(viewModel = detailViewModel)
-        }
-        composable(Routes.SignUpView.route) {
-            val signUpViewModel: SignUpViewModel = hiltViewModel()
-            SignUpView(viewModel = signUpViewModel)
         }
     }
 }
