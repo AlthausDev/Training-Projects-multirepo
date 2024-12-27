@@ -42,7 +42,8 @@ fun LoginView(
 
     BaseLayout(
         verticalArragement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        showAppBar = false
     ) {
         // Caja para el logo
         Box(

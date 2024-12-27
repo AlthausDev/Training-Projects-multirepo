@@ -3,6 +3,7 @@ package com.althaus.dev.cinemaNexus.ui.theme.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,10 @@ fun BaseLayout(
     modifier: Modifier = Modifier,
     verticalArragement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    showAppBar: Boolean = true,
+    appBarTitle: String = "",
+    appBarActions: @Composable RowScope.() -> Unit = {},
+    appBarNavigationIcon: @Composable (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
     GradientBackground {
@@ -26,6 +31,13 @@ fun BaseLayout(
             verticalArrangement = verticalArragement,
             horizontalAlignment = horizontalAlignment
         ) {
+            if (showAppBar) {
+                SharedTopAppBar(
+                    title = appBarTitle,
+                    actions = appBarActions,
+                    navigationIcon = appBarNavigationIcon
+                )
+            }
             content()
         }
     }

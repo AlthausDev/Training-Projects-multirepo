@@ -25,6 +25,7 @@ fun SplashView(
     BaseLayout(
         verticalArragement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
+        showAppBar = false,
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
