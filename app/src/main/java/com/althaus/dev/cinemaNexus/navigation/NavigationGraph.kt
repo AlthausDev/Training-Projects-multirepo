@@ -1,5 +1,8 @@
-package com.althaus.dev.cinemaNexus
+package com.althaus.dev.cinemaNexus.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -29,10 +32,17 @@ sealed class Routes(val route: String) {
 }
 
 @Composable
-fun CinemaNexusNavGraph() {
+fun NavigationGraph() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.SplashView.route) {
+    NavHost(
+        navController = navController,
+        startDestination = Routes.SplashView.route,
+        enterTransition = { fadeIn(animationSpec = tween(700)) },
+        exitTransition = { fadeOut(animationSpec = tween(700)) },
+        popEnterTransition = { fadeIn(animationSpec = tween(700)) },
+        popExitTransition = { fadeOut(animationSpec = tween(700)) }
+    ) {
         composable(Routes.SplashView.route) {
             val splashViewModel: SplashViewModel = hiltViewModel()
             SplashView(viewModel = splashViewModel,

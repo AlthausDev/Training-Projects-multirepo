@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.althaus.dev.cinemaNexus.navigation.NavigationGraph
 import com.althaus.dev.cinemaNexus.ui.theme.CinemaNexusTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                                 .fillMaxSize(),
                             color = MaterialTheme.colorScheme.background
                         ) {
-                            CinemaNexusNavGraph()
+                            NavigationGraph()
                         }
                     }
                 )

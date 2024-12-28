@@ -27,24 +27,18 @@ fun SplashView(
         verticalArragement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
         showAppBar = false,
+        showAppImage = true,
+        appImage = {
+            AppImage(
+                painter = painterResource(id = R.drawable.default_profile),
+                contentDescription = "Logo",
+                size = 150.dp
+            )
+        },
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // Caja para el logo
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
-            contentAlignment = Alignment.Center
-        ) {
-            AppImage(
-                painter = painterResource(id = R.drawable.default_profile),
-                contentDescription = "Logo de la aplicación",
-                size = 150.dp
-            )
-        }
-
         // Caja para los botones
         Box(
             modifier = Modifier
@@ -52,30 +46,43 @@ fun SplashView(
                 .weight(1f),
             contentAlignment = Alignment.Center
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                PrimaryButton(
-                    text = "Iniciar Sesión",
-                    onClick = navigateToLogin
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                PrimaryButton(
-                    text = "Iniciar con Google",
-                    onClick = navigateToGoogleLogin,
-                    icon = painterResource(id = R.drawable.google)
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                PrimaryButton(
-                    text = "Crear Cuenta",
-                    onClick = navigateToSignUp
-                )
-            }
+            SplashButtons(
+                navigateToLogin = navigateToLogin,
+                navigateToGoogleLogin = navigateToGoogleLogin,
+                navigateToSignUp = navigateToSignUp
+            )
         }
+    }
+}
+
+@Composable
+fun SplashButtons(
+    navigateToLogin: () -> Unit,
+    navigateToGoogleLogin: () -> Unit,
+    navigateToSignUp: () -> Unit
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        PrimaryButton(
+            text = "Iniciar Sesión",
+            onClick = navigateToLogin
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        PrimaryButton(
+            text = "Iniciar con Google",
+            onClick = navigateToGoogleLogin,
+            icon = painterResource(id = R.drawable.google)
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        PrimaryButton(
+            text = "Crear Cuenta",
+            onClick = navigateToSignUp
+        )
     }
 }
 

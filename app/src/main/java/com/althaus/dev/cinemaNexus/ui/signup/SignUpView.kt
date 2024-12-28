@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,20 +43,19 @@ fun SignUpView(
     BaseLayout(
         verticalArragement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
-        showAppBar = false
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
-            contentAlignment = Alignment.Center
-        ) {
+        showAppBar = false,
+        showAppImage = true,
+        appImage = {
             AppImage(
                 painter = painterResource(id = R.drawable.default_profile),
-                contentDescription = "Logo de la aplicación",
+                contentDescription = "Logo",
                 size = 150.dp
             )
-        }
+        },
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
 
         Box(
             modifier = Modifier
