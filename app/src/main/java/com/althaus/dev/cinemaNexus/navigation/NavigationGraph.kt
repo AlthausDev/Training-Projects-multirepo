@@ -72,7 +72,7 @@ fun NavigationGraph() {
             SignUpView(viewModel = signUpViewModel,
                 navigateToHome = {
                     navController.navigate(Routes.HomeView.route)
-                }, navtigateToLogin = {
+                }, navigateToLogin = {
                     navController.navigate(Routes.LoginView.route)
                 }, navigateToError = {}
             )

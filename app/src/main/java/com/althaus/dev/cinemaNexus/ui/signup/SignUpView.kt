@@ -1,16 +1,12 @@
 package com.althaus.dev.cinemaNexus.ui.signup
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -20,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.althaus.dev.cinemaNexus.R
 import com.althaus.dev.cinemaNexus.ui.theme.components.AppImage
 import com.althaus.dev.cinemaNexus.ui.theme.components.BaseLayout
+import com.althaus.dev.cinemaNexus.ui.theme.components.ClickableText
+import com.althaus.dev.cinemaNexus.ui.theme.components.MessageDisplay
+import com.althaus.dev.cinemaNexus.ui.theme.components.MessageType
 import com.althaus.dev.cinemaNexus.ui.theme.components.PrimaryButton
 import com.althaus.dev.cinemaNexus.ui.theme.components.SharedTextField
 
@@ -27,7 +26,7 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.SharedTextField
 fun SignUpView(
     viewModel: SignUpViewModel,
     navigateToHome: () -> Unit,
-    navtigateToLogin: () -> Unit,
+    navigateToLogin: () -> Unit,
     navigateToError: (String) -> Unit
 ) {
     val signUpState = viewModel.signUpState.value
@@ -48,69 +47,83 @@ fun SignUpView(
         appImage = {
             AppImage(
                 painter = painterResource(id = R.drawable.default_profile),
-                contentDescription = "Logo",
+                contentDescription = "Logo de la aplicación",
                 size = 150.dp
             )
-        },
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                SharedTextField(
-                    value = viewModel.email,
-                    onValueChange = { viewModel.email = it },
-                    placeholder = "Ingrese su correo electrónico"
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                SharedTextField(
-                    value = viewModel.password,
-                    onValueChange = { viewModel.password = it },
-                    placeholder = "Ingrese su contraseña",
-                    isPassword = true
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                SharedTextField(
-                    value = viewModel.confirmPassword,
-                    onValueChange = { viewModel.confirmPassword = it },
-                    placeholder = "Confirme su contraseña",
-                    isPassword = true
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                if (signUpState is SignUpState.Loading) {
-                    CircularProgressIndicator()
-                } else {
-                    PrimaryButton(
-                        text = "Crear Cuenta",
-                        onClick = viewModel::signUp
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                if (signUpState is SignUpState.Error) {
-                    Text(
-                        text = (signUpState as SignUpState.Error).message,
-                        color = MaterialTheme.colorScheme.error
-                    )
-                }
-
-            }
         }
+    ) {
+        SignUpContent(
+            viewModel = viewModel,
+            signUpState = signUpState,
+            navigateToLogin = navigateToLogin
+        )
+    }
+}
+
+@Composable
+fun SignUpContent(
+    viewModel: SignUpViewModel,
+    signUpState: SignUpState,
+    navigateToLogin: () -> Unit
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        // Campos de Entrada
+        SharedTextField(
+            value = viewModel.email,
+            onValueChange = { viewModel.email = it },
+            placeholder = "Ingrese su correo electrónico"
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        SharedTextField(
+            value = viewModel.password,
+            onValueChange = { viewModel.password = it },
+            placeholder = "Ingrese su contraseña",
+            isPassword = true
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        SharedTextField(
+            value = viewModel.confirmPassword,
+            onValueChange = { viewModel.confirmPassword = it },
+            placeholder = "Confirme su contraseña",
+            isPassword = true
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón de Registro
+        if (signUpState is SignUpState.Loading) {
+            CircularProgressIndicator()
+        } else {
+            PrimaryButton(
+                text = "Crear Cuenta",
+                onClick = { viewModel.signUp() }
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Mensaje de Error
+        if (signUpState is SignUpState.Error) {
+            MessageDisplay(
+                message = (signUpState as SignUpState.Error).message,
+                type = MessageType.ERROR,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Texto de Navegación a Login
+        ClickableText(
+            text = "Ya tienes una cuenta? Inicia sesión",
+            onClick = navigateToLogin
+        )
     }
 }
