@@ -61,6 +61,28 @@ fun PrimaryButton(
     }
 }
 
+/**
+ * Botón de texto clicable.
+ *
+ * @param text Texto que se muestra en el botón.
+ * @param onClick Acción a ejecutar al hacer clic.
+ */
+@Composable
+fun ClickableText(
+    text: String,
+    onClick: () -> Unit,
+    enabled: Boolean = true,
+    colors: ButtonColors = getButtonColors(enabled)
+) {
+    Text(
+        text = text,
+        color = colors.contentColor,
+        modifier = Modifier.clickable(enabled) { onClick() },
+        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+        textAlign = TextAlign.Center,
+    )
+}
+
 // ----------------------------
 // Data Class for Colors
 // ----------------------------
