@@ -39,7 +39,9 @@ fun PrimaryButton(
             .height(48.dp)
             .border(width = 2.dp, colors.borderColor, shape = CircleShape)
             .background(color = colors.backgroundColor, shape = CircleShape)
-            .clickable(enabled) { onClick() },
+            .clickable(enabled) { onClick() }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
