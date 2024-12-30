@@ -118,12 +118,12 @@ fun SignUpContent(
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         // Texto de Navegación a Login
         ClickableText(
             text = "Ya tienes una cuenta? Inicia sesión",
-            onClick = navigateToLogin
+            onClick = navigateToLogin,
+            modifier = Modifier
+                .padding(bottom = 24.dp)
         )
     }
 }

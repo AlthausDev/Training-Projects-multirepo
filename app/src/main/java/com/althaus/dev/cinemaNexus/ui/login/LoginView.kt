@@ -95,7 +95,9 @@ fun LoginContent(
         // Navigate to Sign-Up Button
         ClickableText(
             text = "No tienes una cuenta? Registrate",
-            onClick = navigateToSignUp
+            onClick = navigateToSignUp,
+            modifier = Modifier
+                .padding(bottom = 24.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))

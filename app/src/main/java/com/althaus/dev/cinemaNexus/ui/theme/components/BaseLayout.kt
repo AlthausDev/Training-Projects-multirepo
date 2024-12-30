@@ -53,7 +53,15 @@ fun BaseLayout(
                     appImage()
                 }
             }
-            content()
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f), // Ocupa la mitad inferior
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.Start
+            ) {
+                content()
+            }
         }
     }
 }

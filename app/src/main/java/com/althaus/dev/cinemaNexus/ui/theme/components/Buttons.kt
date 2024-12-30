@@ -71,13 +71,16 @@ fun PrimaryButton(
 fun ClickableText(
     text: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     colors: ButtonColors = getButtonColors(enabled)
 ) {
     Text(
         text = text,
         color = colors.contentColor,
-        modifier = Modifier.clickable(enabled) { onClick() },
+        modifier = Modifier
+            .clickable(enabled) { onClick() }
+            .padding(vertical = 8.dp),
         style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
         textAlign = TextAlign.Center,
     )
