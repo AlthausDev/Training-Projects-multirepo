@@ -6,7 +6,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -17,22 +17,22 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.*
 @Composable
 fun LoginView(
     viewModel: LoginViewModel,
-    navigateToHome: () -> Unit,
-    navigateToSignUp: () -> Unit,
-    navigateToError: (String) -> Unit
+    onNavigateToHome: () -> Unit,
+    onNavigateToSignUp: () -> Unit,
+    onError: (String) -> Unit
 ) {
-    val loginState by viewModel.loginState
+    val loginState = viewModel.loginState.collectAsState()
 
-    LaunchedEffect(loginState) {
-        when (loginState) {
-            is LoginState.Success -> navigateToHome()
-            is LoginState.Error -> navigateToError((loginState as LoginState.Error).message)
+    LaunchedEffect(key1 = loginState.value) {
+        when (val state = loginState.value) {
+            is LoginState.Success -> onNavigateToHome()
+            is LoginState.Error -> onError(state.message)
             else -> {}
         }
     }
 
     BaseLayout(
-        verticalArragement = Arrangement.SpaceBetween,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
         showAppBar = false,
         showAppImage = true,
@@ -46,8 +46,7 @@ fun LoginView(
     ) {
         LoginContent(
             viewModel = viewModel,
-            loginState = loginState,
-            navigateToSignUp = navigateToSignUp
+            onNavigateToSignUp = onNavigateToSignUp
         )
     }
 }
@@ -55,9 +54,12 @@ fun LoginView(
 @Composable
 fun LoginContent(
     viewModel: LoginViewModel,
-    loginState: LoginState,
-    navigateToSignUp: () -> Unit
+    onNavigateToSignUp: () -> Unit
 ) {
+    val email = viewModel.email.collectAsState()
+    val password = viewModel.password.collectAsState()
+    val loginState = viewModel.loginState.collectAsState()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -66,10 +68,11 @@ fun LoginContent(
             .verticalScroll(rememberScrollState())
             .imePadding()
     ) {
+
         // Email Field
         SharedTextField(
-            value = viewModel.email,
-            onValueChange = { viewModel.email = it },
+            value = email.value,
+            onValueChange = viewModel::updateEmail,
             placeholder = "Email"
         )
 
@@ -77,8 +80,8 @@ fun LoginContent(
 
         // Password Field
         SharedTextField(
-            value = viewModel.password,
-            onValueChange = { viewModel.password = it },
+            value = password.value,
+            onValueChange = viewModel::updatePassword,
             placeholder = "Contraseña",
             isPassword = true
         )
@@ -86,7 +89,7 @@ fun LoginContent(
         Spacer(modifier = Modifier.height(16.dp))
 
         // Login Button
-        when (loginState) {
+        when (loginState.value) {
             is LoginState.Loading -> CircularProgressIndicator()
             else -> PrimaryButton(
                 text = "Iniciar Sesión",
@@ -98,18 +101,18 @@ fun LoginContent(
 
         // Navigate to Sign-Up Button
         ClickableText(
-            text = "No tienes una cuenta? Registrate",
-            onClick = navigateToSignUp,
-            modifier = Modifier
-                .padding(bottom = 24.dp)
+            text = "¿No tienes una cuenta? Regístrate",
+            onClick = onNavigateToSignUp,
+            modifier = Modifier.padding(bottom = 24.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Error Message
-        if (loginState is LoginState.Error) {
+        if (loginState.value is LoginState.Error) {
+            val errorMessage = (loginState.value as LoginState.Error).message
             MessageDisplay(
-                message = loginState.message,
+                message = errorMessage,
                 type = MessageType.ERROR,
                 modifier = Modifier.padding(vertical = 8.dp)
             )

@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BaseLayout(
     modifier: Modifier = Modifier,
-    verticalArragement: Arrangement.Vertical = Arrangement.Top,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     showAppBar: Boolean = true,
     appBarTitle: String = "",
@@ -37,7 +37,7 @@ fun BaseLayout(
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState())
                 .imePadding(),
-            verticalArrangement = verticalArragement,
+            verticalArrangement = verticalArrangement,
             horizontalAlignment = horizontalAlignment
         ) {
             if (showAppBar) {

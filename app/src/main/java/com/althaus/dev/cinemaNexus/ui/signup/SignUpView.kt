@@ -12,6 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,22 +29,22 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.SharedTextField
 @Composable
 fun SignUpView(
     viewModel: SignUpViewModel,
-    navigateToHome: () -> Unit,
-    navigateToLogin: () -> Unit,
-    navigateToError: (String) -> Unit
+    onNavigateToHome: () -> Unit,
+    onNavigateToLogin: () -> Unit,
+    onError: (String) -> Unit
 ) {
-    val signUpState = viewModel.signUpState.value
+    val signUpState = viewModel.signUpState.collectAsState()
 
-    LaunchedEffect(signUpState) {
-        when (signUpState) {
-            is SignUpState.Success -> navigateToHome()
-            is SignUpState.Error -> navigateToError((signUpState as SignUpState.Error).message)
+    LaunchedEffect(key1 = signUpState.value) {
+        when (val state = signUpState.value) {
+            is SignUpState.Success -> onNavigateToHome()
+            is SignUpState.Error -> onError(state.message)
             else -> {}
         }
     }
 
     BaseLayout(
-        verticalArragement = Arrangement.SpaceBetween,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
         showAppBar = false,
         showAppImage = true,
@@ -57,8 +58,7 @@ fun SignUpView(
     ) {
         SignUpContent(
             viewModel = viewModel,
-            signUpState = signUpState,
-            navigateToLogin = navigateToLogin
+            onNavigateToLogin = onNavigateToLogin
         )
     }
 }
@@ -66,9 +66,13 @@ fun SignUpView(
 @Composable
 fun SignUpContent(
     viewModel: SignUpViewModel,
-    signUpState: SignUpState,
-    navigateToLogin: () -> Unit
+    onNavigateToLogin: () -> Unit
 ) {
+    val email = viewModel.email.collectAsState()
+    val password = viewModel.password.collectAsState()
+    val confirmPassword = viewModel.confirmPassword.collectAsState()
+    val signUpState = viewModel.signUpState.collectAsState()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -76,18 +80,17 @@ fun SignUpContent(
             .verticalScroll(rememberScrollState())
             .imePadding()
     ) {
-        // Campos de Entrada
         SharedTextField(
-            value = viewModel.email,
-            onValueChange = { viewModel.email = it },
+            value = email.value,
+            onValueChange = { viewModel.updateEmail(it) },
             placeholder = "Ingrese su correo electrónico"
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         SharedTextField(
-            value = viewModel.password,
-            onValueChange = { viewModel.password = it },
+            value = password.value,
+            onValueChange = { viewModel.updatePassword(it) },
             placeholder = "Ingrese su contraseña",
             isPassword = true
         )
@@ -95,16 +98,15 @@ fun SignUpContent(
         Spacer(modifier = Modifier.height(16.dp))
 
         SharedTextField(
-            value = viewModel.confirmPassword,
-            onValueChange = { viewModel.confirmPassword = it },
+            value = confirmPassword.value,
+            onValueChange = { viewModel.updateConfirmPassword(it) },
             placeholder = "Confirme su contraseña",
             isPassword = true
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón de Registro
-        if (signUpState is SignUpState.Loading) {
+        if (signUpState.value is SignUpState.Loading) {
             CircularProgressIndicator()
         } else {
             PrimaryButton(
@@ -118,18 +120,18 @@ fun SignUpContent(
         // Mensaje de Error
         if (signUpState is SignUpState.Error) {
             MessageDisplay(
-                message = (signUpState as SignUpState.Error).message,
+                message = (signUpState.value as SignUpState.Error).message,
                 type = MessageType.ERROR,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
         }
 
-        // Texto de Navegación a Login
+        //Spacer(modifier = Modifier.height(16.dp))
+
         ClickableText(
-            text = "Ya tienes una cuenta? Inicia sesión",
-            onClick = navigateToLogin,
-            modifier = Modifier
-                .padding(bottom = 24.dp)
+            text = "¿Ya tienes una cuenta? Inicia sesión",
+            onClick = onNavigateToLogin,
+            modifier = Modifier.padding(bottom = 24.dp)
         )
     }
 }

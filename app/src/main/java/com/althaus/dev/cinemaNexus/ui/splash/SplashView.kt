@@ -1,10 +1,6 @@
 package com.althaus.dev.cinemaNexus.ui.splash
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,15 +12,19 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.AppImage
 import com.althaus.dev.cinemaNexus.ui.theme.components.BaseLayout
 import com.althaus.dev.cinemaNexus.ui.theme.components.PrimaryButton
 
+// Constantes de diseño
+private val ButtonSpacing = 16.dp
+private val ScreenPadding = 16.dp
+
 @Composable
 fun SplashView(
     viewModel: SplashViewModel,
-    navigateToLogin: () -> Unit,
-    navigateToGoogleLogin: () -> Unit,
-    navigateToSignUp: () -> Unit
+    onNavigateToLogin: () -> Unit,
+    onNavigateToGoogleLogin: () -> Unit,
+    onNavigateToSignUp: () -> Unit
 ) {
     BaseLayout(
-        verticalArragement = Arrangement.SpaceBetween,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
         showAppBar = false,
         showAppImage = true,
@@ -37,7 +37,7 @@ fun SplashView(
         },
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(ScreenPadding)
     ) {
         // Caja para los botones
         Box(
@@ -47,9 +47,9 @@ fun SplashView(
             contentAlignment = Alignment.Center
         ) {
             SplashButtons(
-                navigateToLogin = navigateToLogin,
-                navigateToGoogleLogin = navigateToGoogleLogin,
-                navigateToSignUp = navigateToSignUp
+                onNavigateToLogin = onNavigateToLogin,
+                onNavigateToGoogleLogin = onNavigateToGoogleLogin,
+                onNavigateToSignUp = onNavigateToSignUp
             )
         }
     }
@@ -57,42 +57,42 @@ fun SplashView(
 
 @Composable
 fun SplashButtons(
-    navigateToLogin: () -> Unit,
-    navigateToGoogleLogin: () -> Unit,
-    navigateToSignUp: () -> Unit
+    onNavigateToLogin: () -> Unit,
+    onNavigateToGoogleLogin: () -> Unit,
+    onNavigateToSignUp: () -> Unit
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         PrimaryButton(
             text = "Iniciar Sesión",
-            onClick = navigateToLogin
+            onClick = onNavigateToLogin
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(ButtonSpacing))
 
         PrimaryButton(
             text = "Iniciar con Google",
-            onClick = navigateToGoogleLogin,
+            onClick = onNavigateToGoogleLogin,
             icon = painterResource(id = R.drawable.google)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(ButtonSpacing))
 
         PrimaryButton(
             text = "Crear Cuenta",
-            onClick = navigateToSignUp
+            onClick = onNavigateToSignUp
         )
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun SplashViewPreview() {
     SplashView(
-        viewModel = SplashViewModel(),
-        navigateToLogin = {},
-        navigateToGoogleLogin = {},
-        navigateToSignUp = {}
+        viewModel = SplashViewModel(), // Simula un ViewModel vacío para la vista previa
+        onNavigateToLogin = {},
+        onNavigateToGoogleLogin = {},
+        onNavigateToSignUp = {}
     )
 }

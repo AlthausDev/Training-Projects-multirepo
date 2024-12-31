@@ -8,8 +8,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.althaus.dev.cinemaNexus.ui.detail.DetailView
-import com.althaus.dev.cinemaNexus.ui.detail.DetailViewModel
 import com.althaus.dev.cinemaNexus.ui.home.HomeView
 import com.althaus.dev.cinemaNexus.ui.home.HomeViewModel
 import com.althaus.dev.cinemaNexus.ui.login.LoginView
@@ -45,36 +43,59 @@ fun NavigationGraph() {
     ) {
         composable(Routes.SplashView.route) {
             val splashViewModel: SplashViewModel = hiltViewModel()
-            SplashView(viewModel = splashViewModel,
-                navigateToLogin = {
-                    navController.navigate(Routes.LoginView.route)
-                }, navigateToGoogleLogin = {
-                    navController.navigate(Routes.HomeView.route)
-                }, navigateToSignUp = {
-                    navController.navigate(Routes.SignUpView.route)
+            SplashView(
+                viewModel = splashViewModel,
+                onNavigateToLogin = {
+                    navController.navigate(Routes.LoginView.route) {
+                        popUpTo(Routes.SplashView.route) { inclusive = false }
+                    }
+                },
+                onNavigateToGoogleLogin = {
+                    navController.navigate(Routes.HomeView.route) {
+                        popUpTo(Routes.SplashView.route) { inclusive = true }
+                    }
+                },
+                onNavigateToSignUp = {
+                    navController.navigate(Routes.SignUpView.route) {
+                        popUpTo(Routes.SplashView.route) { inclusive = false }
+                    }
                 }
             )
         }
 
         composable(Routes.LoginView.route) {
             val loginViewModel: LoginViewModel = hiltViewModel()
-            LoginView(viewModel = loginViewModel,
-                navigateToHome = {
-                    navController.navigate(Routes.HomeView.route)
-                }, navigateToSignUp = {
-                    navController.navigate(Routes.SignUpView.route)
-                }, navigateToError = {}
+            LoginView(
+                viewModel = loginViewModel,
+                onNavigateToHome = {
+                    navController.navigate(Routes.HomeView.route) {
+                        popUpTo(Routes.LoginView.route) { inclusive = true }
+                    }
+                },
+                onNavigateToSignUp = {
+                    navController.navigate(Routes.SignUpView.route) {
+                        popUpTo(Routes.LoginView.route) { inclusive = false }
+                    }
+                },
+                onError = {}
             )
         }
 
         composable(Routes.SignUpView.route) {
             val signUpViewModel: SignUpViewModel = hiltViewModel()
-            SignUpView(viewModel = signUpViewModel,
-                navigateToHome = {
-                    navController.navigate(Routes.HomeView.route)
-                }, navigateToLogin = {
-                    navController.navigate(Routes.LoginView.route)
-                }, navigateToError = {}
+            SignUpView(
+                viewModel = signUpViewModel,
+                onNavigateToHome = {
+                    navController.navigate(Routes.HomeView.route) {
+                        popUpTo(Routes.SignUpView.route) { inclusive = true }
+                    }
+                },
+                onNavigateToLogin = {
+                    navController.navigate(Routes.LoginView.route) {
+                        popUpTo(Routes.SignUpView.route) { inclusive = false }
+                    }
+                },
+                onError = {}
             )
         }
 
@@ -83,9 +104,16 @@ fun NavigationGraph() {
             HomeView(viewModel = homeViewModel)
         }
 
-        composable(Routes.DetailView.route) {
-            val detailViewModel: DetailViewModel = hiltViewModel()
-            DetailView(viewModel = detailViewModel)
-        }
+//        composable(
+//            route = Routes.DetailView.route,
+//            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
+//        ) { backStackEntry ->
+//            val movieId = backStackEntry.arguments?.getInt("movieId") ?: 0
+//            val detailViewModel: DetailViewModel = hiltViewModel()
+//            DetailView(
+//                viewModel = detailViewModel,
+//                movieId = movieId
+//            )
+//        }
     }
 }
