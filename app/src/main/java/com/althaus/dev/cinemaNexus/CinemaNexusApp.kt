@@ -1,7 +1,12 @@
 package com.althaus.dev.cinemaNexus;
 
-import android.app.Application;
-import dagger.hilt.android.HiltAndroidApp;
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class CinemaNexusApp : Application()
+class CinemaNexusApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+    }
+}
