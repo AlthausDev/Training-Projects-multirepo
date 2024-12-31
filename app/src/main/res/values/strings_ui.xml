@@ -1,0 +1,15 @@
+<resources>
+    <!-- UI Titles -->
+    <string name="home_title">Home Screen</string>
+    <string name="settings_title">Settings</string>
+    <string name="profile_title">Profile</string>
+
+    <!-- Action Buttons -->
+    <string name="logout_button">Logout</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!-- Status Messages -->
+    <string name="loading_message">Loading...</string>
+    <string name="no_data_message">No data available</string>
+</resources>

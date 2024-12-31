@@ -1,5 +1,7 @@
 package com.althaus.dev.cinemaNexus.utils
 
+import android.content.Context
+import com.althaus.dev.cinemaNexus.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import retrofit2.HttpException
@@ -39,13 +41,13 @@ fun <T> handleErrors(onError: (Throwable) -> Unit, block: () -> T): T? {
 /**
  * Maneja errores comunes de APIs (HTTP).
  */
-fun handleHttpError(exception: HttpException): String {
+fun handleHttpError(context: Context, exception: HttpException): String {
     return when (exception.code()) {
-        400 -> "Solicitud incorrecta. Verifica los datos enviados."
-        401 -> "No autorizado. Por favor, inicia sesión."
-        403 -> "Prohibido. No tienes acceso a este recurso."
-        404 -> "Recurso no encontrado."
-        500 -> "Error interno del servidor. Intenta nuevamente más tarde."
-        else -> "Error desconocido: ${exception.code()}"
+        400 -> context.getString(R.string.error_bad_request)
+        401 -> context.getString(R.string.error_unauthorized)
+        403 -> context.getString(R.string.error_forbidden)
+        404 -> context.getString(R.string.error_not_found)
+        500 -> context.getString(R.string.error_internal_server)
+        else -> context.getString(R.string.error_unknown, exception.code())
     }
 }

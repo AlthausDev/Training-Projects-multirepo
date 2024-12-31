@@ -1,0 +1,15 @@
+<resources>
+    <!-- Títulos de la interfaz -->
+    <string name="home_title">Pantalla Principal</string>
+    <string name="settings_title">Configuración</string>
+    <string name="profile_title">Perfil</string>
+
+    <!-- Botones de acción -->
+    <string name="logout_button">Cerrar sesión</string>
+    <string name="save_button">Guardar</string>
+    <string name="cancel_button">Cancelar</string>
+
+    <!-- Mensajes de Estado -->
+    <string name="loading_message">Cargando...</string>
+    <string name="no_data_message">No hay datos disponibles</string>
+</resources>

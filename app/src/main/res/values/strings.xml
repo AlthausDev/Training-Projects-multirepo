@@ -1,12 +1,14 @@
 <resources>
-    <!-- Nombre de la aplicación -->
+    <!-- General Texts -->
     <string name="app_name">CinemaNexus</string>
-
-    <!-- Navegación -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- Authentication Texts -->
+    <string name="login_button">Login</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="welcome_message">Welcome to CinemaNexus!</string>
+
     <!-- Default Web Client ID -->
-    <!-- Este ID se utiliza para configurar Google Sign-In y debe coincidir con el client_id del archivo google-services.json -->
     <string name="default_web_client_id">935720145677-uj8cb5eg080ekeg4v5v5mcijqgkjl23d.apps.googleusercontent.com</string>
 </resources>

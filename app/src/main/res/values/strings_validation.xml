@@ -1,0 +1,8 @@
+<resources>
+    <!-- Form Validation Error Messages -->
+    <string name="validation_empty_field">This field cannot be empty</string>
+    <string name="validation_invalid_email">Please enter a valid email address</string>
+    <string name="validation_password_too_short">Password must be at least 6 characters</string>
+    <string name="validation_password_mismatch">Passwords do not match</string>
+    <string name="validation_invalid_username">The username is invalid</string>
+</resources>
