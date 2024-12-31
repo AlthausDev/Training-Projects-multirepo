@@ -2,10 +2,11 @@ package com.althaus.dev.cinemaNexus.ui.splash
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.althaus.dev.cinemaNexus.R
 import com.althaus.dev.cinemaNexus.ui.theme.components.AppImage
@@ -23,6 +24,10 @@ fun SplashView(
     onNavigateToGoogleLogin: () -> Unit,
     onNavigateToSignUp: () -> Unit
 ) {
+
+    val currentLanguage =
+        viewModel.preferencesManager.languageFlow.collectAsState(initial = "en").value
+
     BaseLayout(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -49,7 +54,10 @@ fun SplashView(
             SplashButtons(
                 onNavigateToLogin = onNavigateToLogin,
                 onNavigateToGoogleLogin = onNavigateToGoogleLogin,
-                onNavigateToSignUp = onNavigateToSignUp
+                onNavigateToSignUp = onNavigateToSignUp,
+                onChangeTheme = { viewModel.onThemeChange() },
+                onChangeLanguage = { languageCode -> viewModel.onLanguageChange(languageCode) },
+                currentLanguage = currentLanguage
             )
         }
     }
@@ -59,20 +67,23 @@ fun SplashView(
 fun SplashButtons(
     onNavigateToLogin: () -> Unit,
     onNavigateToGoogleLogin: () -> Unit,
-    onNavigateToSignUp: () -> Unit
+    onNavigateToSignUp: () -> Unit,
+    onChangeTheme: () -> Unit,
+    onChangeLanguage: (String) -> Unit,
+    currentLanguage: String // Añadido para cambiar entre "es" y "en"
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         PrimaryButton(
-            text = "Iniciar Sesión",
+            text = stringResource(id = R.string.splash_login),
             onClick = onNavigateToLogin
         )
 
         Spacer(modifier = Modifier.height(ButtonSpacing))
 
         PrimaryButton(
-            text = "Iniciar con Google",
+            text = stringResource(id = R.string.splash_google_login),
             onClick = onNavigateToGoogleLogin,
             icon = painterResource(id = R.drawable.google)
         )
@@ -80,19 +91,27 @@ fun SplashButtons(
         Spacer(modifier = Modifier.height(ButtonSpacing))
 
         PrimaryButton(
-            text = "Crear Cuenta",
+            text = stringResource(id = R.string.splash_signup),
             onClick = onNavigateToSignUp
         )
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun SplashViewPreview() {
-    SplashView(
-        viewModel = SplashViewModel(), // Simula un ViewModel vacío para la vista previa
-        onNavigateToLogin = {},
-        onNavigateToGoogleLogin = {},
-        onNavigateToSignUp = {}
-    )
+        Spacer(modifier = Modifier.height(ButtonSpacing))
+
+        // Botón para cambiar el tema (Modo oscuro / Modo claro)
+        PrimaryButton(
+            text = stringResource(id = R.string.splash_change_theme),
+            onClick = onChangeTheme
+        )
+
+        Spacer(modifier = Modifier.height(ButtonSpacing))
+
+        // Botón para cambiar el idioma (Español / Inglés)
+        PrimaryButton(
+            text = stringResource(id = R.string.splash_change_language),
+            onClick = {
+                val newLanguage = if (currentLanguage == "es") "en" else "es"
+                onChangeLanguage(newLanguage)
+            }
+        )
+    }
 }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -86,6 +87,17 @@ fun ClickableText(
         style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
         textAlign = TextAlign.Center,
     )
+}
+
+@Composable
+fun LanguageSelectionButton(onLanguageSelected: (String) -> Unit) {
+    Button(onClick = { onLanguageSelected("es") }) {
+        Text(text = "Cambiar a Español")
+    }
+
+    Button(onClick = { onLanguageSelected("en") }) {
+        Text(text = "Change to English")
+    }
 }
 
 // ----------------------------

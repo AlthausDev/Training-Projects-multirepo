@@ -4,10 +4,12 @@
     <string name="settings_title">Settings</string>
     <string name="profile_title">Profile</string>
 
-    <!-- Action Buttons -->
-    <string name="logout_button">Logout</string>
-    <string name="save_button">Save</string>
-    <string name="cancel_button">Cancel</string>
+    <!-- UI Buttons -->
+    <string name="splash_login">Login</string>
+    <string name="splash_google_login">Login with Google</string>
+    <string name="splash_signup">Sign Up</string>
+    <string name="splash_change_theme">Change Theme</string>
+    <string name="splash_change_language">Change Language</string>
 
     <!-- Status Messages -->
     <string name="loading_message">Loading...</string>

@@ -4,10 +4,12 @@
     <string name="settings_title">Configuración</string>
     <string name="profile_title">Perfil</string>
 
-    <!-- Botones de acción -->
-    <string name="logout_button">Cerrar sesión</string>
-    <string name="save_button">Guardar</string>
-    <string name="cancel_button">Cancelar</string>
+    <!-- Botones de la UI -->
+    <string name="splash_login">Iniciar Sesión</string>
+    <string name="splash_google_login">Iniciar con Google</string>
+    <string name="splash_signup">Crear Cuenta</string>
+    <string name="splash_change_theme">Cambiar Tema</string>
+    <string name="splash_change_language">Cambiar Idioma</string>
 
     <!-- Mensajes de Estado -->
     <string name="loading_message">Cargando...</string>

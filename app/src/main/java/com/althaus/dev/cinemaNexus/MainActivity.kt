@@ -32,12 +32,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
-
-        // Observar cambios de tema e idioma
         observeThemeMode()
         observeLanguageChange()
 
-        // Configurar la interfaz
         setContent {
             CinemaNexusTheme {
                 Scaffold(
@@ -57,12 +54,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Observa el flujo de modo oscuro desde PreferencesManager y actualiza el tema de la aplicación.
-     */
     private fun observeThemeMode() {
         lifecycleScope.launch {
-            preferencesManager.darkModeFlow.collectLatest { isDarkMode ->
+            preferencesManager.darkModeFlow.collect { isDarkMode ->
                 val mode = if (isDarkMode) {
                     AppCompatDelegate.MODE_NIGHT_YES
                 } else {
@@ -85,18 +79,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Actualiza el idioma de la aplicación dinámicamente.
+     * Cambia el idioma de la aplicación dinámicamente.
      * @param languageCode Código del idioma (ejemplo: "en", "es").
      */
     private fun updateLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
+        // Cambiar idioma solo si es necesario
+        val currentLocale = Locale.getDefault().language
+        if (currentLocale != languageCode) {
+            val locale = Locale(languageCode)
+            Locale.setDefault(locale)
 
-        val config = Configuration(resources.configuration)
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+            val config = Configuration(resources.configuration)
+            config.setLocale(locale)
 
-        // Reiniciar actividad para aplicar el nuevo idioma (opcional)
-        recreate()
+            // Actualizamos la configuración de los recursos sin recrear la actividad
+            resources.updateConfiguration(config, resources.displayMetrics)
+        }
+    }
+
+    suspend fun onLanguageSelected(languageCode: String) {
+        preferencesManager.saveLanguage(languageCode) // Guardar el idioma seleccionado en preferencias
+        updateLocale(languageCode) // Cambiar el idioma en la aplicación
+        recreate() // Reiniciar la actividad para que los cambios se apliquen
     }
 }

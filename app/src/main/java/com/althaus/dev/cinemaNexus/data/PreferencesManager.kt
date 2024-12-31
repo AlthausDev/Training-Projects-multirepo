@@ -3,27 +3,37 @@ package com.althaus.dev.cinemaNexus.data
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
+import java.util.Locale
 import javax.inject.Inject
 
 class PreferencesManager @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    // Flujo que emite el idioma configurado
-    val languageFlow: Flow<String> = context.dataStore.data
+    private val dataStore = context.dataStore
+
+    // Lee el idioma desde las preferencias guardadas
+    val languageFlow: Flow<String> = dataStore.data
+        .catch { exception ->
+            handleError("Error al leer el idioma", exception)
+            emit(emptyPreferences()) // Emite un valor vacío si hay error
+        }
         .map { preferences ->
-            preferences[PreferencesKeys.LANGUAGE] ?: "en" // Valor predeterminado
+            preferences[PreferencesKeys.LANGUAGE]
+                ?: Locale.getDefault().language // Si no hay idioma guardado, usa el del dispositivo
         }
-        .catch { error ->
-            logError("Error al leer el idioma", error)
-            emit("en") // Emitir valor predeterminado en caso de error
-        }
+
+    // Guarda el idioma seleccionado
+    suspend fun saveLanguage(language: String) {
+        savePreference(PreferencesKeys.LANGUAGE, language)
+    }
 
     // Flujo que emite si el modo oscuro está habilitado
     val darkModeFlow: Flow<Boolean> = context.dataStore.data
@@ -31,7 +41,7 @@ class PreferencesManager @Inject constructor(
             preferences[PreferencesKeys.DARK_MODE] ?: false // Valor predeterminado
         }
         .catch { error ->
-            logError("Error al leer el modo oscuro", error)
+            handleError("Error al leer el modo oscuro", error)
             emit(false) // Emitir valor predeterminado en caso de error
         }
 
@@ -39,10 +49,7 @@ class PreferencesManager @Inject constructor(
     val settingsFlow: Flow<Pair<String, Boolean>> = combine(
         languageFlow,
         darkModeFlow
-    ) { language, darkMode ->
-        language to darkMode
-    }
-
+    ) { language, darkMode -> language to darkMode }
 
     /**
      * Método genérico para guardar preferencias.
@@ -56,14 +63,6 @@ class PreferencesManager @Inject constructor(
     }
 
     /**
-     * Guarda el idioma seleccionado.
-     * @param language Idioma a guardar.
-     */
-    suspend fun saveLanguage(language: String) {
-        savePreference(PreferencesKeys.LANGUAGE, language)
-    }
-
-    /**
      * Guarda el estado del modo oscuro.
      * @param isDarkMode Estado del modo oscuro (true/false).
      */
@@ -72,11 +71,11 @@ class PreferencesManager @Inject constructor(
     }
 
     /**
-     * Registra un error en Firebase Crashlytics.
+     * Maneja y registra errores en Firebase Crashlytics.
      * @param message Mensaje asociado al error.
      * @param throwable Excepción o error ocurrido.
      */
-    private fun logError(message: String, throwable: Throwable) {
+    private fun handleError(message: String, throwable: Throwable) {
         FirebaseCrashlytics.getInstance().log(message)
         FirebaseCrashlytics.getInstance().recordException(throwable)
     }
