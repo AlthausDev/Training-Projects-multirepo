@@ -5,13 +5,9 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
 import com.althaus.dev.cinemaNexus.data.PreferencesManager
 import com.althaus.dev.cinemaNexus.navigation.NavigationGraph
@@ -32,43 +28,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
-        observeThemeMode()
+
+        // Observamos el idioma para cambiar la configuración sin recrear la Activity
         observeLanguageChange()
 
+        // Cargamos la UI Compose
         setContent {
-            CinemaNexusTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    content = { innerPadding ->
-                        Surface(
-                            modifier = Modifier
-                                .padding(innerPadding)
-                                .fillMaxSize(),
-                            color = MaterialTheme.colorScheme.background
-                        ) {
-                            NavigationGraph()
-                        }
-                    }
-                )
-            }
-        }
-    }
-
-    private fun observeThemeMode() {
-        lifecycleScope.launch {
-            preferencesManager.darkModeFlow.collect { isDarkMode ->
-                val mode = if (isDarkMode) {
-                    AppCompatDelegate.MODE_NIGHT_YES
-                } else {
-                    AppCompatDelegate.MODE_NIGHT_NO
-                }
-                AppCompatDelegate.setDefaultNightMode(mode)
-            }
+            // En Compose controlamos el tema oscuro
+            MainScreen(preferencesManager)
         }
     }
 
     /**
-     * Observa el flujo de idioma desde PreferencesManager y actualiza la configuración de la aplicación.
+     * Observa el flujo de idioma desde PreferencesManager y actualiza la configuración.
+     * (Si prefieres, podrías mover esta lógica a Compose para 100% "composear" el idioma,
+     *  pero típicamente se maneja aquí por la necesidad de updateConfiguration).
      */
     private fun observeLanguageChange() {
         lifecycleScope.launch {
@@ -80,10 +54,8 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Cambia el idioma de la aplicación dinámicamente.
-     * @param languageCode Código del idioma (ejemplo: "en", "es").
      */
     private fun updateLocale(languageCode: String) {
-        // Cambiar idioma solo si es necesario
         val currentLocale = Locale.getDefault().language
         if (currentLocale != languageCode) {
             val locale = Locale(languageCode)
@@ -97,9 +69,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Ejemplo de función expuesta si quieres cambiar el idioma manualmente.
+     */
     suspend fun onLanguageSelected(languageCode: String) {
-        preferencesManager.saveLanguage(languageCode) // Guardar el idioma seleccionado en preferencias
-        updateLocale(languageCode) // Cambiar el idioma en la aplicación
-        recreate() // Reiniciar la actividad para que los cambios se apliquen
+        preferencesManager.saveLanguage(languageCode)
+        // updateLocale(languageCode) // Aplicación inmediata sin recreate()
+        // recreate() // Solo si quisieras un reinicio completo
+    }
+}
+
+/**
+ * MainScreen composable que observa `darkModeFlow` y aplica
+ * el tema Compose sin AppCompatDelegate.setDefaultNightMode(...).
+ */
+@Composable
+fun MainScreen(preferencesManager: PreferencesManager) {
+    // Observamos el booleano isDarkMode mediante collectAsState
+    val isDarkMode by preferencesManager.darkModeFlow.collectAsState(initial = false)
+
+    // Podrías observar languageFlow aquí también y manejarlo en Compose,
+    // pero para strings.xml y resources, típicamente se hace en la Activity.
+    // val languageCode by preferencesManager.languageFlow.collectAsState(initial = "es")
+    // LaunchedEffect(languageCode) { /* ...update locale si quisieras hacerlo aquí... */ }
+
+    // Pasamos isDarkMode a CinemaNexusTheme en lugar de setDefaultNightMode
+    CinemaNexusTheme(darkTheme = isDarkMode) {
+        NavigationGraph()
     }
 }

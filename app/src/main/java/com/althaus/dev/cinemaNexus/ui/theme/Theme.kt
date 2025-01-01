@@ -1,6 +1,7 @@
 package com.althaus.dev.cinemaNexus.ui.theme
 
 import android.os.Build
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -41,14 +42,12 @@ val DarkColorScheme = darkColorScheme(
     onError = DarkOnError              // Texto dentro de mensajes de error
 )
 
-
 // =======================================
 // Tema Centralizado
 // =======================================
 @Composable
 fun CinemaNexusTheme(
-    darkTheme: Boolean = true,
-    //darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -59,8 +58,7 @@ fun CinemaNexusTheme(
         }
 
         darkTheme -> DarkColorScheme
-        else -> DarkColorScheme
-        // else -> LightColorScheme
+        else -> LightColorScheme
     }
 
     MaterialTheme(

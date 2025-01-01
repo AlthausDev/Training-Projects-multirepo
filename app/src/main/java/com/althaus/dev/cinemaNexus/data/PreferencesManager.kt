@@ -8,7 +8,6 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import java.util.Locale
 import javax.inject.Inject
@@ -27,7 +26,7 @@ class PreferencesManager @Inject constructor(
         }
         .map { preferences ->
             preferences[PreferencesKeys.LANGUAGE]
-                ?: Locale.getDefault().language // Si no hay idioma guardado, usa el del dispositivo
+                ?: Locale.getDefault().language
         }
 
     // Guarda el idioma seleccionado
@@ -36,20 +35,15 @@ class PreferencesManager @Inject constructor(
     }
 
     // Flujo que emite si el modo oscuro está habilitado
-    val darkModeFlow: Flow<Boolean> = context.dataStore.data
-        .map { preferences ->
-            preferences[PreferencesKeys.DARK_MODE] ?: false // Valor predeterminado
-        }
+    val darkModeFlow: Flow<Boolean> = dataStore.data
         .catch { error ->
             handleError("Error al leer el modo oscuro", error)
-            emit(false) // Emitir valor predeterminado en caso de error
+            emit(emptyPreferences())
         }
-
-    // Combina idioma y modo oscuro en un único flujo
-    val settingsFlow: Flow<Pair<String, Boolean>> = combine(
-        languageFlow,
-        darkModeFlow
-    ) { language, darkMode -> language to darkMode }
+        .map { preferences ->
+            // True si la preferencia está en true, False en caso contrario
+            preferences[PreferencesKeys.DARK_MODE] == true
+        }
 
     /**
      * Método genérico para guardar preferencias.
