@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -26,6 +28,10 @@ fun BaseLayout(
     appBarTitle: String = "",
     appBarActions: @Composable RowScope.() -> Unit = {},
     appBarNavigationIcon: @Composable (() -> Unit)? = null,
+    // Agregamos estos dos:
+    appBarBackgroundColor: Color = MaterialTheme.colorScheme.surface,
+    appBarContentColor: Color = MaterialTheme.colorScheme.primary,
+
     showAppImage: Boolean = false,
     appImage: @Composable (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
@@ -44,7 +50,10 @@ fun BaseLayout(
                 SharedTopAppBar(
                     title = appBarTitle,
                     actions = appBarActions,
-                    navigationIcon = appBarNavigationIcon
+                    navigationIcon = appBarNavigationIcon,
+                    // Utilizamos los nuevos parámetros
+                    backgroundColor = appBarBackgroundColor,
+                    contentColor = appBarContentColor
                 )
             }
             if (showAppImage && appImage != null) {
@@ -61,7 +70,7 @@ fun BaseLayout(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f), // Ocupa la mitad inferior
+                    .weight(1f),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.Start
             ) {
