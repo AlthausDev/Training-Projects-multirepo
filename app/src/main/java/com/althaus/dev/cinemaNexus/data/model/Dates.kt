@@ -1,12 +1,7 @@
 package com.althaus.dev.cinemaNexus.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "dates")
 data class Dates(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
-    @ColumnInfo(name = "maximum") val maximum: String,
-    @ColumnInfo(name = "minimum") val minimum: String
+    val id: String? = null,
+    val maximum: String = "",
+    val minimum: String = ""
 )
