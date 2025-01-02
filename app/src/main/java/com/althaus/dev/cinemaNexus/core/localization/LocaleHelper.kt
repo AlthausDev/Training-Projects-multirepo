@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.utils
+package com.althaus.dev.cinemaNexus.core.localization
 
 import android.content.Context
 import android.content.res.Configuration

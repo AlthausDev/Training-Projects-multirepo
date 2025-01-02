@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.utils
+package com.althaus.dev.cinemaNexus.core.errors
 
 import android.content.Context
 import com.althaus.dev.cinemaNexus.R

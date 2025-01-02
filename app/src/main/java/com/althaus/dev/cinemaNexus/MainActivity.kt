@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.lifecycleScope
-import com.althaus.dev.cinemaNexus.data.PreferencesManager
+import com.althaus.dev.cinemaNexus.data.datastore.PreferencesManager
 import com.althaus.dev.cinemaNexus.navigation.NavigationGraph
 import com.althaus.dev.cinemaNexus.ui.theme.CinemaNexusTheme
 import dagger.hilt.android.AndroidEntryPoint

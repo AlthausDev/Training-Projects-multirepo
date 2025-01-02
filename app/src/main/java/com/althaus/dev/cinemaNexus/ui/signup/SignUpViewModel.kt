@@ -2,9 +2,9 @@ package com.althaus.dev.cinemaNexus.ui.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.althaus.dev.cinemaNexus.data.AuthService
-import com.althaus.dev.cinemaNexus.utils.ValidatorUtil.isEmailValid
-import com.althaus.dev.cinemaNexus.utils.ValidatorUtil.isPasswordValid
+import com.althaus.dev.cinemaNexus.core.validation.ValidatorUtil.isEmailValid
+import com.althaus.dev.cinemaNexus.core.validation.ValidatorUtil.isPasswordValid
+import com.althaus.dev.cinemaNexus.data.network.services.AuthService
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

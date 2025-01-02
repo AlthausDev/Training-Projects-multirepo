@@ -3,7 +3,7 @@ package com.althaus.dev.cinemaNexus.ui.splash
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.althaus.dev.cinemaNexus.data.PreferencesManager
+import com.althaus.dev.cinemaNexus.data.datastore.PreferencesManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first

@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.data
+package com.althaus.dev.cinemaNexus.data.network.services
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

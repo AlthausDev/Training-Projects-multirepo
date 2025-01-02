@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.data
+package com.althaus.dev.cinemaNexus.data.datastore
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey

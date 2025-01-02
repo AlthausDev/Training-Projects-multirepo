@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.data
+package com.althaus.dev.cinemaNexus.data.datastore
 
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences

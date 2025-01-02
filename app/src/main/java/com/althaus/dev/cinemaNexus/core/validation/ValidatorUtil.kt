@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.utils
+package com.althaus.dev.cinemaNexus.core.validation
 
 import android.accounts.NetworkErrorException
 import android.util.Patterns

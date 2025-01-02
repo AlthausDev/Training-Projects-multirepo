@@ -1,7 +1,7 @@
 package com.althaus.dev.cinemaNexus;
 
 import android.app.Application
-import com.althaus.dev.cinemaNexus.utils.LocaleHelper
+import com.althaus.dev.cinemaNexus.core.localization.LocaleHelper
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
