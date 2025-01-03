@@ -28,18 +28,17 @@ fun HomeView(
     ) {
         when (val state = homeState.value) {
             is HomeState.Loading -> LoadingView()
-
             is HomeState.Success -> MovieList(
                 movies = state.movies,
                 onNavigateToDetails = onNavigateToDetails
             )
 
             is HomeState.Empty -> EmptyView()
-
             is HomeState.Error -> ErrorView(message = state.message)
         }
     }
 }
+
 
 @Composable
 fun LoadingView() {
@@ -54,7 +53,7 @@ fun LoadingView() {
 @Composable
 fun MovieList(
     movies: List<Movie>,
-    onNavigateToDetails: (String) -> Unit
+    onNavigateToDetails: (String) -> Unit // Cambiado a Int
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -63,7 +62,7 @@ fun MovieList(
         items(movies) { movie ->
             MovieItem(
                 movie = movie,
-                onClick = { onNavigateToDetails(movie.id) }
+                onClick = { onNavigateToDetails(movie.id) } // movie.id es Int
             )
             Divider(modifier = Modifier.padding(vertical = 8.dp))
         }

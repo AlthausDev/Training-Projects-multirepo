@@ -23,7 +23,7 @@ sealed class Routes(val route: String) {
     data object LoginView : Routes("login")
     data object HomeView : Routes("home")
     data object DetailView : Routes("detail/{movieId}") {
-        fun createRoute(movieId: Int) = "detail/$movieId"
+        fun createRoute(movieId: String): String = "detail/$movieId"
     }
 
     data object SignUpView : Routes("signup")
@@ -101,19 +101,12 @@ fun NavigationGraph() {
 
         composable(Routes.HomeView.route) {
             val homeViewModel: HomeViewModel = hiltViewModel()
-            HomeView(viewModel = homeViewModel)
+            HomeView(
+                viewModel = homeViewModel,
+                onNavigateToDetails = { movieId ->
+                    navController.navigate(Routes.DetailView.createRoute(movieId))
+                }
+            )
         }
-
-//        composable(
-//            route = Routes.DetailView.route,
-//            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
-//        ) { backStackEntry ->
-//            val movieId = backStackEntry.arguments?.getInt("movieId") ?: 0
-//            val detailViewModel: DetailViewModel = hiltViewModel()
-//            DetailView(
-//                viewModel = detailViewModel,
-//                movieId = movieId
-//            )
-//        }
     }
 }

@@ -15,4 +15,14 @@ class MovieRepository @Inject constructor(
             throw Exception("Error al obtener películas: ${response.message()}")
         }
     }
+
+    suspend fun getMovieById(movieId: Int): Movie {
+        // Ejemplo de endpoint para detalles (ajustar según API real)
+        val response = movieApiService.getMovieDetails(movieId)
+        if (response.isSuccessful) {
+            return response.body() ?: throw Exception("Detalles no encontrados")
+        } else {
+            throw Exception("Error al obtener detalles: ${response.message()}")
+        }
+    }
 }
