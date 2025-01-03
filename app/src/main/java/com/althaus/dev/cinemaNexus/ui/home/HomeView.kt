@@ -16,7 +16,7 @@ import com.althaus.dev.cinemaNexus.ui.theme.components.BaseLayout
 @Composable
 fun HomeView(
     viewModel: HomeViewModel,
-    onNavigateToDetails: (String) -> Unit
+    onNavigateToDetails: (Int) -> Unit
 ) {
     val homeState = viewModel.homeState.collectAsState()
 
@@ -33,12 +33,11 @@ fun HomeView(
                 onNavigateToDetails = onNavigateToDetails
             )
 
-            is HomeState.Empty -> EmptyView()
+            is HomeState.Empty -> EmptyView(message = "No hay películas disponibles")
             is HomeState.Error -> ErrorView(message = state.message)
         }
     }
 }
-
 
 @Composable
 fun LoadingView() {
@@ -53,7 +52,7 @@ fun LoadingView() {
 @Composable
 fun MovieList(
     movies: List<Movie>,
-    onNavigateToDetails: (String) -> Unit // Cambiado a Int
+    onNavigateToDetails: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -62,7 +61,7 @@ fun MovieList(
         items(movies) { movie ->
             MovieItem(
                 movie = movie,
-                onClick = { onNavigateToDetails(movie.id) } // movie.id es Int
+                onClick = { onNavigateToDetails(movie.id as Int) }
             )
             Divider(modifier = Modifier.padding(vertical = 8.dp))
         }
@@ -70,13 +69,13 @@ fun MovieList(
 }
 
 @Composable
-fun EmptyView() {
+fun EmptyView(message: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "No hay películas disponibles",
+            text = message,
             style = MaterialTheme.typography.bodyLarge
         )
     }
@@ -95,3 +94,4 @@ fun ErrorView(message: String) {
         )
     }
 }
+

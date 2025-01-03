@@ -1,4 +1,4 @@
-package com.althaus.dev.cinemaNexus.repository
+package com.althaus.dev.cinemaNexus.data.repository
 
 import com.althaus.dev.cinemaNexus.data.model.Movie
 import com.althaus.dev.cinemaNexus.data.network.services.MovieApiService
@@ -20,11 +20,14 @@ class MovieRepository @Inject constructor(
     suspend fun getNowPlayingMovies(): List<Movie> {
         val response = movieApiService.getNowPlayingMovies()
         if (response.isSuccessful) {
-            return response.body()?.movies ?: emptyList()
+            val movies = response.body()?.movies ?: emptyList()
+            println("Películas obtenidas: $movies") // Depuración
+            return movies
         } else {
             throw Exception("Error al obtener películas: ${response.message()} (Código: ${response.code()})")
         }
     }
+
 
     /**
      * Obtiene los detalles de una película por su ID.

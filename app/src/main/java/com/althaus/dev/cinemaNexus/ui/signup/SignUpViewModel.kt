@@ -13,6 +13,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Representa los posibles estados del registro de usuario.
+ */
 sealed class SignUpState {
     object Idle : SignUpState()
     object Loading : SignUpState()
@@ -37,44 +40,86 @@ class SignUpViewModel @Inject constructor(
     private val _signUpState = MutableStateFlow<SignUpState>(SignUpState.Idle)
     val signUpState: StateFlow<SignUpState> = _signUpState.asStateFlow()
 
+    /**
+     * Actualiza el valor del correo electrónico.
+     */
     fun updateEmail(newEmail: String) {
         _email.value = newEmail
     }
 
+    /**
+     * Actualiza el valor de la contraseña.
+     */
     fun updatePassword(newPassword: String) {
         _password.value = newPassword
     }
 
+    /**
+     * Actualiza el valor de la confirmación de la contraseña.
+     */
     fun updateConfirmPassword(newConfirmPassword: String) {
         _confirmPassword.value = newConfirmPassword
     }
 
+    /**
+     * Maneja el registro de un nuevo usuario.
+     */
     fun signUp() {
+        // Validar correo electrónico
         if (!isEmailValid(_email.value)) {
             _signUpState.value = SignUpState.Error("El formato del correo es inválido")
             return
         }
 
+        // Validar contraseña
         if (!isPasswordValid(_password.value)) {
             _signUpState.value = SignUpState.Error("La contraseña debe tener al menos 6 caracteres")
             return
         }
 
+        // Validar coincidencia de contraseñas
         if (_password.value != _confirmPassword.value) {
             _signUpState.value = SignUpState.Error("Las contraseñas no coinciden")
             return
         }
 
+        // Cambiar estado a cargando
         _signUpState.value = SignUpState.Loading
 
+        // Intentar registro
         viewModelScope.launch {
             try {
                 val user = authService.signUp(_email.value, _password.value)
                 _signUpState.value = user?.let { SignUpState.Success(it) }
                     ?: SignUpState.Error("Error al crear el usuario")
             } catch (e: Exception) {
-                _signUpState.value = SignUpState.Error("Error inesperado: ${e.localizedMessage}")
+                _signUpState.value = SignUpState.Error(mapError(e))
             }
+        }
+    }
+
+    /**
+     * Resetea el estado del registro a Idle.
+     */
+    fun resetState() {
+        _signUpState.value = SignUpState.Idle
+    }
+
+    /**
+     * Mapea excepciones a mensajes de error más descriptivos.
+     */
+    private fun mapError(e: Exception): String {
+        return when {
+            e.message?.contains("The email address is badly formatted") == true ->
+                "El correo electrónico tiene un formato inválido."
+
+            e.message?.contains("The email address is already in use by another account") == true ->
+                "El correo ya está registrado."
+
+            e.message?.contains("The password is invalid or the user does not have a password") == true ->
+                "La contraseña es inválida."
+
+            else -> e.localizedMessage ?: "Ocurrió un error desconocido."
         }
     }
 }

@@ -1,13 +1,15 @@
 package com.althaus.dev.cinemaNexus.data.model
 
 import com.google.firebase.firestore.IgnoreExtraProperties
+import com.google.gson.annotations.SerializedName
 
 /**
  * Representa la respuesta de una lista de películas.
  */
 @IgnoreExtraProperties
 data class MovieResponse(
-    val movies: List<Movie> = emptyList()
+    @SerializedName("results")
+    val movies: List<Movie>
 ) {
     /**
      * Convierte este modelo de respuesta a un mapa compatible con Firestore.

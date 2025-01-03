@@ -11,6 +11,7 @@
 
     <!-- Default Web Client ID -->
     <string name="default_web_client_id">935720145677-uj8cb5eg080ekeg4v5v5mcijqgkjl23d.apps.googleusercontent.com</string>
+
     <string name="spanish">ES</string>
     <string name="english">EN</string>
 </resources>

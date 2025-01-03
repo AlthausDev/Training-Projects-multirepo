@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException
  */
 @IgnoreExtraProperties
 data class Movie(
-    @DocumentId val id: String = "",
+    @DocumentId val id: Any = 0,
     val title: String = "",
     val overview: String = "",
     val posterPath: String? = null,
@@ -49,7 +49,7 @@ data class Movie(
          * @return Una instancia de `Movie` basada en los valores del mapa.
          */
         fun fromMap(map: Map<String, Any?>): Movie {
-            val id = map["id"] as? String ?: ""
+            val id = map["id"] as? Int ?: ""
             val title = map["title"] as? String ?: ""
             val overview = map["overview"] as? String ?: ""
             val posterPath = map["posterPath"] as? String

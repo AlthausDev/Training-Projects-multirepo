@@ -23,7 +23,7 @@ sealed class Routes(val route: String) {
     data object LoginView : Routes("login")
     data object HomeView : Routes("home")
     data object DetailView : Routes("detail/{movieId}") {
-        fun createRoute(movieId: String): String = "detail/$movieId"
+        fun createRoute(movieId: Int): String = "detail/$movieId"
     }
 
     data object SignUpView : Routes("signup")

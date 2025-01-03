@@ -1,6 +1,7 @@
 package com.althaus.dev.cinemaNexus.di
 
 import android.content.Context
+import com.althaus.dev.cinemaNexus.data.network.config.RetrofitConfig
 import com.althaus.dev.cinemaNexus.data.network.services.MovieApiService
 import com.althaus.dev.cinemaNexus.data.repository.AuthRepository
 import com.althaus.dev.cinemaNexus.data.repository.FirestoreRepository
@@ -12,7 +13,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -44,19 +44,12 @@ object NetworkModule {
     fun provideFirestoreRepository(firestore: FirebaseFirestore): FirestoreRepository =
         FirestoreRepository(firestore)
 
-    // Retrofit Configuration
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
-
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    fun provideRetrofit(retrofitConfig: RetrofitConfig): Retrofit {
+        return retrofitConfig.createRetrofit()
     }
 
-    // MovieApiService
     @Provides
     @Singleton
     fun provideMovieApiService(retrofit: Retrofit): MovieApiService {
