@@ -34,7 +34,8 @@ fun MovieItem(
             // Imagen de la película usando Picasso
             Box(
                 modifier = Modifier
-                    .size(100.dp)
+                    .weight(1f)
+                    .aspectRatio(2f / 3f) // Mantener proporción 2:3 típica de un póster
                     .padding(end = 16.dp)
             ) {
                 AndroidView(
@@ -56,7 +57,7 @@ fun MovieItem(
             }
 
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(2f) // Más espacio para el contenido textual
             ) {
                 Text(
                     text = movie.title,

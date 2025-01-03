@@ -52,7 +52,7 @@ fun MovieDetailContent(movie: Movie, onBack: () -> Unit) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp),
+                .padding(32.dp),
             contentAlignment = Alignment.Center
         ) {
             AndroidView(
@@ -62,8 +62,9 @@ fun MovieDetailContent(movie: Movie, onBack: () -> Unit) {
                     }
                 },
                 update = { imageView ->
+                    val posterUrl = "https://image.tmdb.org/t/p/w500${movie.posterPath}"
                     Picasso.get()
-                        .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
+                        .load(posterUrl)
                         .placeholder(R.drawable.logo) // Imagen de marcador de posición
                         .error(R.drawable.ic_launcher_background) // Imagen de error
                         .into(imageView)
@@ -71,23 +72,19 @@ fun MovieDetailContent(movie: Movie, onBack: () -> Unit) {
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
         // Título
         Text(
             text = movie.title,
-            style = MaterialTheme.typography.headlineMedium
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 8.dp)
         )
-
-        Spacer(modifier = Modifier.height(8.dp))
 
         // Fecha de lanzamiento
         Text(
             text = "Fecha de lanzamiento: ${movie.releaseDate}",
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.padding(bottom = 8.dp)
         )
-
-        Spacer(modifier = Modifier.height(8.dp))
 
         // Descripción
         Text(
@@ -98,7 +95,10 @@ fun MovieDetailContent(movie: Movie, onBack: () -> Unit) {
         Spacer(modifier = Modifier.height(16.dp))
 
         // Botón de regreso
-        Button(onClick = onBack) {
+        Button(
+            onClick = onBack,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
             Text(text = "Volver")
         }
     }
