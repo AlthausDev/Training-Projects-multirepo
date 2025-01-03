@@ -3,173 +3,31 @@ package com.althaus.dev.cinemaNexus.data.repository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 /**
- * Repositorio que proporciona métodos para interactuar con Firestore.
+ * Repositorio para interactuar con Firestore en la aplicación Cinema Nexus.
  *
- * Maneja operaciones relacionadas con recetas, usuarios, ingredientes y notificaciones.
- *
- * @property db Instancia de [FirebaseFirestore].
+ * Maneja operaciones relacionadas con usuarios, reservas y películas.
  */
 class FirestoreRepository @Inject constructor(
     private val db: FirebaseFirestore
 ) {
     private val usersCollection = db.collection("users")
-    private val notificationsCollection = db.collection("notifications")
+    private val reservationsCollection = db.collection("reservations")
+    private val moviesCollection = db.collection("movies")
     val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: "unknown-user"
 
-    // ---- Métodos de Recetas ----
+    // ---- Métodos generales ----
 
     /**
-     * Obtiene todas las recetas almacenadas en Firestore.
+     * Genera un nuevo ID único para una colección específica.
      *
-     * @return Lista de mapas que representan las recetas.
-     * @throws Exception Si ocurre un error durante la consulta.
+     * @param collection Nombre de la colección.
+     * @return ID único generado.
      */
-    suspend fun getAllRecipes(): List<Map<String, Any>> {
-        return try {
-            val snapshot = db.collection("recipes").get().await()
-            snapshot.documents.mapNotNull { it.data }
-        } catch (e: Exception) {
-            throw Exception("Error al obtener recetas: ${e.localizedMessage}")
-        }
-    }
-
-    /**
-     * Obtiene las recetas creadas por un usuario específico.
-     *
-     * @param userId ID del usuario.
-     * @return Lista de mapas que representan las recetas del usuario.
-     * @throws Exception Si ocurre un error durante la consulta.
-     */
-    suspend fun getUserRecipes(userId: String): List<Map<String, Any>> {
-        return try {
-            val snapshot = db.collection("recipes")
-                .whereEqualTo("authorId", userId)
-                .get().await()
-            snapshot.documents.mapNotNull { it.data }
-        } catch (e: Exception) {
-            throw Exception("Error al obtener recetas del usuario: ${e.localizedMessage}")
-        }
-    }
-
-    /**
-     * Obtiene una receta en tiempo real por su ID.
-     *
-     * @param recipeId ID de la receta.
-     * @return Flujo que emite el mapa de datos de la receta o `null` si no se encuentra.
-     */
-    fun getRecipe(recipeId: String): Flow<Map<String, Any>?> {
-        return callbackFlow {
-            val documentRef = db.collection("recipes").document(recipeId)
-            val listener = documentRef.addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    close(e)
-                    return@addSnapshotListener
-                }
-                if (snapshot != null && snapshot.exists()) {
-                    trySend(snapshot.data)
-                } else {
-                    trySend(null)
-                }
-            }
-            awaitClose { listener.remove() }
-        }
-    }
-
-    /**
-     * Guarda o actualiza una receta en Firestore.
-     *
-     * @param recipeId ID de la receta. Si está vacío, se generará un nuevo ID.
-     * @param recipeData Datos de la receta como mapa.
-     * @param currentAuthorId ID del autor de la receta.
-     * @throws Exception Si ocurre un error al guardar los datos.
-     */
-    suspend fun saveRecipe(
-        recipeId: String,
-        recipeData: Map<String, Any>,
-        currentAuthorId: String
-    ) {
-        try {
-            val finalId = if (recipeId.isBlank()) generateNewId("recipes") else recipeId
-            val updatedData = recipeData.toMutableMap().apply {
-                put("id", finalId)
-                if (!containsKey("authorId")) {
-                    put("authorId", currentAuthorId)
-                }
-            }
-            db.collection("recipes").document(finalId).set(updatedData).await()
-        } catch (e: Exception) {
-            throw Exception("Error al guardar la receta: ${e.localizedMessage}")
-        }
-    }
-
-    /**
-     * Elimina una receta de Firestore.
-     *
-     * @param recipeId ID de la receta.
-     * @throws Exception Si ocurre un error al eliminar la receta.
-     */
-    suspend fun deleteRecipe(recipeId: String) {
-        try {
-            db.collection("recipes").document(recipeId).delete().await()
-        } catch (e: Exception) {
-            throw Exception("Error al eliminar la receta: ${e.localizedMessage}")
-        }
-    }
-
-    /**
-     * Actualiza campos específicos de una receta.
-     *
-     * @param recipeId ID de la receta.
-     * @param updates Mapa con los campos a actualizar y sus nuevos valores.
-     * @throws Exception Si ocurre un error al actualizar la receta.
-     */
-    suspend fun updateRecipe(recipeId: String, updates: Map<String, Any>) {
-        try {
-            db.collection("recipes").document(recipeId).update(updates).await()
-        } catch (e: Exception) {
-            throw Exception("Error al actualizar la receta: ${e.localizedMessage}")
-        }
-    }
-
-
-    suspend fun updateUserRatings(userId: String, ratings: Map<String, Double>) {
-        try {
-            println("Actualizando ratings para el usuario $userId con valores: $ratings")
-
-            val userDocument = usersCollection.document(userId)
-            val snapshot = userDocument.get().await()
-
-            if (snapshot.exists()) {
-                val existingRatings = snapshot.get("ratings") as? Map<String, Double> ?: emptyMap()
-                println("Ratings existentes: $existingRatings")
-
-                val updatedRatings = existingRatings.toMutableMap().apply {
-                    putAll(ratings)
-                }
-                userDocument.update("ratings", updatedRatings).await()
-                println("Ratings actualizados correctamente en Firestore para el usuario $userId")
-            } else {
-                userDocument.set(mapOf("ratings" to ratings)).await()
-                println("Se creó el campo ratings y se actualizó en Firestore para el usuario $userId")
-            }
-        } catch (e: Exception) {
-            println("Error al actualizar ratings en Firestore: ${e.localizedMessage}")
-            throw Exception("Error al actualizar las calificaciones del usuario: ${e.localizedMessage}")
-        }
-    }
-
-
-    // Generar un nuevo ID único para una colección
-    fun generateNewId(collection: String): String {
-        return db.collection(collection).document().id
-    }
+    fun generateNewId(collection: String): String = db.collection(collection).document().id
 
     // ---- Métodos de Usuarios ----
 
@@ -177,105 +35,145 @@ class FirestoreRepository @Inject constructor(
      * Guarda un nuevo usuario en Firestore.
      *
      * @param userId ID del usuario.
-     * @param name Nombre del usuario.
-     * @param email Correo electrónico del usuario.
-     * @param profileImage URL de la imagen de perfil del usuario (opcional).
-     * @throws Exception Si ocurre un error al guardar el usuario.
+     * @param userData Mapa con los datos del usuario.
+     * @throws Exception Si ocurre un error durante la operación.
      */
-    suspend fun saveUser(userId: String, name: String, email: String, profileImage: String?) {
+    suspend fun saveUser(userId: String, userData: Map<String, Any>) {
         try {
-            val user = mapOf(
-                "id" to userId,
-                "name" to name,
-                "email" to email,
-                "profileImage" to profileImage
-            )
-            usersCollection.document(userId).set(user).await()
+            usersCollection.document(userId).set(userData).await()
         } catch (e: Exception) {
             throw Exception("Error al guardar el usuario: ${e.localizedMessage}")
         }
     }
 
+
+    /**
+     * Actualiza datos específicos de un usuario.
+     *
+     * @param userId ID del usuario.
+     * @param updates Mapa con los campos y valores a actualizar.
+     * @return `true` si la actualización fue exitosa, `false` si falló.
+     */
     suspend fun updateUser(userId: String, updates: Map<String, Any>): Boolean {
         return try {
             usersCollection.document(userId).update(updates).await()
-            println("Usuario $userId actualizado correctamente con $updates")
             true
         } catch (e: FirebaseFirestoreException) {
-            println("Error específico de Firestore: ${e.code}, ${e.localizedMessage}")
+            println("Error específico de Firestore: ${e.code}, ${e.message}")
             false
         } catch (e: Exception) {
-            println("Error genérico al actualizar usuario $userId: ${e.localizedMessage}")
+            println("Error al actualizar usuario $userId: ${e.message}")
             false
-        }
-    }
-
-
-    // Obtener un usuario por su ID
-    suspend fun getUser(userId: String): Map<String, Any>? {
-        return try {
-            val document = usersCollection.document(userId).get().await()
-            if (document.exists()) document.data else null
-        } catch (e: Exception) {
-            throw Exception("Error al obtener el usuario: ${e.localizedMessage}")
-        }
-    }
-
-
-    // ---- Métodos de Ingredientes ----
-
-    suspend fun saveIngredient(ingredientId: String, ingredientData: Map<String, Any>) {
-        try {
-            db.collection("ingredients").document(ingredientId).set(ingredientData).await()
-        } catch (e: Exception) {
-            throw Exception("Error al guardar el ingrediente: ${e.localizedMessage}")
-        }
-    }
-
-    suspend fun updateIngredient(ingredientId: String, updates: Map<String, Any>) {
-        try {
-            db.collection("ingredients").document(ingredientId).update(updates).await()
-        } catch (e: Exception) {
-            throw Exception("Error al actualizar el ingrediente: ${e.localizedMessage}")
-        }
-    }
-
-    suspend fun getAllIngredients(): List<Map<String, Any>> {
-        return try {
-            val snapshot = db.collection("ingredients").get().await()
-            snapshot.documents.mapNotNull { it.data }
-        } catch (e: Exception) {
-            throw Exception("Error al obtener ingredientes: ${e.localizedMessage}")
-        }
-    }
-
-    suspend fun getIngredient(ingredientId: String): Map<String, Any>? {
-        return try {
-            val snapshot = db.collection("ingredients").document(ingredientId).get().await()
-            snapshot.data
-        } catch (e: Exception) {
-            throw Exception("Error al obtener el ingrediente: ${e.localizedMessage}")
         }
     }
 
     /**
-     * Obtiene los nombres de todos los ingredientes en Firestore.
+     * Obtiene los datos de un usuario por su ID.
+     *
+     * @param userId ID del usuario.
+     * @return Mapa con los datos del usuario o `null` si no existe.
+     * @throws Exception Si ocurre un error durante la operación.
      */
-    suspend fun getIngredientNames(): List<String> {
+    suspend fun getUser(userId: String): Map<String, Any>? {
         return try {
-            val snapshot = db.collection("ingredients").get().await()
-            snapshot.documents.mapNotNull { it.getString("name") }
-        } catch (e: Exception) {
-            throw Exception("Error al obtener nombres de ingredientes: ${e.localizedMessage}")
+            val document = usersCollection.document(userId).get().await()
+            document.data
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al obtener el usuario: ${e.message}", e)
         }
     }
 
+    // ---- Métodos de Reservas ----
 
-    suspend fun deleteIngredient(ingredientId: String) {
+    /**
+     * Guarda una nueva reserva en Firestore.
+     *
+     * @param reservationId ID de la reserva.
+     * @param reservationData Datos de la reserva como mapa.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
+    suspend fun saveReservation(reservationId: String, reservationData: Map<String, Any>) {
         try {
-            db.collection("ingredients").document(ingredientId).delete().await()
-        } catch (e: Exception) {
-            throw Exception("Error al eliminar el ingrediente: ${e.localizedMessage}")
+            reservationsCollection.document(reservationId).set(reservationData).await()
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al guardar la reserva: ${e.message}", e)
+        }
+    }
+
+    /**
+     * Obtiene las reservas de un usuario específico.
+     *
+     * @param userId ID del usuario.
+     * @return Lista de mapas con las reservas.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
+    suspend fun getUserReservations(userId: String): List<Map<String, Any>> {
+        return try {
+            reservationsCollection.whereEqualTo("userId", userId).get().await()
+                .documents.mapNotNull { it.data }
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al obtener las reservas del usuario: ${e.message}", e)
+        }
+    }
+
+    /**
+     * Elimina una reserva de Firestore.
+     *
+     * @param reservationId ID de la reserva.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
+    suspend fun deleteReservation(reservationId: String) {
+        try {
+            reservationsCollection.document(reservationId).delete().await()
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al eliminar la reserva: ${e.message}", e)
+        }
+    }
+
+    // ---- Métodos de Películas ----
+
+    /**
+     * Guarda información de una película en Firestore.
+     *
+     * @param movieId ID de la película.
+     * @param movieData Datos de la película como mapa.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
+    suspend fun saveMovie(movieId: String, movieData: Map<String, Any>) {
+        try {
+            moviesCollection.document(movieId).set(movieData).await()
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al guardar la película: ${e.message}", e)
+        }
+    }
+
+    /**
+     * Obtiene los datos de una película por su ID.
+     *
+     * @param movieId ID de la película.
+     * @return Mapa con los datos de la película o `null` si no existe.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
+    suspend fun getMovie(movieId: String): Map<String, Any>? {
+        return try {
+            val document = moviesCollection.document(movieId).get().await()
+            document.data
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al obtener la película: ${e.message}", e)
+        }
+    }
+
+    /**
+     * Obtiene todas las películas almacenadas en Firestore.
+     *
+     * @return Lista de mapas con las películas.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
+    suspend fun getAllMovies(): List<Map<String, Any>> {
+        return try {
+            moviesCollection.get().await().documents.mapNotNull { it.data }
+        } catch (e: FirebaseFirestoreException) {
+            throw Exception("Error al obtener las películas: ${e.message}", e)
         }
     }
 }

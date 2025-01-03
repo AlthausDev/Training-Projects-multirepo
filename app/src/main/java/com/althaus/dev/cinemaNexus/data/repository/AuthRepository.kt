@@ -1,74 +1,118 @@
 package com.althaus.dev.cinemaNexus.data.repository
 
 import android.content.Context
+import com.althaus.dev.cinemaNexus.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.*
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-
 /**
  * Clase sellada que representa los posibles resultados de las operaciones de autenticación.
  */
 sealed class AuthResult {
-    /**
-     * Indica que la operación de autenticación fue exitosa.
-     *
-     * @param user Usuario autenticado.
-     */
     data class Success(val user: FirebaseUser) : AuthResult()
-
-    /**
-     * Indica que la operación de autenticación falló.
-     *
-     * @param exception Excepción que describe el error ocurrido.
-     */
     data class Failure(val exception: Exception) : AuthResult()
-
-    /**
-     * Indica que el usuario no fue encontrado.
-     */
     object UserNotFound : AuthResult()
 }
 
-
 /**
- * Repositorio para gestionar la autenticación y las operaciones relacionadas con usuarios en Firebase.
- *
- * Este repositorio utiliza [FirebaseAuth] para realizar operaciones de autenticación
- * como inicio de sesión, registro, actualización de datos del usuario y más. También
- * integra Google Sign-In y otras funcionalidades relacionadas con la autenticación.
+ * Repositorio para gestionar la autenticación de usuarios en Firebase, incluyendo Google Sign-In.
  */
 class AuthRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    val firestoreRepository: FirestoreRepository,
+    private val firestoreRepository: FirestoreRepository,
     @ApplicationContext private val context: Context
 ) {
 
     /**
-     * Usuario actualmente autenticado.
+     * Obtiene el usuario actualmente autenticado.
      *
-     * @return El usuario autenticado ([FirebaseUser]) o `null` si no hay usuario activo.
+     * @return [FirebaseUser] si hay un usuario autenticado, `null` de lo contrario.
      */
     val currentUser: FirebaseUser?
         get() = firebaseAuth.currentUser
 
     /**
-     * Configuración de Google Sign-In Options.
+     * Verifica si hay un usuario autenticado.
+     *
+     * @return `true` si hay un usuario autenticado, `false` de lo contrario.
      */
-//    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//        .requestIdToken(context.getString(R.string.default_web_client_id))
-//        .requestEmail()
-//        .build()
+    fun isUserAuthenticated(): Boolean = currentUser != null
 
-    // ---- Métodos de autenticación ----
+    /**
+     * Verifica si el correo electrónico del usuario autenticado está verificado.
+     *
+     * @return `true` si el correo está verificado, `false` si no.
+     */
+    fun isEmailVerified(): Boolean = currentUser?.isEmailVerified ?: false
+
+    /**
+     * Configura el cliente de Google Sign-In.
+     */
+    private val googleSignInClient: GoogleSignInClient by lazy {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(context.getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        GoogleSignIn.getClient(context, gso)
+    }
+
+    /**
+     * Obtiene el cliente de Google Sign-In configurado.
+     *
+     * @return [GoogleSignInClient] listo para iniciar sesión.
+     */
+    //fun getGoogleSignInClient(): GoogleSignInClient = googleSignInClient
+
+    /**
+     * Devuelve un intent para iniciar el flujo de Google Sign-In.
+     */
+    //fun getGoogleSignInIntent() = googleSignInClient.signInIntent
+
+    /**
+     * Inicia sesión con un token de ID de Google.
+     *
+     * @param idToken Token de ID proporcionado por Google.
+     * @return [AuthResult] con el resultado de la operación.
+     */
+    suspend fun signInWithGoogle(idToken: String): AuthResult = safeAuthCall {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        firebaseAuth.signInWithCredential(credential).await()?.user
+    }
+
+    /**
+     * Inicia sesión con una cuenta de Google.
+     *
+     * @param account [GoogleSignInAccount] obtenida tras el flujo de Google Sign-In.
+     * @return [AuthResult] con el resultado de la operación.
+     */
+    suspend fun signInWithGoogleAccount(account: GoogleSignInAccount): AuthResult {
+        return signInWithGoogle(account.idToken ?: "").also {
+            if (it is AuthResult.Failure) {
+                println("Google Sign-In falló: ${it.exception.message}")
+            }
+        }
+    }
+
+    /**
+     * Cierra sesión tanto en Firebase como en Google.
+     */
+    fun signOutFromGoogle() {
+        googleSignInClient.signOut()
+        firebaseAuth.signOut()
+    }
 
     /**
      * Inicia sesión con correo y contraseña.
      *
      * @param email Correo del usuario.
      * @param password Contraseña del usuario.
-     * @return [AuthResult] que indica el resultado de la operación.
+     * @return [AuthResult] indicando el resultado de la operación.
      */
     suspend fun login(email: String, password: String): AuthResult = safeAuthCall {
         firebaseAuth.signInWithEmailAndPassword(email, password).await()?.user
@@ -77,127 +121,60 @@ class AuthRepository @Inject constructor(
     /**
      * Registra un nuevo usuario con correo y contraseña.
      *
-     * También guarda el perfil del usuario en Firestore mediante [FirestoreRepository].
-     *
      * @param email Correo del usuario.
      * @param password Contraseña del usuario.
      * @param name Nombre del usuario (opcional).
-     * @return [AuthResult] que indica el resultado de la operación.
+     * @return [AuthResult] indicando el resultado de la operación.
      */
     suspend fun register(email: String, password: String, name: String? = null): AuthResult {
         return safeAuthCall {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             val user = result?.user
-            user?.let {
-                val displayName = name ?: it.displayName ?: "Usuario"
-                firestoreRepository.saveUser(it.uid, displayName, email, null)
+            if (user != null) {
+                // Crear el mapa con los datos del usuario
+                val userData = mapOf(
+                    "id" to user.uid,
+                    "name" to (name ?: user.displayName ?: "Usuario") as String,
+                    "email" to email as String,
+                    "profileImage" to null as Any, // Sin imagen de perfil por defecto
+                    "creationDate" to System.currentTimeMillis() as Any, // Fecha de creación como timestamp
+                    "isVerified" to user.isEmailVerified as Any
+                )
+                // Guardar los datos del usuario en Firestore
+                firestoreRepository.saveUser(user.uid, userData)
             }
             user
         }
     }
 
+
     /**
      * Envía un correo para restablecer la contraseña.
      *
      * @param email Correo del usuario.
-     * @throws Exception Si ocurre algún error durante la operación.
+     * @return `true` si se envía correctamente, `false` de lo contrario.
      */
-    suspend fun sendPasswordResetEmail(email: String) {
-        firebaseAuth.sendPasswordResetEmail(email).await()
-    }
-
-    /**
-     * Inicia sesión con Google utilizando un token de ID.
-     *
-     * @param idToken Token de ID proporcionado por Google.
-     * @return [AuthResult] que indica el resultado de la operación.
-     */
-    suspend fun signInWithGoogle(idToken: String): AuthResult {
+    suspend fun sendPasswordResetEmail(email: String): Boolean {
         return try {
-            val credential = GoogleAuthProvider.getCredential(idToken, null)
-            val authResult = firebaseAuth.signInWithCredential(credential).await()
-            authResult.user?.let {
-                AuthResult.Success(it)
-            } ?: AuthResult.UserNotFound
+            firebaseAuth.sendPasswordResetEmail(email).await()
+            true
         } catch (e: Exception) {
-            AuthResult.Failure(e)
+            println("Error al enviar correo de restablecimiento: ${e.message}")
+            false
         }
     }
 
     /**
-     * Actualiza el correo electrónico del usuario actual.
-     *
-     * Requiere reautenticación antes de cambiar el correo.
-     *
-     * @param newEmail Nuevo correo del usuario.
-     * @param currentPassword Contraseña actual para reautenticación.
-     * @return [AuthResult] que indica el resultado de la operación.
-     */
-    suspend fun updateUserEmail(newEmail: String, currentPassword: String): AuthResult {
-        return try {
-            val user = firebaseAuth.currentUser ?: return AuthResult.UserNotFound
-            val email = user.email ?: return AuthResult.Failure(Exception("Correo no encontrado"))
-
-            val credential = EmailAuthProvider.getCredential(email, currentPassword)
-            user.reauthenticate(credential).await()
-            user.updateEmail(newEmail).await()
-            AuthResult.Success(user)
-        } catch (e: Exception) {
-            AuthResult.Failure(e)
-        }
-    }
-
-    /**
-     * Actualiza el nombre del usuario actual.
-     *
-     * @param newName Nuevo nombre del usuario.
-     * @return [AuthResult] que indica el resultado de la operación.
-     */
-    suspend fun updateUserName(newName: String): AuthResult {
-        val currentUser = firebaseAuth.currentUser ?: return AuthResult.UserNotFound
-        return safeAuthCall {
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName(newName)
-                .build()
-            currentUser.updateProfile(profileUpdates).await()
-            currentUser
-        }
-    }
-
-    /**
-     * Actualiza la contraseña del usuario actual.
-     *
-     * Requiere reautenticación antes de cambiar la contraseña.
-     *
-     * @param newPassword Nueva contraseña.
-     * @param currentPassword Contraseña actual para reautenticación.
-     * @return [AuthResult] que indica el resultado de la operación.
-     */
-    suspend fun updateUserPassword(newPassword: String, currentPassword: String): AuthResult {
-        val reAuthResult = reAuthenticate(currentPassword)
-        if (reAuthResult is AuthResult.Failure) return reAuthResult
-
-        val currentUser = firebaseAuth.currentUser ?: return AuthResult.UserNotFound
-        return safeAuthCall {
-            currentUser.updatePassword(newPassword).await()
-            currentUser
-        }
-    }
-
-    /**
-     * Reautentica al usuario actual con la contraseña proporcionada.
+     * Reautentica al usuario actual.
      *
      * @param password Contraseña actual del usuario.
-     * @return [AuthResult] que indica el resultado de la operación.
+     * @return [AuthResult] indicando el resultado de la operación.
      */
-    suspend fun reAuthenticate(password: String): AuthResult {
-        val currentUser = firebaseAuth.currentUser ?: return AuthResult.UserNotFound
-        val email = currentUser.email ?: return AuthResult.Failure(Exception("Correo no asociado."))
+    suspend fun reAuthenticate(password: String): AuthResult = safeAuthCall {
+        val email = currentUser?.email ?: throw IllegalStateException("Correo no disponible")
         val credential = EmailAuthProvider.getCredential(email, password)
-        return safeAuthCall {
-            currentUser.reauthenticate(credential).await()
-            currentUser
-        }
+        currentUser?.reauthenticate(credential)?.await()
+        currentUser
     }
 
     /**
@@ -207,23 +184,21 @@ class AuthRepository @Inject constructor(
         firebaseAuth.signOut()
     }
 
-    // ---- Métodos auxiliares ----
-
     /**
-     * Llamada segura para manejar operaciones de autenticación con excepciones comunes.
+     * Maneja llamadas seguras para operaciones de autenticación.
      *
      * @param authCall Operación de autenticación a ejecutar.
-     * @return [AuthResult] que indica el resultado de la operación.
+     * @return [AuthResult] con el resultado de la operación.
      */
     private suspend fun safeAuthCall(authCall: suspend () -> FirebaseUser?): AuthResult {
         return try {
             authCall()?.let { AuthResult.Success(it) } ?: AuthResult.UserNotFound
         } catch (e: FirebaseAuthInvalidCredentialsException) {
-            AuthResult.Failure(Exception("Credenciales inválidas."))
+            AuthResult.Failure(Exception("Credenciales inválidas.", e))
         } catch (e: FirebaseAuthInvalidUserException) {
-            AuthResult.Failure(Exception("Usuario no encontrado."))
+            AuthResult.Failure(Exception("Usuario no encontrado.", e))
         } catch (e: Exception) {
-            AuthResult.Failure(e)
+            AuthResult.Failure(Exception("Error inesperado: ${e.message}", e))
         }
     }
 }

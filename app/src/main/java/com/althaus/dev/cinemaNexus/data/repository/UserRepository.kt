@@ -1,42 +1,24 @@
 package com.althaus.dev.cinemaNexus.data.repository
 
+import com.althaus.dev.cinemaNexus.data.model.UserProfile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
-import kotlin.jvm.java
-import kotlin.let
 
 /**
  * Representa los posibles resultados de las operaciones relacionadas con usuarios.
  */
 sealed class UserResult {
-    /**
-     * Indica que la operación fue exitosa.
-     *
-     * @param user El perfil del usuario obtenido o actualizado.
-     */
-    data class Success(val user: com.althaus.dev.cinemaNexus.data.model.UserProfile) : UserResult()
-
-    /**
-     * Indica que la operación falló debido a una excepción.
-     *
-     * @param exception La excepción generada durante la operación.
-     */
-    data class Failure(val exception: kotlin.Exception) : UserResult()
-
-    /**
-     * Indica que el usuario solicitado no fue encontrado.
-     */
+    data class Success(val user: UserProfile) : UserResult()
+    data class Failure(val exception: Exception) : UserResult()
     object UserNotFound : UserResult()
 }
 
 /**
  * Repositorio que gestiona las operaciones relacionadas con usuarios en Firebase.
- *
- * @property firebaseAuth Proporciona autenticación de usuarios con Firebase.
- * @property firestore Proporciona acceso a la base de datos de Firestore.
  */
 class UserRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
@@ -51,6 +33,14 @@ class UserRepository @Inject constructor(
     val currentUser: FirebaseUser?
         get() = firebaseAuth.currentUser
 
+    /**
+     * Verifica si hay un usuario autenticado.
+     *
+     * @return `true` si hay un usuario autenticado, `false` en caso contrario.
+     */
+    fun isUserAuthenticated(): Boolean {
+        return currentUser != null
+    }
 
     /**
      * Obtiene el perfil de un usuario desde Firestore.
@@ -63,11 +53,54 @@ class UserRepository @Inject constructor(
     suspend fun getUserProfile(userId: String): UserResult {
         return try {
             val snapshot = firestore.collection("users").document(userId).get().await()
-            val userProfile =
-                snapshot.toObject(com.althaus.dev.cinemaNexus.data.model.UserProfile::class.java)
+            val userProfile = snapshot.toObject(UserProfile::class.java)
             userProfile?.let { UserResult.Success(it) } ?: UserResult.UserNotFound
-        } catch (e: kotlin.Exception) {
-            UserResult.Failure(e)
+        } catch (e: FirebaseFirestoreException) {
+            UserResult.Failure(Exception("Error de Firestore: ${e.message}", e))
+        } catch (e: Exception) {
+            UserResult.Failure(Exception("Error desconocido: ${e.message}", e))
+        }
+    }
+
+    /**
+     * Crea o actualiza un perfil de usuario en Firestore.
+     *
+     * @param userProfile El perfil del usuario a guardar.
+     * @return [UserResult.Success] si se guarda correctamente,
+     * [UserResult.Failure] si ocurre un error durante la operación.
+     */
+    suspend fun saveUserProfile(userProfile: UserProfile): UserResult {
+        return try {
+            firestore.collection("users").document(userProfile.id).set(userProfile.toMap()).await()
+            UserResult.Success(userProfile)
+        } catch (e: FirebaseFirestoreException) {
+            UserResult.Failure(
+                Exception(
+                    "Error al guardar el perfil en Firestore: ${e.message}",
+                    e
+                )
+            )
+        } catch (e: Exception) {
+            UserResult.Failure(Exception("Error desconocido al guardar el perfil: ${e.message}", e))
+        }
+    }
+
+    /**
+     * Elimina un perfil de usuario de Firestore.
+     *
+     * @param userId El ID del usuario a eliminar.
+     * @return `true` si se elimina correctamente, `false` si ocurre un error.
+     */
+    suspend fun deleteUserProfile(userId: String): Boolean {
+        return try {
+            firestore.collection("users").document(userId).delete().await()
+            true
+        } catch (e: FirebaseFirestoreException) {
+            println("Error al eliminar el perfil: ${e.message}")
+            false
+        } catch (e: Exception) {
+            println("Error desconocido al eliminar el perfil: ${e.message}")
+            false
         }
     }
 }
