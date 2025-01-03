@@ -31,23 +31,27 @@ fun SplashView(
     BaseLayout(
         showAppBar = true,
         appBarTitle = "",
-        // Colocamos el fondo transparente y el contenido (iconos/texto) blanco
         appBarBackgroundColor = Color.Transparent,
         appBarContentColor = Color.White,
 
         appBarActions = {
-            MiniIconButton(
-                icon = painterResource(id = R.drawable.logo),
-                contentDescription = stringResource(id = R.string.splash_change_theme)
+            Row(
+                modifier = Modifier.padding(16.dp, 0.dp) // Padding aplicado al contenedor
             ) {
-                viewModel.onThemeChange()
+                MiniIconButton(
+                    icon = painterResource(id = R.drawable.logo),
+                    contentDescription = stringResource(id = R.string.splash_change_theme)
+                ) {
+                    viewModel.onThemeChange()
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                LanguageDropdown(
+                    currentLanguage = currentLanguage,
+                    onChangeLanguage = { lang -> viewModel.onLanguageChange(lang) }
+                )
             }
-            Spacer(modifier = Modifier.width(8.dp))
-            LanguageDropdown(
-                currentLanguage = currentLanguage,
-                onChangeLanguage = { lang -> viewModel.onLanguageChange(lang) }
-            )
         },
+
         showAppImage = true,
         appImage = {
             AppImage(

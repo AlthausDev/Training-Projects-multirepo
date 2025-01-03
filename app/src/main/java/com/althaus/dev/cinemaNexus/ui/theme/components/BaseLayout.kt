@@ -40,7 +40,7 @@ fun BaseLayout(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(0.dp, 16.dp)
                 .verticalScroll(rememberScrollState())
                 .imePadding(),
             verticalArrangement = verticalArrangement,

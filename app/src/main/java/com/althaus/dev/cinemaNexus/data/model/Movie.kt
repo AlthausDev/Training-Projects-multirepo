@@ -2,6 +2,7 @@ package com.althaus.dev.cinemaNexus.data.model
 
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.IgnoreExtraProperties
+import com.google.gson.annotations.SerializedName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
@@ -13,13 +14,26 @@ import java.time.format.DateTimeParseException
  */
 @IgnoreExtraProperties
 data class Movie(
-    @DocumentId val id: Any = 0,
+    @DocumentId val id: Int = 0,
+    @SerializedName("title")
     val title: String = "",
+
+    @SerializedName("overview")
     val overview: String = "",
-    val posterPath: String? = null,
+
+    @SerializedName("poster_path")
+    val posterPath: String? = null, // Permitir nulo para manejar valores faltantes
+
+    @SerializedName("release_date")
     val releaseDate: String = "",
+
+    @SerializedName("popularity")
     val popularity: Double = 0.0,
+
+    @SerializedName("vote_average")
     val voteAverage: Double = 0.0,
+
+    @SerializedName("vote_count")
     val voteCount: Int = 0
 ) {
     /**
@@ -49,10 +63,10 @@ data class Movie(
          * @return Una instancia de `Movie` basada en los valores del mapa.
          */
         fun fromMap(map: Map<String, Any?>): Movie {
-            val id = map["id"] as? Int ?: ""
+            val id = map["id"] as? Int ?: 0
             val title = map["title"] as? String ?: ""
             val overview = map["overview"] as? String ?: ""
-            val posterPath = map["posterPath"] as? String
+            val posterPath = map["posterPath"] as? String ?: ""
             val releaseDate = map["releaseDate"] as? String ?: ""
             val popularity = map["popularity"] as? Double ?: 0.0
             val voteAverage = map["voteAverage"] as? Double ?: 0.0

@@ -5,9 +5,12 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.althaus.dev.cinemaNexus.ui.detail.DetailView
 import com.althaus.dev.cinemaNexus.ui.home.HomeView
 import com.althaus.dev.cinemaNexus.ui.home.HomeViewModel
 import com.althaus.dev.cinemaNexus.ui.login.LoginView
@@ -108,5 +111,18 @@ fun NavigationGraph() {
                 }
             )
         }
+
+        composable(
+            route = "detail/{movieId}",
+            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val movieId = backStackEntry.arguments?.getInt("movieId") ?: return@composable
+            DetailView(
+                viewModel = hiltViewModel(),
+                movieId = movieId,
+                onBack = { navController.popBackStack() }
+            )
+        }
+
     }
 }

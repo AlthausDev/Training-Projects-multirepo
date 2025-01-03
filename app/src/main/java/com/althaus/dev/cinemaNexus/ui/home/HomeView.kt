@@ -61,7 +61,7 @@ fun MovieList(
         items(movies) { movie ->
             MovieItem(
                 movie = movie,
-                onClick = { onNavigateToDetails(movie.id as Int) }
+                onClick = { onNavigateToDetails(movie.id) }
             )
             Divider(modifier = Modifier.padding(vertical = 8.dp))
         }
