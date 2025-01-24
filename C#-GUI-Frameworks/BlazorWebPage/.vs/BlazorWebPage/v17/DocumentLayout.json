@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\client\\pages\\sesion.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|solutionrelative:blazorwebpage\\client\\pages\\sesion.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\client\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|solutionrelative:blazorwebpage\\client\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|solutionrelative:blazorwebpage\\client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F30BF2B-41CA-48A7-9365-4498467379C8}|BlazorWebPage\\Server\\BlazorWebPage.Server.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F30BF2B-41CA-48A7-9365-4498467379C8}|BlazorWebPage\\Server\\BlazorWebPage.Server.csproj|solutionrelative:blazorwebpage\\server\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\client\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{99C32244-A6CA-4FCE-9807-638BAB6D68C1}|BlazorWebPage\\Client\\BlazorWebPage.Client.csproj|solutionrelative:blazorwebpage\\client\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F30BF2B-41CA-48A7-9365-4498467379C8}|BlazorWebPage\\Server\\BlazorWebPage.Server.csproj|d:\\projects\\training-projects\\c#-gui-frameworks\\blazorwebpage\\blazorwebpage\\server\\controllers\\tareacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F30BF2B-41CA-48A7-9365-4498467379C8}|BlazorWebPage\\Server\\BlazorWebPage.Server.csproj|solutionrelative:blazorwebpage\\server\\controllers\\tareacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Client\\Pages\\Home.razor",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Home.razor",
+              "RelativeToolTip": "BlazorWebPage\\Client\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T15:44:29.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.razor.cs",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Home.razor.cs",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Client\\Pages\\Home.razor.cs",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Home.razor.cs",
+              "RelativeToolTip": "BlazorWebPage\\Client\\Pages\\Home.razor.cs",
+              "ViewState": "AQIAALEAAAAAAAAAAAAqwMIAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T09:39:35.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sesion.razor.cs",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Sesion.razor.cs",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Client\\Pages\\Sesion.razor.cs",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Pages\\Sesion.razor.cs",
+              "RelativeToolTip": "BlazorWebPage\\Client\\Pages\\Sesion.razor.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAQwCYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T12:08:45.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Shared\\NavMenu.razor",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Client\\Shared\\NavMenu.razor",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Client\\Shared\\NavMenu.razor",
+              "RelativeToolTip": "BlazorWebPage\\Client\\Shared\\NavMenu.razor",
+              "ViewState": "AQIAAEgAAAAAAAAAAADwvzoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T12:33:29.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Server\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Server\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Server\\Controllers\\UserController.cs",
+              "RelativeToolTip": "BlazorWebPage\\Server\\Controllers\\UserController.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAIwEcAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T09:04:44.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TareaController.cs",
+              "DocumentMoniker": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Server\\Controllers\\TareaController.cs",
+              "RelativeDocumentMoniker": "BlazorWebPage\\Server\\Controllers\\TareaController.cs",
+              "ToolTip": "D:\\Projects\\training-projects\\C#-GUI-Frameworks\\BlazorWebPage\\BlazorWebPage\\Server\\Controllers\\TareaController.cs",
+              "RelativeToolTip": "BlazorWebPage\\Server\\Controllers\\TareaController.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowCMAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T12:20:16.568Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

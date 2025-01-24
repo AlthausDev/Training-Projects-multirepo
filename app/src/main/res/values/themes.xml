@@ -1,9 +1,0 @@
-<!-- res/values/themes.xml -->
-<resources>
-
-    <style name="Theme.CinemaNexus" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Colores personalizados -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/black</item>
-    </style>
-</resources>
