@@ -1,0 +1,16 @@
+# URL de la API
+$url = 'https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/28079'
+
+# Clave de la API
+$apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW11ZWxhbHRoYXVzQGdtYWlsLmNvbSIsImp0aSI6IjNiMjFlNDhhLWIxYjYtNGViNy1hMmRlLWJlNzM3OGI4OGIzZiIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNzAxOTM0OTg4LCJ1c2VySWQiOiIzYjIxZTQ4YS1iMWI2LTRlYjctYTJkZS1iZTczNzhiODhiM2YiLCJyb2xlIjoiIn0.cjwZNey5Ey90jtNlt5uFH64hzQUx3QRfmTth6ktmfWY'
+
+# Encabezados de la solicitud
+$headers = @{
+    'accept' = 'application/json'
+    'api_key' = $apiKey
+}
+
+# Realizar la solicitud y almacenar la respuesta en una variable
+$response = Invoke-RestMethod -Uri $url -Method Get -Headers $headers
+
+$response

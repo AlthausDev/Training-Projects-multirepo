@@ -7,6 +7,10 @@
     </profile>
   </component>
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+=======
+    <mapping directory="" vcs="Git" />
+>>>>>>> r1remote/master
   </component>
 </project>
