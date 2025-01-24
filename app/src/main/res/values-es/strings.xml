@@ -1,0 +1,16 @@
+<resources>
+    <!-- Textos Generales -->
+    <string name="app_name">CinemaNexus</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+
+    <!-- Texto para la autenticación -->
+    <string name="login_button">Iniciar sesión</string>
+    <string name="signup_button">Registrarse</string>
+    <string name="welcome_message">¡Bienvenido a CinemaNexus!</string>
+
+    <!-- Default Web Client ID -->
+    <string name="default_web_client_id">935720145677-uj8cb5eg080ekeg4v5v5mcijqgkjl23d.apps.googleusercontent.com</string>
+    <string name="spanish">ES</string>
+    <string name="english">EN</string>
+</resources>

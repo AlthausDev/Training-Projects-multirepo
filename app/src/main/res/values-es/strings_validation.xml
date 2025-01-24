@@ -1,0 +1,8 @@
+<resources>
+    <!-- Mensajes de Validación de Formularios -->
+    <string name="validation_empty_field">Este campo no puede estar vacío</string>
+    <string name="validation_invalid_email">Por favor, introduce un correo electrónico válido</string>
+    <string name="validation_password_too_short">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="validation_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="validation_invalid_username">El nombre de usuario no es válido</string>
+</resources>

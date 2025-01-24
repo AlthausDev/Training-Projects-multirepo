@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.vs/
 /.obj/
 /obj/
@@ -62,3 +63,20 @@
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Client/obj/Debug/net8.0
 /C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/bin/Debug/net8.0
 /Blazor/TODO_V2/TODO_V2.Server/appsettings.json
+=======
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+>>>>>>> r2remote/master

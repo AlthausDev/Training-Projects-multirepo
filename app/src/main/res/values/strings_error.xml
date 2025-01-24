@@ -1,0 +1,14 @@
+<resources>
+    <!-- Validation Error Messages -->
+    <string name="error_invalid_email">The email format is invalid</string>
+    <string name="error_invalid_password">Password must be at least 6 characters</string>
+    <string name="error_credentials_invalid">Invalid credentials</string>
+
+    <!-- Common API Error Messages -->
+    <string name="error_bad_request">Bad request. Check the submitted data.</string>
+    <string name="error_unauthorized">Unauthorized. Please log in.</string>
+    <string name="error_forbidden">Forbidden. You don\'t have access to this resource.</string>
+    <string name="error_not_found">Resource not found.</string>
+    <string name="error_internal_server">Internal server error. Please try again later.</string>
+    <string name="error_unknown">Unknown error: %1$d</string>
+</resources>
