@@ -1,6 +1,9 @@
 ﻿@inherits LayoutComponentBase
 @using BlazorBootstrap
 
+<Modal @ref="ModalInstance" Size="ModalSize.Regular" ShowCloseButton="false" />
+<Toasts class="p-3" Messages="messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" />
+
 <div class="page">
     <main>     
         <article class="content px-4">
@@ -32,25 +35,26 @@
 
 
 @code {
+    public static Modal ModalInstance = default!;
+    public static List<ToastMessage> messages = new();
+    // [Inject] protected PreloadService PreloadService { get; set; }
 
-    [Inject] protected PreloadService PreloadService { get; set; }
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     ShowLoadingDataAsync();
+    // }
 
-    protected override async Task OnInitializedAsync()
-    {
-        ShowLoadingDataAsync();
-    }
+    // private async Task ShowLoadingDataAsync()
+    // {
+    //     PreloadService.Show(SpinnerColor.Light, "Loading data...");
+    //     await Task.Delay(3000); // call the service/api
+    //     PreloadService.Hide();
+    // }
 
-    private async Task ShowLoadingDataAsync()
-    {
-        PreloadService.Show(SpinnerColor.Light, "Loading data...");
-        await Task.Delay(3000); // call the service/api
-        PreloadService.Hide();
-    }
-
-    private async Task ShowSavingDataAsync()
-    {
-        PreloadService.Show(SpinnerColor.Light, "Saving data...");
-        await Task.Delay(3000); // call the service/api
-        PreloadService.Hide();
-    }
+    // private async Task ShowSavingDataAsync()
+    // {
+    //     PreloadService.Show(SpinnerColor.Light, "Saving data...");
+    //     await Task.Delay(3000); // call the service/api
+    //     PreloadService.Hide();
+    // }
 }

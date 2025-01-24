@@ -1,84 +1,97 @@
-﻿using TODO_V2.Client.Pages;
-using TODO_V2.Server.Components;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity;
+﻿using TODO_V2.Server.Components;
 using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TODO_V2.Server.Repository.Impl;
 using TODO_V2.Server.Repository.Interfaces;
 using TODO_V2.Server.Utils;
-using TODO_V2.Server.Services.Impl;
 using TODO_V2.Server.Services.Interfaces;
+using TODO_V2.Server.Services.Impl;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuración de JWT desde appsettings.json
+#region Configuración de JWT
 var jwtKey = builder.Configuration["JWT:Key"];
 var jwtIssuer = builder.Configuration["JWT:Issuer"];
 var jwtAudience = builder.Configuration["JWT:Audience"];
 var jwtExpirationHours = int.Parse(builder.Configuration["JWT:ExpirationHours"]);
+#endregion
 
-// Añadir servicios.
-builder.Services.AddScoped<AuthenticationService>();
-builder.Services.AddControllersWithViews();
+#region Añadir servicios
+builder.Services.AddBlazorBootstrap(); 
+builder.Services.AddHttpClient();
+builder.Services.AddControllers(); 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddMvc();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore();
-builder.Services.AddBlazorBootstrap();
-builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddHttpClient();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+});
+#endregion
 
-builder.Services.AddAuthentication()
-        .AddCookie(options =>
-        {
-            options.LoginPath = "/Account/Unauthorized/";
-            options.AccessDeniedPath = "/Account/Forbidden/";
-        })
-        .AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-                ClockSkew = TimeSpan.Zero
-            };
-        });
-
-// Configurar Dependencias
-builder.Services.AddTransient<IChoreRepository, ChoreRepository>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
-
-builder.Services.AddTransient<IChoreService, ChoreService>();
-builder.Services.AddTransient<IUserService, UserService>();
-
-builder.Services.AddTransient<EncryptionUtil> ();
-
-
-// Configuración de CORS para admitir cualquier origen
+#region Configuración de CORS
 builder.Services.AddCors(options => options.AddPolicy("corsPolicy", builder =>
 {
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
-}));
+    builder.AllowAnyMethod()
+           .AllowAnyHeader()
+           .SetIsOriginAllowed(origin => true)
+           .AllowAnyOrigin();        
+           
+})); 
+#endregion
 
-// Add services to the container.
+#region Configura componentes de Blazor
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddScoped(client => new HttpClient
+{
+    BaseAddress = new Uri("https://localhost:7216/")
+}); 
+#endregion
+
+#region Configura autenticación
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+    options.LoginPath = "/Account/Unauthorized/";
+    options.AccessDeniedPath = "/Account/Forbidden/";
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        ClockSkew = TimeSpan.Zero
+    };
+});
+#endregion
+
+#region Configura repositorios y servicios
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ITaskItemService, TaskItemService>();
+builder.Services.AddTransient<EncryptionUtil>();
+#endregion
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+#region Configuración del entorno
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
@@ -88,23 +101,34 @@ else
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();
 }
+#endregion
+
+#region Configuración de middleware
 app.UseCors("corsPolicy");
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapRazorPages();
-app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+});
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+#endregion
 
+#region Mapea páginas y controladores
+app.MapRazorPages();
+app.MapControllers();
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode()
+    .AddInteractiveServerRenderMode() 
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(TODO_V2.Client._Imports).Assembly);
+#endregion
 
 app.Run();

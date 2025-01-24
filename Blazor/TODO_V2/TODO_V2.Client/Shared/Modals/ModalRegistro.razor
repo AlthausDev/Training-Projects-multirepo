@@ -1,79 +1,125 @@
 ﻿@using TODO_V2.Client.Pages
 @using TODO_V2.Shared
 
-@* <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" /> *@
+@inject HttpClient Http
+<Toasts class="p-3" Messages="messages" AutoHide="true" Delay="6000" StackLength="5" Placement="ToastsPlacement.TopRight" />
 
-<div id="formDiv">
-    <label for="formTextBox">Username: </label>
-    <input autofocus type="text" id="formTextBox" Placeholder='Introduzca al menos 3 caracteres'
-           @bind="UserName" @bind:event="oninput" @onkeyup="ValueChangeHandler" />
+<div class="register-box">
+    <h2>REGISTRO</h2>
+    <form>
+        <div class="user-box">
+            <input autofocus type="text" name="" required="true" @bind="UserName" @bind:event="oninput" style="border-bottom:1px solid @UserNameColor" @onkeyup="ValueChangeHandler">
+            <label>Username</label>
+        </div>
+        <div class="user-box">
+            <input type="Password" name="" required="true" @bind="Password" @bind:event="oninput" style="border-bottom:1px solid var(--password-color)" @onkeyup="ValueChangeHandler">
+            <label>Contraseña </label>
+        </div>
+        <div class="user-box">
+            <input type="Password" name="" required="true" @bind="@CheckPassword" @bind:event="oninput" style="border-bottom:1px solid var(--password-color)" @onkeyup="ValueChangeHandler">
+            <label>Repetir Contraseña</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="" required="true" @bind="@Name" @bind:event="oninput" style="border-bottom:1px solid @NameColor" @onkeyup="ValueChangeHandler">
+            <label>Nombre</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="" required="true" @bind="@Surname" @bind:event="oninput" style="border-bottom:1px solid @SurnameColor" @onkeyup="ValueChangeHandler">
+            <label>Apellido</label>
+        </div>
+        <div class="user-box">
+            <input type="text" name="" required="true" @bind="@Clave" @bind:event="oninput" style="border-bottom:1px solid @ClaveColor" @onkeyup="ValueChangeHandler">
+            <label>Clave</label>
+        </div>
+        <button type="button" class="button-style" @onclick="OnClickRegistro">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Registrarse
+        </button>
+        <button type="button" class="button-style" @onclick="OnClickClose">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Salir
+        </button>
+    </form>
 </div>
-
-<div id="formDiv">
-    <label for="formTextBox">Contraseña: </label>
-    <input type="text" id="checkPassword" Placeholder='Introduzca al menos 3 caracteres'
-           @bind="Password" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
-</div>
-
-<div id="formDiv">
-    <label for="formTextBox">Repetir Contraseña: </label>
-    <input type="text" id="checkPassword" Placeholder='Campo de texto de prueba'
-           @bind="checkPassword" @bind:event="oninput" style="--my-color: @color" @onkeyup="ValueChangeHandler" />
-</div>
-
-<div id="formDiv">
-    <label for="formTextBox">TaskName: </label>
-    <input type="text" id="formTextBox" Placeholder='Opcional'
-           @bind="TaskName" @bind:event="oninput" />
-</div>
-
-<div id="formDiv">
-    <label for="formTextBox">UserType: </label>
-    <input type="text" id="formTextBox" Placeholder='Opcional'
-           @bind="UserType" @bind:event="oninput" />
-</div>
-
-@* <div id="FormButtons">
-    <button class="btn btn-success" @onclick="OnClickRegistro" disabled="@IsDisabled">Registrarse</button>
-    <button class="btn btn-danger" @onclick="OnClickClose">Cancelar</button>
-</div> *@
 
 <style>
-    div {
-        display: block;
+    :root{       
+        --password-color: @PasswordColor;
     }
 
-    label {
-        text-align: right;
-        width: 40%;
-        margin: 5%;
+    .modal-body{
+        display: contents;        
     }
 
-    input {
-        width: 45%;
-        border-radius: 5px;
+    .modal-header {
+        display:none;        
     }
 
-    #FormButtons {
-        display: block;
-        text-align: center;
-        margin: 10%;
+    .register-box {
+        
+        width: 600px;
+        padding: 40px;     
+        background: rgba(0,0,0,1);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(3,233,244,.5);
+        border-radius: 10px;
+        border: 1px solid #03e9f4;        
     }
 
-        #FormButtons button {
-            box-shadow: 1px 1px 18px 4px rgba(66,52,66,0.69);
-            margin-right: 5%;
-            margin-left: 5%;
-            width: 135px;
-            border-radius: 8px;
-            border: 1px solid white;
+        .register-box h2 {
+            margin: 0 0 15%;
+            font-size: 2em;
+            padding: 0;
+            color: #fff;
+            text-align: center;
         }
 
-    #checkPassword {
-        border-color: var(--my-color);
-    }
+        .register-box .user-box {
+            position: relative;
+            transition: all ease 10s;
+        }
 
-    :root {
-        --my-color: black;
+            .register-box .user-box input {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                margin-bottom: 30px;
+                border: none;
+                outline: none;
+                background: transparent;
+            }
+            
+
+            .register-box .user-box label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                pointer-events: none;
+                transition: .5s;
+            }
+
+            .register-box .user-box input:focus ~ label,
+            .register-box .user-box input:valid ~ label {
+                top: -20px;
+                left: 0;
+                color: #03e9f4;
+                font-size: 12px;
+            }
+
+    .register-box button {      
+        display: ruby-text;        
+        width: 100%;
+        text-align: center;
     }
+}
 </style>

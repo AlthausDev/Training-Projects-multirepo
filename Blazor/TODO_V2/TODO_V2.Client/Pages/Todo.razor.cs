@@ -1,297 +1,414 @@
-﻿//using BlazorBootstrap;
-//using System.Net.Http.Json;
-//using TODO_V2.Shared.Models;
-//using ToastType = BlazorBootstrap.ToastType;
+﻿using BlazorBootstrap;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Diagnostics;
+using System.Net.Http.Json;
+using TODO_V2.Client.Layout;
+using TODO_V2.Client.Shared.Modals;
+using TODO_V2.Shared.Models;
+using ToastType = BlazorBootstrap.ToastType;
 
-//namespace TODO_V2.Client.Pages
-//{
-//    public partial class Todo
-//    {
-//        public List<Chore> Chores { get; set; } = new List<Chore>();
+namespace TODO_V2.Client.Pages
+{
+    public partial class Todo
+    {
+        [Parameter]
+        public string Id { get; set; }
 
-//        private Chore nuevaChore { get; set; } = new Chore();
-//        private Chore NuevaChore
-//        {
-//            get
-//            {
-//                return nuevaChore;
-//            }
-//            set
-//            {
-//                if (nuevaChore != value)
-//                {
-//                    nuevaChore = value;
-//                }
-//            }
-//        }
+        private User User { get; set; }
+
+        private Modal ModalInstance = default!;
 
 
-//        private Chore? selectedChore { get; set; } = null;
-//        public Chore? SelectedChore
-//        {
-//            get
-//            {
-//                return selectedChore;
-//            }
-//            set
-//            {
-//                if (selectedChore != value)
-//                {
-//                    selectedChore = value;
-//                    SelectedChangeHandler();
-//                }
-//            }
-//        }
+        private List<ToastMessage> messages = new();
+        private List<TaskItem> TaskItemsList { get; set; } = new List<TaskItem>();
 
-//        protected bool IsDisabled { get; set; } = true;
-//        protected bool IsDisabledEdit { get; set; } = true;
+        private bool IsDisabled { get; set; } = true;
+        private bool IsDisabledEdit { get; set; } = true;
 
-//        private Enum? accion = Accion.Espera;
-//        private Modal modal = default!;
-
-//        List<ToastMessage> messages = new();
-
-//        private PieChart pieChart = default!;
-//        private PieChartOptions pieChartOptions = default!;
-//        private ChartData chartData = default!;
-//        private string[]? backgroundColors = ColorBuilder.CategoricalTwelveColors;
+        private Accion AccionActual { get; set; } = Accion.Espera;
 
 
-//        //protected override async Task OnInitializedAsync()
-//        //{
-//        //    await getData();
-//        //    await InitializeGraph();
-//        //}
+        private TaskItem newTaskItem { get; set; } = new TaskItem();
+        private TaskItem NewTaskItem
+        {
+            get
+            {
+                return newTaskItem;
+            }
+            set
+            {
+                if (newTaskItem != value)
+                {
+                    newTaskItem = value;
+                }
+            }
+        }
 
-//        #region ApiOperations    
-//        private async Task getData()
-//        {
-//            Chore[]? choresArray = await Http.GetFromJsonAsync<Chore[]>("chore");
-
-//            if (choresArray is not null)
-//            {
-//                Chores = [.. choresArray];
-//            }
-//        }
-
-
-//        private async Task Post()
-//        {
-//            Chores.Add(nuevaChore);
-//            await Http.PostAsJsonAsync("Chore", NuevaChore);
-//            await getData();
-//        }
-      
-//        private async Task Put()
-//        {
-//            await Http.PutAsJsonAsync("Chore", NuevaChore);
-
-//            Chores.Insert(Chores.IndexOf(selectedChore), nuevaChore);
-//            Chores.Remove(selectedChore);
-//        }
-
-//        private async Task Delete()
-//        {
-//            if (selectedChore != null)
-//            {
-//                Chores.Remove(selectedChore);
-//                HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/DelTask/{selectedChore.Id}");            
-                
-//                await getData();
-//                SelectedChore = null;
-
-//                if (accion.Equals(Accion.Espera))
-//                {
-//                    ShowMessage(ToastType.Danger, "Registro eliminado con éxito");
-//                }
-//            }
-//        }
-//        #endregion ApiOperations
-
-//        #region Modal
-//        private async Task execChore()
-//        {
-//            if (accion.Equals(Accion.Crear))
-//            {
-//                await Post();
-//                ShowMessage(ToastType.Success, "Registro agregado con éxito");
-//            }
-//            else
-//            {
-//                await Put();
-//                ShowMessage(ToastType.Warning, "Registro editado con éxito");
-//            }
-//            await HideModal();
-//        }
+        private TaskItem? selectedTaskItem { get; set; } = null;
+        public TaskItem? SelectedTaskItem
+        {
+            get
+            {
+                return selectedTaskItem;
+            }
+            set
+            {
+                if (selectedTaskItem != value)
+                {
+                    selectedTaskItem = value;
+                    //SelectedChangeHandler();
+                }
+            }
+        }
 
 
-//        private async Task OnClickShowModal(Enum accion)
-//        {
-//            this.accion = accion;
+        protected override async Task OnInitializedAsync()
+        {
+            await GetUserData();
+            await GetTaskData();
+        }
 
-//            if (accion.Equals(Accion.Editar))
-//            {
-//                NuevaChore = selectedChore;
-//            }
+        private async Task GetUserData()
+        {
+            User = await Http.GetFromJsonAsync<User>($"api/User/{Id}");
+        }
 
-//            if (accion.Equals(Accion.Crear))
-//            {
-//                NuevaChore = new Chore();
-//            }
+        private async Task GetTaskData()
+        {
+            Debug.WriteLine(Id);
+            TaskItemsList = await Http.GetFromJsonAsync<List<TaskItem>>($"api/TaskItem/user/{Id}/tasks");
+        }
 
-//            await modal.ShowAsync();
-//        }
+        private async Task AddOrUpdateTaskItem()
+        {
+            if (AccionActual == Accion.Crear)
+            {
+                await Http.PostAsJsonAsync("api/TaskItem", NewTaskItem);
+                ShowMessage(ToastType.Success, "Tarea creada con éxito.");
+            }
+            else if (AccionActual == Accion.Editar)
+            {
+                await Http.PutAsJsonAsync($"api/TaskItem/{SelectedTaskItem.Id}", SelectedTaskItem);
+                ShowMessage(ToastType.Success, "Tarea actualizada con éxito.");
+            }
 
-//        private async Task HideModal()
-//        {
-//            accion = Accion.Espera;
-//            SelectedChore = null;
-//            NuevaChore = new Chore();
-//            await modal.HideAsync();
-//        }
-//        #endregion Modal       
+            await GetTaskData();
+            await HideModal();
+        }
 
-//        #region SelectRow
-//        private void selectChore(Chore chore)
-//        {
-//            SelectedChore = chore;
-//            //Console.WriteLine(chore.Name);
-//        }
+        private async Task DeleteTaskItem()
+        {
+            await Http.DeleteAsync($"api/TaskItem/{SelectedTaskItem.Id}");
+            ShowMessage(ToastType.Success, "Tarea eliminada con éxito.");
+            await GetTaskData();
+            SelectedTaskItem = null;
+        }
 
-//        private string GetRowClass(Chore chore)
-//        {
-//            return chore == SelectedChore ? "selected-row" : "";
-//        }
-//        #endregion SelectRow
+        #region OnClick
+        private async Task OnClickLogOut()
+        {
+            var response = await Http.DeleteAsync("/api/User/logout");
+            await storageService.RemoveItemAsync("token");
+            await storageService.ClearAsync();
+            NavManager.NavigateTo("/login");
+            Http.DefaultRequestHeaders.Remove("Authorization");
+        }
 
-//        #region AutoComplete
-//        private async Task<AutoCompleteDataProviderResult<Chore>> ChoresDataProvider(AutoCompleteDataProviderRequest<Chore> request)
-//        {
-//            return await Task.FromResult(request.ApplyTo(Chores.OrderBy(chore => chore.TaskName)));
-//        }
+        private async Task OnClickNewTask()
+        {
+            var response = await Http.DeleteAsync("/api/User/logout");
+            await storageService.RemoveItemAsync("token");
+            await storageService.ClearAsync();
+            NavManager.NavigateTo("/login");
+            Http.DefaultRequestHeaders.Remove("Authorization");
+        }
 
-//        #endregion AutoComplete
+        #endregion
 
-//        #region Toast
-//        private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+        #region New Task Item
+        private async Task OnClickRegister()
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, Registro) },
+                { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
+            };
+            await ModalInstance.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
+        }
 
-//        private ToastMessage CreateToastMessage(ToastType toastType, string message)
-//        {
-//            var toastMessage = new ToastMessage();
-//            toastMessage.Type = toastType;
-//            toastMessage.Message = message;
 
-//            return toastMessage;
-//        }
-//        #endregion Toast
+        private async Task Registro()
+        {
+            ShowMessage(ToastType.Success, "El Registro se ha realizado exitosamente");
+            await HideModal();
+        }
 
-//        #region Graph     
-//        //TODO no se cuentan correctamente el numero de lineas
-//        protected async Task InitializeGraph()
-//        {
-//            chartData = new ChartData { Labels = GetDataLabels(), Datasets = GetDataSet() };
+        private async Task HideModal()
+        {
+           
+            await ModalInstance.HideAsync();
+        }
+        #endregion 
 
-//            pieChartOptions = new()
-//            {
-//                Responsive = true
-//            };
-//            pieChartOptions.Plugins.Title!.Text = "Chores Finalizadas";
-//            pieChartOptions.Plugins.Title.Display = true;
-//            pieChartOptions.Plugins.Title.Font.Size = 18;
-//            pieChartOptions.Plugins.Legend.Display = false;
+        //#region Edit
+        //private async Task OnClickRegister()
+        //{
+        //    var parameters = new Dictionary<string, object>
+        //    {
+        //        { "Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, Registro) },
+        //        { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
+        //    };
+        //    await ModalInstance.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
+        //}
 
-//            if (true)
-//            {
-//                await pieChart.InitializeAsync(chartData, pieChartOptions);
-//            }
-//            await base.OnAfterRenderAsync(true);
-//        }
 
-//        private List<IChartDataset> GetDataSet()
-//        {
-//            var datasets = new List<IChartDataset>
-//            {
-//                GetPieChartDataset()
-//            };
+        //private async Task Registro()
+        //{
+        //    ShowMessage(ToastType.Success, "El Registro se ha realizado exitosamente");
+        //    await HideModal();
+        //}
 
-//            return datasets;
-//        }
+        //private async Task HideModal()
+        //{
+        //    user = new User();
+        //    await ModalInstance.HideAsync();
+        //}
+        //#endregion 
 
-//        private PieChartDataset GetPieChartDataset()
-//        {
-//            return new() { Label = " ", Data = GetChartData(), BackgroundColor = GetBackgroundColors() };
-//        }
+        private void ShowNewTaskModal()
+        {
+            AccionActual = Accion.Crear;
+            NewTaskItem = new TaskItem();
+            //ShowModal();
+        }
 
-//        private List<double> GetChartData()
-//        {
-//            List<double> data = new();
+        private void ShowEditTaskModal(TaskItem taskItem)
+        {
+            AccionActual = Accion.Editar;
+            SelectedTaskItem = taskItem;
+            //ShowModal();
+        }
 
-//            //double count = (from Chore chore in Chores
-//            //                where chore
-//            //                select chore).Count();
+        //private async Task HideModal()
+        //{
+        //    SelectedTaskItem = null;
+        //    await ModalInstance.HideAsync();
+        //}
 
-//            //data.Add(Chores.Count - count);
-//            //data.Add(count);
+        //private void ShowModal()
+        //{
+        //    ModalInstance.Show();
+        //}
 
-//            return data;
-//        }
+        private void ShowMessage(ToastType toastType, string message)
+        {
+            // Lógica para mostrar un mensaje de toast.
+        }
 
-//        //10 finalizado, 3 no finalizado
-//        private List<string> GetBackgroundColors()
-//        {
-//            List<string> colors = new()
-//            {
-//                backgroundColors[3],
-//                backgroundColors[10]
-//            };
+        public enum Accion
+        {
+            Espera,
+            Crear,
+            Editar
+        }
 
-//            return colors;
-//        }
 
-//        private static List<string> GetDataLabels()
-//        {
 
-//            return new List<string>()
-//                {
-//                "No Finalizado",
-//                "Finalizado"
-//            };
-//        }
-//        #endregion Graph
 
-//        #region Handlers
-//        private void SelectedChangeHandler()
-//        {
-//            IsDisabledEdit = selectedChore == null;
-//        }
 
-//        private void ValueChangeHandler()
-//        {
-//            IsDisabled = (String.IsNullOrWhiteSpace(NuevaChore.TaskName) || String.IsNullOrWhiteSpace(NuevaChore.State));
-//        }
 
-//        private async Task OnAutoCompleteChanged(Chore chore)
-//        {
-//            SelectedChore = chore;
-//            //await JS.InvokeVoidAsync($"searchFuction('{SelectedChore.TaskName}')");
-//            Console.WriteLine($"'{chore?.TaskName}' selected.");
-//        }
-//        #endregion Handlers
 
-//        #region Enums
-//        public enum Accion
-//        {
-//            Espera,
-//            Crear,
-//            Editar
-//        }
 
-//        public enum IsFinalizado
-//        {
-//            No,
-//            Si
-//        }
-//        #endregion Enums
-//    }
 
-//}
+        //#region ApiOperations    
+        //private async TaskItem getData()
+        //{
+        //    TaskItem[]? taskitemsArray = await Http.GetFromJsonAsync<TaskItem[]>("TaskItem");
+
+        //    if (taskitemsArray is not null)
+        //    {
+        //        TaskItemsList = [.. taskitemsArray];
+        //    }
+        //}
+
+
+        //private async TaskItem Post()
+        //{
+        //    TaskItems.Add(newTaskItem);
+        //    await Http.PostAsJsonAsync("TaskItem", NewTaskItem);
+        //    await getData();
+        //}
+
+        //private async TaskItem Put()
+        //{
+        //    await Http.PutAsJsonAsync("TaskItem", NewTaskItem);
+
+        //    TaskItems.Insert(TaskItems.IndexOf(selectedTaskItem), newTaskItem);
+        //    TaskItems.Remove(selectedTaskItem);
+        //}
+
+        //private async TaskItem Delete()
+        //{
+        //    if (selectedTaskItem != null)
+        //    {
+        //        TaskItems.Remove(selectedTaskItem);
+        //        HttpResponseMessage httpResponseMessage = await Http.DeleteAsync($"/DelTaskItem/{selectedTaskItem.Id}");
+
+        //        await getData();
+        //        SelectedTaskItem = null;
+
+        //        if (accion.Equals(Accion.Espera))
+        //        {
+        //            ShowMessage(ToastType.Danger, "Registro eliminado con éxito");
+        //        }
+        //    }
+        //}
+        //#endregion ApiOperations
+        //#region aux
+
+        //private void ShowNewTaskItemModal()
+        //{
+        //    //taskitemFormRef.SetTaskItem(new TaskItem { CreationDate = DateTime.Now });
+        //    //modalRef.Show();
+        //}
+
+        //private void ShowEditTaskItemModal(TaskItem TaskItem)
+        //{
+        //    //taskitemFormRef.SetTaskItem(TaskItem);
+        //    //modalRef.Show();
+        //}
+
+        //private void SaveTaskItem()
+        //{
+        //    //var TaskItem = taskitemFormRef.GetTaskItem();
+        //    //if (!TaskItems.Contains(TaskItem))
+        //    //{
+        //    //    TaskItems.Add(TaskItem);
+        //    //}
+        //    //modalRef.Hide();
+        //}
+
+        //private void DeleteTaskItem(TaskItem TaskItem)
+        //{
+        //    TaskItemsList.Remove(TaskItem);
+        //}
+
+        //#endregion
+
+
+
+        //#region Modal
+        //private async TaskItem execTaskItem()
+        //{
+        //    if (accion.Equals(Accion.Crear))
+        //    {
+        //        await Post();
+        //        ShowMessage(ToastType.Success, "Registro agregado con éxito");
+        //    }
+        //    else
+        //    {
+        //        await Put();
+        //        ShowMessage(ToastType.Warning, "Registro editado con éxito");
+        //    }
+        //    await HideModal();
+        //}
+
+
+        //private async TaskItem OnClickShowModal(Enum accion)
+        //{
+        //    this.accion = accion;
+
+        //    if (accion.Equals(Accion.Editar))
+        //    {
+        //        NewTaskItem = selectedTaskItem;
+        //    }
+
+        //    if (accion.Equals(Accion.Crear))
+        //    {
+        //        NewTaskItem = new TaskItem();
+        //    }
+
+        //    await modal.ShowAsync();
+        //}
+
+        //private async TaskItem HideModal()
+        //{
+        //    accion = Accion.Espera;
+        //    SelectedTaskItem = null;
+        //    NewTaskItem = new TaskItem();
+        //    await modal.HideAsync();
+        //}
+        //#endregion Modal       
+
+        //#region SelectRow
+        //private void selectTaskItem(TaskItem TaskItem)
+        //{
+        //    SelectedTaskItem = TaskItem;
+        //    //Console.WriteLine(TaskItem.Name);
+        //}
+
+        //private string GetRowClass(TaskItem TaskItem)
+        //{
+        //    return TaskItem == SelectedTaskItem ? "selected-row" : "";
+        //}
+        //#endregion SelectRow
+
+        //#region AutoComplete
+        //private async TaskItem<AutoCompleteDataProviderResult<TaskItem>> TaskItemsDataProvider(AutoCompleteDataProviderRequest<TaskItem> request)
+        //{
+        //    return await TaskItem.FromResult(request.ApplyTo(TaskItems.OrderBy(TaskItem => TaskItem.TaskItemName)));
+        //}
+
+        //#endregion AutoComplete
+
+        //#region Toast
+        //private void ShowMessage(ToastType toastType, string message) => messages.Add(CreateToastMessage(toastType, message));
+
+        //private ToastMessage CreateToastMessage(ToastType toastType, string message)
+        //{
+        //    var toastMessage = new ToastMessage();
+        //    toastMessage.Type = toastType;
+        //    toastMessage.Message = message;
+
+        //    return toastMessage;
+        //}
+        //#endregion Toast     
+
+        //#region Handlers
+        //private void SelectedChangeHandler()
+        //{
+        //    IsDisabledEdit = selectedTaskItem == null;
+        //}
+
+        //private void ValueChangeHandler()
+        //{
+        //    IsDisabled = (String.IsNullOrWhiteSpace(NewTaskItem.TaskItemName) || String.IsNullOrWhiteSpace(NewTaskItem.State));
+        //}
+
+        //private async TaskItem OnAutoCompleteChanged(TaskItem TaskItem)
+        //{
+        //    SelectedTaskItem = TaskItem;
+        //    //await JS.InvokeVoidAsync($"searchFuction('{SelectedTaskItem.TaskItemName}')");
+        //    Console.WriteLine($"'{TaskItem?.TaskItemName}' selected.");
+        //}
+        //#endregion Handlers
+
+        //#region Enums
+        //public enum Accion
+        //{
+        //    Espera,
+        //    Crear,
+        //    Editar
+        //}
+
+        //public enum IsFinalizado
+        //{
+        //    No,
+        //    Si
+        //}
+        //#endregion Enums     
+    }
+
+}

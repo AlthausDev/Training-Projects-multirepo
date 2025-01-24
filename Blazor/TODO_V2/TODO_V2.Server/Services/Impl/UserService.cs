@@ -1,62 +1,183 @@
-﻿using TODO_V2.Server.Repository.Interfaces;
+﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using TODO_V2.Client.DTO;
+using TODO_V2.Server.Models;
+using TODO_V2.Server.Repository.Interfaces;
 using TODO_V2.Server.Services.Interfaces;
-using TODO_V2.Shared;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.Data.Common;
 using TODO_V2.Server.Utils;
+using TODO_V2.Shared;
 using TODO_V2.Shared.Models;
+using TODO_V2.Shared.Models.Enum;
+using TODO_V2.Shared.Utils;
 
 namespace TODO_V2.Server.Services.Impl
 {
     public class UserService : IUserService
     {
-        private IUserRepository userRepository;
-        private readonly EncryptionUtil encryptionUtil;
-   
-        public UserService(IUserRepository userRepository, EncryptionUtil encryptionUtil)
+        private readonly IUserRepository UserRepository;
+        private readonly EncryptionUtil EncryptionUtil;
+        private readonly IConfiguration configuration;
+        private readonly ILocalStorageService localStorageService;
+
+        public UserService(IUserRepository userRepository, EncryptionUtil encryptionUtil, IConfiguration configuration, ILocalStorageService localStorageService)
         {
-            this.userRepository = userRepository;
-            this.encryptionUtil = encryptionUtil;
+            UserRepository = userRepository;
+            EncryptionUtil = encryptionUtil;
+            this.configuration = configuration;
+            this.localStorageService = localStorageService;
         }
 
-        public IEnumerable<User> GetAllAdmin()
+
+        public async Task<bool> Add(User user, LoginCredentials credentials)
         {
-            return userRepository.GetAllAdmin();
+            if (await GetByUserName(user.UserName) == null)
+            {
+                UserCredentials userCredentials = CreateUserCredentials(credentials);
+                return await UserRepository.Add(user, userCredentials);
+            }
+            return false;
         }
 
-        public IEnumerable<User> GetAll()
+
+        public async Task<User> Update(User user, LoginCredentials credentials)
         {
-            return userRepository.GetAll();
+            UserCredentials userCredentials = await GetUserCredentialsByUserName(credentials.Username);
+            userCredentials.EncryptedPassword = EncryptionUtil.Encrypt(credentials.Password);
+            return await UserRepository.Update(user, userCredentials);
         }
 
-        public User GetById(int id)
+        public void Delete(int userId)
         {
-            User user = userRepository.GetById(id);           
-            user.Password = encryptionUtil.Decrypt(user.Password);         
-
-            return user;
+            UserRepository.Delete(userId);
         }
 
-        public void Add(User user)
+        public void LogicDelete(int userId)
         {
-            user.Password = encryptionUtil.Encrypt(user.Password);
-            userRepository.Add(user);
+            UserRepository.LogicDelete(userId);
         }
 
-        public void Update(User user)
+        public Task<IEnumerable<User>> GetAll(GetRequest<User>? request)
         {
-            user.Password = encryptionUtil.Encrypt(user.Password);
-            userRepository.Update(user);
+            return UserRepository.GetAll(request);
         }
 
-        public void Remove(int id)
+        public Task<IEnumerable<User>> GetAllLogic(GetRequest<User>? request)
         {
-            userRepository.Remove(id);
+            return UserRepository.GetAllLogic(request);
         }
 
-        public void LogicRemove(int id)
+        public async Task<User?> GetById(int userId)
         {
-            userRepository.LogicRemove(id);
+            try
+            {
+                User? user = await UserRepository.GetById(userId);
+
+                if (user != null)
+                {
+                    //user.Password = EncryptionUtil.Decrypt(user.Password);
+                    return user;
+                    
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
+
+        public async Task<User?> GetByUserName(string username)
+        {
+            return await UserRepository.GetByUserName(username.ToUpper());           
+        }
+
+        public Task<int> Count()
+        {
+            return UserRepository.Count();      
+        }
+
+        public async Task<ActionResult<LoginResponse>> Login(LoginCredentials credentials)
+        {
+            try
+            {
+                UserCredentials userCredentials = await UserRepository.GetUserCredentialsByUserName(credentials.Username);
+
+                if (userCredentials == null)
+                {
+                    return new UnauthorizedResult();
+                }
+
+                if (!credentials.Password.Equals(EncryptionUtil.Decrypt(userCredentials.EncryptedPassword)))
+                {                    
+                    return new UnauthorizedResult();
+                }
+
+                User user = await UserRepository.GetByUserName(credentials.Username);
+
+                if (user == null)
+                {
+                    return new UnauthorizedResult();
+                }
+
+               
+                string tokenString = await EncryptionUtil.BuildToken(user, configuration);
+
+                if (tokenString == null)
+                {
+                 
+                    return new StatusCodeResult(500);
+                }
+                
+                var response = new LoginResponse
+                {
+                    User = user,
+                    Token = tokenString
+                };
+
+               
+                return response;
+            }
+            catch (Exception ex)
+            {                
+                Console.WriteLine($"Error al intentar iniciar sesión: {ex.Message}");
+                return new StatusCodeResult(500);
+            }
+        }
+
+
+        public async Task<bool> Logout()
+        {
+            try
+            {
+                await localStorageService.ClearAsync();                
+                await localStorageService.RemoveItemAsync("token");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al intentar cerrar sesión: {ex.Message}");
+                return false;
+            }
+        }
+
+        private async Task<UserCredentials> GetUserCredentialsByUserName(string username)
+        {
+            return await UserRepository.GetUserCredentialsByUserName(username.ToUpper());
+        }
+
+        private UserCredentials CreateUserCredentials(LoginCredentials credentials)
+        {
+            return new UserCredentials(credentials.Username, EncryptionUtil.Encrypt(credentials.Password));
+        }
+
     }
 }
