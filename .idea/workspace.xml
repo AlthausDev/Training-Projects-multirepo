@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55117799-cb16-446e-80d0-e819a16f7ec3" name="Changes" comment="refactor: Reorganizado código y mejorada documentación">
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-NoRepeat/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/JTP-Palindromo/src/main/java/org/example/Main.java" afterDir="false" />
+    <list default="true" id="55117799-cb16-446e-80d0-e819a16f7ec3" name="Changes" comment="chore: updated multirepo">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android-Kotlin/04-CinemaNexus" beforeDir="false" afterPath="$PROJECT_DIR$/Android-Kotlin/04-CinemaNexus" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +33,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AlthausDev"
+  }
+}]]></component>
   <component name="GitRewordedCommitMessages">
     <option name="commitMessagesMapping">
       <RewordedCommitMessageMapping>
@@ -57,6 +51,12 @@
     <option name="currentCommit" value="1" />
     <option name="onto" value="c0bb593a09ada7cd1bd8a03762ce13a815b0a065" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AlthausDev/Training-Projects-multirepo.git",
+    "accountId": "09ba0573-0e29-4f96-a374-ca57f57cd873"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -72,18 +72,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/training-projects&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projects/training-projects",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -114,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737680268939</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="chore: updated multirepo">
+      <option name="closed" value="true" />
+      <created>1738174413008</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738174413008</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +152,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="refactor: Reorganizado código y mejorada documentación" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Reorganizado código y mejorada documentación" />
+    <MESSAGE value="chore: updated multirepo" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: updated multirepo" />
   </component>
 </project>
