@@ -1,0 +1,6 @@
+FlightCode,AirlineCode,SourceAirportCode,DestinationAirportCode,Seats,DepartureTime,ArrivalTime,Days
+FL1,1,AA,AB,100,08:00:00,12:00:00,Lunes,Miércoles,Viernes
+FL2,2,BA,BB,80,14:00:00,18:00:00,Martes,Jueves,Sábado
+FL3,3,CA,CB,120,10:30:00,15:30:00,Miércoles,Viernes,Domingo
+FL4,4,DA,DB,150,16:45:00,20:30:00,Lunes,Martes,Sábado
+FL5,5,MAD,BCN,100,08:00:00,12:00:00,Lunes,Miércoles,Viernes
