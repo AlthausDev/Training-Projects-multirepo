@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { Product } from '../../model/product';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-products',
+  selector: 'table-product',
   imports: [],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
 
+  @Input() products: Product[] = [];
+
+  title = "Lista de productos"
 }

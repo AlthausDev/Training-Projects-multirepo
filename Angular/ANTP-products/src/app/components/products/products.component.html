@@ -1,1 +1,27 @@
 <h2>{{ title }}</h2>
+
+@if(products.length > 0){
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(product of products; track $index){            
+                <tr>
+                    <th>{{product.id}}</th>
+                    <th>{{product.name}}</th>
+                    <th>{{product.description}}</th>
+                    <th>{{product.price}}</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+} @else {
+    <div class="alert alert-danger">No existen registros en el sistema</div>
+}
