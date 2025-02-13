@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { Product } from '../../model/product';
 import { CommonModule } from '@angular/common';
 
@@ -13,4 +13,15 @@ export class ProductsComponent {
   @Input() products: Product[] = [];
 
   title = "Lista de productos"
+
+  @Output() updateProductEvent = new EventEmitter();
+  @Output() removeProductEvent = new EventEmitter();
+  
+  onUpdateProduct(product: Product) : void {
+      this.updateProductEvent.emit(product)
+    }
+
+  onDeleteProduct(productId: number) : void {
+    this.removeProductEvent.emit(productId)
+  }    
 }
