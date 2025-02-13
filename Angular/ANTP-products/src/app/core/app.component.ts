@@ -47,8 +47,18 @@ export class AppComponent implements OnInit {
   }
 
   addProduct(product: Product): void {
-    this.products = [... this.products, {... product, id: this.countId()}]
-    this.countId.update(id => id + 1)
+    if (product.id > 0) {
+      this.products = this.products.map(prod => {
+        return prod.id === product.id ? { ...product } : prod;
+      });
+    } else {
+      this.products = [
+        ...this.products,
+        { ...product, id: this.countId() }
+      ];
+      this.countId.update(id => id + 1);
+    }
+    
   }
 
   onRemoveProductEvent(productId: number) : void {
