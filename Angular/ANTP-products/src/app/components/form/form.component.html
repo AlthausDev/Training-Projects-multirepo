@@ -1,20 +1,65 @@
-<h2>Form  {{product.id > 0 ? 'Update' : 'Create'}} Product</h2>
+<h2>Form {{ product.id > 0 ? 'Update' : 'Create' }} Product</h2>
 
 <form (ngSubmit)="onSubmit()">
-    <div>
-        <input class="form-control my-2" placeholder="Name" name="name" [(ngModel)]="product.name">
-    </div>
+  <div>
+    <input 
+      class="form-control my-2" 
+      placeholder="Name" 
+      name="name" 
+      [(ngModel)]="product.name" 
+      #name="ngModel" 
+      required 
+      minlength="4"
+    >
 
-    <div>
-        <input class="form-control my-2" placeholder="Description" name="description" [(ngModel)]="product.description">
-    </div>
+    @if(name.invalid && (name.dirty || name.touched)) {
+      <div class="text-danger">
+        @if(name.errors!['required']) {
+          El nombre es requerido
+        }
+        
+        @if(name.errors!['minlength']) {
+          El nombre debe estar compuesto por al menos 4 caracteres
+        }
+      </div>
+    }
+  </div> <!-- Cerrando DIV para este bloque -->
 
-    <div>
-        <input class="form-control my-2" placeholder="Price" name="price" [(ngModel)]="product.price">
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary my-2">
-            {{product.id > 0 ? 'Update' : 'Create'}}
-        </button>
-    </div>
+  <div>
+    <input 
+      class="form-control my-2" 
+      placeholder="Description" 
+      name="description" 
+      [(ngModel)]="product.description" 
+      #description="ngModel" 
+      required
+    >
+  </div>
+
+  <div>
+    <input 
+      class="form-control my-2" 
+      placeholder="Price" 
+      name="price" 
+      [(ngModel)]="product.price" 
+      #price="ngModel" 
+      required 
+      min="10"
+      type="number"
+    >
+
+    @if(price.invalid && (price.dirty || price.touched)) {
+      <div class="text-danger">
+        @if(price.errors!['required']) {
+          El precio es requerido
+        }
+      </div>
+    }
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-primary my-2">
+      {{ product.id > 0 ? 'Update' : 'Create' }}
+    </button>
+  </div>
 </form>
