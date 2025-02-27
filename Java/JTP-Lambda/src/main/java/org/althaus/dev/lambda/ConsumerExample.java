@@ -1,11 +1,14 @@
 package org.althaus.dev.lambda;
 
+import org.althaus.dev.lambda.model.User;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class ConsumerExample {
     public static void main(String[] args) {
@@ -28,7 +31,15 @@ public class ConsumerExample {
 
         List<String> nombres = Arrays.asList("Pepe", "Antonio", "Luis");
         nombres.forEach(consumer2);
+
+        Supplier<User> newUserSupplier = User::new;
+        User user = newUserSupplier.get();
+
+        BiConsumer<User, String> asignarNombre = User::setName;
+        asignarNombre.accept(user, "Pepe");
+        System.out.println(user.getName());
+
+        Supplier<String> supplier = () -> "Hello";
+        System.out.println(supplier.get());
     }
-
-
 }
