@@ -23,5 +23,11 @@ public class FunctionExample {
 
         BiFunction<String, String, Integer> f4 = (a, b) -> a.length() + b.length();
         System.out.println(f4.apply("Hello", "World"));
+
+        BiFunction<String, String, String> f5 = String::concat;
+        System.out.println(f5.apply("Hello", "World"));
+
+        BiFunction<String, String, Integer> f6 = String::compareTo;
+        System.out.println(f6.apply("Hello", "World"));
     }
 }
