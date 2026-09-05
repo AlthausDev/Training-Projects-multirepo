@@ -13,6 +13,12 @@ El repositorio agrupa ejemplos por tecnología para conservarlos como referencia
 - `Java/` — ejercicios y proyectos Java.
 - `Python/` — scripts y prácticas con Python.
 
+## Cómo navegarlo
+
+Cada carpeta debe entenderse como un laboratorio independiente. Para ejecutar un ejercicio, entra en su directorio y utiliza las herramientas propias de ese stack (`npm`, Maven/Gradle, .NET, Python, etc.).
+
+No existe una compilación global del repositorio porque los proyectos pertenecen a momentos y tecnologías distintas.
+
 Algunos subproyectos pueden conservar versiones antiguas de dependencias porque forman parte del estado histórico del ejercicio. Las alertas de seguridad relevantes se corrigen cuando afectan al código conservado en la rama principal.
 
 ## Propósito
