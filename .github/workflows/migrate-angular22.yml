@@ -1,0 +1,79 @@
+name: Migrate Angular to 22
+
+on:
+  push:
+    branches:
+      - security/angular22-migration
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: Angular/ANTP-products
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: Angular/ANTP-products/package-lock.json
+
+      - name: Install Angular 19 tree
+        run: npm ci
+
+      - name: Remove temporary transitive overrides
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const p = 'package.json';
+          const pkg = JSON.parse(fs.readFileSync(p, 'utf8'));
+          delete pkg.overrides;
+          fs.writeFileSync(p, JSON.stringify(pkg, null, 2) + '\n');
+          NODE
+
+      - name: Migrate Angular 19 to 20
+        run: |
+          npx ng update @angular/core@20 @angular/cli@20 --allow-dirty
+          npm run build
+
+      - name: Migrate Angular 20 to 21
+        run: |
+          npx ng update @angular/core@21 @angular/cli@21 --allow-dirty
+          npm run build
+
+      - name: Migrate Angular 21 to 22
+        run: |
+          npx ng update @angular/core@22 @angular/cli@22 --allow-dirty
+          npm run build
+
+      - name: Apply non-breaking audit fixes
+        run: npm audit fix --ignore-scripts || true
+
+      - name: Verify clean install and build
+        run: |
+          rm -rf node_modules
+          npm ci
+          npm run build
+          npm audit || true
+
+      - name: Commit migration
+        working-directory: .
+        run: |
+          if git diff --quiet -- Angular/ANTP-products; then
+            echo "No migration changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Angular/ANTP-products
+          git commit -m "chore(deps): migrate ANTP-products to Angular 22"
+          git push
