@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../model/product';
 import { FormsModule } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'product-form',
   imports: [FormsModule],
   templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './form.component.css'
 })
 export class FormComponent {
