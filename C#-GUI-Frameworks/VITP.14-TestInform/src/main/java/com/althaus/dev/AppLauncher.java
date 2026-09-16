@@ -1,9 +1,11 @@
 package com.althaus.dev;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +28,8 @@ public class AppLauncher {
 
             Map<String, Object> parameters = new HashMap<String, Object>(); parameters.put("IDFACTURA",1);
 
-            JasperPrint report = JasperFillManager.fillReport("src/main/java/com/althaus/dev/reports/Clientes.jasper", parameters, connection);
+            JasperReport compiledReport = JasperCompileManager.compileReport("src/main/resources/Clientes.jrxml");
+            JasperPrint report = JasperFillManager.fillReport(compiledReport, parameters, connection);
 
             JasperExportManager.exportReportToPdfFile(report, "src/main/java/com/althaus/dev/export/Clientes.pdf");
 
