@@ -35,5 +35,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.7.2"
+  },
+  "overrides": {
+    "esbuild": "0.28.2",
+    "vite": "6.4.3"
   }
 }
