@@ -1,5 +1,5 @@
 <jasperReport name="Clientes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76c2e024-3f25-411d-b350-1c41cc8196f5">
-    <parameter name="CIUDAD" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="CIUDAD" class="java.lang.String" forPrompting="false"/>
     <query language="sql"><![CDATA[SELECT ID, FIRSTNAME, LASTNAME, STREET, CITY FROM ADDRESS ORDER BY CITY]]></query>
 
     <field name="ID" class="java.lang.Integer"/>
