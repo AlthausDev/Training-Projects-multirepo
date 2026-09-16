@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../model/product';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'table-product',
   imports: [],
   templateUrl: './products.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {

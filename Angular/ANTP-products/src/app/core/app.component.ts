@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductsComponent } from '../components/products/products.component';
 import { Product } from '../model/product';
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [ProductsComponent, FormComponent],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./app.component.css'] 
 })
 export class AppComponent implements OnInit {
