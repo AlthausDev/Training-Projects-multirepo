@@ -1,0 +1,44 @@
+name: ANTP Angular validation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'Angular/ANTP-products/**'
+      - '.github/workflows/antp-angular-validation.yml'
+  pull_request:
+    paths:
+      - 'Angular/ANTP-products/**'
+      - '.github/workflows/antp-angular-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  angular:
+    name: npm ci and Angular build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    defaults:
+      run:
+        working-directory: Angular/ANTP-products
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Configure supported Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+          cache-dependency-path: Angular/ANTP-products/package-lock.json
+      - name: Show tool versions
+        run: |
+          node --version
+          npm --version
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build Angular application
+        run: npm run build
