@@ -51,7 +51,7 @@ namespace BlazorWebPage.Client.Pages
                 { "Login", EventCallback.Factory.Create<MouseEventArgs>(this, IniciarSesion) },
                 { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
             };
-            await ModalInstance.ShowAsync<ModalLogin>(title: "Logearse", parameters: parameters);
+            await ModalInstance.ShowAsync<BlazorWebPage.Client.Shared.Modals.ModalLogin>(title: "Logearse", parameters: parameters);
         }
 
         private async Task IniciarSesion()
@@ -86,7 +86,7 @@ namespace BlazorWebPage.Client.Pages
                 { "Registrar", EventCallback.Factory.Create<MouseEventArgs>(this, NuevoUsuario) },
                 { "Cerrar", EventCallback.Factory.Create<MouseEventArgs>(this, HideModal) }
             };
-            await ModalInstance.ShowAsync<ModalRegistro>(title: "Registrarse", parameters: parameters);
+            await ModalInstance.ShowAsync<BlazorWebPage.Client.Shared.Modals.ModalRegistro>(title: "Registrarse", parameters: parameters);
         }
 
         private async Task NuevoUsuario()

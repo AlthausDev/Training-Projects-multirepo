@@ -1,0 +1,31 @@
+name: Blazor Server CI
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'C#-GUI-Frameworks/BlazorWebPage/**'
+      - '.github/workflows/blazor-server-ci.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'C#-GUI-Frameworks/BlazorWebPage/**'
+      - '.github/workflows/blazor-server-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Restore and build Blazor Server
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore server and referenced projects
+        run: dotnet restore 'C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/BlazorWebPage.Server.csproj'
+      - name: Compile Release
+        run: dotnet build 'C#-GUI-Frameworks/BlazorWebPage/BlazorWebPage/Server/BlazorWebPage.Server.csproj' --configuration Release --no-restore
