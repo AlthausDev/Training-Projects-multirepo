@@ -6,11 +6,13 @@ on:
     paths:
       - 'C#-GUI-Frameworks/BlazorWebPage/**'
       - '.github/workflows/blazor-server-ci.yml'
+      - '.github/dependabot.yml'
   pull_request:
     branches: [master]
     paths:
       - 'C#-GUI-Frameworks/BlazorWebPage/**'
       - '.github/workflows/blazor-server-ci.yml'
+      - '.github/dependabot.yml'
 
 permissions:
   contents: read
