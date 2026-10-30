@@ -6,10 +6,12 @@ on:
     paths:
       - 'Angular/ANTP-products/**'
       - '.github/workflows/antp-angular-validation.yml'
+      - '.github/dependabot.yml'
   pull_request:
     paths:
       - 'Angular/ANTP-products/**'
       - '.github/workflows/antp-angular-validation.yml'
+      - '.github/dependabot.yml'
   workflow_dispatch:
 
 permissions:
